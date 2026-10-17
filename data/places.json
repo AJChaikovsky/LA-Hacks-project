@@ -1,22 +1,61 @@
 {
   "source_url": "https://nominatim.openstreetmap.org/",
   "neighborhoods": {
-    "Boyle Heights": {"lat": 34.04369, "lng": -118.20977, "aliases": ["boyle heights", "boyle hts"]},
-    "Downtown": {"lat": 34.048, "lng": -118.2521, "aliases": ["downtown", "downtown la", "dtla", "el centro", "centro"]},
-    "East Los Angeles": {"lat": 34.0239, "lng": -118.17202, "aliases": ["east los angeles", "east la", "este de los angeles", "este de los ángeles"]},
-    "El Sereno": {"lat": 34.08112, "lng": -118.17785, "aliases": ["el sereno"]},
-    "Lincoln Heights": {"lat": 34.07266, "lng": -118.2112, "aliases": ["lincoln heights"]}
+    "Boyle Heights": {
+      "lat": 34.04369,
+      "lng": -118.20977,
+      "aliases": [
+        "boyle heights",
+        "boyle hts"
+      ]
+    },
+    "Downtown": {
+      "lat": 34.048,
+      "lng": -118.2521,
+      "aliases": [
+        "downtown",
+        "downtown la",
+        "dtla",
+        "el centro",
+        "centro"
+      ]
+    },
+    "East Los Angeles": {
+      "lat": 34.0239,
+      "lng": -118.17202,
+      "aliases": [
+        "east los angeles",
+        "east la",
+        "este de los angeles",
+        "este de los ángeles"
+      ]
+    },
+    "El Sereno": {
+      "lat": 34.08112,
+      "lng": -118.17785,
+      "aliases": [
+        "el sereno"
+      ]
+    },
+    "Lincoln Heights": {
+      "lat": 34.07266,
+      "lng": -118.2112,
+      "aliases": [
+        "lincoln heights"
+      ]
+    }
   },
   "landmarks": {
     "Mariachi Plaza": {
       "lat": 34.04748,
       "lng": -118.21908,
       "neighborhood": "Boyle Heights",
-      "resident_middle_school": null,
+      "resident_middle_school": "Hollenbeck Middle School",
       "resident_phbao": null,
       "resident_overcrowded": null,
-      "resident_source_url": null,
-      "note": "Demo resident school. Look up on https://explore.lausd.org in a browser; set PHBAO/overcrowded only from an official list, else leave null."
+      "resident_source_url": "https://explore.lausd.org",
+      "note": "explore.lausd.org lists Hollenbeck MS (6-8) as the Residential School for Mariachi Plaza. PHBAO/overcrowded not shown there: stay null until an official list confirms.",
+      "resident_evidence": "docs/evidence/B1-mariachi-plaza-resident-schools.png"
     }
   }
 }
