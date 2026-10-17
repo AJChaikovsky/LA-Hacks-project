@@ -11,7 +11,7 @@ from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
 from core.config import load_config
-from core.matcher import distance_km, eligible, language_fit, place_coords, schools
+from core.matcher import distance_km, eligible, language_fit, outside_lausd, place_coords, schools
 from core.types import WARNING_CODES, FamilyProfile, GuardrailWarning, School, WarningCode
 
 _SEVERITY = {
@@ -24,6 +24,7 @@ _SEVERITY = {
     "decline_wipes_points": "info",
     "first_choice_waitlist": "info",
     "not_points_program": "info",
+    "outside_district": "warn",
 }
 assert set(_SEVERITY) == set(WARNING_CODES)
 
@@ -92,6 +93,10 @@ def check_list(profile: FamilyProfile, codes: list[str], today: date | None = No
 
     if profile.in_magnet_now and magnets:
         out.append(_warn("current_magnet_drop", codes=magnets))
+
+    district = outside_lausd(profile.home_neighborhood)
+    if district and magnets:
+        out.append(_warn("outside_district", district=district))
 
     if profile.late_application or today > _on_time_deadline():
         out.append(_warn("past_deadline", deadline=_on_time_deadline().isoformat()))

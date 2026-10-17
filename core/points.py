@@ -12,6 +12,7 @@ from __future__ import annotations
 import re
 
 from core.config import load_config, load_data
+from core.matcher import outside_lausd
 from core.types import FamilyProfile, PointsEstimate, PointsLine, PointsStatus, School
 
 _SUFFIXES = [(r"\bmiddle school\b", "ms"), (r"\bmiddle\b", "ms"), (r"\belementary( school)?\b", "el"),
@@ -95,7 +96,7 @@ def _estimate_one(profile: FamilyProfile, school: School, first_choice: bool) ->
     lines.append(PointsLine(factor="matriculation", points=f["matriculation"]["points"] if profile.matriculating else 0,
                             status="confirmed"))
 
-    if profile.late_application:  # late or invalid applications earn no points
+    if profile.late_application or outside_lausd(profile.home_neighborhood):  # late or out-of-district: no points
         lines = [line.model_copy(update={"points": 0, "status": "confirmed"}) for line in lines]
     total = min(sum(line.points for line in lines if line.status != "unknown"), load_config("points")["max_total"])
     return PointsEstimate(code=school.code, applicable=True, total=total, lines=lines,

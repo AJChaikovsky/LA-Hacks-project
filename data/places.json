@@ -95,6 +95,96 @@
       "aliases": [
         "cypress park"
       ]
+    },
+    "Pasadena": {
+      "lat": 34.14765,
+      "lng": -118.14415,
+      "aliases": [
+        "pasadena"
+      ],
+      "outside_lausd": true,
+      "district": "Pasadena Unified",
+      "district_source": "https://www.cde.ca.gov/SchoolDirectory/"
+    },
+    "Burbank": {
+      "lat": 34.18121,
+      "lng": -118.3072,
+      "aliases": [
+        "burbank"
+      ],
+      "outside_lausd": true,
+      "district": "Burbank Unified",
+      "district_source": "https://www.cde.ca.gov/SchoolDirectory/"
+    },
+    "Glendale": {
+      "lat": 34.14694,
+      "lng": -118.24785,
+      "aliases": [
+        "glendale"
+      ],
+      "outside_lausd": true,
+      "district": "Glendale Unified",
+      "district_source": "https://www.cde.ca.gov/SchoolDirectory/"
+    },
+    "Santa Monica": {
+      "lat": 34.01947,
+      "lng": -118.49123,
+      "aliases": [
+        "santa monica"
+      ],
+      "outside_lausd": true,
+      "district": "Santa Monica-Malibu Unified",
+      "district_source": "https://www.cde.ca.gov/SchoolDirectory/"
+    },
+    "Long Beach": {
+      "lat": 33.76902,
+      "lng": -118.1916,
+      "aliases": [
+        "long beach"
+      ],
+      "outside_lausd": true,
+      "district": "Long Beach Unified",
+      "district_source": "https://www.cde.ca.gov/SchoolDirectory/"
+    },
+    "Beverly Hills": {
+      "lat": 34.06965,
+      "lng": -118.39631,
+      "aliases": [
+        "beverly hills"
+      ],
+      "outside_lausd": true,
+      "district": "Beverly Hills Unified",
+      "district_source": "https://www.cde.ca.gov/SchoolDirectory/"
+    },
+    "Culver City": {
+      "lat": 34.02112,
+      "lng": -118.39647,
+      "aliases": [
+        "culver city"
+      ],
+      "outside_lausd": true,
+      "district": "Culver City Unified",
+      "district_source": "https://www.cde.ca.gov/SchoolDirectory/"
+    },
+    "Torrance": {
+      "lat": 33.83714,
+      "lng": -118.34136,
+      "aliases": [
+        "torrance"
+      ],
+      "outside_lausd": true,
+      "district": "Torrance Unified",
+      "district_source": "https://www.cde.ca.gov/SchoolDirectory/"
+    },
+    "Alhambra": {
+      "lat": 34.09304,
+      "lng": -118.12706,
+      "aliases": [
+        "alhambra"
+      ],
+      "outside_lausd": true,
+      "district": "Alhambra Unified",
+      "district_source": "https://www.cde.ca.gov/SchoolDirectory/"
     }
   },
   "landmarks": {

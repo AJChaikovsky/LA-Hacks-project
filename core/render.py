@@ -184,6 +184,7 @@ def render_warnings(warnings: list[GuardrailWarning], profile: FamilyProfile) ->
             limit=params.get("limit", 3),
             names=_names(params.get("codes", []), lang),
             name=program_name(params.get("first_choice") or params.get("suggest") or "", lang),
+            district=params.get("district", ""),
         )
         lines.append(f"- {text}")
     lines += ["", w["next"]]

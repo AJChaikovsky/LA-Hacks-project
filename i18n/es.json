@@ -76,6 +76,7 @@
     "current_magnet_drop": "Si {child} ya está en un magnet y queda en otro, pierde su lugar actual aunque no lo acepte.",
     "past_deadline": "La fecha a tiempo (6 de noviembre) ya pasó. Las solicitudes tardías no reciben puntos.",
     "not_points_program": "Idea: {name} no es magnet, así que puede pedirlo además de sus 3 magnet. Si {child} está aprendiendo inglés y en casa hablan español, no necesita examen de idioma.",
+    "outside_district": "Usted vive fuera de LAUSD ({district}). Puede aplicar a un magnet, pero las solicitudes de fuera del distrito no reciben puntos.",
     "ok": "Su lista se ve bien.",
     "next": "**¿Preparo su lista de documentos, fechas y pasos?**"
   },
