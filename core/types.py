@@ -151,6 +151,9 @@ class FamilyProfile(BaseModel):
     resident_phbao: bool | None = None         # None = unknown -> caveat or ask
     resident_overcrowded: bool | None = None
     in_magnet_now: bool = False
+    matriculating: bool = False                # finishing a magnet's top grade, applying to the next level
+    gifted: bool | None = None                 # parent mentions gifted / GATE identification
+    late_application: bool = False             # after Nov 6: no points, end of waitlist
     waitlist_years: int = 0
     sibling_program_codes: list[str] = Field(default_factory=list)
     parent_work_area: str | None = None
