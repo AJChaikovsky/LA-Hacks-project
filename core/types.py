@@ -139,6 +139,7 @@ class School(BaseModel):
 class FamilyProfile(BaseModel):
     language: Language = "en"
     child_name: str | None = None
+    parent_name: str | None = None             # signs the coordinator email
     current_grade: int | None = None
     applying_grade: int | None = None          # usually current_grade + 1
     interests: list[Interest] = Field(default_factory=list)

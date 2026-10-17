@@ -13,7 +13,7 @@ function with the same name and signature:
                         (items, profile) -> str                                 (Dev C, C3)
 
 The orchestrator imports from here while USE_STUBS=true, so agent work never waits on
-the real modules. Stubs ignore their inputs on purpose.
+the real modules. Stubs ignore their inputs on purpose, except build_plan's email.
 """
 from __future__ import annotations
 
@@ -72,7 +72,12 @@ def check_list(profile: FamilyProfile, codes: list[str]) -> list[GuardrailWarnin
 
 
 def build_plan(profile: FamilyProfile, codes: list[str], lang: Language, today: date) -> ActionPlan:
-    return ActionPlan.model_validate(_load("maria_plan.json"))
+    # The email is real (core/email_draft, C5) so it follows the parent's language; B6 must do the same.
+    from core.email_draft import draft_email
+
+    plan = ActionPlan.model_validate(_load("maria_plan.json"))
+    subject, body = draft_email(profile, codes or [m["code"] for m in _load("maria_matches.json")], lang)
+    return plan.model_copy(update={"email_subject": subject, "email_body": body})
 
 
 def render_matches(matches: list[SchoolMatch], profile: FamilyProfile) -> str:
