@@ -82,6 +82,7 @@ def handle(state: SessionState, text: str, today: date | None = None) -> tuple[S
     """One turn: returns (new state, reply markdown, intent)."""
     from core.extract import detect_language, parse_school_list
     from core.intent import parse_card_selection, scope_reply
+    from core.render import render_ask_grade
 
     today = today or date.today()
     intent = FN["classify"](text, state.stage)
@@ -97,15 +98,13 @@ def handle(state: SessionState, text: str, today: date | None = None) -> tuple[S
         p = FN["extract"](text, p)
         state = state.model_copy(update={"profile": p})
         lang = p.language
-        missing = []
-        if not p.applying_grade:
-            missing.append(_FIELD_NAMES[lang]["grade"])
+        if not p.applying_grade:  # never assume middle school: ask
+            return state, render_ask_grade(p), intent
         if not (p.interests or p.home_neighborhood):
-            missing.append(_FIELD_NAMES[lang]["where"])
-        if missing:
-            return state, _MISSING[lang].format(fields=", ".join(missing)), intent
+            return state, _MISSING[lang].format(fields=_FIELD_NAMES[lang]["where"]), intent
         matches = FN["match"](p)
-        state = state.model_copy(update={"matches": matches, "stage": "matched"})
+        # Zero matches: stay at intake so the parent can correct the grade; no odds offer.
+        state = state.model_copy(update={"matches": matches, "stage": "matched" if matches else "intake"})
         return state, FN["render_matches"](matches, p), intent
 
     if intent in ("ask_odds", "set_list", "ask_plan") and not state.matches:

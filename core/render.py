@@ -17,6 +17,7 @@ from datetime import date
 from functools import cache
 from pathlib import Path
 
+from core.config import load_config
 from core.types import (
     ActionPlan,
     FamilyProfile,
@@ -96,14 +97,52 @@ def _fmt(template: str, **params) -> str:
 # ---------------------------------------------------------------------------
 
 
-def render_matches(matches: list[SchoolMatch], profile: FamilyProfile) -> str:
+def _grade_word(grade: int | None, s: dict) -> str:
+    return s["matches"]["ordinals"].get(str(grade), str(grade)) if grade else ""
+
+
+def covered_grades() -> tuple[int, int]:
+    """Lowest and highest grade any program in data/schools.json serves."""
+    grades = [g for record in schools().values() for g in record.get("grades", [])]
+    return (min(grades), max(grades)) if grades else (6, 8)
+
+
+def render_no_matches(profile: FamilyProfile) -> str:
+    """Honest reply when nothing on our list fits: say what we cover, point to the official site."""
     s, child = _s(profile), _child(profile)
-    ctx = dict(child=child, home=place(profile.home_neighborhood, profile.language),
-               work=place(profile.parent_work_area, profile.language),
-               interest=s["interests"].get(profile.interests[0], "") if profile.interests else "")
-    lines = [_fmt(s["matches"]["intro"], n=len(matches), child=child), ""]
+    low, high = covered_grades()
+    grade = profile.applying_grade
+    words = dict(child=child, low=_grade_word(low, s), high=_grade_word(high, s), grade=_grade_word(grade, s))
+    key = "none_for_grade" if grade is not None and not low <= grade <= high else "none_fit"
+    return "\n".join([_fmt(s["matches"][key], **words), "", s["matches"]["official_help"], "",
+                      _fmt(s["matches"]["confirm_grade"], child=child)])
+
+
+def render_ask_grade(profile: FamilyProfile) -> str:
+    """Ask for the grade instead of assuming middle school."""
+    return _fmt(_s(profile)["matches"]["ask_grade"], child=_child(profile))
+
+
+def _matching_interest(profile: FamilyProfile, theme: str) -> str | None:
+    """The parent's interest that fits this program's theme best (for the theme_match sentence)."""
+    if not profile.interests:
+        return None
+    theme_map = load_config("matcher").get("theme_map", {})
+    return max(profile.interests, key=lambda i: theme_map.get(i, {}).get(theme, 0.0))
+
+
+def render_matches(matches: list[SchoolMatch], profile: FamilyProfile) -> str:
+    if not matches:
+        return render_no_matches(profile)
+    s, child = _s(profile), _child(profile)
+    intro = s["matches"]["intro_one"] if len(matches) == 1 else s["matches"]["intro"]
+    lines = [_fmt(intro, n=len(matches), child=child), ""]
     general: list[str] = []
     for i, m in enumerate(matches, 1):
+        interest = _matching_interest(profile, m.theme)
+        ctx = dict(child=child, home=place(profile.home_neighborhood, profile.language),
+                   work=place(profile.parent_work_area, profile.language),
+                   interest=s["interests"].get(interest, "") if interest else "")
         lines.append(f"**{i}. {program_name(m.code, profile.language, matches)}**")
         own = [r for r in m.reason_codes if r not in _GENERAL_REASONS]
         general += [r for r in m.reason_codes if r in _GENERAL_REASONS and r not in general]
@@ -113,6 +152,7 @@ def render_matches(matches: list[SchoolMatch], profile: FamilyProfile) -> str:
             lines.append(f"- {contact}")
         lines.append("")
     if general:
+        ctx = dict(child=child)
         lines.append(s["matches"]["general_header"])
         lines += [f"- {_fmt(s['reasons'][r], **ctx)}" for r in general]
         lines.append("")

@@ -21,7 +21,27 @@
   "matches": {
     "intro": "Encontré {n} escuelas para {child}:",
     "general_header": "Bueno saber:",
-    "next": "**¿Quiere saber qué posibilidades tiene de entrar?**"
+    "next": "**¿Quiere saber qué posibilidades tiene de entrar?**",
+    "intro_one": "Encontré 1 escuela para {child}:",
+    "none_for_grade": "No hay programas para {grade} grado en mi lista. Por ahora cubro escuelas secundarias (de {low} a {high} grado) del Este de Los Ángeles.",
+    "none_fit": "No encontré un programa en mi lista que le quede bien a {child}. Por ahora cubro escuelas secundarias (de {low} a {high} grado) del Este de Los Ángeles.",
+    "official_help": "Puede ver todos los programas en choices.lausd.net o llamar al (213) 241-4177.",
+    "confirm_grade": "**¿Me confirma en qué grado está {child} ahora?**",
+    "ask_grade": "**¿En qué grado está {child} ahora?** Así busco escuelas para el grado que sigue.",
+    "ordinals": {
+      "1": "primer",
+      "2": "segundo",
+      "3": "tercer",
+      "4": "cuarto",
+      "5": "quinto",
+      "6": "sexto",
+      "7": "séptimo",
+      "8": "octavo",
+      "9": "noveno",
+      "10": "décimo",
+      "11": "undécimo",
+      "12": "duodécimo"
+    }
   },
   "reasons": {
     "theme_match": "Su tema es {interest}, lo que más le gusta a {child}.",
