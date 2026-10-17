@@ -1,7 +1,7 @@
 [
   {
     "code": "1804703",
-    "name": "Bel Vedere MS",
+    "name": "Belvedere MS",
     "program_type": "magnet",
     "theme": "STEAM",
     "sub_theme": "Arts",
@@ -34,7 +34,7 @@
   },
   {
     "code": "1804702",
-    "name": "Bel Vedere MS",
+    "name": "Belvedere MS",
     "program_type": "magnet",
     "theme": "New Media",
     "sub_theme": "Media/Communications",
@@ -203,8 +203,8 @@
     "code": "1816801",
     "name": "Griffith MS",
     "program_type": "magnet",
-    "theme": "STEM",
-    "sub_theme": "Spanish DLE on campus",
+    "theme": "STEAM",
+    "sub_theme": null,
     "grades": [
       6,
       7,

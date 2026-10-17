@@ -49,4 +49,15 @@ def test_places_centroids():
     plaza = places["landmarks"]["Mariachi Plaza"]
     # resident-school flags stay null unless an official source backs them
     for flag in ("resident_phbao", "resident_overcrowded"):
-        assert plaza[flag] is None or plaza["resident_source_url"]
+        assert plaza[flag] is None or (DATA.parent / plaza["resident_flags_source"]).exists()
+
+
+def test_resident_school_list():
+    norm = json.loads((DATA / "resident_schools.json").read_text(encoding="utf-8"))
+    assert norm["applies_to_school_year"] == "2027-28" and (DATA.parent / norm["evidence"]).exists()
+    by_name = {s["name"]: s for s in norm["schools"]}
+    assert len(norm["schools"]) == 697
+    assert by_name["Hollenbeck MS"] == {"cost_center": "1817901", "location_code": "8179", "name": "Hollenbeck MS",
+                                        "phbao": True, "overcrowded": False}
+    assert sorted(s["name"] for s in norm["schools"] if s["overcrowded"]) == [
+        "Dahlia Hts El", "Ivanhoe El", "Mount Washington El"]

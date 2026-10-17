@@ -51,10 +51,10 @@
       "lng": -118.21908,
       "neighborhood": "Boyle Heights",
       "resident_middle_school": "Hollenbeck Middle School",
-      "resident_phbao": null,
-      "resident_overcrowded": null,
+      "resident_phbao": true,
+      "resident_overcrowded": false,
       "resident_source_url": "https://explore.lausd.org",
-      "note": "explore.lausd.org lists Hollenbeck MS (6-8) as the Residential School for Mariachi Plaza. PHBAO/overcrowded not shown there: stay null until an official list confirms.",
+      "note": "explore.lausd.org lists Hollenbeck MS (6-8) as the Residential School for Mariachi Plaza. The official 2026-27 Norm Category/Overcrowded list (for 2027-28) has Hollenbeck MS as PHBAO, not overcrowded.",
       "resident_evidence": "docs/evidence/B1-mariachi-plaza-resident-schools.png",
       "resident_phbao_evidence": {
         "white_pct_2024_25": 1.8,
@@ -62,7 +62,8 @@
         "source_url": "https://explore.lausd.org",
         "screenshot": "docs/evidence/B1-hollenbeck-demographics-2024-25.png",
         "note": "Demographics strongly suggest PHBAO but are not the official designation; resident_phbao stays null so points read as 'assumed'."
-      }
+      },
+      "resident_flags_source": "docs/evidence/norm-category-overcrowded-2026-27.pdf"
     }
   }
 }
