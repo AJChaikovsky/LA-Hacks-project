@@ -112,6 +112,7 @@
     "steps_header": "**How to finish on your phone:**",
     "email_header": "**Email to the program coordinator** (copy it and send it yourself):",
     "subject": "Subject: {subject}",
+    "coordinator_phone": "Prefer to call? {name}, {phone}.",
     "days_left": "{n} days left",
     "today": "today",
     "no_submit": "You submit the application; we never submit anything.",

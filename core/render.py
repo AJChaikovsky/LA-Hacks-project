@@ -219,6 +219,9 @@ def render_plan(plan: ActionPlan, profile: FamilyProfile) -> str:
 
     lines += ["", pl["email_header"], _fmt(pl["subject"], subject=plan.email_subject), ""]
     lines += [f"> {row}" if row else ">" for row in plan.email_body.split("\n")]
+    if plan.coordinator_phone:
+        lines += ["", _fmt(pl["coordinator_phone"], name=program_name(plan.coordinator_code or "", lang),
+                           phone=plan.coordinator_phone)]
 
     lines += ["", pl["no_submit"]]
     if main_deadline:

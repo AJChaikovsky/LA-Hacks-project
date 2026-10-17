@@ -210,6 +210,8 @@ class ActionPlan(BaseModel):
     email_subject: str                         # already in the parent's language
     email_body: str
     warnings: list[GuardrailWarning] = Field(default_factory=list)
+    coordinator_code: str | None = None        # 1st-choice program the email and phone are for
+    coordinator_phone: str | None = None       # school phone from data/schools.json; never invented
 
 
 class SessionState(BaseModel):

@@ -114,6 +114,8 @@ def packet_review(plan: ActionPlan, profile: FamilyProfile, codes: list[str]) ->
         rows.append({"label": c["row_deadline"], "value": format_date(deadline.date, lang)})
     rows.append({"label": c["row_docs"], "value": c["docs_value"].format(n=len(plan.checklist))})
     rows.append({"label": c["row_email"], "value": plan.email_subject})
+    if plan.coordinator_phone:
+        rows.append({"label": c["row_phone"], "value": plan.coordinator_phone})
     return {
         "title": c["review_title"],
         "summary_rows": rows,

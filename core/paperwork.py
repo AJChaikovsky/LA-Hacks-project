@@ -64,7 +64,10 @@ def phone_steps(codes: Sequence[str] = (), has_siblings: bool = False) -> list[S
 def build_plan(profile: FamilyProfile, codes: list[str], lang: Language, today: date | None = None) -> ActionPlan:
     today = today or today_la()
     subject, body = draft_email(profile, codes, lang)
+    first = next((s for s in schools() if codes and s.code == codes[0]), None)
     return ActionPlan(
+        coordinator_code=first.code if first else None,
+        coordinator_phone=first.phone if first else None,
         checklist=checklist(profile, codes),
         deadlines=deadlines(today),
         steps=phone_steps(codes, has_siblings=bool(profile.sibling_program_codes)),
