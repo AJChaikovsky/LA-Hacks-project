@@ -90,14 +90,14 @@
   },
   "steps": {
     "open_apply_site": "Abra apply.lausd.net en su celular.",
-    "sign_in_or_register": "Entre con su cuenta de Parent Portal, o toque \"Register\" para crear una y confirme su correo.",
-    "add_student": "Toque \"Add/Edit Student\" y agregue a {child}.",
-    "choose_program_type": "Elija el tipo de programa: Magnet.",
-    "rank_magnet_choices": "Ponga sus escuelas en orden: la que más quiere, primero (máximo 3).",
-    "add_dle_choice": "Si quiere, agregue también el programa bilingüe (es otro tipo de programa).",
-    "list_siblings": "Si tiene otros hijos en el programa, agréguelos como hermanos.",
-    "check_address": "Revise que su dirección sea la misma que tiene la escuela.",
-    "submit_and_save_confirmation": "Envíe la solicitud y guarde la confirmación (una captura de pantalla)."
+    "sign_in_or_register": "Toque \"Log in\" y entre con su cuenta de Parent Portal, o toque \"Register\" para crear una (confirme el correo que le llega).",
+    "add_student": "En el Dashboard, toque \"Add/Edit Student\" y luego \"New student\" para agregar a {child}.",
+    "choose_program_type": "En el Dashboard, toque \"Apply to Programs\", elija a {child} y marque los programas que quiere.",
+    "rank_magnet_choices": "En Magnet, ponga sus escuelas en orden: la que más quiere, primero (máximo 3).",
+    "add_dle_choice": "Si quiere el programa bilingüe, marque también \"Multilingual Multicultural\" y elija los idiomas que hablan en casa.",
+    "list_siblings": "En la última pantalla, marque a los hermanos y toque \"Next: Confirm and Apply\".",
+    "check_address": "Escriba su dirección y elija la dirección verificada de la lista (verá \"verified\" en verde).",
+    "submit_and_save_confirmation": "Lea los Terms and Conditions, toque \"I agree\" y \"Submit\". Guarde la confirmación (también le llega por correo)."
   },
   "deadlines": {
     "on_time_open": "abrió la solicitud",

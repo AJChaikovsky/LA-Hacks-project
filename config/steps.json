@@ -1,15 +1,71 @@
 {
-  "guide": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf",
-  "note": "confirmed = quoted from the official guide; unconfirmed = expected flow, check against the guide in a browser (lausd.org blocks scripts).",
+  "guide": "https://apply.lausd.net/Guides/UserGuide_EN_Choices.pdf",
+  "evidence": "docs/evidence/B6-choices-user-guide.pdf",
+  "revised": "2026-09-29",
+  "note": "Order follows the official guide: the address and siblings are entered while adding the student, before choosing programs.",
   "steps": [
-    {"code": "open_apply_site", "status": "confirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": "log in at apply.lausd.net"},
-    {"code": "sign_in_or_register", "status": "confirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": "a new parent account can be created by clicking \"Register.\""},
-    {"code": "add_student", "status": "confirmed", "source": "https://www.lausd.org//cms/lib/CA01000043/Centricity/Domain/593/Apply%20Online%20Step%20by%20Step%20Guide%20English%20Spanish.pdf", "quote": "click on \"Add/Edit Student\" and proceed to add student/s to your account"},
-    {"code": "choose_program_type", "status": "unconfirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": null},
-    {"code": "rank_magnet_choices", "status": "unconfirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": null},
-    {"code": "add_dle_choice", "status": "unconfirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": null},
-    {"code": "list_siblings", "status": "unconfirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": null},
-    {"code": "check_address", "status": "unconfirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": null},
-    {"code": "submit_and_save_confirmation", "status": "unconfirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": null}
+    {
+      "code": "open_apply_site",
+      "status": "confirmed",
+      "source": "https://apply.lausd.net/Guides/UserGuide_EN_Choices.pdf",
+      "page": 1,
+      "quote": "Part I.1: Go to http://apply.lausd.net."
+    },
+    {
+      "code": "sign_in_or_register",
+      "status": "confirmed",
+      "source": "https://apply.lausd.net/Guides/UserGuide_EN_Choices.pdf",
+      "page": 1,
+      "quote": "Part I.3-4: If you already have a parent portal account, you may log in with your account email and password. If you do not have an account, you may create a new parent account by clicking on “Register.”"
+    },
+    {
+      "code": "add_student",
+      "status": "confirmed",
+      "source": "https://apply.lausd.net/Guides/UserGuide_EN_Choices.pdf",
+      "page": 2,
+      "quote": "Part II.1-2: On the Dashboard screen, click “Add/Edit Student.” ... To add a new student, click on “New student.”"
+    },
+    {
+      "code": "check_address",
+      "status": "confirmed",
+      "source": "https://apply.lausd.net/Guides/UserGuide_EN_Choices.pdf",
+      "page": 3,
+      "quote": "Part II.4: begin typing your home address and then select the verified address from the list You will see the green “verified” address message."
+    },
+    {
+      "code": "list_siblings",
+      "status": "confirmed",
+      "source": "https://apply.lausd.net/Guides/UserGuide_EN_Choices.pdf",
+      "page": 5,
+      "quote": "Part II.6: On the final screen, you will select siblings. Select all siblings and click “Next: Confirm and Apply.”"
+    },
+    {
+      "code": "choose_program_type",
+      "status": "confirmed",
+      "source": "https://apply.lausd.net/Guides/UserGuide_EN_Choices.pdf",
+      "page": 5,
+      "quote": "Part III.1, 6: From the Dashboard, click on “Apply to Programs.” ... Click on each of the programs you would like to apply for and click “Next.”"
+    },
+    {
+      "code": "rank_magnet_choices",
+      "status": "confirmed",
+      "source": "https://apply.lausd.net/Guides/UserGuide_EN_Choices.pdf",
+      "page": 8,
+      "quote": "Part III.6a: If you apply for a Magnet program, you can make a maximum of three choices."
+    },
+    {
+      "code": "add_dle_choice",
+      "status": "confirmed",
+      "source": "https://apply.lausd.net/Guides/UserGuide_EN_Choices.pdf",
+      "page": 8,
+      "quote": "Part III.6b, 6h: If you apply for a Multilingual Multicultural program, you can make a maximum of three choices ... you will need to select the Languages(s) spoken at home and the language(s) your child speaks."
+    },
+    {
+      "code": "submit_and_save_confirmation",
+      "status": "confirmed",
+      "source": "https://apply.lausd.net/Guides/UserGuide_EN_Choices.pdf",
+      "page": 12,
+      "quote": "Part III.8-9: Click on “I agree…” and click “Submit.” ... You may print your confirmation now ... You will also receive a confirmation email."
+    }
   ]
 }

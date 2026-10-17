@@ -10,9 +10,9 @@
     "open_apply_site",
     "sign_in_or_register",
     "add_student",
+    "check_address",
     "choose_program_type",
     "rank_magnet_choices",
-    "check_address",
     "submit_and_save_confirmation"
   ],
   "email_subject": "Preguntas sobre el programa magnet STEAM para mi hijo con IEP",
