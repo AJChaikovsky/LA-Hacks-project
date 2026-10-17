@@ -159,3 +159,19 @@ def test_extract_llm_off_switch(monkeypatch):
 @pytest.mark.skipif(not os.getenv("RUN_LIVE"), reason="set RUN_LIVE=1 to call ASI:One")
 def test_live_turn1_matches_fixture():
     assert ex.extract(TURN1) == MARIA
+
+
+@pytest.mark.parametrize("text,keeps_markham", [
+    ("I'll list all three, plus Markham just in case", True),           # 5943cae regression
+    ("Voy a poner las tres, solo para estar segura, y Markham", True),
+    ("I'm only adding Markham to the three", True),
+    ("Voy a poner las tres y Markham, solo por si acaso", True),
+    ("Está bien, solo las tres.", False),
+    ("Ok, only the three.", False),
+    ("Just those three please", False),
+    ("Las tres nada más", False),
+    ("Solo con las tres, gracias", False),
+])
+def test_only_the_three_must_be_attached(text, keeps_markham):
+    choices, _ = ex.parse_school_list(text + (" Markham" if not keeps_markham else ""), MATCHES)
+    assert ("1823703" in choices) is keeps_markham

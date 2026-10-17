@@ -311,7 +311,13 @@ def find_doubtful(t: str, mentions: list[tuple[int, str]]) -> list[str]:
 
 
 _ALL_MATCHES = re.compile(r"\b(las|los|esas|estas|all|the|those|these) (tres|3|three)\b|\btodas\b|all of them")
-_ONLY = re.compile(r"\b(solo|solamente|nada mas|only|just)\b(?! in case)")
+# "Only" counts only when it is attached to "the three" ("solo las tres", "just those three", "las tres
+# nada más"). A loose "solo/only/just" elsewhere ("just in case", "solo para estar segura") must not drop
+# the extra school the parent named.
+_ONLY_THREE = re.compile(
+    r"\b(?:solo|solamente|only|just)\s+(?:con\s+|with\s+)?(?:(?:las|los|esas|estas|the|those|these)\s+)?"
+    r"(?:tres|3|three)\b|\b(?:tres|three)\s+(?:nada mas|only)\b"
+)
 
 
 def parse_school_list(text: str, match_codes: list[str]) -> tuple[list[str], list[str]]:
@@ -323,7 +329,7 @@ def parse_school_list(text: str, match_codes: list[str]) -> tuple[list[str], lis
     t = norm(text)
     mentions = find_school_mentions(t, match_codes)
     choices: list[str] = list(match_codes) if _ALL_MATCHES.search(t) else []
-    if not (choices and _ONLY.search(t)):
+    if not (choices and _ONLY_THREE.search(t)):
         choices += [code for _, code in mentions if code not in choices]
     return choices, find_doubtful(t, mentions)
 
