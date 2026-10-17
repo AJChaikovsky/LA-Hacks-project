@@ -85,9 +85,9 @@ def test_only_dle_plan_has_no_magnet_steps():
     p = PROFILES["only_dle"]
     assert match(p)[0].code == "1838701TWS"
     plan = build_plan(p, ["1838701TWS"], "es", TODAY)
-    assert "rank_magnet_choices" not in plan.steps and "choose_program_type" not in plan.steps
-    assert plan.steps == ["open_apply_site", "sign_in_or_register", "add_student", "add_dle_choice", "check_address",
-                          "submit_and_save_confirmation"]
+    assert "rank_magnet_choices" not in plan.steps
+    assert plan.steps == ["open_apply_site", "sign_in_or_register", "add_student", "check_address",
+                          "choose_program_type", "add_dle_choice", "submit_and_save_confirmation"]
     assert not estimate(p, ["1838701TWS"])[0].applicable
     assert {w.code for w in check_list(p, ["1838701TWS"], today=TODAY)} == {"not_points_program"}
 

@@ -90,14 +90,14 @@
   },
   "steps": {
     "open_apply_site": "Open apply.lausd.net on your phone.",
-    "sign_in_or_register": "Sign in with your Parent Portal account, or tap \"Register\" to create one and confirm your email.",
-    "add_student": "Tap \"Add/Edit Student\" and add {child}.",
-    "choose_program_type": "Choose the program type: Magnet.",
-    "rank_magnet_choices": "Put your schools in order: the one you want most first (3 at most).",
-    "add_dle_choice": "If you want, also add the dual-language program (a separate program type).",
-    "list_siblings": "If you have other children in the program, add them as siblings.",
-    "check_address": "Check that your address matches what the school has.",
-    "submit_and_save_confirmation": "Submit and save the confirmation (a screenshot)."
+    "sign_in_or_register": "Tap \"Log in\" and sign in with your Parent Portal account, or tap \"Register\" to create one (confirm the email you get).",
+    "add_student": "On the Dashboard, tap \"Add/Edit Student\", then \"New student\" to add {child}.",
+    "choose_program_type": "On the Dashboard, tap \"Apply to Programs\", pick {child}, and check the programs you want.",
+    "rank_magnet_choices": "Under Magnet, rank your schools: your favorite first (up to 3).",
+    "add_dle_choice": "For the dual-language program, also check \"Multilingual Multicultural\" and pick the languages spoken at home.",
+    "list_siblings": "On the last screen, select any siblings and tap \"Next: Confirm and Apply\".",
+    "check_address": "Start typing your address and pick the verified one from the list (you'll see a green \"verified\").",
+    "submit_and_save_confirmation": "Read the Terms and Conditions, tap \"I agree\" and \"Submit\". Save the confirmation (you'll also get it by email)."
   },
   "deadlines": {
     "on_time_open": "application opened",

@@ -49,17 +49,22 @@ def deadlines(today: date) -> list[Deadline]:
 
 
 def phone_steps(codes: Sequence[str] = (), has_siblings: bool = False) -> list[StepCode]:
-    """6 to 8 steps on apply.lausd.net; the DLE and sibling steps appear only when they apply."""
+    """Steps on apply.lausd.net in the official guide's order (config/steps.json).
+
+    The address and siblings are entered while adding the student, before choosing programs.
+    The sibling, magnet-ranking and DLE steps appear only when they apply.
+    """
     dle = {s.code for s in schools() if s.program_type == "dle"}
     magnets = {s.code for s in schools() if s.program_type == "magnet"}
-    steps: list[StepCode] = ["open_apply_site", "sign_in_or_register", "add_student"]
-    if not codes or magnets & set(codes):  # the magnet steps only when a magnet is (or may be) listed
-        steps += ["choose_program_type", "rank_magnet_choices"]
-    if dle & set(codes):
-        steps.append("add_dle_choice")
+    steps: list[StepCode] = ["open_apply_site", "sign_in_or_register", "add_student", "check_address"]
     if has_siblings:
         steps.append("list_siblings")
-    steps += ["check_address", "submit_and_save_confirmation"]
+    steps.append("choose_program_type")
+    if not codes or magnets & set(codes):  # ranking only when a magnet is (or may be) listed
+        steps.append("rank_magnet_choices")
+    if dle & set(codes):
+        steps.append("add_dle_choice")
+    steps.append("submit_and_save_confirmation")
     return steps
 
 

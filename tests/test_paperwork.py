@@ -84,9 +84,17 @@ def test_every_step_has_a_source():
     cfg = load_config("steps")
     rows = {s["code"]: s for s in cfg["steps"]}
     assert set(rows) == set(STEP_CODES)
+    assert (Path(__file__).resolve().parent.parent / cfg["evidence"]).exists()
     for s in rows.values():
-        assert s["source"].startswith("https://") and s["status"] in ("confirmed", "unconfirmed")
-        assert s["status"] == "unconfirmed" or s["quote"]
+        assert s["source"] == "https://apply.lausd.net/Guides/UserGuide_EN_Choices.pdf"
+        assert s["status"] == "confirmed" and s["quote"] and 1 <= s["page"] <= 13
+
+
+def test_steps_follow_the_official_guide_order():
+    guide_order = [s["code"] for s in load_config("steps")["steps"]]
+    for codes, siblings in [(GOLDEN, False), (GOLDEN + ["1838701TWS"], True), (["1838701TWS"], False)]:
+        steps = phone_steps(codes, has_siblings=siblings)
+        assert steps == [c for c in guide_order if c in steps]
 
 
 def test_plan_round_trips_as_json():
