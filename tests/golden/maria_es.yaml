@@ -1,0 +1,44 @@
+# Golden demo path (Spanish). Spec for the live demo; replayed by scripts/replay_golden.py.
+# must_contain / must_not_contain are case-sensitive substrings of the agent's reply.
+name: maria_es
+today: 2026-10-17          # local replays pin the date so "faltan 20 días" is stable
+max_seconds_per_turn: 8
+must_not_contain_any_turn:
+  - "garantizado"
+  - "%"
+  - "enviamos su solicitud"
+  - "[ERROR]"
+  - "Subject:"
+turns:
+  - say: "Hola, soy Maria. Vivo en Boyle Heights. Mi hijo Diego está en quinto grado y el próximo año entra a sexto. Tiene un IEP y le encanta el arte, dibuja todo el día. Yo trabajo en el centro y solo tengo mi celular. ¿Qué escuelas me recomienda?"
+    intent: profile_info
+    must_contain:
+      - "Diego"
+      - "Bel Vedere"
+      - "Hollenbeck"
+      - "STEAM"
+      - "IEP"
+      - "¿Quiere saber qué posibilidades tiene de entrar?"
+  - say: "¿Qué posibilidades tiene de entrar?"
+    intent: ask_odds
+    must_contain:
+      - "4 de 23 puntos"
+      - "lista de espera"
+      - "Esto es un estimado. Confirme en choices.lausd.net o llame al (213) 241-4177."
+  - say: "Voy a poner las tres, y una más por si acaso: Markham, aunque queda lejísimos y no sé si lo aceptaría."
+    intent: set_list
+    must_contain:
+      - "Solo puede poner 3 escuelas magnet"
+      - "Markham"
+      - "Ponga solo escuelas que sí aceptaría"
+      - "Stevenson"
+      - "primera opción"
+  - say: "Está bien, solo las tres. ¿Qué necesito para terminar?"
+    intent: ask_plan
+    must_contain:
+      - "6 de noviembre de 2026"
+      - "apply.lausd.net"
+      - "Parent Portal"
+      - "IEP"
+      - "Asunto:"
+      - "Usted envía la solicitud; nosotros no enviamos nada."

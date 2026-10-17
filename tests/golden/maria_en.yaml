@@ -1,0 +1,35 @@
+# Golden path (English), secondary check.
+name: maria_en
+today: 2026-10-17
+max_seconds_per_turn: 8
+must_not_contain_any_turn:
+  - "guaranteed"
+  - "%"
+  - "we submitted"
+  - "[ERROR]"
+  - "¿Quiere"
+turns:
+  - say: "Hi, I'm Maria. We live in Boyle Heights. My son Diego is in 5th grade and has an IEP. He loves art and drawing. I work downtown and only have my phone. Which schools do you recommend?"
+    intent: profile_info
+    must_contain:
+      - "I found 3 schools for Diego"
+      - "Bel Vedere"
+      - "Hollenbeck"
+      - "Students with an IEP can apply to any magnet."
+  - say: "What are his chances of getting in?"
+    intent: ask_odds
+    must_contain:
+      - "4 of 23 points"
+      - "This is an estimate. Confirm at choices.lausd.net or call (213) 241-4177."
+  - say: "I'll list all three, plus Markham just in case, though it's really far and I'm not sure I'd accept it."
+    intent: set_list
+    must_contain:
+      - "You can only list 3 magnet schools"
+      - "Only list schools you would accept"
+      - "Stevenson"
+  - say: "Ok, only the three. What do I need to finish?"
+    intent: ask_plan
+    must_contain:
+      - "November 6, 2026"
+      - "apply.lausd.net"
+      - "You submit the application; we never submit anything."
