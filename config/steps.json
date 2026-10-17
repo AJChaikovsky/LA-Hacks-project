@@ -1,0 +1,15 @@
+{
+  "guide": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf",
+  "note": "confirmed = quoted from the official guide; unconfirmed = expected flow, check against the guide in a browser (lausd.org blocks scripts).",
+  "steps": [
+    {"code": "open_apply_site", "status": "confirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": "log in at apply.lausd.net"},
+    {"code": "sign_in_or_register", "status": "confirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": "a new parent account can be created by clicking \"Register.\""},
+    {"code": "add_student", "status": "confirmed", "source": "https://www.lausd.org//cms/lib/CA01000043/Centricity/Domain/593/Apply%20Online%20Step%20by%20Step%20Guide%20English%20Spanish.pdf", "quote": "click on \"Add/Edit Student\" and proceed to add student/s to your account"},
+    {"code": "choose_program_type", "status": "unconfirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": null},
+    {"code": "rank_magnet_choices", "status": "unconfirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": null},
+    {"code": "add_dle_choice", "status": "unconfirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": null},
+    {"code": "list_siblings", "status": "unconfirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": null},
+    {"code": "check_address", "status": "unconfirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": null},
+    {"code": "submit_and_save_confirmation", "status": "unconfirmed", "source": "https://www.lausd.org/cms/lib/CA01000043/Centricity/Domain/222/UserGuide_EN_Choices.pdf", "quote": null}
+  ]
+}
