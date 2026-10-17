@@ -50,4 +50,4 @@ def test_competitiveness_bands_descend():
     assert cfg["heuristic"] is True
     mins = [b["min_apps_per_opening"] for b in cfg["bands"]]
     assert mins == sorted(mins, reverse=True) and mins[-1] == 0
-    assert [b["band"] for b in cfg["bands"]] == ["very_high", "high", "moderate"]
+    assert [b["band"] for b in cfg["bands"]] == ["very_high", "high", "moderate", "low"]

@@ -61,3 +61,10 @@ def test_resident_school_list():
                                         "phbao": True, "overcrowded": False}
     assert sorted(s["name"] for s in norm["schools"] if s["overcrowded"]) == [
         "Dahlia Hts El", "Ivanhoe El", "Mount Washington El"]
+
+
+def test_every_cited_evidence_file_exists():
+    for r in _raw_schools():
+        ev = r.get("field_sources", {}).get("evidence")
+        if r["verified"]:
+            assert ev and (DATA.parent / ev).exists(), r["code"]

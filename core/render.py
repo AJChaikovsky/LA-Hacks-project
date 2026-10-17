@@ -158,7 +158,9 @@ def render_points(estimates: list[PointsEstimate], profile: FamilyProfile) -> st
     for e in magnets:
         level = s["competitiveness"][e.competitiveness]
         school = program_name(e.code, lang)
-        if e.apps_per_opening:
+        if e.apps_per_opening and e.competitiveness == "low":
+            lines.append(_fmt(p["ratio_low"], school=school, ratio=round(e.apps_per_opening, 1)))
+        elif e.apps_per_opening:
             lines.append(_fmt(p["ratio"], school=school, ratio=round(e.apps_per_opening, 1), level=level))
         else:
             lines.append(_fmt(p["competition"], school=school, level=level))

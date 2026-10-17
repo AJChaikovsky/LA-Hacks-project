@@ -60,7 +60,7 @@ WarningCode = Literal[
 Severity = Literal["block", "warn", "info"]
 PointsFactor = Literal["matriculation", "waitlist", "phbao", "overcrowded", "sibling"]
 PointsStatus = Literal["confirmed", "assumed", "unknown"]
-Competitiveness = Literal["very_high", "high", "moderate", "unknown"]
+Competitiveness = Literal["very_high", "high", "moderate", "unknown", "low"]  # low: fewer applications than openings
 ChecklistCode = Literal[
     "parent_portal_account",
     "student_id",

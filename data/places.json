@@ -115,7 +115,7 @@
         "screenshot": "docs/evidence/B1-hollenbeck-demographics-2024-25.png",
         "note": "Demographics strongly suggest PHBAO but are not the official designation; resident_phbao stays null so points read as 'assumed'."
       },
-      "resident_flags_source": "docs/evidence/norm-category-overcrowded-2026-27.pdf"
+      "resident_flags_source": "docs/evidence/B1-norm-category-overcrowded-2026-27.pdf"
     }
   }
 }

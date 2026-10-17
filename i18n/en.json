@@ -15,6 +15,7 @@
     "very_high": "very competitive",
     "high": "competitive",
     "moderate": "moderately competitive",
+    "low": "more seats than applications",
     "unknown": "no official seat data yet"
   },
   "matches": {
@@ -57,6 +58,7 @@
     },
     "competition": "- {school}: {level}.",
     "ratio": "- {school}: about {ratio} applications per seat ({level}).",
+    "ratio_low": "- {school}: last year there were fewer applications than seats (about {ratio} per seat). That is a good sign, but not a sure thing.",
     "competition_header": "How hard it is to get in:",
     "not_applicable": "- {school}: doesn't use points; seats go by lottery.",
     "grow": "Each year on a waiting list adds 4 points (up to 12). Declining an offer erases them.",
