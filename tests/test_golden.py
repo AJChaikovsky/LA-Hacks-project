@@ -1,5 +1,6 @@
 """Every golden YAML passes locally with the LLM down; the checker catches bad replies."""
 import importlib.util
+import sys
 from pathlib import Path
 
 import pytest
@@ -10,6 +11,7 @@ from core import llm
 ROOT = Path(__file__).parent.parent
 spec = importlib.util.spec_from_file_location("replay_golden", ROOT / "scripts" / "replay_golden.py")
 replay = importlib.util.module_from_spec(spec)
+sys.modules["replay_golden"] = replay  # dataclasses need the module registered
 spec.loader.exec_module(replay)
 
 GOLDENS = sorted((ROOT / "tests" / "golden").glob("*.yaml"))
