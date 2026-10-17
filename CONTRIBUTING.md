@@ -1,0 +1,3 @@
+# Contributing
+
+`main` is always runnable: `python agents/orchestrator.py` starts and `pytest -q` passes, and nobody pushes to it directly. Work on one branch per feature card named `<dev>/<card-id>-<slug>` (for example `b/B3-matcher`), open small PRs, squash-merge with one reviewer, and aim for a PR at least every 2 hours. Commit messages are `<card-id>: <what>`. `core/types.py` and `agents/messages.py` are frozen after G0: add fields freely, but never rename or remove one without all three devs agreeing in chat. Secrets live only in `.env`. At each gate, merge B (data and logic), then C (language), then A (wiring), then everyone pulls `main` and runs `scripts/replay_golden.py`.
