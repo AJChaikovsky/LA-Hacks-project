@@ -112,6 +112,7 @@
     "steps_header": "**Cómo terminar en su celular:**",
     "email_header": "**Correo para el coordinador del programa** (cópielo y envíelo usted):",
     "subject": "Asunto: {subject}",
+    "coordinator_phone": "Si prefiere llamar: {name}, {phone}.",
     "days_left": "faltan {n} días",
     "today": "es hoy",
     "no_submit": "Usted envía la solicitud; nosotros no enviamos nada.",

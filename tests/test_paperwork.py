@@ -101,3 +101,21 @@ def test_render_turn4_in_spanish():
     for phrase in ("6 de noviembre de 2026", "faltan 20 días", "apply.lausd.net", "Parent Portal", "IEP", "Asunto:",
                    "Usted envía la solicitud; nosotros no enviamos nada."):
         assert phrase in text
+
+
+def test_coordinator_phone_is_first_choice_school_phone():
+    plan = build_plan(maria(), GOLDEN, "es", OCT17)
+    assert (plan.coordinator_code, plan.coordinator_phone) == ("1804703", "(323) 266-5400")
+    assert build_plan(maria(), [], "es", OCT17).coordinator_phone is None
+
+
+def test_phone_shows_in_reply_and_review_card():
+    from agents.cards import packet_review, validate
+    from core.render import render_plan
+    plan = build_plan(maria(), GOLDEN, "es", OCT17)
+    assert "Si prefiere llamar: Belvedere MS · STEAM, (323) 266-5400." in render_plan(plan, maria())
+    card = packet_review(plan, maria(), GOLDEN)
+    assert {"label": "Teléfono", "value": "(323) 266-5400"} in card["summary_rows"]
+    assert validate("review", card) == []
+    en = maria(language="en")
+    assert "Prefer to call? " in render_plan(build_plan(en, GOLDEN, "en", OCT17), en)
