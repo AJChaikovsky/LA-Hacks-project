@@ -45,7 +45,7 @@ def test_places_centroids():
     places = json.loads((DATA / "places.json").read_text(encoding="utf-8"))
     assert {"Boyle Heights", "Downtown", "East Los Angeles", "El Sereno", "Lincoln Heights"} <= set(places["neighborhoods"])
     for p in places["neighborhoods"].values():
-        assert 33.8 < p["lat"] < 34.2 and -118.4 < p["lng"] < -118.0 and p["aliases"]
+        assert 33.7 < p["lat"] < 34.4 and -118.7 < p["lng"] < -117.9 and p["aliases"]  # LA County
     plaza = places["landmarks"]["Mariachi Plaza"]
     # resident-school flags stay null unless an official source backs them
     for flag in ("resident_phbao", "resident_overcrowded"):

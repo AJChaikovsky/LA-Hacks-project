@@ -76,6 +76,7 @@
     "current_magnet_drop": "If {child} is already in a magnet and gets selected for another, they lose the current seat even if they decline.",
     "past_deadline": "The on-time deadline (November 6) has passed. Late applications get no points.",
     "not_points_program": "Idea: {name} is not a magnet, so you can apply to it in addition to your 3 magnets. If {child} is learning English and Spanish is spoken at home, no language test is needed.",
+    "outside_district": "You live outside LAUSD ({district}). You can still apply to a magnet, but out-of-district applications earn no points.",
     "ok": "Your list looks good.",
     "next": "**Shall I prepare your checklist, deadlines, and steps?**"
   },

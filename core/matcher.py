@@ -35,6 +35,17 @@ def place_coords(name: str | None) -> tuple[float, float] | None:
     return None
 
 
+def outside_lausd(name: str | None) -> str | None:
+    """The other school district's name when the neighborhood is a city outside LAUSD, else None."""
+    if not name:
+        return None
+    key = name.strip().lower()
+    for canonical, p in load_data("places")["neighborhoods"].items():
+        if (key == canonical.lower() or key in p["aliases"]) and p.get("outside_lausd"):
+            return p["district"]
+    return None
+
+
 def distance_km(place: tuple[float, float] | None, school: School) -> float | None:
     if place is None or school.lat is None or school.lng is None:
         return None
