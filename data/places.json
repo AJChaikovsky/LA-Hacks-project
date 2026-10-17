@@ -43,6 +43,58 @@
       "aliases": [
         "lincoln heights"
       ]
+    },
+    "City Terrace": {
+      "lat": 34.05001,
+      "lng": -118.18285,
+      "aliases": [
+        "city terrace"
+      ]
+    },
+    "Highland Park": {
+      "lat": 34.10995,
+      "lng": -118.19698,
+      "aliases": [
+        "highland park"
+      ]
+    },
+    "Echo Park": {
+      "lat": 34.07798,
+      "lng": -118.25678,
+      "aliases": [
+        "echo park"
+      ]
+    },
+    "Pico-Union": {
+      "lat": 34.04657,
+      "lng": -118.28789,
+      "aliases": [
+        "pico union",
+        "pico-union"
+      ]
+    },
+    "South LA": {
+      "lat": 33.92829,
+      "lng": -118.27881,
+      "aliases": [
+        "south la",
+        "south los angeles",
+        "sur de los angeles"
+      ]
+    },
+    "Huntington Park": {
+      "lat": 33.98057,
+      "lng": -118.22521,
+      "aliases": [
+        "huntington park"
+      ]
+    },
+    "Cypress Park": {
+      "lat": 34.09223,
+      "lng": -118.22452,
+      "aliases": [
+        "cypress park"
+      ]
     }
   },
   "landmarks": {
