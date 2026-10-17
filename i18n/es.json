@@ -112,11 +112,12 @@
     "steps_header": "**Cómo terminar en su celular:**",
     "email_header": "**Correo para el coordinador del programa** (cópielo y envíelo usted):",
     "subject": "Asunto: {subject}",
-    "coordinator_phone": "Si prefiere llamar: {name}, {phone}.",
+    "coordinator_phone": "¿Prefiere llamar? {name}: {phone} (pida hablar con el coordinador del programa magnet).",
     "days_left": "faltan {n} días",
     "today": "es hoy",
     "no_submit": "Usted envía la solicitud; nosotros no enviamos nada.",
-    "action": "**Termine su solicitud antes del {date}.**"
+    "action": "**Termine su solicitud antes del {date}.**",
+    "coordinator_phone_no_name": "¿Prefiere llamar? {phone} (pida hablar con el coordinador del programa magnet)."
   },
   "months": [
     "enero",
@@ -158,7 +159,8 @@
     "reject": "Cambiar algo",
     "change_q": "¿Qué quiere cambiar?",
     "added": "Agregué {name} a su lista.",
-    "already": "{name} ya está en su lista."
+    "already": "{name} ya está en su lista.",
+    "row_school_phone": "Teléfono de la escuela (pida al coordinador)"
   },
   "program_labels": {
     "1804703": "STEAM",

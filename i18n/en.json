@@ -112,11 +112,12 @@
     "steps_header": "**How to finish on your phone:**",
     "email_header": "**Email to the program coordinator** (copy it and send it yourself):",
     "subject": "Subject: {subject}",
-    "coordinator_phone": "Prefer to call? {name}, {phone}.",
+    "coordinator_phone": "Prefer to call? {name}: {phone} (ask for the magnet coordinator).",
     "days_left": "{n} days left",
     "today": "today",
     "no_submit": "You submit the application; we never submit anything.",
-    "action": "**Finish your application before {date}.**"
+    "action": "**Finish your application before {date}.**",
+    "coordinator_phone_no_name": "Prefer to call? {phone} (ask for the magnet coordinator)."
   },
   "months": [
     "January",
@@ -158,7 +159,8 @@
     "reject": "Change something",
     "change_q": "What would you like to change?",
     "added": "I added {name} to your list.",
-    "already": "{name} is already on your list."
+    "already": "{name} is already on your list.",
+    "row_school_phone": "School phone (ask for the coordinator)"
   },
   "program_labels": {
     "1804703": "STEAM",
