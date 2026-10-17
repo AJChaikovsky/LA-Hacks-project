@@ -72,8 +72,22 @@ _AFFIRM_NEXT: dict[str, Intent] = {
 }
 
 
+def _label_actions() -> dict[str, str]:
+    """Card button labels (es + en, from i18n) -> the action their selection carries."""
+    from core.render import strings
+
+    keys = {"details": "details", "add": "add", "back": "back", "approve": "approve_packet", "reject": "reject_packet"}
+    return {norm(strings(lang)["cards"][k]): action for lang in ("es", "en") for k, action in keys.items()}
+
+
 def parse_card_selection(text: str) -> dict | None:
-    """The selection from an Interactive Card click, or None if this isn't one."""
+    """The selection from an Interactive Card click, or None if this isn't one.
+
+    Direct @mention clicks arrive as the selection JSON; planner-routed clicks arrive as
+    prose that names the button (and usually the school), e.g. "Ver detalles: Bel Vedere".
+    """
+    from core.extract import find_school_mentions
+
     raw = (text or "").strip()
     if raw.startswith("{"):
         try:
@@ -85,7 +99,15 @@ def parse_card_selection(text: str) -> dict | None:
     codes = _PROGRAM_CODE.findall(raw)
     if codes and len(raw.split()) <= 12:
         return {"code": codes[0], "raw_text": raw}
-    if _CARD_LABELS.search(norm(raw)):
+    t = norm(raw)
+    for label, action in _label_actions().items():
+        if label in t:
+            selection = {"action": action, "raw_text": raw}
+            mentions = find_school_mentions(t)
+            if mentions:
+                selection["code"] = mentions[0][1]
+            return selection
+    if _CARD_LABELS.search(t):
         return {"raw_text": raw}
     return None
 

@@ -1,0 +1,123 @@
+"""C4 (#22): card payloads match the ASI:One schema; clicks route to the right reply."""
+import json
+from datetime import date
+
+import pytest
+from uagents_core.contrib.protocols.chat import MetadataContent, TextContent
+
+from agents import cards
+from core import intent, stubs
+from core.types import SessionState
+
+MARIA = stubs.extract("")
+EN = MARIA.model_copy(update={"language": "en"})
+MATCHES = stubs.match(MARIA)
+CODES = [m.code for m in MATCHES]
+ESTIMATES = stubs.estimate(MARIA, CODES)
+PLAN = stubs.build_plan(MARIA, CODES, "es", date(2026, 10, 17))
+STATE = SessionState(stage="plan", profile=MARIA, matches=MATCHES, estimates=ESTIMATES, plan=PLAN)
+
+
+def all_cards(profile):
+    return [
+        ("carousel", cards.matches_carousel(MATCHES, profile, ESTIMATES)),
+        ("detail", cards.school_detail(MATCHES[0], profile, ESTIMATES[0])),
+        ("review", cards.packet_review(PLAN, profile, CODES)),
+    ]
+
+
+@pytest.mark.parametrize("profile", [MARIA, EN], ids=["es", "en"])
+def test_payloads_validate(profile):
+    for kind, payload in all_cards(profile):
+        assert cards.validate(kind, payload) == [], (kind, payload)
+
+
+def test_card_message_envelope():
+    msg = cards.card_message("Encontré 3 escuelas", "carousel", cards.matches_carousel(MATCHES, MARIA, ESTIMATES))
+    text, meta = msg.content
+    assert isinstance(text, TextContent) and isinstance(meta, MetadataContent)
+    md = meta.metadata
+    assert md["card_protocol_version"] == "1"
+    assert md["requires_card_interaction"] == "true"
+    assert md["card_kind"] == "carousel"
+    assert isinstance(md["card_payload"], str)
+    assert all(isinstance(v, str) for v in md.values())
+    payload = json.loads(md["card_payload"])
+    assert "items" in payload  # top level, no wrapper envelope
+    assert len(md["card_payload"].encode()) < 64 * 1024
+
+
+def test_carousel_content():
+    payload = cards.matches_carousel(MATCHES, MARIA, ESTIMATES)
+    assert payload["title"] == "Escuelas para Diego"
+    first = payload["items"][0]
+    assert first["id"] == "1804703"
+    assert first["title"] == "Bel Vedere MS · STEAM"
+    assert first["secondary_text"] == "STEAM · probablemente 4 de 23"
+    assert first["primary_cta"] == {"label": "Ver detalles", "selection": {"action": "details", "code": "1804703"}}
+
+
+def test_detail_rows_and_ctas():
+    payload = cards.school_detail(MATCHES[0], MARIA, ESTIMATES[0])
+    rows = {r["label"]: r["value"] for r in payload["summary_rows"]}
+    assert rows["Teléfono"] == "(323) 266-5400"
+    assert rows["Autobús"] == "Pregunte a la escuela"  # transport_note is null in data/schools.json
+    assert payload["ctas"][0]["selection"] == {"action": "add", "code": "1804703"}
+
+
+def test_review_rows():
+    payload = cards.packet_review(PLAN, MARIA, CODES)
+    rows = {r["label"]: r["value"] for r in payload["summary_rows"]}
+    assert rows["Fecha límite"] == "6 de noviembre de 2026"
+    assert rows["Escuelas (en orden)"].startswith("1. Bel Vedere MS · STEAM")
+
+
+@pytest.mark.parametrize("kind,payload,error", [
+    ("slideshow", {"title": "x"}, "unknown card_kind"),
+    ("carousel", {"title": "x", "items": []}, "items must be a non-empty list"),
+    ("review", {"title": "x", "summary_rows": [{"label": "a", "value": "b"}], "approve_cta": {"label": "ok"}},
+     "selection must be an object"),
+    ("detail", {"title": "", "summary_rows": [{"label": "a", "value": "b"}]}, "title"),
+    ("carousel", {"title": "x", "items": [{"id": "1", "title": "t" * 70000,
+                                           "primary_cta": {"label": "a", "selection": {}}}]}, "64 KB"),
+])
+def test_validate_catches_bad_payloads(kind, payload, error):
+    assert any(error in e for e in cards.validate(kind, payload))
+
+
+def test_invalid_payload_or_cards_off_sends_text_only(monkeypatch):
+    assert len(cards.card_message("hola", "carousel", {"title": "x", "items": []}).content) == 1
+    monkeypatch.setenv("CARDS", "off")
+    assert len(cards.card_message("hola", "carousel", cards.matches_carousel(MATCHES, MARIA)).content) == 1
+
+
+@pytest.mark.parametrize("text,expected", [
+    ('{"action": "details", "code": "1817902"}', {"action": "details", "code": "1817902"}),
+    ("Ver detalles: Hollenbeck MS · STEM y Medicina", {"action": "details", "code": "1817902"}),
+    ("I'd like to view details for Bel Vedere MS · STEAM", {"action": "details", "code": "1804703"}),
+    ("Agregar a mi lista Bel Vedere STEAM", {"action": "add", "code": "1804703"}),
+    ("Ver el correo completo", {"action": "approve_packet"}),
+    ("Change something", {"action": "reject_packet"}),
+])
+def test_clicks_json_and_prose(text, expected):
+    sel = intent.parse_card_selection(text)
+    assert {k: v for k, v in sel.items() if k != "raw_text"} == expected
+    assert intent.classify(text, "matched") == "card_selection"
+
+
+def test_golden_turn3_is_not_a_card_click():
+    assert intent.parse_card_selection(
+        "Voy a poner las tres, y una más por si acaso: Markham, aunque queda lejísimos y no sé si lo aceptaría.") is None
+
+
+def test_respond_to_selection():
+    r = cards.respond_to_selection({"action": "details", "code": "1817902"}, STATE)
+    assert r.kind == "detail" and r.payload["title"] == "Hollenbeck MS · STEM y Medicina"
+    r = cards.respond_to_selection({"action": "add", "code": "1817902"}, STATE)
+    assert r.add_code == "1817902" and "Agregué" in r.narration
+    r = cards.respond_to_selection({"action": "back"}, STATE)
+    assert r.kind == "carousel"
+    r = cards.respond_to_selection({"action": "approve_packet"}, STATE)
+    assert r.show_email and "Bel Vedere" in r.narration
+    assert cards.respond_to_selection({"action": "reject_packet"}, STATE).narration == "¿Qué quiere cambiar?"
+    assert cards.respond_to_selection({"action": "dance"}, STATE) is None
