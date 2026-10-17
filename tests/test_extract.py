@@ -141,6 +141,12 @@ def test_llm_filler_iep_note_dropped(monkeypatch):
     assert ex.extract(TURN1).iep_notes is None
 
 
+def test_load_places_reads_b1_neighborhoods():
+    places = ex.load_places()
+    assert {"landmarks", "neighborhoods", "source_url"}.isdisjoint(places)
+    assert "boyle hts" in places["Boyle Heights"]  # alias that only exists in data/places.json
+
+
 def test_extract_llm_off_switch(monkeypatch):
     calls = []
     monkeypatch.setattr(llm, "complete_json", lambda *a, **k: calls.append(1))
