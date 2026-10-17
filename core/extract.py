@@ -171,6 +171,13 @@ def find_flags(t: str) -> dict:
 _NAME_STOP = {"esta", "tiene", "is", "has", "va", "and", "y", "que", "who", "es", "le", "loves"}
 
 
+def find_parent_name(text: str) -> str | None:
+    m = re.search(r"\b(?:[Ss]oy|[Mm]e llamo|[Mm]i nombre es|I'?m|I am|[Mm]y name is)\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)", text or "")
+    if m and norm(m.group(1)) not in _NAME_STOP | {"la", "el", "su", "de", "mama", "papa", "mom", "dad", "the"}:
+        return m.group(1)
+    return None
+
+
 def find_child_name(text: str) -> str | None:
     m = re.search(
         r"\b(?:[Mm]i hij[oa]|[Mm]y (?:son|daughter|kid|child)|se llama|[Hh](?:is|er) name is)\s+"
@@ -350,6 +357,9 @@ def prepass(text: str) -> dict:
     name = find_child_name(text)
     if name:
         out["child_name"] = name
+    parent = find_parent_name(text)
+    if parent:
+        out["parent_name"] = parent
     out.update(find_flags(t))
     if re.search(r"(hablamos|habla|speak|speaks) (en )?(espanol|spanish)", t):
         out["home_language"] = "Spanish"

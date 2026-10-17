@@ -106,7 +106,7 @@ def test_plan_es():
     out = render.render_plan(PLAN, MARIA)
     assert "**6 de noviembre de 2026: fecha límite a tiempo (faltan 20 días)**" in out
     assert "1. Abra apply.lausd.net en su celular." in out
-    assert "Asunto: Preguntas sobre el programa magnet STEAM" in out
+    assert "Asunto: Preguntas sobre el programa STEAM de Bel Vedere MS" in out
     assert "Usted envía la solicitud; nosotros no enviamos nada." in out
     assert out.rstrip().endswith("**Termine su solicitud antes del 6 de noviembre de 2026.**")
 

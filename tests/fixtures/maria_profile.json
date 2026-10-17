@@ -1,6 +1,7 @@
 {
   "language": "es",
   "child_name": "Diego",
+  "parent_name": "Maria",
   "current_grade": 5,
   "applying_grade": 6,
   "interests": ["arts"],
