@@ -143,7 +143,7 @@ def main() -> int:
     ap.add_argument("-v", "--verbose", action="store_true", help="print every reply")
     args = ap.parse_args()
     if args.no_llm:
-        os.environ["EXTRACT_LLM"] = os.environ["INTENT_LLM"] = "off"
+        os.environ["EXTRACT_LLM"] = os.environ["INTENT_LLM"] = os.environ["EMAIL_LLM"] = "off"
     logging.basicConfig(level=logging.WARNING)
     files = args.file or sorted(GOLDEN_DIR.glob("*.yaml"))
     return 0 if replay(files, args.runs, args.live, args.verbose) else 1

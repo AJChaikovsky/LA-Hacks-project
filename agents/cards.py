@@ -19,30 +19,19 @@ import json
 import os
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from functools import cache
-from pathlib import Path
 from uuid import uuid4
 
 from uagents_core.contrib.protocols.chat import ChatMessage, MetadataContent, TextContent
 
-from core.render import format_date, program_name, strings
+from core.render import format_date, program_name, schools, strings
 from core.types import ActionPlan, FamilyProfile, PointsEstimate, SchoolMatch, SessionState
 
-DATA = Path(__file__).resolve().parent.parent / "data" / "schools.json"
 MAX_PAYLOAD_BYTES = 64 * 1024
 KINDS = ("carousel", "detail", "form", "review", "custom")
 
 
 def cards_enabled() -> bool:
     return os.getenv("CARDS", "on").lower() != "off"
-
-
-@cache
-def _schools() -> dict[str, dict]:
-    try:
-        return {s["code"]: s for s in json.loads(DATA.read_text(encoding="utf-8"))}
-    except (OSError, ValueError, KeyError, TypeError):
-        return {}
 
 
 def _c(profile: FamilyProfile) -> dict:
@@ -96,7 +85,7 @@ def matches_carousel(matches: list[SchoolMatch], profile: FamilyProfile,
 
 def school_detail(match: SchoolMatch, profile: FamilyProfile, estimate: PointsEstimate | None = None) -> dict:
     c, lang = _c(profile), profile.language
-    school = _schools().get(match.code, {})
+    school = schools().get(match.code, {})
     rows = [{"label": c["row_theme"], "value": match.theme}]
     if match.address or school.get("address"):
         rows.append({"label": c["row_address"], "value": match.address or school["address"]})

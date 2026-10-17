@@ -13,7 +13,7 @@ turns:
     intent: profile_info
     must_contain:
       - "I found 3 schools for Diego"
-      - "Bel Vedere"
+      - "Belvedere"
       - "Hollenbeck"
       - "Students with an IEP can apply to any magnet."
   - say: "What are his chances of getting in?"

@@ -84,7 +84,7 @@ def parse_card_selection(text: str) -> dict | None:
     """The selection from an Interactive Card click, or None if this isn't one.
 
     Direct @mention clicks arrive as the selection JSON; planner-routed clicks arrive as
-    prose that names the button (and usually the school), e.g. "Ver detalles: Bel Vedere".
+    prose that names the button (and usually the school), e.g. "Ver detalles: Belvedere".
     """
     from core.extract import find_school_mentions
 

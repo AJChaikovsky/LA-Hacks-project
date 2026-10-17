@@ -14,7 +14,7 @@ turns:
     intent: profile_info
     must_contain:
       - "Diego"
-      - "Bel Vedere"
+      - "Belvedere"
       - "Hollenbeck"
       - "STEAM"
       - "IEP"
