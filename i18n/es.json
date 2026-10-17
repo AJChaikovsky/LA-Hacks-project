@@ -15,6 +15,7 @@
     "very_high": "competencia muy alta",
     "high": "competencia alta",
     "moderate": "competencia moderada",
+    "low": "hay más lugares que solicitudes",
     "unknown": "sin datos oficiales de cupos todavía"
   },
   "matches": {
@@ -57,6 +58,7 @@
     },
     "competition": "- {school}: {level}.",
     "ratio": "- {school}: unas {ratio} solicitudes por cada lugar ({level}).",
+    "ratio_low": "- {school}: el año pasado hubo menos solicitudes que lugares (unas {ratio} por lugar). Es una buena señal, aunque no es seguro.",
     "competition_header": "Qué tan difícil es entrar:",
     "not_applicable": "- {school}: no usa puntos; se elige por sorteo.",
     "grow": "Cada año en lista de espera suma 4 puntos (hasta 12). Si le ofrecen un lugar y lo rechaza, los pierde.",

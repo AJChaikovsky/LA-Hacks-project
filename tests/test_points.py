@@ -124,6 +124,7 @@ def _school(apps, openings) -> School:
 
 @pytest.mark.parametrize("apps,openings,band,ratio", [
     (500, 100, "very_high", 5.0), (300, 100, "high", 3.0), (150, 100, "moderate", 1.5),
+    (100, 100, "moderate", 1.0), (32, 48, "low", 0.7),
     (None, 100, "unknown", None), (500, None, "unknown", None), (50, 0, "very_high", None)])
 def test_competitiveness_bands(apps, openings, band, ratio):
     assert competitiveness(_school(apps, openings)) == (band, ratio)
@@ -132,10 +133,19 @@ def test_competitiveness_bands(apps, openings, band, ratio):
 def test_golden_programs_use_official_seat_numbers():
     # B7: Choices detail pages, 2025-26 applications / 2026-27 openings
     got = {e.code: (e.competitiveness, e.apps_per_opening) for e in estimate(maria(), GOLDEN)}
-    assert got == {"1804703": ("moderate", 1.3), "1817902": ("moderate", 1.1), "1804702": ("moderate", 0.7)}
+    assert got == {"1804703": ("moderate", 1.3), "1817902": ("moderate", 1.1), "1804702": ("low", 0.7)}
 
 
 def test_render_says_probably_4_of_23():
     from core.render import render_points
     text = render_points(estimate(maria(), GOLDEN), maria())
     assert "probablemente 4 de 23 puntos" in text and "%" not in text
+
+
+def test_render_says_more_seats_than_applications():
+    from core.render import render_points
+    es = render_points(estimate(maria(), GOLDEN), maria())
+    assert "Belvedere MS · STEAM: unas 1.3 solicitudes por cada lugar (competencia moderada)." in es
+    assert "el año pasado hubo menos solicitudes que lugares (unas 0.7 por lugar)" in es
+    en_profile = maria().model_copy(update={"language": "en"})
+    assert "fewer applications than seats" in render_points(estimate(en_profile, GOLDEN), en_profile)
