@@ -1,0 +1,4888 @@
+{
+ "title": "LA Unified 2026-2027 Norm Category/Overcrowded School List",
+ "applies_to_school_year": "2027-28",
+ "source_url": null,
+ "evidence": "docs/evidence/norm-category-overcrowded-2026-27.pdf",
+ "verified": true,
+ "schools": [
+  {
+   "cost_center": "1585701",
+   "location_code": "5857",
+   "name": "107th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1583601",
+   "location_code": "5836",
+   "name": "109th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1708201",
+   "location_code": "7082",
+   "name": "10th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1588401",
+   "location_code": "5884",
+   "name": "112th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1586301",
+   "location_code": "5863",
+   "name": "116th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1574001",
+   "location_code": "5740",
+   "name": "118th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1588701",
+   "location_code": "5887",
+   "name": "122nd St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1587701",
+   "location_code": "5877",
+   "name": "135th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1582201",
+   "location_code": "5822",
+   "name": "153rd St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1580801",
+   "location_code": "5808",
+   "name": "156th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1376701",
+   "location_code": "3767",
+   "name": "15th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1575301",
+   "location_code": "5753",
+   "name": "186th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1383601",
+   "location_code": "3836",
+   "name": "1st St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1727401",
+   "location_code": "7274",
+   "name": "20th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1732901",
+   "location_code": "7329",
+   "name": "232nd Pl El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1730101",
+   "location_code": "7301",
+   "name": "24th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1728801",
+   "location_code": "7288",
+   "name": "28th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1657501",
+   "location_code": "6575",
+   "name": "2nd St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1711001",
+   "location_code": "7110",
+   "name": "3rd St El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1395901",
+   "location_code": "3959",
+   "name": "42nd St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1393201",
+   "location_code": "3932",
+   "name": "49th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1397301",
+   "location_code": "3973",
+   "name": "4th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1397401",
+   "location_code": "3974",
+   "name": "4th St PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1380801",
+   "location_code": "3808",
+   "name": "52nd St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1378101",
+   "location_code": "3781",
+   "name": "54th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1379501",
+   "location_code": "3795",
+   "name": "59th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1680801",
+   "location_code": "6808",
+   "name": "61st St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1682201",
+   "location_code": "6822",
+   "name": "66th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1678101",
+   "location_code": "6781",
+   "name": "6th Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1664401",
+   "location_code": "6644",
+   "name": "74th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1663001",
+   "location_code": "6630",
+   "name": "75th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1661601",
+   "location_code": "6616",
+   "name": "7th St El AI Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1554801",
+   "location_code": "5548",
+   "name": "92nd St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1558201",
+   "location_code": "5582",
+   "name": "93rd St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1552101",
+   "location_code": "5521",
+   "name": "95th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1557501",
+   "location_code": "5575",
+   "name": "96th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1553401",
+   "location_code": "5534",
+   "name": "99th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1550501",
+   "location_code": "5505",
+   "name": "9th St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1800901",
+   "location_code": "8009",
+   "name": "Adams MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1201401",
+   "location_code": "2014",
+   "name": "Albion St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1202701",
+   "location_code": "2027",
+   "name": "Aldama El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1204101",
+   "location_code": "2041",
+   "name": "Alexandria Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1206801",
+   "location_code": "2068",
+   "name": "Allesandro El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1739801",
+   "location_code": "7398",
+   "name": "Alta California El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1208201",
+   "location_code": "2082",
+   "name": "Alta Loma El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1642601",
+   "location_code": "6426",
+   "name": "Amanecer PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1208901",
+   "location_code": "2089",
+   "name": "Ambler Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1209601",
+   "location_code": "2096",
+   "name": "Amestoy El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1211001",
+   "location_code": "2110",
+   "name": "Anatola Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1211701",
+   "location_code": "2117",
+   "name": "Andasol Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1212301",
+   "location_code": "2123",
+   "name": "Angeles Mesa El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1772201",
+   "location_code": "7722",
+   "name": "Angelou Community SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1518101",
+   "location_code": "5181",
+   "name": "Animo Legacy Chtr MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1213701",
+   "location_code": "2137",
+   "name": "Ann St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1214601",
+   "location_code": "2146",
+   "name": "Annalee Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1215101",
+   "location_code": "2151",
+   "name": "Annandale El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1435601",
+   "location_code": "4356",
+   "name": "Anton El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1216401",
+   "location_code": "2164",
+   "name": "Apperson St El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1217801",
+   "location_code": "2178",
+   "name": "Aragon Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1860901",
+   "location_code": "8609",
+   "name": "Arleta SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1219201",
+   "location_code": "2192",
+   "name": "Arlington Hts El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1220501",
+   "location_code": "2205",
+   "name": "Arminta St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1823801",
+   "location_code": "8238",
+   "name": "Armstrong MS",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1221901",
+   "location_code": "2219",
+   "name": "Ascot Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1216101",
+   "location_code": "2161",
+   "name": "Aspire Firestn Acad",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1216201",
+   "location_code": "2162",
+   "name": "Aspire Gateway AC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1225501",
+   "location_code": "2255",
+   "name": "Aspire Inskeep AC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1225301",
+   "location_code": "2253",
+   "name": "Aspire Slauson Acad",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1225401",
+   "location_code": "2254",
+   "name": "Aspire Tate Acad El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1223301",
+   "location_code": "2233",
+   "name": "Atwater Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1802801",
+   "location_code": "8028",
+   "name": "Audubon MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1468501",
+   "location_code": "4685",
+   "name": "Aurora El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1224701",
+   "location_code": "2247",
+   "name": "Avalon Gardens El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1688601",
+   "location_code": "6886",
+   "name": "Baca Arts Acad",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1402001",
+   "location_code": "4020",
+   "name": "Bakewell PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1227401",
+   "location_code": "2274",
+   "name": "Baldwin Hills El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1803801",
+   "location_code": "8038",
+   "name": "Bancroft MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1228801",
+   "location_code": "2288",
+   "name": "Bandini St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1852901",
+   "location_code": "8529",
+   "name": "Banning SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1556201",
+   "location_code": "5562",
+   "name": "Barrett El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1231501",
+   "location_code": "2315",
+   "name": "Barton Hill El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1232301",
+   "location_code": "2323",
+   "name": "Bassett St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1232901",
+   "location_code": "2329",
+   "name": "Beachy Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1233501",
+   "location_code": "2335",
+   "name": "Beckford CES",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1234201",
+   "location_code": "2342",
+   "name": "Beethoven St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1853601",
+   "location_code": "8536",
+   "name": "Bell SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1357701",
+   "location_code": "3577",
+   "name": "Bellingham El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1854301",
+   "location_code": "8543",
+   "name": "Belmont SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1239701",
+   "location_code": "2397",
+   "name": "Belvedere El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1804701",
+   "location_code": "8047",
+   "name": "Belvedere MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1805701",
+   "location_code": "8057",
+   "name": "Berendo MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1869601",
+   "location_code": "8696",
+   "name": "Bernstein SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1773401",
+   "location_code": "7734",
+   "name": "Bernstein SH STEM",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1243801",
+   "location_code": "2438",
+   "name": "Bertrand Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1806001",
+   "location_code": "8060",
+   "name": "Bethune MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1855701",
+   "location_code": "8557",
+   "name": "Birmingham CHS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1247001",
+   "location_code": "2470",
+   "name": "Blythe St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1247301",
+   "location_code": "2473",
+   "name": "Bonita St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1247901",
+   "location_code": "2479",
+   "name": "Braddock Dr El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1712301",
+   "location_code": "7123",
+   "name": "Bradley Glbl Awr Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1248601",
+   "location_code": "2486",
+   "name": "Brainard El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1249301",
+   "location_code": "2493",
+   "name": "Breed St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1250701",
+   "location_code": "2507",
+   "name": "Brentwood El Sci Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1252101",
+   "location_code": "2521",
+   "name": "Bridge St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1686701",
+   "location_code": "6867",
+   "name": "Bridges School",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1716401",
+   "location_code": "7164",
+   "name": "Bright El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1252701",
+   "location_code": "2527",
+   "name": "Broad Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1253001",
+   "location_code": "2530",
+   "name": "Broadacres Av El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1382901",
+   "location_code": "3829",
+   "name": "Broadous El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1253401",
+   "location_code": "2534",
+   "name": "Broadway El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1254801",
+   "location_code": "2548",
+   "name": "Brockton Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1256201",
+   "location_code": "2562",
+   "name": "Brooklyn Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1258901",
+   "location_code": "2589",
+   "name": "Bryson Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1260301",
+   "location_code": "2603",
+   "name": "Buchanan St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1261601",
+   "location_code": "2616",
+   "name": "Budlong Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1263001",
+   "location_code": "2630",
+   "name": "Burbank Blvd El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1806601",
+   "location_code": "8066",
+   "name": "Burbank MS A/T/C Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1807501",
+   "location_code": "8075",
+   "name": "Burroughs MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1265801",
+   "location_code": "2658",
+   "name": "Burton St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1267101",
+   "location_code": "2671",
+   "name": "Bushnell Way El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1808001",
+   "location_code": "8080",
+   "name": "Byrd MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1268501",
+   "location_code": "2685",
+   "name": "Cabrillo Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1269901",
+   "location_code": "2699",
+   "name": "Cahuenga El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1270401",
+   "location_code": "2704",
+   "name": "Calabash CA",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1270601",
+   "location_code": "2706",
+   "name": "Calahan St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1271201",
+   "location_code": "2712",
+   "name": "Calvert CES",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1272601",
+   "location_code": "2726",
+   "name": "Camellia Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1225101",
+   "location_code": "2251",
+   "name": "Camino Nuevo Acad #4",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1215701",
+   "location_code": "2157",
+   "name": "Camino Nuevo El #3",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1274001",
+   "location_code": "2740",
+   "name": "Canfield Ave El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1275301",
+   "location_code": "2753",
+   "name": "Canoga Park El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1857101",
+   "location_code": "8571",
+   "name": "Canoga Prk SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1276701",
+   "location_code": "2767",
+   "name": "Cantara St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1278101",
+   "location_code": "2781",
+   "name": "Canterbury Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1279501",
+   "location_code": "2795",
+   "name": "Canyon CEl",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1280201",
+   "location_code": "2802",
+   "name": "Capistrano Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1740101",
+   "location_code": "7401",
+   "name": "Cardenas El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1809001",
+   "location_code": "8090",
+   "name": "Carnegie MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1281501",
+   "location_code": "2815",
+   "name": "Caroldale LC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1282201",
+   "location_code": "2822",
+   "name": "Carpenter Comm Chtr",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1765701",
+   "location_code": "7657",
+   "name": "Carson Acad Ed & Emp",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1765601",
+   "location_code": "7656",
+   "name": "Carson Acad Med Arts",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1857501",
+   "location_code": "8575",
+   "name": "Carson SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1283601",
+   "location_code": "2836",
+   "name": "Carson St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1293901",
+   "location_code": "2939",
+   "name": "Carson-Gore Academy",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1284901",
+   "location_code": "2849",
+   "name": "Carthay El ES Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1809401",
+   "location_code": "8094",
+   "name": "Carver MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1286301",
+   "location_code": "2863",
+   "name": "Castelar St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1287701",
+   "location_code": "2877",
+   "name": "Castle Hts El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1288101",
+   "location_code": "2881",
+   "name": "Castlebay Ln Chtr",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1804501",
+   "location_code": "8045",
+   "name": "Castro MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1289001",
+   "location_code": "2890",
+   "name": "Catskill Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1294501",
+   "location_code": "2945",
+   "name": "Century Park El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1295901",
+   "location_code": "2959",
+   "name": "Chandler El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1298601",
+   "location_code": "2986",
+   "name": "Chapman El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1300201",
+   "location_code": "3002",
+   "name": "Charnock Road El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1301401",
+   "location_code": "3014",
+   "name": "Chase St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1858301",
+   "location_code": "8583",
+   "name": "Chatsworth CHS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1302701",
+   "location_code": "3027",
+   "name": "Chatsworth UP/CD Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1764001",
+   "location_code": "7640",
+   "name": "Chavez El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1771701",
+   "location_code": "7717",
+   "name": "Chavez LA ASE",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1771601",
+   "location_code": "7716",
+   "name": "Chavez LA SJ Hum Ac",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1890101",
+   "location_code": "8901",
+   "name": "Chavez LA Tech Prep",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1304101",
+   "location_code": "3041",
+   "name": "Cheremoya Ave El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1306801",
+   "location_code": "3068",
+   "name": "Cienega El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1308201",
+   "location_code": "3082",
+   "name": "Cimarron Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1309601",
+   "location_code": "3096",
+   "name": "City Terrace El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1859001",
+   "location_code": "8590",
+   "name": "Cleveland CHS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1311001",
+   "location_code": "3110",
+   "name": "Clifford St M/T Mag",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1806201",
+   "location_code": "8062",
+   "name": "Clinton MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1312301",
+   "location_code": "3123",
+   "name": "Clover Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1824501",
+   "location_code": "8245",
+   "name": "Cochran MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1634201",
+   "location_code": "6342",
+   "name": "Coeur D Alene Ave El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1313701",
+   "location_code": "3137",
+   "name": "Cohasset St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1315101",
+   "location_code": "3151",
+   "name": "Coldwater Cyn El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1316401",
+   "location_code": "3164",
+   "name": "Colfax CEl",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1317801",
+   "location_code": "3178",
+   "name": "Coliseum St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1743201",
+   "location_code": "7432",
+   "name": "Columbus Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1810201",
+   "location_code": "8102",
+   "name": "Columbus MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1319201",
+   "location_code": "3192",
+   "name": "Commonwlth Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1320501",
+   "location_code": "3205",
+   "name": "Compton Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1820701",
+   "location_code": "8207",
+   "name": "Contreras LC ALC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1851701",
+   "location_code": "8517",
+   "name": "Contreras LC Bus Tr",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1877401",
+   "location_code": "8774",
+   "name": "Contreras LC Glbl St",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1852701",
+   "location_code": "8527",
+   "name": "Contreras LC Soc Jus",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1321901",
+   "location_code": "3219",
+   "name": "Corona Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1851601",
+   "location_code": "8516",
+   "name": "Cortines Sch of VAPA",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1501601",
+   "location_code": "5016",
+   "name": "Coughlin El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1326001",
+   "location_code": "3260",
+   "name": "Cowan Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1859601",
+   "location_code": "8596",
+   "name": "Crenshaw Mag STEMM",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1328801",
+   "location_code": "3288",
+   "name": "Crescent Hts Bl El Mg",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1330201",
+   "location_code": "3302",
+   "name": "Crestwood St STEAM Mg",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1598301",
+   "location_code": "5983",
+   "name": "Crown Prep Acad",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1810301",
+   "location_code": "8103",
+   "name": "Curtiss MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1332901",
+   "location_code": "3329",
+   "name": "Dahlia Hts El",
+   "phbao": false,
+   "overcrowded": true
+  },
+  {
+   "cost_center": "1810401",
+   "location_code": "8104",
+   "name": "Dana MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1333501",
+   "location_code": "3335",
+   "name": "Danube Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1334001",
+   "location_code": "3340",
+   "name": "Darby Ave El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1335601",
+   "location_code": "3356",
+   "name": "Dayton Heights El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1230101",
+   "location_code": "2301",
+   "name": "De la Torre Jr El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1337701",
+   "location_code": "3377",
+   "name": "Dearborn El CA",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1338401",
+   "location_code": "3384",
+   "name": "Del Amo El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1238601",
+   "location_code": "2386",
+   "name": "Del Olmo El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1339701",
+   "location_code": "3397",
+   "name": "Delevan Drive El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1331501",
+   "location_code": "3315",
+   "name": "Dena El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1342501",
+   "location_code": "3425",
+   "name": "Denker Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1343801",
+   "location_code": "3438",
+   "name": "Dixie Cyn CC",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1811001",
+   "location_code": "8110",
+   "name": "Dodson MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1345201",
+   "location_code": "3452",
+   "name": "Dolores St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1346601",
+   "location_code": "3466",
+   "name": "Dominguez El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1347901",
+   "location_code": "3479",
+   "name": "Dorris Place El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1860001",
+   "location_code": "8600",
+   "name": "Dorsey SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1811201",
+   "location_code": "8112",
+   "name": "Drew MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1349301",
+   "location_code": "3493",
+   "name": "Dyer St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1766701",
+   "location_code": "7667",
+   "name": "Dymally SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1350701",
+   "location_code": "3507",
+   "name": "Eagle Rock El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1861401",
+   "location_code": "8614",
+   "name": "Eagle Rock HS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1860701",
+   "location_code": "8607",
+   "name": "East Valley SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1352101",
+   "location_code": "3521",
+   "name": "Eastman Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1761501",
+   "location_code": "7615",
+   "name": "Eastside SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1811301",
+   "location_code": "8113",
+   "name": "Edison MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1861701",
+   "location_code": "8617",
+   "name": "El Camino Real CHS",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1354101",
+   "location_code": "3541",
+   "name": "El Dorado Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1354501",
+   "location_code": "3545",
+   "name": "El Oro Way CES",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1356201",
+   "location_code": "3562",
+   "name": "El Sereno El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1811801",
+   "location_code": "8118",
+   "name": "El Sereno MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1354801",
+   "location_code": "3548",
+   "name": "Elizabeth LC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1357501",
+   "location_code": "3575",
+   "name": "Elysian Hts Arts Mag",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1358901",
+   "location_code": "3589",
+   "name": "Emelita St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1812301",
+   "location_code": "8123",
+   "name": "Emerson CC",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1361001",
+   "location_code": "3610",
+   "name": "Enadia Way",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1361601",
+   "location_code": "3616",
+   "name": "Encino CEl",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1363001",
+   "location_code": "3630",
+   "name": "Erwin El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1687301",
+   "location_code": "6873",
+   "name": "Escalante El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1322001",
+   "location_code": "3220",
+   "name": "Escutia PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1364001",
+   "location_code": "3640",
+   "name": "Eshelman Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1238301",
+   "location_code": "2383",
+   "name": "Esperanza El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1294201",
+   "location_code": "2942",
+   "name": "Estrella El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1367101",
+   "location_code": "3671",
+   "name": "Euclid Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1369901",
+   "location_code": "3699",
+   "name": "Evergreen Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1371201",
+   "location_code": "3712",
+   "name": "Fair Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1372601",
+   "location_code": "3726",
+   "name": "Fairburn Ave El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1862101",
+   "location_code": "8621",
+   "name": "Fairfax SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1374001",
+   "location_code": "3740",
+   "name": "Farmdale El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1374701",
+   "location_code": "3747",
+   "name": "Fenton Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1374601",
+   "location_code": "3746",
+   "name": "Fenton Ave PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1375301",
+   "location_code": "3753",
+   "name": "Fernangeles El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1382201",
+   "location_code": "3822",
+   "name": "Figueroa St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1384901",
+   "location_code": "3849",
+   "name": "Fishburn Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1812701",
+   "location_code": "8127",
+   "name": "Fleming MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1387701",
+   "location_code": "3877",
+   "name": "Fletcher Dr El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1389001",
+   "location_code": "3890",
+   "name": "Florence Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1578101",
+   "location_code": "5781",
+   "name": "Flournoy El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1391801",
+   "location_code": "3918",
+   "name": "Ford Blvd El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1813201",
+   "location_code": "8132",
+   "name": "Foshay LC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1398601",
+   "location_code": "3986",
+   "name": "Franklin Ave El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1864301",
+   "location_code": "8643",
+   "name": "Franklin HS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1865001",
+   "location_code": "8650",
+   "name": "Fremont SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1401401",
+   "location_code": "4014",
+   "name": "Fries Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1813701",
+   "location_code": "8137",
+   "name": "Frost MS",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1402701",
+   "location_code": "4027",
+   "name": "Fullbright Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1814201",
+   "location_code": "8142",
+   "name": "Fulton College Prep",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1815101",
+   "location_code": "8151",
+   "name": "Gage MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1679501",
+   "location_code": "6795",
+   "name": "Garcetti LA",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1405501",
+   "location_code": "4055",
+   "name": "Garden Grove El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1404101",
+   "location_code": "4041",
+   "name": "Gardena El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1866401",
+   "location_code": "8664",
+   "name": "Gardena SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1406801",
+   "location_code": "4068",
+   "name": "Gardner St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1867901",
+   "location_code": "8679",
+   "name": "Garfield SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1408201",
+   "location_code": "4082",
+   "name": "Garvanza El T/L Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1342601",
+   "location_code": "3426",
+   "name": "Garza PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1409601",
+   "location_code": "4096",
+   "name": "Gates St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1411001",
+   "location_code": "4110",
+   "name": "Gault St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1411701",
+   "location_code": "4117",
+   "name": "Germain Acad AA",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1412301",
+   "location_code": "4123",
+   "name": "Glassell Pk STEAM Mg",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1413001",
+   "location_code": "4130",
+   "name": "Gledhill St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1413701",
+   "location_code": "4137",
+   "name": "Glen Alta El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1416401",
+   "location_code": "4164",
+   "name": "Glenfeliz Blvd El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1419201",
+   "location_code": "4192",
+   "name": "Glenwood El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1816001",
+   "location_code": "8160",
+   "name": "Gompers MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1421901",
+   "location_code": "4219",
+   "name": "Graham El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1423301",
+   "location_code": "4233",
+   "name": "Granada El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1868101",
+   "location_code": "8681",
+   "name": "Granada Hills Cht",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1424701",
+   "location_code": "4247",
+   "name": "Grand Vw Bl El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1426001",
+   "location_code": "4260",
+   "name": "Grant El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1868301",
+   "location_code": "8683",
+   "name": "Grant SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1427401",
+   "location_code": "4274",
+   "name": "Grape St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1238501",
+   "location_code": "2385",
+   "name": "Gratts LA for YS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1429501",
+   "location_code": "4295",
+   "name": "Gridley St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1430101",
+   "location_code": "4301",
+   "name": "Griffin Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1584901",
+   "location_code": "5849",
+   "name": "Griffith Joyner El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1816801",
+   "location_code": "8168",
+   "name": "Griffith MS STEAM Mg",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1431501",
+   "location_code": "4315",
+   "name": "Gulf Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1432901",
+   "location_code": "4329",
+   "name": "Haddon Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1816901",
+   "location_code": "8169",
+   "name": "Hale CA",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1434201",
+   "location_code": "4342",
+   "name": "Halldale El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1627401",
+   "location_code": "6274",
+   "name": "Hamasaki MS Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1868601",
+   "location_code": "8686",
+   "name": "Hamilton SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1434901",
+   "location_code": "4349",
+   "name": "Hamlin CA",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1439701",
+   "location_code": "4397",
+   "name": "Hancock Park El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1442501",
+   "location_code": "4425",
+   "name": "Harbor City El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1443101",
+   "location_code": "4431",
+   "name": "Harding St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1468101",
+   "location_code": "4681",
+   "name": "Harmony El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1443801",
+   "location_code": "4438",
+   "name": "Harrison St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1444501",
+   "location_code": "4445",
+   "name": "Hart St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1817001",
+   "location_code": "8170",
+   "name": "Harte Prep MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1204201",
+   "location_code": "2042",
+   "name": "Harvard El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1445201",
+   "location_code": "4452",
+   "name": "Haskell El STEAM Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1446601",
+   "location_code": "4466",
+   "name": "Hawaiian Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1871301",
+   "location_code": "8713",
+   "name": "Hawkins SH C/DAGS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1447301",
+   "location_code": "4473",
+   "name": "Haynes CES",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1449301",
+   "location_code": "4493",
+   "name": "Hazeltine Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1450701",
+   "location_code": "4507",
+   "name": "Heliotrope Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1817401",
+   "location_code": "8174",
+   "name": "Henry MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1451501",
+   "location_code": "4515",
+   "name": "Herrick Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1452101",
+   "location_code": "4521",
+   "name": "Hesby Oaks Lead Chtr",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1452801",
+   "location_code": "4528",
+   "name": "Hillcrest Dr El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1453401",
+   "location_code": "4534",
+   "name": "Hillside El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1454801",
+   "location_code": "4548",
+   "name": "Hobart Blvd El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1817901",
+   "location_code": "8179",
+   "name": "Hollenbeck MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1654901",
+   "location_code": "6549",
+   "name": "Hollywood El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1869301",
+   "location_code": "8693",
+   "name": "Hollywood SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1456201",
+   "location_code": "4562",
+   "name": "Holmes Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1818201",
+   "location_code": "8182",
+   "name": "Holmes MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1457501",
+   "location_code": "4575",
+   "name": "Hooper Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1457601",
+   "location_code": "4576",
+   "name": "Hooper Ave PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1458901",
+   "location_code": "4589",
+   "name": "Hoover St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1692001",
+   "location_code": "6920",
+   "name": "Hope St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1460301",
+   "location_code": "4603",
+   "name": "Hubbard St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1294401",
+   "location_code": "2944",
+   "name": "Huerta El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1237501",
+   "location_code": "2375",
+   "name": "Hughes El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1461601",
+   "location_code": "4616",
+   "name": "Humphreys Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1463001",
+   "location_code": "4630",
+   "name": "Huntington Dr El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1239101",
+   "location_code": "2391",
+   "name": "Huntngtn Pk El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1870001",
+   "location_code": "8700",
+   "name": "Huntngtn Pk SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1688001",
+   "location_code": "6880",
+   "name": "Independence El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1870101",
+   "location_code": "8701",
+   "name": "International St LC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1818901",
+   "location_code": "8189",
+   "name": "Irving MS MME Mag",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1467101",
+   "location_code": "4671",
+   "name": "Ivanhoe El",
+   "phbao": false,
+   "overcrowded": true
+  },
+  {
+   "cost_center": "1871401",
+   "location_code": "8714",
+   "name": "Jefferson SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1524001",
+   "location_code": "5240",
+   "name": "Johnson STEM Academy",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1294301",
+   "location_code": "2943",
+   "name": "Jones El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1511201",
+   "location_code": "5112",
+   "name": "Jones PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1872101",
+   "location_code": "8721",
+   "name": "Jordan SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1469201",
+   "location_code": "4692",
+   "name": "Justice St Acad Chtr",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1469601",
+   "location_code": "4696",
+   "name": "Kennedy El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1872501",
+   "location_code": "8725",
+   "name": "Kennedy SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1469901",
+   "location_code": "4699",
+   "name": "Kenter Canyon EC",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1471201",
+   "location_code": "4712",
+   "name": "Kentwood El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1472601",
+   "location_code": "4726",
+   "name": "Kester Ave El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1806401",
+   "location_code": "8064",
+   "name": "Kim Academy",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1270101",
+   "location_code": "2701",
+   "name": "Kim El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1653401",
+   "location_code": "6534",
+   "name": "King Jr El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1820801",
+   "location_code": "8208",
+   "name": "King MS Mag Flm/Mdia",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1617901",
+   "location_code": "6179",
+   "name": "Kingsley El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1476001",
+   "location_code": "4760",
+   "name": "Kittridge St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1476201",
+   "location_code": "4762",
+   "name": "Knollwood Prep Acad",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1686901",
+   "location_code": "6869",
+   "name": "Knox El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1739901",
+   "location_code": "7399",
+   "name": "Korenstein El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1478601",
+   "location_code": "4786",
+   "name": "La Salle Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1254301",
+   "location_code": "2543",
+   "name": "Lafayette Park PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1239301",
+   "location_code": "2393",
+   "name": "Lake St Primary",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1476401",
+   "location_code": "4764",
+   "name": "Lanai Rd El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1476701",
+   "location_code": "4767",
+   "name": "Lane El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1477501",
+   "location_code": "4775",
+   "name": "Langdon Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1478101",
+   "location_code": "4781",
+   "name": "Lankershim El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1479001",
+   "location_code": "4790",
+   "name": "Lassen El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1479501",
+   "location_code": "4795",
+   "name": "Latona Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1480801",
+   "location_code": "4808",
+   "name": "Laurel CACT Mag",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1821701",
+   "location_code": "8217",
+   "name": "Lawrence MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1231201",
+   "location_code": "2312",
+   "name": "Lawson Acad A/M/S El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1822601",
+   "location_code": "8226",
+   "name": "Le Conte MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1482901",
+   "location_code": "4829",
+   "name": "Leapwood El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1230701",
+   "location_code": "2307",
+   "name": "Lee El Med Hlth Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1892101",
+   "location_code": "8921",
+   "name": "Legacy SH STEAM",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1766401",
+   "location_code": "7664",
+   "name": "Legacy SH VAPA",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1483601",
+   "location_code": "4836",
+   "name": "Leland St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1484901",
+   "location_code": "4849",
+   "name": "Lemay St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1517001",
+   "location_code": "5170",
+   "name": "Lexington Ave PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1486301",
+   "location_code": "4863",
+   "name": "Liberty Blvd El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1805801",
+   "location_code": "8058",
+   "name": "Liechty MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1487001",
+   "location_code": "4870",
+   "name": "Liggett St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1487701",
+   "location_code": "4877",
+   "name": "Lillian St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1488101",
+   "location_code": "4881",
+   "name": "Limerick Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1872901",
+   "location_code": "8729",
+   "name": "Lincoln SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1468001",
+   "location_code": "4680",
+   "name": "Lizarraga El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1808701",
+   "location_code": "8087",
+   "name": "Locke College Prep",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1488701",
+   "location_code": "4887",
+   "name": "Lockhurst Dr CEl",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1489001",
+   "location_code": "4890",
+   "name": "Lockwood Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1490401",
+   "location_code": "4904",
+   "name": "Logan Academy",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1491801",
+   "location_code": "4918",
+   "name": "Loma Vista El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1493201",
+   "location_code": "4932",
+   "name": "Lomita El STEAM Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1494501",
+   "location_code": "4945",
+   "name": "Lorena St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1495901",
+   "location_code": "4959",
+   "name": "Loreto St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1497301",
+   "location_code": "4973",
+   "name": "Lorne St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1820001",
+   "location_code": "8200",
+   "name": "Los Angeles Acad MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1498201",
+   "location_code": "4982",
+   "name": "Los Angeles El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1873601",
+   "location_code": "8736",
+   "name": "Los Angeles SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1498601",
+   "location_code": "4986",
+   "name": "Los Feliz STEMM Mag",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1501401",
+   "location_code": "5014",
+   "name": "Loyola Villg El F/PAM",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1254401",
+   "location_code": "2544",
+   "name": "MacArthur Pk El VAPA",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1511301",
+   "location_code": "5113",
+   "name": "Mack El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1822801",
+   "location_code": "8228",
+   "name": "Maclay MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1321001",
+   "location_code": "3210",
+   "name": "Madison El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1823001",
+   "location_code": "8230",
+   "name": "Madison MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1505501",
+   "location_code": "5055",
+   "name": "Magnolia Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1516601",
+   "location_code": "5166",
+   "name": "Magnolia Sci-Bell@SR",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1506801",
+   "location_code": "5068",
+   "name": "Main St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1508201",
+   "location_code": "5082",
+   "name": "Malabar St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1509601",
+   "location_code": "5096",
+   "name": "Manchester Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1511001",
+   "location_code": "5110",
+   "name": "Manhattan Place El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1757401",
+   "location_code": "7574",
+   "name": "Mann UCLA Comm Sch",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1874301",
+   "location_code": "8743",
+   "name": "Manual Arts SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1722001",
+   "location_code": "7220",
+   "name": "Maple PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1519201",
+   "location_code": "5192",
+   "name": "Mar Vista El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1513701",
+   "location_code": "5137",
+   "name": "Marianna Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1823501",
+   "location_code": "8235",
+   "name": "Marina Del Rey MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1498301",
+   "location_code": "4983",
+   "name": "Mariposa-Nabi PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1842501",
+   "location_code": "8425",
+   "name": "Mark Twain MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1823701",
+   "location_code": "8237",
+   "name": "Markham MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1516401",
+   "location_code": "5164",
+   "name": "Marquez Charter",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1886601",
+   "location_code": "8866",
+   "name": "Marquez SH HPIAM",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1772501",
+   "location_code": "7725",
+   "name": "Marquez SH Libra",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1766901",
+   "location_code": "7669",
+   "name": "Marquez SH Soc Jus",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1875001",
+   "location_code": "8750",
+   "name": "Marshall SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1517801",
+   "location_code": "5178",
+   "name": "Marvin El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1519801",
+   "location_code": "5198",
+   "name": "Mayall St Ac A/T Mag",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1520501",
+   "location_code": "5205",
+   "name": "Mayberry St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1888201",
+   "location_code": "8882",
+   "name": "Maywood Academy SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1238101",
+   "location_code": "2381",
+   "name": "Maywood El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1665801",
+   "location_code": "6658",
+   "name": "McKinley Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1523301",
+   "location_code": "5233",
+   "name": "Melvin Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1861101",
+   "location_code": "8611",
+   "name": "Mendez SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1524701",
+   "location_code": "5247",
+   "name": "Menlo Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1734201",
+   "location_code": "7342",
+   "name": "Meyler St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1528801",
+   "location_code": "5288",
+   "name": "Micheltorena St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1530101",
+   "location_code": "5301",
+   "name": "Middleton St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1530201",
+   "location_code": "5302",
+   "name": "Middleton St PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1531501",
+   "location_code": "5315",
+   "name": "Miles Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1532101",
+   "location_code": "5321",
+   "name": "Miller El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1532901",
+   "location_code": "5329",
+   "name": "Miramonte El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1534201",
+   "location_code": "5342",
+   "name": "Monlux El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1876801",
+   "location_code": "8768",
+   "name": "Monroe SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1537001",
+   "location_code": "5370",
+   "name": "Montague Charter AAS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1687801",
+   "location_code": "6878",
+   "name": "Montara Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1538401",
+   "location_code": "5384",
+   "name": "Monte Vista St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1231301",
+   "location_code": "2313",
+   "name": "Moore M/S/T Acad",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1539701",
+   "location_code": "5397",
+   "name": "Morningside El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1740201",
+   "location_code": "7402",
+   "name": "Mosk El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1824001",
+   "location_code": "8240",
+   "name": "Mount Gleason MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1541101",
+   "location_code": "5411",
+   "name": "Mount Washington El",
+   "phbao": false,
+   "overcrowded": true
+  },
+  {
+   "cost_center": "1540401",
+   "location_code": "5404",
+   "name": "Mountain View El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1825501",
+   "location_code": "8255",
+   "name": "Muir MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1825901",
+   "location_code": "8259",
+   "name": "Mulholland MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1542501",
+   "location_code": "5425",
+   "name": "Multnomah St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1543801",
+   "location_code": "5438",
+   "name": "Murchison St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1544601",
+   "location_code": "5446",
+   "name": "Napa St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1877901",
+   "location_code": "8779",
+   "name": "Narbonne SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1883801",
+   "location_code": "8838",
+   "name": "Narbonne SH HArts LA",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1761401",
+   "location_code": "7614",
+   "name": "Nava College Prep",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1517301",
+   "location_code": "5173",
+   "name": "Nava Learning Academy",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1545201",
+   "location_code": "5452",
+   "name": "Nestle Ave Charter",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1545901",
+   "location_code": "5459",
+   "name": "Nevada Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1546601",
+   "location_code": "5466",
+   "name": "Nevin Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1547901",
+   "location_code": "5479",
+   "name": "Newcastle El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1826401",
+   "location_code": "8264",
+   "name": "Nightingale MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1826801",
+   "location_code": "8268",
+   "name": "Nimitz MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1878601",
+   "location_code": "8786",
+   "name": "No Hollywd SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1827201",
+   "location_code": "8272",
+   "name": "Nobel CMS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1560301",
+   "location_code": "5603",
+   "name": "Noble Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1563001",
+   "location_code": "5630",
+   "name": "Normandie Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1564401",
+   "location_code": "5644",
+   "name": "Normont El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1851301",
+   "location_code": "8513",
+   "name": "Northridge Acad SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1828301",
+   "location_code": "8283",
+   "name": "Northridge MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1569901",
+   "location_code": "5699",
+   "name": "Norwood St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1237801",
+   "location_code": "2378",
+   "name": "Nueva Vista El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1230201",
+   "location_code": "2302",
+   "name": "Obama El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1686801",
+   "location_code": "6868",
+   "name": "Obama Glbl Prep Acad",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1237201",
+   "location_code": "2372",
+   "name": "Ochoa LC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1830601",
+   "location_code": "8306",
+   "name": "Olive Vista MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1239201",
+   "location_code": "2392",
+   "name": "Olympic PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1572601",
+   "location_code": "5726",
+   "name": "O'Melveny El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1515301",
+   "location_code": "5153",
+   "name": "Orchard Academies 2B",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1515401",
+   "location_code": "5154",
+   "name": "Orchard Academies 2C",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1589401",
+   "location_code": "5894",
+   "name": "Osceola St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1590401",
+   "location_code": "5904",
+   "name": "Overland Ave El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1591801",
+   "location_code": "5918",
+   "name": "Oxnard St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1464201",
+   "location_code": "4642",
+   "name": "Pacific Blvd School",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1597301",
+   "location_code": "5973",
+   "name": "Pacoima CEl",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1832101",
+   "location_code": "8321",
+   "name": "Pacoima MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1595901",
+   "location_code": "5959",
+   "name": "Palisades CEl",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1879801",
+   "location_code": "8798",
+   "name": "Palisades CHS",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1598601",
+   "location_code": "5986",
+   "name": "Palms El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1834001",
+   "location_code": "8340",
+   "name": "Palms MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1560401",
+   "location_code": "5604",
+   "name": "Panorama City El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1861001",
+   "location_code": "8610",
+   "name": "Panorama SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1600501",
+   "location_code": "6005",
+   "name": "Park Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1601301",
+   "location_code": "6013",
+   "name": "Park Wstn Pl El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1357601",
+   "location_code": "3576",
+   "name": "Parks LC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1602101",
+   "location_code": "6021",
+   "name": "Parmelee Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1602701",
+   "location_code": "6027",
+   "name": "Parthenia Ac Art Tec",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1605201",
+   "location_code": "6052",
+   "name": "Paseo del Rey El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1835201",
+   "location_code": "8352",
+   "name": "Peary MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1606801",
+   "location_code": "6068",
+   "name": "Pinewood Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1498001",
+   "location_code": "4980",
+   "name": "Pio Pico MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1609601",
+   "location_code": "6096",
+   "name": "Plainview Academc CA",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1324701",
+   "location_code": "3247",
+   "name": "Plasencia El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1611001",
+   "location_code": "6110",
+   "name": "Playa Del Rey El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1230601",
+   "location_code": "2306",
+   "name": "Playa Vista El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1612301",
+   "location_code": "6123",
+   "name": "Plummer El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1231101",
+   "location_code": "2311",
+   "name": "Poindexter LaMotte El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1238401",
+   "location_code": "2384",
+   "name": "Politi El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1863601",
+   "location_code": "8636",
+   "name": "Polytechnic SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1614001",
+   "location_code": "6140",
+   "name": "Pomelo Community CS",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1835401",
+   "location_code": "8354",
+   "name": "Porter MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1230301",
+   "location_code": "2303",
+   "name": "Porter Ranch School",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1810701",
+   "location_code": "8107",
+   "name": "Portola CM",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1614801",
+   "location_code": "6148",
+   "name": "President Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1477601",
+   "location_code": "4776",
+   "name": "Primary Academy",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1615801",
+   "location_code": "6158",
+   "name": "Purche Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1616401",
+   "location_code": "6164",
+   "name": "Queen Anne Pl El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1617801",
+   "location_code": "6178",
+   "name": "Ramona El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1619201",
+   "location_code": "6192",
+   "name": "Ranchito Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1886801",
+   "location_code": "8868",
+   "name": "Rancho Domngz Prep",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1621901",
+   "location_code": "6219",
+   "name": "Raymond Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1835501",
+   "location_code": "8355",
+   "name": "Reed MS",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1881401",
+   "location_code": "8814",
+   "name": "Reseda Charter HS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1623301",
+   "location_code": "6233",
+   "name": "Reseda El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1835601",
+   "location_code": "8356",
+   "name": "Revere CMS",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1236901",
+   "location_code": "2369",
+   "name": "RFK Ambsdr Glbl Edu",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1777101",
+   "location_code": "7771",
+   "name": "RFK Ambsdr Glbl Ldsh",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1850101",
+   "location_code": "8501",
+   "name": "RFK LA SH Arts",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1778301",
+   "location_code": "7783",
+   "name": "RFK New Open Wld",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1820601",
+   "location_code": "8206",
+   "name": "RFK Sch Vis Arts/Hum",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1778001",
+   "location_code": "7780",
+   "name": "RFK UCLA Comm Sch",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1230801",
+   "location_code": "2308",
+   "name": "Ride El Smart Acad",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1628801",
+   "location_code": "6288",
+   "name": "Rio Vista El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1538501",
+   "location_code": "5385",
+   "name": "Riordan PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1630101",
+   "location_code": "6301",
+   "name": "Ritter El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1771801",
+   "location_code": "7718",
+   "name": "Rivera LC Com & Tech",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1771901",
+   "location_code": "7719",
+   "name": "Rivera LC GD STEAM Ac",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1772101",
+   "location_code": "7721",
+   "name": "Rivera LC Perf Arts",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1886701",
+   "location_code": "8867",
+   "name": "Rivera LC Pub Srv",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1631501",
+   "location_code": "6315",
+   "name": "Riverside Dr CS",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1632901",
+   "location_code": "6329",
+   "name": "Rockdale VAPA Mag",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1811601",
+   "location_code": "8116",
+   "name": "Romer MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1774901",
+   "location_code": "7749",
+   "name": "Roosevelt SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1635601",
+   "location_code": "6356",
+   "name": "Roscoe El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1636301",
+   "location_code": "6363",
+   "name": "Roscomare Rd El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1637001",
+   "location_code": "6370",
+   "name": "Rosemont Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1638401",
+   "location_code": "6384",
+   "name": "Rosewood UP/UD Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1642501",
+   "location_code": "6425",
+   "name": "Rowan Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1854401",
+   "location_code": "8544",
+   "name": "Roybal LC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1688401",
+   "location_code": "6884",
+   "name": "Roybal-Allard El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1643801",
+   "location_code": "6438",
+   "name": "Russell El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1464101",
+   "location_code": "4641",
+   "name": "San Antonio El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1645201",
+   "location_code": "6452",
+   "name": "San Fernando El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1835801",
+   "location_code": "8358",
+   "name": "San Fernando MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1650101",
+   "location_code": "6501",
+   "name": "San Fernando MS IAM",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1884301",
+   "location_code": "8843",
+   "name": "San Fernando SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1646601",
+   "location_code": "6466",
+   "name": "San Gabriel Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1647901",
+   "location_code": "6479",
+   "name": "San Jose St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1687501",
+   "location_code": "6875",
+   "name": "San Miguel El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1649301",
+   "location_code": "6493",
+   "name": "San Pascual STEAM Mg",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1885001",
+   "location_code": "8850",
+   "name": "San Pedro SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1650701",
+   "location_code": "6507",
+   "name": "San Pedro St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1654801",
+   "location_code": "6548",
+   "name": "Santa Monica Blvd Co",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1740401",
+   "location_code": "7404",
+   "name": "Santana Art Ac",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1871601",
+   "location_code": "8716",
+   "name": "Santee EC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1656501",
+   "location_code": "6565",
+   "name": "Saticoy El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1264401",
+   "location_code": "2644",
+   "name": "Saturn St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1357401",
+   "location_code": "3574",
+   "name": "Sendak El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1836301",
+   "location_code": "8363",
+   "name": "Sepulveda MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1660601",
+   "location_code": "6606",
+   "name": "Serrania Ave CES",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1666501",
+   "location_code": "6665",
+   "name": "Sharp Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1667101",
+   "location_code": "6671",
+   "name": "Shenandoah St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1668501",
+   "location_code": "6685",
+   "name": "Sheridan St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1669901",
+   "location_code": "6699",
+   "name": "Sherman Oaks El CS",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1671201",
+   "location_code": "6712",
+   "name": "Shirley Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1674001",
+   "location_code": "6740",
+   "name": "Short Ave El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1675301",
+   "location_code": "6753",
+   "name": "Sierra Park El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1676701",
+   "location_code": "6767",
+   "name": "Sierra Vista El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1683601",
+   "location_code": "6836",
+   "name": "Solano Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1684901",
+   "location_code": "6849",
+   "name": "Soto St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1888101",
+   "location_code": "8881",
+   "name": "South East SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1837701",
+   "location_code": "8377",
+   "name": "South Gate MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1887101",
+   "location_code": "8871",
+   "name": "South Gate SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1686301",
+   "location_code": "6863",
+   "name": "South Park El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1815301",
+   "location_code": "8153",
+   "name": "Southeast MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1689001",
+   "location_code": "6890",
+   "name": "Stagg St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1690401",
+   "location_code": "6904",
+   "name": "Stanford Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1690501",
+   "location_code": "6905",
+   "name": "Stanford Ave PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1691801",
+   "location_code": "6918",
+   "name": "State St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1693201",
+   "location_code": "6932",
+   "name": "Sterry El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1838701",
+   "location_code": "8387",
+   "name": "Stevenson CCP",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1694501",
+   "location_code": "6945",
+   "name": "Stonehurst STEAM Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1695201",
+   "location_code": "6952",
+   "name": "Stoner Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1695901",
+   "location_code": "6959",
+   "name": "Strathern St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1839602",
+   "location_code": "7645",
+   "name": "Sun Valley Mag ES",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1839601",
+   "location_code": "8396",
+   "name": "Sun Valley Mag ET",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1697301",
+   "location_code": "6973",
+   "name": "Sunland El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1698601",
+   "location_code": "6986",
+   "name": "Sunny Brae Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1698801",
+   "location_code": "6988",
+   "name": "Sunrise El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1700701",
+   "location_code": "7007",
+   "name": "Superior St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1840601",
+   "location_code": "8406",
+   "name": "Sutter MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1887801",
+   "location_code": "8878",
+   "name": "Sylmar CHS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1701401",
+   "location_code": "7014",
+   "name": "Sylmar El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1740801",
+   "location_code": "7408",
+   "name": "Sylmar Ldshp Acad",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1702701",
+   "location_code": "7027",
+   "name": "Sylvan Park El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1888001",
+   "location_code": "8880",
+   "name": "Taft CHS",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1703501",
+   "location_code": "7035",
+   "name": "Taper Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1704101",
+   "location_code": "7041",
+   "name": "Tarzana El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1706801",
+   "location_code": "7068",
+   "name": "Telfair Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1717801",
+   "location_code": "7178",
+   "name": "Toland Way El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1719201",
+   "location_code": "7192",
+   "name": "Toluca Lake El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1719801",
+   "location_code": "7198",
+   "name": "Topanga El CS",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1720101",
+   "location_code": "7201",
+   "name": "Topeka Dr CAS",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1777301",
+   "location_code": "7773",
+   "name": "Torres Eng & Tech",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1777501",
+   "location_code": "7775",
+   "name": "Torres Hum/Art/Tech",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1777201",
+   "location_code": "7772",
+   "name": "Torres Renaissance",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1720501",
+   "location_code": "7205",
+   "name": "Towne Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1721901",
+   "location_code": "7219",
+   "name": "Trinity St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1724701",
+   "location_code": "7247",
+   "name": "Tulsa St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1726001",
+   "location_code": "7260",
+   "name": "Tweedy El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1735601",
+   "location_code": "7356",
+   "name": "Union Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1888601",
+   "location_code": "8886",
+   "name": "University HS Charter",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1737001",
+   "location_code": "7370",
+   "name": "Utah St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1738401",
+   "location_code": "7384",
+   "name": "Valerio St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1889801",
+   "location_code": "8898",
+   "name": "Valley Acad Arts/Sci",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1739701",
+   "location_code": "7397",
+   "name": "Valley View El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1741901",
+   "location_code": "7419",
+   "name": "Van Deene Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1742201",
+   "location_code": "7422",
+   "name": "Van Gogh Chtr",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1742501",
+   "location_code": "7425",
+   "name": "Van Ness Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1743801",
+   "location_code": "7438",
+   "name": "Van Nuys El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1843401",
+   "location_code": "8434",
+   "name": "Van Nuys MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1889301",
+   "location_code": "8893",
+   "name": "Van Nuys SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1741101",
+   "location_code": "7411",
+   "name": "Vanalden Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1745201",
+   "location_code": "7452",
+   "name": "Vaughn Next Cent LC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1746601",
+   "location_code": "7466",
+   "name": "Vena Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1890701",
+   "location_code": "8907",
+   "name": "Venice SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1891401",
+   "location_code": "8914",
+   "name": "Verdgo Hls SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1747901",
+   "location_code": "7479",
+   "name": "Vermont Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1749301",
+   "location_code": "7493",
+   "name": "Vernon City El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1750701",
+   "location_code": "7507",
+   "name": "Victoria Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1752101",
+   "location_code": "7521",
+   "name": "Victory Blvd El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1753401",
+   "location_code": "7534",
+   "name": "Vine St El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1754801",
+   "location_code": "7548",
+   "name": "Vinedale College Prp",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1846201",
+   "location_code": "8462",
+   "name": "Virgil MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1757501",
+   "location_code": "7575",
+   "name": "Virginia Rd El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1740001",
+   "location_code": "7400",
+   "name": "Vista del Valle Acad",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1811701",
+   "location_code": "8117",
+   "name": "Vista MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1758901",
+   "location_code": "7589",
+   "name": "Wadsworth Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1760301",
+   "location_code": "7603",
+   "name": "Walgrove Ave El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1464001",
+   "location_code": "4640",
+   "name": "Walnut Park El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1839001",
+   "location_code": "8390",
+   "name": "Walnut Park MS SJ/SL",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1519301",
+   "location_code": "5193",
+   "name": "Walnut Park MS STEM",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1761601",
+   "location_code": "7616",
+   "name": "Warner Ave El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1763001",
+   "location_code": "7630",
+   "name": "Washington PC",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1892801",
+   "location_code": "8928",
+   "name": "Washington Prep SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1848101",
+   "location_code": "8481",
+   "name": "Webster MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1715101",
+   "location_code": "7151",
+   "name": "Weemes El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1763401",
+   "location_code": "7634",
+   "name": "Weigand Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1763701",
+   "location_code": "7637",
+   "name": "Welby Way CEl",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1894310",
+   "location_code": "7696",
+   "name": "WESM Env Natrl Sci",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1894309",
+   "location_code": "7695",
+   "name": "WESM Gifted/STEAM Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1894301",
+   "location_code": "8943",
+   "name": "WESM Hlth/Sports Med",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1874801",
+   "location_code": "8748",
+   "name": "West Adams Prep SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1764401",
+   "location_code": "7644",
+   "name": "West Athens El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1764901",
+   "location_code": "7649",
+   "name": "West Hollywood El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1765401",
+   "location_code": "7654",
+   "name": "West Vernon Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1767101",
+   "location_code": "7671",
+   "name": "Western Av TECH Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1769901",
+   "location_code": "7699",
+   "name": "Westminster MTES Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1771201",
+   "location_code": "7712",
+   "name": "Westport Hts El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1774001",
+   "location_code": "7740",
+   "name": "Westwood CEl",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1254201",
+   "location_code": "2542",
+   "name": "White El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1848701",
+   "location_code": "8487",
+   "name": "White MS",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1776701",
+   "location_code": "7767",
+   "name": "White Point El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1777401",
+   "location_code": "7774",
+   "name": "Wilbur CEA",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1230901",
+   "location_code": "2309",
+   "name": "Willow El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1778101",
+   "location_code": "7781",
+   "name": "Wilmington Park El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1849001",
+   "location_code": "8490",
+   "name": "Wilmington STEAM Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1779501",
+   "location_code": "7795",
+   "name": "Wilshire Crest El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1261901",
+   "location_code": "2619",
+   "name": "Wilshire Park El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1861801",
+   "location_code": "8618",
+   "name": "Wilson SH",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1780801",
+   "location_code": "7808",
+   "name": "Wilton Pl El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1782201",
+   "location_code": "7822",
+   "name": "Windsor Hills El Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1783601",
+   "location_code": "7836",
+   "name": "Winnetka Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1687201",
+   "location_code": "6872",
+   "name": "Wisdom El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1784901",
+   "location_code": "7849",
+   "name": "Wonderland Ave El",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1786301",
+   "location_code": "7863",
+   "name": "Woodcrest El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1787701",
+   "location_code": "7877",
+   "name": "Woodlake ECC",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1834401",
+   "location_code": "8344",
+   "name": "Woodland Hills Acad",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1789001",
+   "location_code": "7890",
+   "name": "Woodland Hills CES",
+   "phbao": false,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1790401",
+   "location_code": "7904",
+   "name": "Woodlawn Ave El",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1849301",
+   "location_code": "8493",
+   "name": "Wright Eng Des Mag",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1465801",
+   "location_code": "4658",
+   "name": "YES Academy",
+   "phbao": true,
+   "overcrowded": false
+  },
+  {
+   "cost_center": "1795901",
+   "location_code": "7959",
+   "name": "Yorkdale El",
+   "phbao": true,
+   "overcrowded": false
+  }
+ ]
+}

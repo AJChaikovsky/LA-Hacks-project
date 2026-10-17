@@ -1,0 +1,69 @@
+{
+  "source_url": "https://nominatim.openstreetmap.org/",
+  "neighborhoods": {
+    "Boyle Heights": {
+      "lat": 34.04369,
+      "lng": -118.20977,
+      "aliases": [
+        "boyle heights",
+        "boyle hts"
+      ]
+    },
+    "Downtown": {
+      "lat": 34.048,
+      "lng": -118.2521,
+      "aliases": [
+        "downtown",
+        "downtown la",
+        "dtla",
+        "el centro",
+        "centro"
+      ]
+    },
+    "East Los Angeles": {
+      "lat": 34.0239,
+      "lng": -118.17202,
+      "aliases": [
+        "east los angeles",
+        "east la",
+        "este de los angeles",
+        "este de los ángeles"
+      ]
+    },
+    "El Sereno": {
+      "lat": 34.08112,
+      "lng": -118.17785,
+      "aliases": [
+        "el sereno"
+      ]
+    },
+    "Lincoln Heights": {
+      "lat": 34.07266,
+      "lng": -118.2112,
+      "aliases": [
+        "lincoln heights"
+      ]
+    }
+  },
+  "landmarks": {
+    "Mariachi Plaza": {
+      "lat": 34.04748,
+      "lng": -118.21908,
+      "neighborhood": "Boyle Heights",
+      "resident_middle_school": "Hollenbeck Middle School",
+      "resident_phbao": true,
+      "resident_overcrowded": false,
+      "resident_source_url": "https://explore.lausd.org",
+      "note": "explore.lausd.org lists Hollenbeck MS (6-8) as the Residential School for Mariachi Plaza. The official 2026-27 Norm Category/Overcrowded list (for 2027-28) has Hollenbeck MS as PHBAO, not overcrowded.",
+      "resident_evidence": "docs/evidence/B1-mariachi-plaza-resident-schools.png",
+      "resident_phbao_evidence": {
+        "white_pct_2024_25": 1.8,
+        "latino_pct_2024_25": 95.9,
+        "source_url": "https://explore.lausd.org",
+        "screenshot": "docs/evidence/B1-hollenbeck-demographics-2024-25.png",
+        "note": "Demographics strongly suggest PHBAO but are not the official designation; resident_phbao stays null so points read as 'assumed'."
+      },
+      "resident_flags_source": "docs/evidence/norm-category-overcrowded-2026-27.pdf"
+    }
+  }
+}
