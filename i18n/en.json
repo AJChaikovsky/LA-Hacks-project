@@ -1,1 +1,127 @@
-{}
+{
+  "child_default": "your child",
+  "interests": {
+    "arts": "art", "stem": "science and technology", "medicine": "medicine", "law": "law",
+    "media": "digital media", "languages": "languages", "sports": "sports", "business": "business",
+    "environment": "the environment"
+  },
+  "competitiveness": {
+    "very_high": "very competitive", "high": "competitive", "moderate": "moderately competitive",
+    "unknown": "no official seat data yet"
+  },
+  "matches": {
+    "intro": "I found {n} schools for {child}:",
+    "general_header": "Good to know:",
+    "next": "**Would you like to know {child}'s chances of getting in?**"
+  },
+  "reasons": {
+    "theme_match": "Its theme is {interest}, which {child} loves.",
+    "arts_in_steam": "Its STEAM program includes art (the \"A\" in STEAM).",
+    "arts_in_media": "It works with video, design, and digital media, close to art.",
+    "no_vapa_nearby": "There is no arts-only middle-school magnet on the Eastside. These are the closest options with art.",
+    "near_home": "It's close to your home in {home}.",
+    "near_work": "It's close to your work in {work}.",
+    "spanish_dle": "Spanish dual-language program: {child} learns in both languages.",
+    "iep_eligible": "Students with an IEP can apply to any magnet.",
+    "bus_possible": "May qualify for the school bus if you live more than 2 miles away."
+  },
+  "points": {
+    "header": "**{child}'s magnet points** (maximum 23):",
+    "same_all": "At all {n} magnet schools: {total_phrase}.",
+    "per_school": "{school}: {total_phrase}.",
+    "total_confirmed": "{total} of 23 points",
+    "total_assumed": "probably {total} of 23 points",
+    "line": "- {points} points{maybe}: {factor}",
+    "maybe": " (probably)",
+    "factors": {
+      "phbao": "your neighborhood school is mostly Latino, Black, or Asian students",
+      "overcrowded": "your neighborhood school is overcrowded",
+      "waitlist": "years on a waiting list",
+      "sibling": "a brother or sister is already at your 1st choice",
+      "matriculation": "coming from a magnet program"
+    },
+    "questions": {
+      "phbao": "Do you know your neighborhood school? If most students are Latino, Black, or Asian, that's 4 points.",
+      "overcrowded": "Do you know if your neighborhood school is overcrowded? If so, that's 4 more points.",
+      "waitlist": "Was {child} on a magnet waiting list before? Each year adds 4 points.",
+      "sibling": "Do you have another child at your 1st choice? That adds 3 points.",
+      "matriculation": "Is {child} in a magnet program now?"
+    },
+    "competition": "- {school}: {level}.",
+    "ratio": "- {school}: about {ratio} applications per seat ({level}).",
+    "competition_header": "How hard it is to get in:",
+    "not_applicable": "- {school}: doesn't use points; seats go by lottery.",
+    "grow": "Each year on a waiting list adds 4 points (up to 12). Declining an offer erases them.",
+    "disclaimer": "This is an estimate. Confirm at choices.lausd.net or call (213) 241-4177.",
+    "next": "**Which schools will you put on your application?**"
+  },
+  "warnings": {
+    "header": "Before you submit, check this:",
+    "over_limit_magnet": "**You can only list {limit} magnet schools.** {names} would not count.",
+    "would_not_accept": "You said you might not accept {names}. **Only list schools you would accept.**",
+    "decline_wipes_points": "If you're offered a seat and decline (or don't answer in time), you lose all waiting-list points. Declines are final.",
+    "first_choice_waitlist": "Order matters: if {child} isn't selected anywhere, they are waitlisted only at the 1st choice ({name}).",
+    "gifted_verification": "{names} is for students identified as gifted and needs extra verification.",
+    "far_commute": "{names} is far. A bus is only possible beyond 2 miles on an existing route; the longest ride is 90 minutes.",
+    "current_magnet_drop": "If {child} is already in a magnet and gets selected for another, they lose the current seat even if they decline.",
+    "past_deadline": "The on-time deadline (November 6) has passed. Late applications get no points.",
+    "not_points_program": "Idea: {name} is not a magnet, so you can apply to it in addition to your 3 magnets. If {child} is learning English and Spanish is spoken at home, no language test is needed.",
+    "ok": "Your list looks good.",
+    "next": "**Shall I prepare your checklist, deadlines, and steps?**"
+  },
+  "checklist": {
+    "parent_portal_account": "Parent Portal account (email and password)",
+    "student_id": "{child}'s student ID number (ask the school if you don't have it)",
+    "address_on_file": "Your address, matching what the school has on file",
+    "sibling_info": "Sibling details for the program (if any)",
+    "gifted_form": "Gifted verification form (Gifted programs only)",
+    "iep_copy": "A copy of the IEP for you (not uploaded; use it when talking to the coordinator)"
+  },
+  "steps": {
+    "open_apply_site": "Open apply.lausd.net on your phone.",
+    "sign_in_or_register": "Sign in with your Parent Portal account, or tap \"Register\" to create one and confirm your email.",
+    "add_student": "Tap \"Add/Edit Student\" and add {child}.",
+    "choose_program_type": "Choose the program type: Magnet.",
+    "rank_magnet_choices": "Put your schools in order: the one you want most first (3 at most).",
+    "add_dle_choice": "If you want, also add the dual-language program (a separate program type).",
+    "list_siblings": "If you have other children in the program, add them as siblings.",
+    "check_address": "Check that your address matches what the school has.",
+    "submit_and_save_confirmation": "Submit and save the confirmation (a screenshot)."
+  },
+  "deadlines": {
+    "on_time_open": "application opened",
+    "on_time_deadline": "on-time deadline",
+    "late_window_opens": "late applications open (no points)",
+    "confirmation_notice": "confirmation notice arrives: check your points",
+    "correction_deadline": "last day to correct or withdraw",
+    "results": "results (early February 2027)",
+    "accept_decline": "accept or decline the seat (no answer counts as a decline)",
+    "school_starts": "school starts"
+  },
+  "plan": {
+    "checklist_header": "**What to have ready:**",
+    "deadlines_header": "**Key dates:**",
+    "steps_header": "**How to finish on your phone:**",
+    "email_header": "**Email to the program coordinator** (copy it and send it yourself):",
+    "subject": "Subject: {subject}",
+    "days_left": "{n} days left",
+    "today": "today",
+    "no_submit": "You submit the application; we never submit anything.",
+    "action": "**Finish your application before {date}.**"
+  },
+  "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  "date_format": "{month} {d}, {y}",
+  "program_names": {
+    "1804703": "Bel Vedere MS · STEAM",
+    "1804702": "Bel Vedere MS · Digital Media",
+    "1817902": "Hollenbeck MS · STEM & Medicine",
+    "1817903": "Hollenbeck MS · Law & Public Service",
+    "1838702": "Stevenson · Gifted",
+    "1838701TWS": "Stevenson MS · Spanish dual language",
+    "1816801": "Griffith MS · STEM",
+    "1820002": "Los Angeles Academy MS · STEAM",
+    "1800903": "Adams MS · Robotics & Engineering",
+    "1823703": "Markham MS · Arts",
+    "1823702": "Markham MS · Health Careers"
+  }
+}
