@@ -1,1 +1,127 @@
-{}
+{
+  "child_default": "su hijo o hija",
+  "interests": {
+    "arts": "arte", "stem": "ciencia y tecnología", "medicine": "medicina", "law": "leyes",
+    "media": "medios digitales", "languages": "idiomas", "sports": "deportes", "business": "negocios",
+    "environment": "medio ambiente"
+  },
+  "competitiveness": {
+    "very_high": "competencia muy alta", "high": "competencia alta", "moderate": "competencia moderada",
+    "unknown": "sin datos oficiales de cupos todavía"
+  },
+  "matches": {
+    "intro": "Encontré {n} escuelas para {child}:",
+    "general_header": "Bueno saber:",
+    "next": "**¿Quiere saber qué posibilidades tiene de entrar?**"
+  },
+  "reasons": {
+    "theme_match": "Su tema es {interest}, lo que más le gusta a {child}.",
+    "arts_in_steam": "Su programa STEAM incluye arte (la \"A\" de STEAM).",
+    "arts_in_media": "Trabaja con video, diseño y medios digitales, muy cerca del arte.",
+    "no_vapa_nearby": "No hay un magnet solo de artes para secundaria en el Este de Los Ángeles. Estas son las opciones más cercanas con arte.",
+    "near_home": "Queda cerca de su casa en {home}.",
+    "near_work": "Queda cerca de su trabajo en {work}.",
+    "spanish_dle": "Programa bilingüe en español: {child} aprende en los dos idiomas.",
+    "iep_eligible": "Los estudiantes con IEP pueden aplicar a cualquier magnet.",
+    "bus_possible": "Puede calificar para el autobús escolar si vive a más de 2 millas."
+  },
+  "points": {
+    "header": "**Puntos magnet de {child}** (máximo 23):",
+    "same_all": "En las {n} escuelas magnet: {total_phrase}.",
+    "per_school": "{school}: {total_phrase}.",
+    "total_confirmed": "{total} de 23 puntos",
+    "total_assumed": "probablemente {total} de 23 puntos",
+    "line": "- {points} puntos{maybe}: {factor}",
+    "maybe": " (probablemente)",
+    "factors": {
+      "phbao": "su escuela de zona tiene mayoría de estudiantes latinos, afroamericanos o asiáticos",
+      "overcrowded": "su escuela de zona está sobrepoblada",
+      "waitlist": "años en lista de espera",
+      "sibling": "un hermano o hermana ya está en su primera opción",
+      "matriculation": "viene de un programa magnet"
+    },
+    "questions": {
+      "phbao": "¿Sabe cuál es la escuela de su zona? Si tiene mayoría de estudiantes latinos, afroamericanos o asiáticos, suma 4 puntos.",
+      "overcrowded": "¿Sabe si la escuela de su zona está sobrepoblada? Si sí, suma 4 puntos más.",
+      "waitlist": "¿{child} estuvo en lista de espera de un magnet antes? Cada año suma 4 puntos.",
+      "sibling": "¿Tiene otro hijo en su primera opción? Eso suma 3 puntos.",
+      "matriculation": "¿{child} está ahora en un programa magnet?"
+    },
+    "competition": "- {school}: {level}.",
+    "ratio": "- {school}: unas {ratio} solicitudes por cada lugar ({level}).",
+    "competition_header": "Qué tan difícil es entrar:",
+    "not_applicable": "- {school}: no usa puntos; se elige por sorteo.",
+    "grow": "Cada año en lista de espera suma 4 puntos (hasta 12). Si le ofrecen un lugar y lo rechaza, los pierde.",
+    "disclaimer": "Esto es un estimado. Confirme en choices.lausd.net o llame al (213) 241-4177.",
+    "next": "**¿Cuáles escuelas va a poner en su solicitud?**"
+  },
+  "warnings": {
+    "header": "Antes de enviar, revise esto:",
+    "over_limit_magnet": "**Solo puede poner {limit} escuelas magnet.** {names} no contaría.",
+    "would_not_accept": "Usted dijo que quizás no aceptaría {names}. **Ponga solo escuelas que sí aceptaría.**",
+    "decline_wipes_points": "Si le ofrecen un lugar y lo rechaza (o no contesta a tiempo), pierde todos sus puntos de lista de espera. Los rechazos son finales.",
+    "first_choice_waitlist": "El orden importa: si {child} no queda en ninguna, solo entra a la lista de espera de su primera opción ({name}).",
+    "gifted_verification": "{names} es para estudiantes identificados como dotados (Gifted) y pide una verificación extra.",
+    "far_commute": "{names} queda lejos. El autobús solo es posible si vive a más de 2 millas y hay ruta; el viaje máximo es de 90 minutos.",
+    "current_magnet_drop": "Si {child} ya está en un magnet y queda en otro, pierde su lugar actual aunque no lo acepte.",
+    "past_deadline": "La fecha a tiempo (6 de noviembre) ya pasó. Las solicitudes tardías no reciben puntos.",
+    "not_points_program": "Idea: {name} no es magnet, así que puede pedirlo además de sus 3 magnet. Si {child} está aprendiendo inglés y en casa hablan español, no necesita examen de idioma.",
+    "ok": "Su lista se ve bien.",
+    "next": "**¿Preparo su lista de documentos, fechas y pasos?**"
+  },
+  "checklist": {
+    "parent_portal_account": "Cuenta de Parent Portal (correo y contraseña)",
+    "student_id": "Número de estudiante de {child} (pídalo en la escuela si no lo tiene)",
+    "address_on_file": "Su dirección, igual a la que tiene la escuela",
+    "sibling_info": "Datos de hermanos en el programa (si aplica)",
+    "gifted_form": "Formulario de verificación Gifted (solo para programas Gifted)",
+    "iep_copy": "Copia del IEP para usted (no se sube; úsela para hablar con el coordinador)"
+  },
+  "steps": {
+    "open_apply_site": "Abra apply.lausd.net en su celular.",
+    "sign_in_or_register": "Entre con su cuenta de Parent Portal, o toque \"Register\" para crear una y confirme su correo.",
+    "add_student": "Toque \"Add/Edit Student\" y agregue a {child}.",
+    "choose_program_type": "Elija el tipo de programa: Magnet.",
+    "rank_magnet_choices": "Ponga sus escuelas en orden: la que más quiere, primero (máximo 3).",
+    "add_dle_choice": "Si quiere, agregue también el programa bilingüe (es otro tipo de programa).",
+    "list_siblings": "Si tiene otros hijos en el programa, agréguelos como hermanos.",
+    "check_address": "Revise que su dirección sea la misma que tiene la escuela.",
+    "submit_and_save_confirmation": "Envíe la solicitud y guarde la confirmación (una captura de pantalla)."
+  },
+  "deadlines": {
+    "on_time_open": "abrió la solicitud",
+    "on_time_deadline": "fecha límite a tiempo",
+    "late_window_opens": "empiezan las solicitudes tardías (sin puntos)",
+    "confirmation_notice": "llega el aviso de confirmación: revise sus puntos",
+    "correction_deadline": "último día para corregir o retirar la solicitud",
+    "results": "resultados (principios de febrero de 2027)",
+    "accept_decline": "aceptar o rechazar el lugar (si no contesta, cuenta como rechazo)",
+    "school_starts": "empiezan las clases"
+  },
+  "plan": {
+    "checklist_header": "**Lo que necesita tener a la mano:**",
+    "deadlines_header": "**Fechas importantes:**",
+    "steps_header": "**Cómo terminar en su celular:**",
+    "email_header": "**Correo para el coordinador del programa** (cópielo y envíelo usted):",
+    "subject": "Asunto: {subject}",
+    "days_left": "faltan {n} días",
+    "today": "es hoy",
+    "no_submit": "Usted envía la solicitud; nosotros no enviamos nada.",
+    "action": "**Termine su solicitud antes del {date}.**"
+  },
+  "months": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+  "date_format": "{d} de {month} de {y}",
+  "program_names": {
+    "1804703": "Bel Vedere MS · STEAM",
+    "1804702": "Bel Vedere MS · Medios digitales",
+    "1817902": "Hollenbeck MS · STEM y Medicina",
+    "1817903": "Hollenbeck MS · Leyes y Servicio Público",
+    "1838702": "Stevenson · Gifted",
+    "1838701TWS": "Stevenson MS · Programa bilingüe en español",
+    "1816801": "Griffith MS · STEM",
+    "1820002": "Los Angeles Academy MS · STEAM",
+    "1800903": "Adams MS · Robótica e Ingeniería",
+    "1823703": "Markham MS · Artes",
+    "1823702": "Markham MS · Carreras de Salud"
+  }
+}
