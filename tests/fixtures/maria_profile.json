@@ -1,0 +1,22 @@
+{
+  "language": "es",
+  "child_name": "Diego",
+  "current_grade": 5,
+  "applying_grade": 6,
+  "interests": ["arts"],
+  "iep": true,
+  "iep_notes": null,
+  "english_learner": null,
+  "home_language": "Spanish",
+  "home_neighborhood": "Boyle Heights",
+  "resident_school": null,
+  "resident_phbao": null,
+  "resident_overcrowded": null,
+  "in_magnet_now": false,
+  "waitlist_years": 0,
+  "sibling_program_codes": [],
+  "parent_work_area": "Downtown",
+  "device": "phone",
+  "intended_choices": [],
+  "would_not_accept": []
+}

@@ -1,0 +1,7 @@
+[
+  {"code": "over_limit_magnet", "severity": "block", "params": {"codes": ["1823703"], "limit": 3}},
+  {"code": "would_not_accept", "severity": "warn", "params": {"codes": ["1823703"]}},
+  {"code": "decline_wipes_points", "severity": "info", "params": {}},
+  {"code": "first_choice_waitlist", "severity": "info", "params": {"first_choice": "1804703"}},
+  {"code": "not_points_program", "severity": "info", "params": {"suggest": "1838701TWS"}}
+]

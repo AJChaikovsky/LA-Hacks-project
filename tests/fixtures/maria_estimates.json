@@ -1,0 +1,107 @@
+[
+  {
+    "code": "1804703",
+    "applicable": true,
+    "total": 4,
+    "max_possible": 23,
+    "lines": [
+      {
+        "factor": "phbao",
+        "points": 4,
+        "status": "assumed"
+      },
+      {
+        "factor": "overcrowded",
+        "points": 0,
+        "status": "unknown"
+      },
+      {
+        "factor": "waitlist",
+        "points": 0,
+        "status": "confirmed"
+      },
+      {
+        "factor": "sibling",
+        "points": 0,
+        "status": "confirmed"
+      },
+      {
+        "factor": "matriculation",
+        "points": 0,
+        "status": "confirmed"
+      }
+    ],
+    "competitiveness": "unknown",
+    "apps_per_opening": null
+  },
+  {
+    "code": "1817902",
+    "applicable": true,
+    "total": 4,
+    "max_possible": 23,
+    "lines": [
+      {
+        "factor": "phbao",
+        "points": 4,
+        "status": "assumed"
+      },
+      {
+        "factor": "overcrowded",
+        "points": 0,
+        "status": "unknown"
+      },
+      {
+        "factor": "waitlist",
+        "points": 0,
+        "status": "confirmed"
+      },
+      {
+        "factor": "sibling",
+        "points": 0,
+        "status": "confirmed"
+      },
+      {
+        "factor": "matriculation",
+        "points": 0,
+        "status": "confirmed"
+      }
+    ],
+    "competitiveness": "unknown",
+    "apps_per_opening": null
+  },
+  {
+    "code": "1804702",
+    "applicable": true,
+    "total": 4,
+    "max_possible": 23,
+    "lines": [
+      {
+        "factor": "phbao",
+        "points": 4,
+        "status": "assumed"
+      },
+      {
+        "factor": "overcrowded",
+        "points": 0,
+        "status": "unknown"
+      },
+      {
+        "factor": "waitlist",
+        "points": 0,
+        "status": "confirmed"
+      },
+      {
+        "factor": "sibling",
+        "points": 0,
+        "status": "confirmed"
+      },
+      {
+        "factor": "matriculation",
+        "points": 0,
+        "status": "confirmed"
+      }
+    ],
+    "competitiveness": "unknown",
+    "apps_per_opening": null
+  }
+]

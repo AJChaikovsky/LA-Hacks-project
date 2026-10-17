@@ -1,0 +1,21 @@
+{
+  "checklist": ["parent_portal_account", "student_id", "address_on_file", "iep_copy"],
+  "deadlines": [
+    {"key": "on_time_deadline", "date": "2026-11-06", "days_left": 20},
+    {"key": "correction_deadline", "date": "2026-12-18", "days_left": 62},
+    {"key": "results", "date": null, "days_left": null},
+    {"key": "accept_decline", "date": "2027-03-05", "days_left": 139}
+  ],
+  "steps": [
+    "open_apply_site",
+    "sign_in_or_register",
+    "add_student",
+    "choose_program_type",
+    "rank_magnet_choices",
+    "check_address",
+    "submit_and_save_confirmation"
+  ],
+  "email_subject": "Preguntas sobre el programa magnet STEAM para mi hijo con IEP",
+  "email_body": "Estimado/a coordinador/a del programa magnet de Bel Vedere:\n\nMi hijo Diego entra a sexto grado el próximo año y tiene un IEP. Le encanta el arte y estamos considerando su programa STEAM.\n\n1. ¿Qué apoyos de educación especial ofrece el programa para estudiantes con IEP?\n2. ¿Cuándo hay recorridos o sesiones informativas?\n3. ¿Hay transporte escolar desde Boyle Heights?\n\nGracias por su tiempo.\nMaria",
+  "warnings": []
+}
