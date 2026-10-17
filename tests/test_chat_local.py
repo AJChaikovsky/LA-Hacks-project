@@ -47,3 +47,17 @@ def test_reset_and_help():
     state, _, _ = chat.handle(SessionState(), chat.GOLDEN[0])
     state, reply, intent = chat.handle(state, "Quiero empezar de nuevo")
     assert intent == "reset" and state.stage == "intake"
+
+
+def test_missing_grade_asks_instead_of_assuming_middle_school():
+    state, reply, _ = chat.handle(SessionState(), "Vivimos en Boyle Heights y a mi hijo le encanta el arte.")
+    assert state.stage == "intake" and not state.matches
+    assert "¿En qué grado está" in reply
+
+
+def test_no_programs_for_grade_stays_at_intake_then_recovers():
+    state, reply, _ = chat.handle(SessionState(), "Mi hijo está en tercer grado, vivimos en Boyle Heights y le gusta el arte.")
+    assert state.stage == "intake" and not state.matches
+    assert "No hay programas para cuarto grado" in reply and "posibilidades" not in reply
+    state, reply, intent = chat.handle(state, "Perdón, está en quinto grado.")
+    assert intent == "profile_info" and state.stage == "matched" and len(state.matches) == 3

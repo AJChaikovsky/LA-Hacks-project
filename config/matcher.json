@@ -4,6 +4,8 @@
   "unknown_place_score": 0.5,
   "no_interest_theme_score": 0.5,
   "top_n": 3,
+  "theme_match_min": 0.8,
+  "theme_match_note": "A non-arts interest at or above this theme fit earns the theme_match reason (no seed program scores exactly 1.0 for stem). Arts keeps arts_in_steam / arts_in_media.",
   "near_home_slot": {"enabled": true, "position": 2, "max_km": 3.0,
                      "note": "Reserve one slot for the closest program when the formula leaves it out: a short commute matters for kids with IEPs and families without a car."},
   "near_home_km": 2.0,

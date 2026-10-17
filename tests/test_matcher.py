@@ -92,3 +92,13 @@ def test_never_outside_applying_grade(grade):
 def test_haversine_known_distance():
     # Hollenbeck MS to Belvedere MS is about 2.8 km
     assert 2.5 < haversine_km(34.03613, -118.21218, 34.03947, -118.18216) < 3.1
+
+
+def test_stem_interest_gets_theme_match_on_strong_fit():
+    from core.matcher import match
+    from core.types import FamilyProfile
+
+    ana = FamilyProfile(language="en", child_name="Ana", current_grade=5, interests=["stem"],
+                        home_neighborhood="El Sereno", iep=False)
+    result = match(ana)
+    assert result and all("theme_match" in m.reason_codes for m in result)

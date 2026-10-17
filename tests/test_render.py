@@ -172,3 +172,35 @@ def test_coordinator_phone_line():
     no_code = render.render_plan(plan.model_copy(update={"coordinator_code": None}), MARIA)
     assert "¿Prefiere llamar? (323) 266-5400" in no_code and ": ," not in no_code
     assert "¿Prefiere llamar?" not in render.render_plan(PLAN, MARIA)  # no phone -> no line
+
+
+# --- no matches / missing grade (AJ's report: 4th or 8th graders saw "Encontré 0 escuelas… ¿posibilidades?") ---
+
+@pytest.mark.parametrize("grade,word", [(4, "cuarto"), (9, "noveno")])
+def test_no_programs_for_that_grade(grade, word):
+    out = render.render_matches([], MARIA.model_copy(update={"applying_grade": grade}))
+    assert out.startswith(f"No hay programas para {word} grado en mi lista.")
+    assert "de sexto a octavo grado" in out and "choices.lausd.net" in out
+    assert "posibilidades" not in out and "Encontré" not in out
+    assert out.rstrip().endswith("**¿Me confirma en qué grado está Diego ahora?**")
+
+
+def test_no_fit_for_a_covered_grade_and_english():
+    assert render.render_matches([], MARIA).startswith("No encontré un programa en mi lista que le quede bien a Diego.")
+    out = render.render_matches([], EN.model_copy(update={"applying_grade": 9}))
+    assert out.startswith("I don't have programs for 9th grade yet.") and "6th to 8th grade" in out
+
+
+def test_one_match_is_singular():
+    assert render.render_matches(MATCHES[:1], MARIA).startswith("Encontré 1 escuela para Diego:")
+
+
+def test_ask_grade():
+    assert render.render_ask_grade(MARIA.model_copy(update={"child_name": None})) == (
+        "**¿En qué grado está su hijo o hija ahora?** Así busco escuelas para el grado que sigue.")
+
+
+def test_theme_match_names_the_interest_that_fits():
+    ana = EN.model_copy(update={"child_name": "Ana", "interests": ["sports", "stem"]})
+    stem = MATCHES[1].model_copy(update={"theme": "STEM/Medicine", "reason_codes": ["theme_match"]})
+    assert "Its theme is science and technology, which Ana loves." in render.render_matches([stem], ana)

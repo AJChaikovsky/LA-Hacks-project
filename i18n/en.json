@@ -21,7 +21,27 @@
   "matches": {
     "intro": "I found {n} schools for {child}:",
     "general_header": "Good to know:",
-    "next": "**Would you like to know {child}'s chances of getting in?**"
+    "next": "**Would you like to know {child}'s chances of getting in?**",
+    "intro_one": "I found 1 school for {child}:",
+    "none_for_grade": "I don't have programs for {grade} grade yet. For now I cover middle schools ({low} to {high} grade) on the Eastside of Los Angeles.",
+    "none_fit": "I couldn't find a program on my list that fits {child}. For now I cover middle schools ({low} to {high} grade) on the Eastside of Los Angeles.",
+    "official_help": "You can see every program at choices.lausd.net or call (213) 241-4177.",
+    "confirm_grade": "**Can you confirm what grade {child} is in now?**",
+    "ask_grade": "**What grade is {child} in now?** Then I'll look for schools for next year's grade.",
+    "ordinals": {
+      "1": "1st",
+      "2": "2nd",
+      "3": "3rd",
+      "4": "4th",
+      "5": "5th",
+      "6": "6th",
+      "7": "7th",
+      "8": "8th",
+      "9": "9th",
+      "10": "10th",
+      "11": "11th",
+      "12": "12th"
+    }
   },
   "reasons": {
     "theme_match": "Its theme is {interest}, which {child} loves.",

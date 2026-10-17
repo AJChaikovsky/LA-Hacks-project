@@ -98,8 +98,10 @@ def reason_codes(profile: FamilyProfile, school: School) -> list[ReasonCode]:
     home_km = distance_km(place_coords(profile.home_neighborhood), school)
     work_km = distance_km(place_coords(profile.parent_work_area), school)
     reasons: list[ReasonCode] = []
-    exact = [i for i in profile.interests if cfg["theme_map"].get(i, {}).get(school.theme) == 1.0]
-    if exact:
+    fit = {i: cfg["theme_map"].get(i, {}).get(school.theme, 0.0) for i in profile.interests}
+    exact = [i for i, f in fit.items() if f == 1.0]
+    strong = [i for i, f in fit.items() if i != "arts" and f >= cfg.get("theme_match_min", 1.0)]
+    if exact or strong:
         reasons.append("theme_match")
     elif "arts" in profile.interests and school.theme == "STEAM":
         reasons.append("arts_in_steam")
