@@ -1,0 +1,10 @@
+{
+  "metric": "applications_2025_26 / openings_2026_27",
+  "heuristic": true,
+  "note": "Our heuristic, not LAUSD's. Never shown as a probability.",
+  "bands": [
+    {"band": "very_high", "min_apps_per_opening": 5},
+    {"band": "high", "min_apps_per_opening": 2},
+    {"band": "moderate", "min_apps_per_opening": 0}
+  ]
+}

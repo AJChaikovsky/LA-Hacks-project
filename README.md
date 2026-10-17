@@ -30,3 +30,7 @@ Requires Python 3.10 or newer (tested on 3.13).
 ## Data sources
 
 LAUSD 2027-28 Choices brochure, choices.lausd.net guidelines and FAQ. Points and odds are **estimates**; the official source is [choices.lausd.net](https://choices.lausd.net) or the Choices Support Line (213) 241-4177.
+
+PHBAO and overcrowded status come from LAUSD's 2026-27 Norm Category/Overcrowded School List (for 2027-28), kept in `docs/evidence/`.
+
+The competitiveness bands (5+ applications per opening = very high, 2+ = high, under 2 = moderate, in `config/competitiveness.json`) are **our heuristic, not LAUSD's**. The agent never states a probability.

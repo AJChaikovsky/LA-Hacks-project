@@ -1,0 +1,19 @@
+{
+  "applies_to": "magnet",
+  "on_time_only": true,
+  "max_total": 23,
+  "source": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
+  "factors": {
+    "matriculation": {"points": 12, "cap": 12, "cumulative": false, "combinable_with": ["phbao", "overcrowded", "sibling"], "first_choice_only": false, "source": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
+                      "note": "Finishing the top grade of a magnet and applying to the next level. One year only. Never combined with waitlist points."},
+    "waitlist": {"points": 4, "per": "year", "max_years": 3, "cap": 12, "cumulative": true, "combinable_with": ["phbao", "overcrowded", "sibling"], "first_choice_only": false, "source": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
+                 "note": "Prior 3 consecutive years on a valid on-time waitlist. Declining a magnet offer removes all of them. Same grade twice earns none."},
+    "phbao": {"points": 4, "cap": 4, "cumulative": false, "combinable_with": ["matriculation", "waitlist", "overcrowded", "sibling"], "first_choice_only": false, "source": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
+              "basis": "2027-28 resident school", "lookup": "data/resident_schools.json"},
+    "overcrowded": {"points": 4, "cap": 4, "cumulative": false, "combinable_with": ["matriculation", "waitlist", "phbao", "sibling"], "first_choice_only": false, "source": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
+                    "basis": "2026-27 resident school", "lookup": "data/resident_schools.json"},
+    "sibling": {"points": 3, "cap": 3, "cumulative": false, "combinable_with": ["matriculation", "waitlist", "phbao", "overcrowded"], "first_choice_only": true, "source": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
+                "note": "Sibling continuing at the 1st-choice school, same address, same Apply account."}
+  },
+  "late_or_invalid_points": 0
+}

@@ -1,0 +1,8 @@
+{
+  "magnet_max_choices": 3,
+  "program_types_max": 6,
+  "emc_max": 1,
+  "bus_radius_miles_secondary": 2,
+  "max_ride_minutes": 90,
+  "source": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27"
+}
