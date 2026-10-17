@@ -27,7 +27,7 @@
     "verified": false,
     "source_url": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
     "field_sources": {
-      "phone": "https://www.ed-data.org/school/los-angeles/los-angeles-unified/belvedere-middle",
+      "phone": "https://belvederems.lausd.org/ourpages/auto/2024/10/10/47271948/BMS%20Magnet%20-%20Media%20_%20STEAM.pdf",
       "lat": "https://nominatim.openstreetmap.org/",
       "lng": "https://nominatim.openstreetmap.org/"
     }
@@ -60,7 +60,7 @@
     "verified": false,
     "source_url": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
     "field_sources": {
-      "phone": "https://www.ed-data.org/school/los-angeles/los-angeles-unified/belvedere-middle",
+      "phone": "https://belvederems.lausd.org/ourpages/auto/2024/10/10/47271948/BMS%20Magnet%20-%20Media%20_%20STEAM.pdf",
       "lat": "https://nominatim.openstreetmap.org/",
       "lng": "https://nominatim.openstreetmap.org/"
     }
