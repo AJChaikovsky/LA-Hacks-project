@@ -129,8 +129,10 @@ def test_competitiveness_bands(apps, openings, band, ratio):
     assert competitiveness(_school(apps, openings)) == (band, ratio)
 
 
-def test_seed_programs_have_no_odds_until_b7():
-    assert all(e.competitiveness == "unknown" and e.apps_per_opening is None for e in estimate(maria(), GOLDEN))
+def test_golden_programs_use_official_seat_numbers():
+    # B7: Choices detail pages, 2025-26 applications / 2026-27 openings
+    got = {e.code: (e.competitiveness, e.apps_per_opening) for e in estimate(maria(), GOLDEN)}
+    assert got == {"1804703": ("moderate", 1.3), "1817902": ("moderate", 1.1), "1804702": ("moderate", 0.7)}
 
 
 def test_render_says_probably_4_of_23():

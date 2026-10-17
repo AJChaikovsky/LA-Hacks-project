@@ -21,15 +21,20 @@
     "gifted_verification": false,
     "languages": [],
     "transport_note": null,
-    "capacity_2026_27": null,
-    "applications_2025_26": null,
-    "openings_2026_27": null,
-    "verified": false,
+    "capacity_2026_27": 145,
+    "applications_2025_26": 71,
+    "openings_2026_27": 55,
+    "verified": true,
     "source_url": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
     "field_sources": {
-      "phone": "https://belvederems.lausd.org/ourpages/auto/2024/10/10/47271948/BMS%20Magnet%20-%20Media%20_%20STEAM.pdf",
+      "phone": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1804703",
       "lat": "https://nominatim.openstreetmap.org/",
-      "lng": "https://nominatim.openstreetmap.org/"
+      "lng": "https://nominatim.openstreetmap.org/",
+      "grades": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1804703",
+      "capacity_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1804703",
+      "applications_2025_26": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1804703",
+      "openings_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1804703",
+      "evidence": "docs/evidence/B7-1804703.pdf"
     }
   },
   {
@@ -48,21 +53,26 @@
     "lat": 34.03947,
     "lng": -118.18216,
     "region": "E",
-    "phone": "(323) 266-5400",
+    "phone": "(323) 266-5468",
     "website": null,
     "choices_url": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1804702",
     "gifted_verification": false,
     "languages": [],
     "transport_note": null,
-    "capacity_2026_27": null,
-    "applications_2025_26": null,
-    "openings_2026_27": null,
-    "verified": false,
+    "capacity_2026_27": 125,
+    "applications_2025_26": 32,
+    "openings_2026_27": 48,
+    "verified": true,
     "source_url": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
     "field_sources": {
-      "phone": "https://belvederems.lausd.org/ourpages/auto/2024/10/10/47271948/BMS%20Magnet%20-%20Media%20_%20STEAM.pdf",
+      "phone": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1804702",
       "lat": "https://nominatim.openstreetmap.org/",
-      "lng": "https://nominatim.openstreetmap.org/"
+      "lng": "https://nominatim.openstreetmap.org/",
+      "grades": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1804702",
+      "capacity_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1804702",
+      "applications_2025_26": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1804702",
+      "openings_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1804702",
+      "evidence": "docs/evidence/B7-1804702.pdf"
     }
   },
   {
@@ -81,21 +91,26 @@
     "lat": 34.03613,
     "lng": -118.21218,
     "region": "E",
-    "phone": "(323) 780-3000",
+    "phone": "(323) 780-3050",
     "website": null,
     "choices_url": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1817902",
     "gifted_verification": false,
     "languages": [],
     "transport_note": null,
-    "capacity_2026_27": null,
-    "applications_2025_26": null,
-    "openings_2026_27": null,
-    "verified": false,
+    "capacity_2026_27": 270,
+    "applications_2025_26": 126,
+    "openings_2026_27": 114,
+    "verified": true,
     "source_url": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
     "field_sources": {
-      "phone": "https://www.ed-data.org/school/los-angeles/los-angeles-unified/hollenbeck-middle",
+      "phone": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1817902",
       "lat": "https://nominatim.openstreetmap.org/",
-      "lng": "https://nominatim.openstreetmap.org/"
+      "lng": "https://nominatim.openstreetmap.org/",
+      "grades": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1817902",
+      "capacity_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1817902",
+      "applications_2025_26": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1817902",
+      "openings_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1817902",
+      "evidence": "docs/evidence/B7-1817902.pdf"
     }
   },
   {
@@ -120,15 +135,20 @@
     "gifted_verification": false,
     "languages": [],
     "transport_note": null,
-    "capacity_2026_27": null,
-    "applications_2025_26": null,
-    "openings_2026_27": null,
-    "verified": false,
+    "capacity_2026_27": 145,
+    "applications_2025_26": 27,
+    "openings_2026_27": 60,
+    "verified": true,
     "source_url": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
     "field_sources": {
-      "phone": "https://www.ed-data.org/school/los-angeles/los-angeles-unified/hollenbeck-middle",
+      "phone": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1817903",
       "lat": "https://nominatim.openstreetmap.org/",
-      "lng": "https://nominatim.openstreetmap.org/"
+      "lng": "https://nominatim.openstreetmap.org/",
+      "grades": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1817903",
+      "capacity_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1817903",
+      "applications_2025_26": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1817903",
+      "openings_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1817903",
+      "evidence": "docs/evidence/B7-1817903.pdf"
     }
   },
   {
@@ -153,15 +173,20 @@
     "gifted_verification": true,
     "languages": [],
     "transport_note": null,
-    "capacity_2026_27": null,
-    "applications_2025_26": null,
-    "openings_2026_27": null,
-    "verified": false,
+    "capacity_2026_27": 125,
+    "applications_2025_26": 11,
+    "openings_2026_27": 42,
+    "verified": true,
     "source_url": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
     "field_sources": {
-      "phone": "https://www.ed-data.org/school/los-angeles/los-angeles-unified/robert-louis-stevenson-college-and-career-preparatory",
+      "phone": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1838702",
       "lat": "https://nominatim.openstreetmap.org/",
-      "lng": "https://nominatim.openstreetmap.org/"
+      "lng": "https://nominatim.openstreetmap.org/",
+      "grades": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1838702",
+      "capacity_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1838702",
+      "applications_2025_26": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1838702",
+      "openings_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1838702",
+      "evidence": "docs/evidence/B7-1838702.pdf"
     }
   },
   {
@@ -221,15 +246,20 @@
     "gifted_verification": false,
     "languages": [],
     "transport_note": null,
-    "capacity_2026_27": null,
-    "applications_2025_26": null,
-    "openings_2026_27": null,
-    "verified": false,
+    "capacity_2026_27": 1041,
+    "applications_2025_26": 192,
+    "openings_2026_27": 347,
+    "verified": true,
     "source_url": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
     "field_sources": {
-      "phone": "https://www.ed-data.org/school/los-angeles/los-angeles-unified/griffith-middle",
+      "phone": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1816801",
       "lat": "https://nominatim.openstreetmap.org/",
-      "lng": "https://nominatim.openstreetmap.org/"
+      "lng": "https://nominatim.openstreetmap.org/",
+      "grades": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1816801",
+      "capacity_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1816801",
+      "applications_2025_26": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1816801",
+      "openings_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1816801",
+      "evidence": "docs/evidence/B7-1816801.pdf"
     }
   },
   {
@@ -254,15 +284,20 @@
     "gifted_verification": false,
     "languages": [],
     "transport_note": null,
-    "capacity_2026_27": null,
-    "applications_2025_26": null,
-    "openings_2026_27": null,
-    "verified": false,
+    "capacity_2026_27": 250,
+    "applications_2025_26": 42,
+    "openings_2026_27": 84,
+    "verified": true,
     "source_url": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
     "field_sources": {
-      "phone": "https://www.ed-data.org/school/los-angeles/los-angeles-unified/los-angeles-academy-middle",
+      "phone": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1820002",
       "lat": "https://nominatim.openstreetmap.org/",
-      "lng": "https://nominatim.openstreetmap.org/"
+      "lng": "https://nominatim.openstreetmap.org/",
+      "grades": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1820002",
+      "capacity_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1820002",
+      "applications_2025_26": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1820002",
+      "openings_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1820002",
+      "evidence": "docs/evidence/B7-1820002.pdf"
     }
   },
   {
@@ -273,8 +308,7 @@
     "sub_theme": null,
     "grades": [
       6,
-      7,
-      8
+      7
     ],
     "address": "151 W 30th St, Los Angeles, 90007",
     "zip": "90007",
@@ -287,15 +321,20 @@
     "gifted_verification": false,
     "languages": [],
     "transport_note": null,
-    "capacity_2026_27": null,
-    "applications_2025_26": null,
-    "openings_2026_27": null,
-    "verified": false,
+    "capacity_2026_27": 70,
+    "applications_2025_26": 36,
+    "openings_2026_27": 35,
+    "verified": true,
     "source_url": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
     "field_sources": {
-      "phone": "https://www.ed-data.org/school/los-angeles/los-angeles-unified/john-adams-middle",
+      "phone": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1800903",
       "lat": "https://nominatim.openstreetmap.org/",
-      "lng": "https://nominatim.openstreetmap.org/"
+      "lng": "https://nominatim.openstreetmap.org/",
+      "grades": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1800903",
+      "capacity_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1800903",
+      "applications_2025_26": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1800903",
+      "openings_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1800903",
+      "evidence": "docs/evidence/B7-1800903.pdf"
     }
   },
   {
@@ -320,15 +359,20 @@
     "gifted_verification": false,
     "languages": [],
     "transport_note": null,
-    "capacity_2026_27": null,
-    "applications_2025_26": null,
-    "openings_2026_27": null,
-    "verified": false,
+    "capacity_2026_27": 125,
+    "applications_2025_26": 10,
+    "openings_2026_27": 42,
+    "verified": true,
     "source_url": "https://choices.lausd.net/Brochure/Brochure_EN.pdf?27",
     "field_sources": {
-      "phone": "https://www.ed-data.org/school/los-angeles/los-angeles-unified/edwin-markham-middle",
+      "phone": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1823703",
       "lat": "https://nominatim.openstreetmap.org/",
-      "lng": "https://nominatim.openstreetmap.org/"
+      "lng": "https://nominatim.openstreetmap.org/",
+      "grades": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1823703",
+      "capacity_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1823703",
+      "applications_2025_26": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1823703",
+      "openings_2026_27": "https://choices.lausd.net/Magnet/MagnetSchoolDetail?sc=1823703",
+      "evidence": "docs/evidence/B7-1823703.pdf"
     }
   }
 ]
