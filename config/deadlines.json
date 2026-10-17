@@ -2,13 +2,81 @@
   "timezone": "America/Los_Angeles",
   "source": "https://laist.com/news/education/lausd-choices-application-2027-2028-school-year-magnets-charters-dual-language",
   "deadlines": [
-    {"key": "on_time_open", "date": "2026-10-01", "month": null, "label_es": "abrió la solicitud", "label_en": "on-time window opened", "source": "https://laist.com/news/education/lausd-choices-application-2027-2028-school-year-magnets-charters-dual-language"},
-    {"key": "on_time_deadline", "date": "2026-11-06", "month": null, "label_es": "fecha límite a tiempo; último día para cambios en línea", "label_en": "on-time deadline; last day for online edits", "source": "https://choices.lausd.net/Home/GeneralInformation"},
-    {"key": "late_window_opens", "date": "2026-12-01", "month": null, "label_es": "empiezan las solicitudes tardías (sin puntos)", "label_en": "late window opens (no points)", "source": "https://laist.com/news/education/lausd-choices-application-2027-2028-school-year-magnets-charters-dual-language"},
-    {"key": "confirmation_notice", "date": null, "month": "2026-12", "label_es": "aviso de confirmación: revise sus puntos y hermanos", "label_en": "confirmation notice: check points and sibling info", "source": "https://choices.lausd.net/Home/GeneralInformation"},
-    {"key": "correction_deadline", "date": "2026-12-18", "month": null, "label_es": "último día para corregir o retirar (ApplyforSchools@lausd.net)", "label_en": "last day to correct or withdraw (ApplyforSchools@lausd.net)", "source": "https://choices.lausd.net/Home/GeneralInformation"},
-    {"key": "results", "date": null, "month": "2027-02", "label_es": "resultados (principios de febrero de 2027)", "label_en": "selection / waitlist notification (early Feb 2027)", "source": "https://laist.com/news/education/lausd-choices-application-2027-2028-school-year-magnets-charters-dual-language"},
-    {"key": "accept_decline", "date": "2027-03-05", "month": null, "label_es": "aceptar o rechazar (si no contesta, cuenta como rechazo)", "label_en": "accept or decline (no response = decline)", "source": "https://laist.com/news/education/lausd-choices-application-2027-2028-school-year-magnets-charters-dual-language"},
-    {"key": "school_starts", "date": "2027-08-12", "month": null, "label_es": "empiezan las clases", "label_en": "school year starts", "source": "https://laist.com/news/education/lausd-choices-application-2027-2028-school-year-magnets-charters-dual-language"}
+    {
+      "key": "on_time_open",
+      "date": "2026-10-01",
+      "month": null,
+      "label_es": "abrió la solicitud",
+      "label_en": "on-time window opened",
+      "source": "https://laist.com/news/education/lausd-choices-application-2027-2028-school-year-magnets-charters-dual-language"
+    },
+    {
+      "key": "on_time_deadline",
+      "date": "2026-11-06",
+      "month": null,
+      "label_es": "fecha límite a tiempo; último día para cambios en línea",
+      "label_en": "on-time deadline; last day for online edits",
+      "source": "https://choices.lausd.net/Home/GeneralInformation"
+    },
+    {
+      "key": "late_window_opens",
+      "date": "2026-12-01",
+      "month": null,
+      "label_es": "empiezan las solicitudes tardías (sin puntos)",
+      "label_en": "late window opens (no points)",
+      "source": "https://laist.com/news/education/lausd-choices-application-2027-2028-school-year-magnets-charters-dual-language"
+    },
+    {
+      "key": "confirmation_notice",
+      "date": null,
+      "month": "2026-12",
+      "label_es": "aviso de confirmación: revise sus puntos y hermanos",
+      "label_en": "confirmation notice: check points and sibling info",
+      "source": "https://choices.lausd.net/Home/GeneralInformation"
+    },
+    {
+      "key": "correction_deadline",
+      "date": "2026-12-18",
+      "month": null,
+      "label_es": "último día para corregir o retirar (ApplyforSchools@lausd.net)",
+      "label_en": "last day to correct or withdraw (ApplyforSchools@lausd.net)",
+      "source": "https://choices.lausd.net/Home/GeneralInformation"
+    },
+    {
+      "key": "results",
+      "date": null,
+      "month": "2027-02",
+      "label_es": "resultados (principios de febrero de 2027)",
+      "label_en": "selection / waitlist notification (early Feb 2027)",
+      "source": "https://laist.com/news/education/lausd-choices-application-2027-2028-school-year-magnets-charters-dual-language"
+    },
+    {
+      "key": "accept_decline",
+      "date": "2027-03-05",
+      "month": null,
+      "label_es": "aceptar o rechazar (si no contesta, cuenta como rechazo)",
+      "label_en": "accept or decline (no response = decline)",
+      "source": "https://laist.com/news/education/lausd-choices-application-2027-2028-school-year-magnets-charters-dual-language"
+    },
+    {
+      "key": "school_starts",
+      "date": "2027-08-12",
+      "month": null,
+      "label_es": "empiezan las clases",
+      "label_en": "school year starts",
+      "source": "https://laist.com/news/education/lausd-choices-application-2027-2028-school-year-magnets-charters-dual-language"
+    }
+  ],
+  "plan_keys": [
+    "on_time_deadline",
+    "correction_deadline",
+    "results",
+    "accept_decline"
+  ],
+  "plan_keys_late": [
+    "late_window_opens",
+    "correction_deadline",
+    "results",
+    "accept_decline"
   ]
 }
