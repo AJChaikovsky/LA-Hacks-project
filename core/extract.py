@@ -311,7 +311,7 @@ def find_doubtful(t: str, mentions: list[tuple[int, str]]) -> list[str]:
 
 
 _ALL_MATCHES = re.compile(r"\b(las|los|esas|estas|all|the|those|these) (tres|3|three)\b|\btodas\b|all of them")
-_ONLY = re.compile(r"\b(solo|solamente|nada mas|only|just)\b")
+_ONLY = re.compile(r"\b(solo|solamente|nada mas|only|just)\b(?! in case)")
 
 
 def parse_school_list(text: str, match_codes: list[str]) -> tuple[list[str], list[str]]:
