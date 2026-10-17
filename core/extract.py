@@ -209,6 +209,8 @@ def load_places() -> dict[str, list[str]]:
     if path.exists():
         try:
             raw = json.loads(path.read_text(encoding="utf-8"))
+            if isinstance(raw, dict) and isinstance(raw.get("neighborhoods"), dict):
+                raw = raw["neighborhoods"]  # B1 shape: {"neighborhoods": {name: {lat, lng, aliases}}}
             items = raw.items() if isinstance(raw, dict) else [(p.get("name"), p) for p in raw]
             for name, info in items:
                 if not name:
