@@ -220,8 +220,10 @@ def render_plan(plan: ActionPlan, profile: FamilyProfile) -> str:
     lines += ["", pl["email_header"], _fmt(pl["subject"], subject=plan.email_subject), ""]
     lines += [f"> {row}" if row else ">" for row in plan.email_body.split("\n")]
     if plan.coordinator_phone:
-        lines += ["", _fmt(pl["coordinator_phone"], name=program_name(plan.coordinator_code or "", lang),
-                           phone=plan.coordinator_phone)]
+        # The number is the school's main line (data/schools.json), so name the school and say who to ask for.
+        school = schools().get(plan.coordinator_code or "", {}).get("name")
+        key = "coordinator_phone" if school else "coordinator_phone_no_name"
+        lines += ["", _fmt(pl[key], name=school, phone=plan.coordinator_phone)]
 
     lines += ["", pl["no_submit"]]
     if main_deadline:

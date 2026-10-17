@@ -121,3 +121,11 @@ def test_respond_to_selection():
     assert r.show_email and "Belvedere" in r.narration
     assert cards.respond_to_selection({"action": "reject_packet"}, STATE).narration == "¿Qué quiere cambiar?"
     assert cards.respond_to_selection({"action": "dance"}, STATE) is None
+
+
+def test_review_card_school_phone_row():
+    plan = PLAN.model_copy(update={"coordinator_code": "1804703", "coordinator_phone": "(323) 266-5400"})
+    payload = cards.packet_review(plan, MARIA, CODES)
+    rows = {r["label"]: r["value"] for r in payload["summary_rows"]}
+    assert rows["Teléfono de la escuela (pida al coordinador)"] == "(323) 266-5400"
+    assert cards.validate("review", payload) == []

@@ -113,9 +113,9 @@ def test_phone_shows_in_reply_and_review_card():
     from agents.cards import packet_review, validate
     from core.render import render_plan
     plan = build_plan(maria(), GOLDEN, "es", OCT17)
-    assert "Si prefiere llamar: Belvedere MS · STEAM, (323) 266-5400." in render_plan(plan, maria())
+    assert "¿Prefiere llamar? Belvedere MS: (323) 266-5400" in render_plan(plan, maria())
     card = packet_review(plan, maria(), GOLDEN)
-    assert {"label": "Teléfono", "value": "(323) 266-5400"} in card["summary_rows"]
+    assert {"label": "Teléfono de la escuela (pida al coordinador)", "value": "(323) 266-5400"} in card["summary_rows"]
     assert validate("review", card) == []
     en = maria(language="en")
     assert "Prefer to call? " in render_plan(build_plan(en, GOLDEN, "en", OCT17), en)

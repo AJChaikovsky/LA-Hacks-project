@@ -162,3 +162,13 @@ def test_spanish_reply_translates_places():
     assert "¿Hay transporte escolar desde el centro de Los Ángeles?" in out
     assert render.place("Boyle Heights", "es") == "Boyle Heights"
     assert render.place("Downtown", "en") == "downtown Los Angeles"
+
+
+def test_coordinator_phone_line():
+    plan = PLAN.model_copy(update={"coordinator_code": "1804703", "coordinator_phone": "(323) 266-5400"})
+    out = render.render_plan(plan, MARIA)
+    assert "¿Prefiere llamar? Belvedere MS: (323) 266-5400 (pida hablar con el coordinador del programa magnet)." in out
+    assert "Prefer to call? Belvedere MS: (323) 266-5400 (ask for the magnet coordinator)." in render.render_plan(plan, EN)
+    no_code = render.render_plan(plan.model_copy(update={"coordinator_code": None}), MARIA)
+    assert "¿Prefiere llamar? (323) 266-5400" in no_code and ": ," not in no_code
+    assert "¿Prefiere llamar?" not in render.render_plan(PLAN, MARIA)  # no phone -> no line
