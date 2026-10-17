@@ -132,19 +132,6 @@
     "December"
   ],
   "date_format": "{month} {d}, {y}",
-  "program_names": {
-    "1804703": "Bel Vedere MS · STEAM",
-    "1804702": "Bel Vedere MS · Digital Media",
-    "1817902": "Hollenbeck MS · STEM & Medicine",
-    "1817903": "Hollenbeck MS · Law & Public Service",
-    "1838702": "Stevenson · Gifted",
-    "1838701TWS": "Stevenson MS · Spanish dual language",
-    "1816801": "Griffith MS · STEM",
-    "1820002": "Los Angeles Academy MS · STEAM",
-    "1800903": "Adams MS · Robotics & Engineering",
-    "1823703": "Markham MS · Arts",
-    "1823702": "Markham MS · Health Careers"
-  },
   "cards": {
     "carousel_title": "Schools for {child}",
     "carousel_subtitle": "Tap a school to see details",
@@ -171,5 +158,21 @@
     "change_q": "What would you like to change?",
     "added": "I added {name} to your list.",
     "already": "{name} is already on your list."
+  },
+  "program_labels": {
+    "1804703": "STEAM",
+    "1804702": "Digital Media",
+    "1817902": "STEM & Medicine",
+    "1817903": "Law & Public Service",
+    "1838702": "Gifted",
+    "1838701TWS": "Spanish dual language",
+    "1816801": "STEAM",
+    "1820002": "STEAM",
+    "1800903": "Robotics & Engineering",
+    "1823703": "Arts",
+    "1823702": "Health Careers"
+  },
+  "places": {
+    "Downtown": "downtown Los Angeles"
   }
 }

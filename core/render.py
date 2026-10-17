@@ -25,7 +25,9 @@ from core.types import (
     SchoolMatch,
 )
 
-I18N = Path(__file__).resolve().parent.parent / "i18n"
+ROOT = Path(__file__).resolve().parent.parent
+I18N = ROOT / "i18n"
+SCHOOLS = ROOT / "data" / "schools.json"
 
 # Reasons that are true for every school; shown once under the list instead of per school.
 _GENERAL_REASONS = ("no_vapa_nearby", "iep_eligible")
@@ -46,12 +48,31 @@ def _child(profile: FamilyProfile) -> str:
     return profile.child_name or _s(profile)["child_default"]
 
 
+@cache
+def schools() -> dict[str, dict]:
+    """data/schools.json (Dev B, B1) by program code: the source of truth for official school names."""
+    try:
+        return {s["code"]: s for s in json.loads(SCHOOLS.read_text(encoding="utf-8"))}
+    except (OSError, ValueError, KeyError, TypeError):
+        return {}
+
+
 def program_name(code: str, lang: str, matches: list[SchoolMatch] | None = None) -> str:
-    names = strings(lang)["program_names"]
-    if code in names:
-        return names[code]
+    """'Belvedere MS · STEAM': official name from data/schools.json, program label from i18n."""
     m = next((m for m in matches or [] if m.code == code), None)
-    return f"{m.name} · {m.theme}" if m else code
+    record = schools().get(code, {})
+    name = record.get("name") or (m.name if m else None)
+    label = strings(lang)["program_labels"].get(code) or record.get("theme") or (m.theme if m else None)
+    if not name:
+        return code
+    return f"{name} · {label}" if label else name
+
+
+def place(name: str | None, lang: str) -> str:
+    """A neighborhood as it should read in this language ('Downtown' -> 'el centro de Los Ángeles')."""
+    if not name:
+        return ""
+    return strings(lang)["places"].get(name, name)
 
 
 def _names(codes: list[str], lang: str) -> str:
@@ -77,7 +98,8 @@ def _fmt(template: str, **params) -> str:
 
 def render_matches(matches: list[SchoolMatch], profile: FamilyProfile) -> str:
     s, child = _s(profile), _child(profile)
-    ctx = dict(child=child, home=profile.home_neighborhood or "", work=profile.parent_work_area or "",
+    ctx = dict(child=child, home=place(profile.home_neighborhood, profile.language),
+               work=place(profile.parent_work_area, profile.language),
                interest=s["interests"].get(profile.interests[0], "") if profile.interests else "")
     lines = [_fmt(s["matches"]["intro"], n=len(matches), child=child), ""]
     general: list[str] = []

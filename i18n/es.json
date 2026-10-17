@@ -132,19 +132,6 @@
     "diciembre"
   ],
   "date_format": "{d} de {month} de {y}",
-  "program_names": {
-    "1804703": "Bel Vedere MS · STEAM",
-    "1804702": "Bel Vedere MS · Medios digitales",
-    "1817902": "Hollenbeck MS · STEM y Medicina",
-    "1817903": "Hollenbeck MS · Leyes y Servicio Público",
-    "1838702": "Stevenson · Gifted",
-    "1838701TWS": "Stevenson MS · Programa bilingüe en español",
-    "1816801": "Griffith MS · STEM",
-    "1820002": "Los Angeles Academy MS · STEAM",
-    "1800903": "Adams MS · Robótica e Ingeniería",
-    "1823703": "Markham MS · Artes",
-    "1823702": "Markham MS · Carreras de Salud"
-  },
   "cards": {
     "carousel_title": "Escuelas para {child}",
     "carousel_subtitle": "Toque una escuela para ver detalles",
@@ -171,5 +158,23 @@
     "change_q": "¿Qué quiere cambiar?",
     "added": "Agregué {name} a su lista.",
     "already": "{name} ya está en su lista."
+  },
+  "program_labels": {
+    "1804703": "STEAM",
+    "1804702": "Medios digitales",
+    "1817902": "STEM y Medicina",
+    "1817903": "Leyes y Servicio Público",
+    "1838702": "Gifted",
+    "1838701TWS": "Programa bilingüe en español",
+    "1816801": "STEAM",
+    "1820002": "STEAM",
+    "1800903": "Robótica e Ingeniería",
+    "1823703": "Artes",
+    "1823702": "Carreras de Salud"
+  },
+  "places": {
+    "Downtown": "el centro de Los Ángeles",
+    "East Los Angeles": "el Este de Los Ángeles",
+    "South LA": "el Sur de Los Ángeles"
   }
 }

@@ -30,19 +30,19 @@ def fake_llm(monkeypatch, **draft):
 
 def test_template_es_has_three_questions_and_english_copy():
     subject, body = em.draft_email(MARIA, CODES)
-    assert subject == "Preguntas sobre el programa STEAM de Bel Vedere MS (estudiante con IEP)"
+    assert subject == "Preguntas sobre el programa STEAM de Belvedere MS (estudiante con IEP)"
     spanish, english = body.split("\n\n---\nEnglish:\n")
-    assert spanish.startswith("Estimado/a coordinador/a del programa magnet de Bel Vedere MS:")
+    assert spanish.startswith("Estimado/a coordinador/a del programa magnet de Belvedere MS:")
     assert "Diego, que entra a sexto grado el próximo año y tiene un IEP" in spanish
     assert "¿Hay transporte escolar desde Boyle Heights?" in spanish
     assert spanish.rstrip().endswith("Maria")
-    assert "Dear magnet coordinator at Bel Vedere MS" in english and "6th grade" in english
+    assert "Dear magnet coordinator at Belvedere MS" in english and "6th grade" in english
     assert em.problems(spanish, MARIA) == [] and em.problems(english, MARIA) == []
 
 
 def test_template_en_has_no_copy():
     subject, body = em.draft_email(EN, CODES)
-    assert subject.startswith("Questions about the STEAM program at Bel Vedere MS")
+    assert subject.startswith("Questions about the STEAM program at Belvedere MS")
     assert "English:" not in body and "1. What special education supports" in body
 
 
@@ -67,7 +67,7 @@ def test_good_llm_draft_is_used(monkeypatch, llm_on):
     calls = fake_llm(monkeypatch, subject="Preguntas sobre STEAM", body=body, body_en=body_en)
     subject, out = em.draft_email(MARIA, CODES)
     assert subject == "Preguntas sobre STEAM" and out.startswith(body) and body_en in out
-    assert '"school": "Bel Vedere MS"' in calls[0] and '"has_iep": true' in calls[0]
+    assert '"school": "Belvedere MS"' in calls[0] and '"has_iep": true' in calls[0]
 
 
 @pytest.mark.parametrize("bad", [

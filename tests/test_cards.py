@@ -52,7 +52,7 @@ def test_carousel_content():
     assert payload["title"] == "Escuelas para Diego"
     first = payload["items"][0]
     assert first["id"] == "1804703"
-    assert first["title"] == "Bel Vedere MS · STEAM"
+    assert first["title"] == "Belvedere MS · STEAM"
     assert first["secondary_text"] == "STEAM · probablemente 4 de 23"
     assert first["primary_cta"] == {"label": "Ver detalles", "selection": {"action": "details", "code": "1804703"}}
 
@@ -69,7 +69,7 @@ def test_review_rows():
     payload = cards.packet_review(PLAN, MARIA, CODES)
     rows = {r["label"]: r["value"] for r in payload["summary_rows"]}
     assert rows["Fecha límite"] == "6 de noviembre de 2026"
-    assert rows["Escuelas (en orden)"].startswith("1. Bel Vedere MS · STEAM")
+    assert rows["Escuelas (en orden)"].startswith("1. Belvedere MS · STEAM")
 
 
 @pytest.mark.parametrize("kind,payload,error", [
@@ -94,7 +94,7 @@ def test_invalid_payload_or_cards_off_sends_text_only(monkeypatch):
 @pytest.mark.parametrize("text,expected", [
     ('{"action": "details", "code": "1817902"}', {"action": "details", "code": "1817902"}),
     ("Ver detalles: Hollenbeck MS · STEM y Medicina", {"action": "details", "code": "1817902"}),
-    ("I'd like to view details for Bel Vedere MS · STEAM", {"action": "details", "code": "1804703"}),
+    ("I'd like to view details for Belvedere MS · STEAM", {"action": "details", "code": "1804703"}),
     ("Agregar a mi lista Bel Vedere STEAM", {"action": "add", "code": "1804703"}),
     ("Ver el correo completo", {"action": "approve_packet"}),
     ("Change something", {"action": "reject_packet"}),
@@ -118,6 +118,6 @@ def test_respond_to_selection():
     r = cards.respond_to_selection({"action": "back"}, STATE)
     assert r.kind == "carousel"
     r = cards.respond_to_selection({"action": "approve_packet"}, STATE)
-    assert r.show_email and "Bel Vedere" in r.narration
+    assert r.show_email and "Belvedere" in r.narration
     assert cards.respond_to_selection({"action": "reject_packet"}, STATE).narration == "¿Qué quiere cambiar?"
     assert cards.respond_to_selection({"action": "dance"}, STATE) is None

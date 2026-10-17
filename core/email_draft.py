@@ -24,7 +24,7 @@ from pydantic import BaseModel
 
 from core import llm
 from core.extract import norm
-from core.render import program_name
+from core.render import place, program_name
 from core.types import FamilyProfile
 
 log = logging.getLogger("email")
@@ -55,7 +55,7 @@ def template(profile: FamilyProfile, code: str, lang: str) -> tuple[str, str]:
     school, theme = _school_parts(code, lang)
     child = profile.child_name
     grade = profile.applying_grade
-    home = profile.home_neighborhood
+    home = place(profile.home_neighborhood, lang)
     signer = profile.parent_name or ("[Su nombre]" if lang == "es" else "[Your name]")
     notes = f" ({profile.iep_notes})" if profile.iep_notes else ""
 
@@ -152,7 +152,7 @@ def _facts(profile: FamilyProfile, code: str, lang: str) -> str:
         "school": school, "program": theme or "magnet",
         "child_name": profile.child_name, "grade_next_year": profile.applying_grade,
         "has_iep": bool(profile.iep), "iep_services": profile.iep_notes,
-        "interests": profile.interests, "neighborhood": profile.home_neighborhood,
+        "interests": profile.interests, "neighborhood": place(profile.home_neighborhood, lang),
     }, ensure_ascii=False)  # no parent name: the model guesses gender/role from it; we sign in code
 
 

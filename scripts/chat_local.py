@@ -177,7 +177,7 @@ def main() -> int:
     ap.add_argument("--debug", action="store_true", help="show [EXTRACT]/[INTENT]/[LLM] logs")
     args = ap.parse_args()
     if args.no_llm:
-        os.environ["EXTRACT_LLM"] = os.environ["INTENT_LLM"] = "off"
+        os.environ["EXTRACT_LLM"] = os.environ["INTENT_LLM"] = os.environ["EMAIL_LLM"] = "off"
     logging.basicConfig(level=logging.INFO if args.debug else logging.WARNING, format="\033[2m%(name)s %(message)s\033[0m")
     for noisy in ("httpx", "openai"):
         logging.getLogger(noisy).setLevel(logging.WARNING)
