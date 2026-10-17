@@ -324,6 +324,28 @@ Each gate has one pass condition:
 - G3 past 3:00 AM → ship only the Points agent as a separate agent; Paperwork stays in-process. Drop all stretch cards.
 - G4 cannot slip. Whatever passes 10 of 10 at 8:00 AM is the demo.
 
+## Phases (parallel work)
+
+Every phase has one lane per person, and every ticket depends only on the Phase 0 contracts and fixtures, or on the same person's earlier tickets. Nobody waits on a teammate's module: A wires against `core/stubs.py`, and C renders and builds cards against `tests/fixtures/`. B's real code replaces both as it merges. Ticket numbers are GitHub issues; each one carries a `phase-N` label.
+
+| Phase | Window | Dev A (agents) | Dev B (logic, data) | Dev C (language, demo) | Exit |
+| --- | --- | --- | --- | --- | --- |
+| 0 · Contract huddle | Sat 2:30–3:30 PM | #1 A0 scaffold | #9 B0 contracts + Maria fixtures | #18 C0 LLM client | G0 |
+| 1 · Foundations | Sat 3:30–6:00 PM | #2 A1 hello ASI:One | #10 B1 schools.json · #11 B2 config | #19 C1 extraction | G1 (5:30) |
+| 2 · Core modules | Sat 6:00–8:00 PM | #3 A2 sessions + routing | #12 B3 matcher → #13 B4 points | #20 C2 intent → #21 C3 renderer | — |
+| 3 · Integration | Sat 8:00–10:30 PM | #4 A3 wire golden + #5 A4 skeletons on stubs | #13 B4 finish · #14 B5 guardrails | #21 C3 finish · #24 C6 golden skeleton | G2 (10:30) |
+| 4 · Multi-agent + UX | Sat 10:30 PM–Sun 2:00 AM | #5 A4 finish · #6 A5 hosting | #15 B6 paperwork · #16 B7 seat data | #22 C4 cards · #23 C5 email | G3 (2:00) |
+| 5 · Hardening | Sun 2:00–8:00 AM | #6 A5 on call · #8 A7 stretch, sleep 4:30–7:30 | sleep 12:30–3:30 · #17 B8 edge cases | sleep 1:30–4:30 · #24 C6 to 10/10 | G4 freeze (8:00) |
+| 6 · Ship | Sun 8:00–11:30 AM | #7 A6 README + registration | fact-check, live golden runs, judge Q&A | #25 C7 video + Devpost | Submit (11:30) |
+
+**What makes this blocking-free:**
+
+1. **Phase 0 freezes more than types.** It also freezes the reason-code and warning-code constants, plus four hand-written fixtures (`tests/fixtures/maria_profile.json`, `maria_matches.json`, `maria_estimates.json`, `maria_plan.json`). Stubs return these fixtures.
+2. **One owner per file.** The email lives in `core/email_draft.py` (C), and `core/paperwork.py` stays B's. `scripts/replay_golden.py` belongs to C6, and A3 reuses it.
+3. **A never idles while waiting for merges.** In Phase 3, A wires each module the moment it lands and builds the A4 specialist agents on stubs in between.
+4. **Merge order at each gate is B → C → A.** After each merge, everyone pulls `main` and runs `scripts/replay_golden.py`.
+5. **Until the Dev A teammate joins, Rishi runs the A lane first** (A0, A1 for G1), then the C lane. If nobody has joined by about 6 PM, apply the "if a gate slips" cuts.
+
 ## Feature cards: Dev A (agents and Fetch platform)
 
 Dev A's job is to make sure that from 5:30 PM Saturday on, there is **always** an agent in ASI:One that answers. Every later card makes it smarter without ever making it unreachable.
