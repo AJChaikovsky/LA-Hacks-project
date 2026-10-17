@@ -73,7 +73,7 @@ def test_every_profile_phrasing_is_profile_info(text, _lang, _dt):
 def test_card_selection_parsing():
     assert intent.parse_card_selection('{"code": "1804703"}') == {"code": "1804703"}
     assert intent.parse_card_selection("I selected 1838701TWS")["code"] == "1838701TWS"
-    assert intent.parse_card_selection("Agregar a mi lista") == {"raw_text": "Agregar a mi lista"}
+    assert intent.parse_card_selection("Agregar a mi lista") == {"action": "add", "raw_text": "Agregar a mi lista"}
     assert intent.parse_card_selection(TURN3) is None
     assert intent.parse_card_selection("[1, 2]") is None
 

@@ -1,12 +1,20 @@
 {
   "child_default": "your child",
   "interests": {
-    "arts": "art", "stem": "science and technology", "medicine": "medicine", "law": "law",
-    "media": "digital media", "languages": "languages", "sports": "sports", "business": "business",
+    "arts": "art",
+    "stem": "science and technology",
+    "medicine": "medicine",
+    "law": "law",
+    "media": "digital media",
+    "languages": "languages",
+    "sports": "sports",
+    "business": "business",
     "environment": "the environment"
   },
   "competitiveness": {
-    "very_high": "very competitive", "high": "competitive", "moderate": "moderately competitive",
+    "very_high": "very competitive",
+    "high": "competitive",
+    "moderate": "moderately competitive",
     "unknown": "no official seat data yet"
   },
   "matches": {
@@ -109,7 +117,20 @@
     "no_submit": "You submit the application; we never submit anything.",
     "action": "**Finish your application before {date}.**"
   },
-  "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  "months": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ],
   "date_format": "{month} {d}, {y}",
   "program_names": {
     "1804703": "Bel Vedere MS · STEAM",
@@ -123,5 +144,32 @@
     "1800903": "Adams MS · Robotics & Engineering",
     "1823703": "Markham MS · Arts",
     "1823702": "Markham MS · Health Careers"
+  },
+  "cards": {
+    "carousel_title": "Schools for {child}",
+    "carousel_subtitle": "Tap a school to see details",
+    "details": "View details",
+    "add": "Add to my list",
+    "back": "See the other schools",
+    "row_theme": "Program",
+    "row_address": "Address",
+    "row_phone": "Phone",
+    "row_bus": "Bus",
+    "row_points": "Estimated points",
+    "points_value": "{total} of 23",
+    "points_maybe": "probably {total} of 23",
+    "no_points": "No points (lottery)",
+    "bus_unknown": "Ask the school",
+    "review_title": "Your Choices application",
+    "row_schools": "Schools (in order)",
+    "row_deadline": "Deadline",
+    "row_docs": "Documents",
+    "row_email": "Email to the coordinator",
+    "docs_value": "{n} things to have ready",
+    "approve": "See the full email",
+    "reject": "Change something",
+    "change_q": "What would you like to change?",
+    "added": "I added {name} to your list.",
+    "already": "{name} is already on your list."
   }
 }

@@ -1,12 +1,20 @@
 {
   "child_default": "su hijo o hija",
   "interests": {
-    "arts": "arte", "stem": "ciencia y tecnología", "medicine": "medicina", "law": "leyes",
-    "media": "medios digitales", "languages": "idiomas", "sports": "deportes", "business": "negocios",
+    "arts": "arte",
+    "stem": "ciencia y tecnología",
+    "medicine": "medicina",
+    "law": "leyes",
+    "media": "medios digitales",
+    "languages": "idiomas",
+    "sports": "deportes",
+    "business": "negocios",
     "environment": "medio ambiente"
   },
   "competitiveness": {
-    "very_high": "competencia muy alta", "high": "competencia alta", "moderate": "competencia moderada",
+    "very_high": "competencia muy alta",
+    "high": "competencia alta",
+    "moderate": "competencia moderada",
     "unknown": "sin datos oficiales de cupos todavía"
   },
   "matches": {
@@ -109,7 +117,20 @@
     "no_submit": "Usted envía la solicitud; nosotros no enviamos nada.",
     "action": "**Termine su solicitud antes del {date}.**"
   },
-  "months": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+  "months": [
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre"
+  ],
   "date_format": "{d} de {month} de {y}",
   "program_names": {
     "1804703": "Bel Vedere MS · STEAM",
@@ -123,5 +144,32 @@
     "1800903": "Adams MS · Robótica e Ingeniería",
     "1823703": "Markham MS · Artes",
     "1823702": "Markham MS · Carreras de Salud"
+  },
+  "cards": {
+    "carousel_title": "Escuelas para {child}",
+    "carousel_subtitle": "Toque una escuela para ver detalles",
+    "details": "Ver detalles",
+    "add": "Agregar a mi lista",
+    "back": "Ver las otras escuelas",
+    "row_theme": "Programa",
+    "row_address": "Dirección",
+    "row_phone": "Teléfono",
+    "row_bus": "Autobús",
+    "row_points": "Puntos estimados",
+    "points_value": "{total} de 23",
+    "points_maybe": "probablemente {total} de 23",
+    "no_points": "No usa puntos (sorteo)",
+    "bus_unknown": "Pregunte a la escuela",
+    "review_title": "Su solicitud Choices",
+    "row_schools": "Escuelas (en orden)",
+    "row_deadline": "Fecha límite",
+    "row_docs": "Documentos",
+    "row_email": "Correo al coordinador",
+    "docs_value": "{n} cosas para tener a la mano",
+    "approve": "Ver el correo completo",
+    "reject": "Cambiar algo",
+    "change_q": "¿Qué quiere cambiar?",
+    "added": "Agregué {name} a su lista.",
+    "already": "{name} ya está en su lista."
   }
 }
