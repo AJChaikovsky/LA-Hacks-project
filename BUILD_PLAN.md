@@ -242,67 +242,71 @@ Footer: *"Consulté: Agente de Puntos · Agente de Trámites"*. Judges see the m
 
 ## Team roles and branch strategy
 
-Each dev owns one layer end to end, so the three can work in parallel against the frozen `core/types.py` without blocking each other. Dev A ships a working ASI:One agent in the first 2 hours using stub functions. Devs B and C replace the stubs as their modules land.
+**Final ownership (Sat 3:15 PM).** The GitHub issues are the source of truth for owners, times, and test checkpoints. Each pinned queue issue (#26, #27, #28) lists one person's tickets in order.
 
-| Dev | Role | Owns | Also owns |
-| --- | --- | --- | --- |
-| A | Agents and Fetch platform | `agents/*.py` except cards, Agentverse registration, mailbox, deployment, handoff logs, fallback logic | README, agent addresses, repo hygiene, cloud host |
-| B | Core logic and data | `core/matcher.py`, `points.py`, `guardrails.py`, `paperwork.py` (deterministic parts), `data/`, `config/` | Fact verification, official seat numbers, unit tests |
-| C | Language, UX, demo | `core/extract.py`, `intent.py`, `render.py`, `llm.py`, `agents/cards.py`, `i18n/` | Golden tests, demo script, video, Devpost, pitch |
+| Dev | GitHub | Role | Owns | Queue |
+| --- | --- | --- | --- | --- |
+| A | @ochodolo | Agents and Fetch platform | `agents/*.py` except cards, Agentverse accounts and registration, mailbox, hosting, handoff logs, fallback, README, submission registration | #26 |
+| B | @AJChaikovsky | Core logic and data | `core/matcher.py`, `points.py`, `guardrails.py`, `paperwork.py`, `data/`, `config/`, fact verification, seat numbers | #27 |
+| C | @RishiSujit | Language, UX, demo | ASI:One API key, `core/llm.py`, `extract.py`, `intent.py`, `render.py`, `email_draft.py`, `agents/cards.py`, `i18n/`, golden tests, video, Devpost | #28 |
 
 **Who presents:** Dev C drives the demo, Dev A narrates the architecture slide, and Dev B answers questions about the rules. Rehearse that split at least 3 times.
 
 ### Branch rules
 
-- `main` is always runnable: `python agents/orchestrator.py` starts and `pytest -q` passes. Nobody pushes directly to `main`.
-- One branch per feature card, named `<dev>/<card-id>-<slug>`, for example `b/B3-points-engine`. Small PRs, squash-merge, one reviewer (anyone free). Target: a PR at least every 2 hours per dev.
-- Contract changes to `core/types.py` or `agents/messages.py` need all three devs to agree in chat before merging. Add fields freely; never rename or remove one.
+- `main` is always runnable: `pytest` passes.
+- One branch per ticket, named as in the ticket (for example `b/B3-matcher`). When the ticket's test checkpoint passes, merge your own branch into `main` with `Closes #N` in the merge commit message. No PR review is required.
+- Contract changes to `core/types.py`, `agents/messages.py`, or the signatures in `core/stubs.py` need all three devs to agree in chat. Add fields or codes freely; never rename or remove one.
 - Commit messages are `<card-id>: <what>`, for example `B3: sibling points only on 1st choice`. The commit history is the judges' proof that the work was done during the event.
-- Secrets only in `.env`. `.env` is in `.gitignore` from commit 1.
-- Merge order at each gate: B (data and logic) → C (language) → A (wiring). Then everyone pulls `main` and runs `scripts/replay_golden.py`.
+- Secrets only in `.env`, which is gitignored.
+- Merge order in each merge window: B (data and logic) → C (language) → A (wiring). Then everyone pulls `main` and runs `pytest` (and, from Phase 3, `python scripts/replay_golden.py`).
 
 ## Timeline
 
-We have about 21.5 hours, from 2:30 PM Saturday to the 12:00 PM Sunday deadline. The plan front-loads a reachable agent (G1 at 5:30 PM) and a working golden path (G2 at 10:30 PM), and freezes features at 8:00 AM. Gates are checked out loud by all three devs; nobody starts a later card until the gate before it is green or explicitly waived.
+About 20.5 hours remain, from 3:15 PM Saturday to the 12:00 PM Sunday deadline. The plan front-loads a reachable agent (G1 at 6:00 PM) and a working golden path (G2 at 11:00 PM), and freezes features at 8:00 AM. Gates are checked out loud by all three devs.
 
 ```mermaid
 gantt
-    title Feature freeze at 8 AM Sunday leaves four hours to record and submit (PDT)
+    title Feature freeze at 8 AM Sunday leaves 3.5 hours to record and submit (PDT)
     dateFormat YYYY-MM-DD HH:mm
     axisFormat %a %I %p
     section Gates
-    G0 contracts frozen   :milestone, 2026-10-17 15:30, 0m
-    G1 agent answers      :milestone, 2026-10-17 17:30, 0m
-    G2 golden path        :milestone, 2026-10-17 22:30, 0m
-    G3 multi-agent + cards:milestone, 2026-10-18 02:00, 0m
+    G0 kickoff check      :milestone, 2026-10-17 15:45, 0m
+    G1 agent answers      :milestone, 2026-10-17 18:00, 0m
+    G2 golden path        :milestone, 2026-10-17 23:00, 0m
+    G3 multi-agent + cards:milestone, 2026-10-18 02:30, 0m
     G4 FEATURE FREEZE     :crit, milestone, 2026-10-18 08:00, 0m
     Submit                :milestone, 2026-10-18 11:30, 0m
-    section Dev A
-    A0 :2026-10-17 14:30, 60m
-    A1 :2026-10-17 15:30, 120m
-    A2 :2026-10-17 17:30, 120m
-    A3 :2026-10-17 19:30, 180m
-    A4 :2026-10-17 22:30, 150m
+    section A @ochodolo
+    A1 :2026-10-17 15:15, 165m
+    A2 :2026-10-17 18:15, 135m
+    A3 + A4 skeleton :2026-10-17 20:30, 150m
+    A4 :2026-10-17 23:00, 120m
     A5 :2026-10-18 01:00, 90m
+    on call / A7 :2026-10-18 02:30, 120m
     sleep :done, 2026-10-18 04:30, 180m
-    A6 :2026-10-18 07:30, 150m
-    section Dev B
-    B0 :2026-10-17 14:30, 60m
-    B1 B2 :2026-10-17 15:30, 150m
-    B3 :2026-10-17 18:00, 90m
-    B4 :2026-10-17 19:30, 90m
-    B5 :2026-10-17 21:00, 90m
-    B6 :2026-10-17 22:30, 120m
-    sleep :done, 2026-10-18 00:30, 180m
-    B7 B8 :2026-10-18 03:30, 240m
-    section Dev C
-    C0 :2026-10-17 14:30, 60m
-    C1 :2026-10-17 15:30, 180m
-    C2 :2026-10-17 18:30, 90m
-    C3 :2026-10-17 20:00, 120m
-    C4 C5 :2026-10-17 22:00, 210m
-    sleep :done, 2026-10-18 01:30, 180m
-    C6 :2026-10-18 04:30, 210m
+    A6 :2026-10-18 08:00, 120m
+    section B @AJChaikovsky
+    B0 :2026-10-17 15:15, 30m
+    B1 :2026-10-17 15:45, 105m
+    B2 :2026-10-17 17:30, 45m
+    B3 :2026-10-17 18:15, 75m
+    B4 :2026-10-17 19:30, 120m
+    B5 :2026-10-17 21:30, 90m
+    B6 :2026-10-17 23:00, 120m
+    sleep :done, 2026-10-18 01:00, 180m
+    B8 + B7 :2026-10-18 04:00, 240m
+    fact-check + live runs :2026-10-18 08:00, 210m
+    section C @RishiSujit
+    C0 :2026-10-17 15:15, 30m
+    C1 :2026-10-17 15:45, 150m
+    C2 :2026-10-17 18:15, 60m
+    C3 :2026-10-17 19:15, 165m
+    C6 skeleton :2026-10-17 22:00, 60m
+    C4 :2026-10-17 23:00, 150m
+    C5 :2026-10-18 01:30, 60m
+    sleep :done, 2026-10-18 02:30, 180m
+    C6 to 10/10 :2026-10-18 05:30, 150m
     C7 :2026-10-18 08:00, 180m
 ```
 
@@ -310,43 +314,45 @@ Each gate has one pass condition:
 
 | Gate | Time | Passes when |
 | --- | --- | --- |
-| G0 | Sat 3:30 PM | `core/types.py` and `agents/messages.py` are frozen; the scaffold is on `main`; all 3 devs are green |
-| G1 | Sat 5:30 PM | The stub agent answers in ASI:One from a teammate's laptop |
-| G2 | Sat 10:30 PM | Maria's 4 turns work in ASI:One with all logic in one process |
-| G3 | Sun 2:00 AM | Both specialists are live on the always-on host, handoffs are logged, the fallback is proven, and the carousel renders |
+| G0 | Sat 3:45 PM | Contracts merged (#1, done); everyone runs `pytest` green on `main`; Rishi's live ASI:One call works |
+| G1 | Sat 6:00 PM | The stub agent answers in ASI:One from a teammate's laptop |
+| G2 | Sat 11:00 PM | Maria's 4 turns work in ASI:One with all logic in one process |
+| G3 | Sun 2:30 AM | Both specialists are live on the always-on host, handoffs are logged, the fallback is proven, and the carousel renders |
 | G4 | Sun 8:00 AM | **Feature freeze.** Golden passes 10 of 10 locally and live. Only bug fixes after this |
 | Submit | Sun 11:30 AM | Devpost, both videos, README, and the Fetch registration are all done; `v1.0-submission` is tagged |
 
 **If a gate slips:**
 
 - G1 late → Dev C pairs with Dev A until it passes. Nothing matters more.
-- G2 past 11:00 PM → cut the C4 detail and review cards (keep the carousel) and A4's chat protocol on the specialists.
-- G3 past 3:00 AM → ship only the Points agent as a separate agent; Paperwork stays in-process. Drop all stretch cards.
+- G2 past 11:30 PM → cut the C4 detail and review cards (keep the carousel) and A4's chat protocol on the specialists.
+- G3 past 3:30 AM → ship only the Points agent as a separate agent; Paperwork stays in-process. Drop all stretch cards.
 - G4 cannot slip. Whatever passes 10 of 10 at 8:00 AM is the demo.
 
 ## Phases (parallel work)
 
-Every phase has one lane per person, and every ticket depends only on the Phase 0 contracts and fixtures, or on the same person's earlier tickets. Nobody waits on a teammate's module: A wires against `core/stubs.py`, and C renders and builds cards against `tests/fixtures/`. B's real code replaces both as it merges. Ticket numbers are GitHub issues; each one carries a `phase-N` label.
+Every phase has one lane per person, and every ticket depends only on the merged contracts and fixtures, or on the same person's earlier tickets. Nobody waits on a teammate's module: A wires against `core/stubs.py`, and C renders and builds cards against `tests/fixtures/`. B's real code replaces both as it merges. Each ticket carries a `phase-N` label and a **Test checkpoint** in its header.
 
-| Phase | Window | Dev A (agents) | Dev B (logic, data) | Dev C (language, demo) | Exit |
-| --- | --- | --- | --- | --- | --- |
-| 0 · Contract huddle | Sat 2:30–3:30 PM | #1 A0 scaffold | #9 B0 contracts + Maria fixtures | #18 C0 LLM client | G0 |
-| 1 · Foundations | Sat 3:30–6:00 PM | #2 A1 hello ASI:One | #10 B1 schools.json · #11 B2 config | #19 C1 extraction | G1 (5:30) |
-| 2 · Core modules | Sat 6:00–8:00 PM | #3 A2 sessions + routing | #12 B3 matcher → #13 B4 points | #20 C2 intent → #21 C3 renderer | — |
-| 3 · Integration | Sat 8:00–10:30 PM | #4 A3 wire golden + #5 A4 skeletons on stubs | #13 B4 finish · #14 B5 guardrails | #21 C3 finish · #24 C6 golden skeleton | G2 (10:30) |
-| 4 · Multi-agent + UX | Sat 10:30 PM–Sun 2:00 AM | #5 A4 finish · #6 A5 hosting | #15 B6 paperwork · #16 B7 seat data | #22 C4 cards · #23 C5 email | G3 (2:00) |
-| 5 · Hardening | Sun 2:00–8:00 AM | #6 A5 on call · #8 A7 stretch, sleep 4:30–7:30 | sleep 12:30–3:30 · #17 B8 edge cases | sleep 1:30–4:30 · #24 C6 to 10/10 | G4 freeze (8:00) |
-| 6 · Ship | Sun 8:00–11:30 AM | #7 A6 README + registration | fact-check, live golden runs, judge Q&A | #25 C7 video + Devpost | Submit (11:30) |
+| Phase | Window | A · @ochodolo | B · @AJChaikovsky | C · @RishiSujit | Team test at the end | Exit |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0 · Kickoff check | Sat 3:15–3:45 PM | Clone, venv, `pytest`, Agentverse + ASI:One accounts; start #2 | #9 B0 review contracts + fixtures | #18 C0 API key + LLM client | Everyone green on `main`; one live ASI:One call | G0 |
+| 1 · Foundations | Sat 3:45–6:15 PM | #2 A1 hello ASI:One + mailbox + profile | #10 B1 schools.json → #11 B2 config | #19 C1 extraction | **6:00 PM:** message the stub agent from ASI:One on another laptop | G1 |
+| 2 · Core modules | Sat 6:15–8:30 PM | #3 A2 sessions + routing | #12 B3 matcher → #13 B4 points | #20 C2 intent → #21 C3 renderer | Own unit tests before every push; 8:30 PM everyone pulls, `pytest` green | — |
+| 3 · Integration | Sat 8:30–11:00 PM | #4 A3 wire golden + #5 A4 skeleton on stubs | #13 B4 finish → #14 B5 guardrails | #21 C3 finish → #24 C6 golden skeleton | **10:30 PM merge window** (B → C → A), `replay_golden.py` with real modules; **11:00 PM** first live 4-turn run | G2 |
+| 4 · Multi-agent + UX | Sat 11:00 PM → Sun 2:30 AM | #5 A4 finish → #6 A5 hosting | #15 B6 paperwork (+ #16 B7 in gaps), sleep 1:00 AM | #22 C4 cards → #23 C5 email | **2:30 AM:** `[HANDOFF]` to both specialists, kill-test → `[FALLBACK]`, carousel in ASI:One | G3 |
+| 5 · Hardening | Sun 2:30–8:00 AM | On call + #8 A7 (stretch) until 4:30, sleep 4:30–7:30 | Up 4:00 AM: #17 B8 + #16 B7 leftovers | Sleep 2:30–5:30, then #24 C6 to 10/10 | Hourly `ping.py`; **7:30 AM:** `replay_golden.py --runs 10` local AND live = 10/10 | G4 freeze |
+| 6 · Ship | Sun 8:00–11:30 AM | #7 A6 README + registration | Fact-check, live golden every 20 min, judge Q&A | #25 C7 video + Devpost | Fresh-clone install; final live run 11:00 AM | Submit |
 
 **What makes this blocking-free:**
 
-1. **Phase 0 freezes more than types.** It also freezes the reason-code and warning-code constants, plus four hand-written fixtures (`tests/fixtures/maria_profile.json`, `maria_matches.json`, `maria_estimates.json`, `maria_plan.json`). Stubs return these fixtures.
+1. **The contracts and fixtures are already on `main` (#1).** Reason, warning, checklist, step and deadline codes are frozen, and `core/stubs.py` returns the Maria fixtures, so every lane can start now.
 2. **One owner per file.** The email lives in `core/email_draft.py` (C), and `core/paperwork.py` stays B's. `scripts/replay_golden.py` belongs to C6, and A3 reuses it.
 3. **A never idles while waiting for merges.** In Phase 3, A wires each module the moment it lands and builds the A4 specialist agents on stubs in between.
-4. **Merge order at each gate is B → C → A.** After each merge, everyone pulls `main` and runs `scripts/replay_golden.py`.
-5. **Until the Dev A teammate joins, Rishi runs the A lane first** (A0, A1 for G1), then the C lane. If nobody has joined by about 6 PM, apply the "if a gate slips" cuts.
+4. **Two fixed merge windows, B → C → A:** 8:30 PM and 10:30 PM. Outside them, merge whenever your test checkpoint passes.
+5. **Sleep is staggered** (B 1:00–4:00, C 2:30–5:30, A 4:30–7:30), so someone is always awake to watch the host.
 
 ## Feature cards: Dev A (agents and Fetch platform)
+
+> Times, owners, dependencies and test checkpoints on the GitHub issues supersede the times written in the cards below.
 
 Dev A's job is to make sure that from 5:30 PM Saturday on, there is **always** an agent in ASI:One that answers. Every later card makes it smarter without ever making it unreachable.
 
