@@ -18,8 +18,8 @@ import os
 from uagents import Context, Model
 from uagents.resolver import GlobalResolver, Resolver, RulesBasedResolver
 
-_PORTS = {"counselor": "COUNSELOR_PORT", "points": "POINTS_PORT", "paperwork": "PAPERWORK_PORT"}
-_DEFAULT_PORT = {"counselor": "8000", "points": "8001", "paperwork": "8002"}
+_PORTS = {"counselor": "COUNSELOR_PORT", "points": "POINTS_PORT", "paperwork": "PAPERWORK_PORT", "transit": "TRANSIT_PORT"}
+_DEFAULT_PORT = {"counselor": "8000", "points": "8001", "paperwork": "8002", "transit": "8003"}
 
 
 def local_url(role: str) -> str:

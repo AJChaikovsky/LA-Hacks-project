@@ -1,0 +1,13 @@
+{
+  "source_url": "https://gitlab.com/LACMTA/gtfs_bus/raw/master/gtfs_bus.zip",
+  "terms_url": "https://developer.metro.net/",
+  "reference_weekday": "2026-10-27",
+  "board_window": ["06:30:00", "08:15:00"],
+  "home_radius_m": 800,
+  "school_radius_m": 500,
+  "min_km": 1.0,
+  "min_trips": 3,
+  "max_routes": 3,
+  "round_minutes_to": 5,
+  "note": "Scheduled weekday-morning times from the official LA Metro bus GTFS, direct lines only (no transfers). Always 'about', never 'will take'. home_radius is wider than school_radius because home is a neighborhood centroid, not an address."
+}

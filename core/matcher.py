@@ -174,4 +174,9 @@ def match(profile: FamilyProfile) -> list[SchoolMatch]:
 
     if top and "arts" in profile.interests and not _vapa_nearby(profile):
         top[0].reason_codes.insert(0, "no_vapa_nearby")
+    from core.transit import transit_options  # B13: direct Metro lines (TRANSIT=off disables)
+    for m in top:
+        m.transit = transit_options(profile, m.code)
+        if m.transit:
+            m.reason_codes.append("metro_direct")
     return top

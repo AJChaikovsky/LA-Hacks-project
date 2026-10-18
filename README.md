@@ -14,6 +14,7 @@ A pocket school-choice counselor for LAUSD families, built on Fetch.ai uAgents a
 | `choices-counselor` | Orchestrator; ASI:One Chat Protocol | _TBD (A1)_ |
 | `choices-points` | Magnet points, guardrails | _TBD (A4)_ |
 | `choices-paperwork` | Checklist, deadlines, steps, email | _TBD (A4)_ |
+| `choices-transit` | Direct LA Metro bus lines from home to each school (prebuilt GTFS index, no network) | _TBD (A4 pattern; `TRANSIT_SEED`, port 8003)_ |
 | `choices-caseload` | Paid batch reports for partner agents; Payment Protocol (seller), testnet | `agent1qfn674sglphgr6ml02jdkag3ps4dvqrstxm2leqyxza8d56lz7e7qyzj9fx` (Agentverse registration pending) |
 
 ## Business model
@@ -72,5 +73,7 @@ LAUSD 2027-28 Choices brochure, choices.lausd.net guidelines and FAQ. `data/scho
 PHBAO and overcrowded status come from LAUSD's 2026-27 Norm Category/Overcrowded School List (for 2027-28), kept in `docs/evidence/`.
 
 **Privacy:** if a parent shares a street address (optional, in the intake form), it is used once to look up coordinates through OpenStreetMap for distance and bus eligibility, then dropped. The address is never logged or stored; only coordinates rounded to about 100 m stay in the session. Bus eligibility is shown as "may qualify" (official rule: grades 6-12, more than 2 miles, max 90-minute ride).
+
+**Metro bus lines** come from the official [LA Metro bus GTFS feed](https://gitlab.com/LACMTA/gtfs_bus) (feed valid 2026-06-07 to 2026-12-12; used under Metro's developer terms, https://developer.metro.net/). `scripts/build_transit.py` turns it into `data/transit_index.json` once, offline: direct lines only (no transfers), boarding on a weekday morning (6:30-8:15) near the neighborhood centre and getting off within 500 m of the school; the minutes are the median **scheduled** ride, rounded to 5. The agent says "about", never "will take", and doesn't use live arrivals. Lines 70 and 74 from Boyle Heights were checked by hand against Metro's published timetables (`docs/evidence/B13-*`). Turn it off with `TRANSIT=off`.
 
 The competitiveness bands (5+ applications per opening = very high, 2+ = high, 1+ = moderate, under 1 = low, i.e. more seats than applications; in `config/competitiveness.json`) are **our heuristic, not LAUSD's**. The agent never states a probability.

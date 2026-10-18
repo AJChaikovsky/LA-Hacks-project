@@ -29,3 +29,14 @@ class PaperworkRequest(Model):
 class PaperworkResponse(Model):
     session_id: str
     plan_json: str           # ActionPlan
+
+
+class TransitRequest(Model):          # B13: choices-transit
+    session_id: str
+    profile_json: str        # FamilyProfile (only home_neighborhood is used)
+    codes: list[str]
+
+
+class TransitResponse(Model):
+    session_id: str
+    options_json: str        # {code: list[TransitOption]}, quickest first; a code with no direct line -> []
