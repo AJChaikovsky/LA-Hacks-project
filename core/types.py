@@ -151,6 +151,8 @@ class FamilyProfile(BaseModel):
     english_learner: bool | None = None
     home_language: str | None = None
     home_neighborhood: str | None = None
+    home_lat: float | None = None              # B11: from a geocoded address, rounded to 3 decimals (~100 m);
+    home_lng: float | None = None              #      the street address itself is never stored
     resident_school: str | None = None
     resident_phbao: bool | None = None         # None = unknown -> caveat or ask
     resident_overcrowded: bool | None = None

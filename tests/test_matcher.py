@@ -34,7 +34,8 @@ def test_maria_formula_without_near_home_slot(monkeypatch):
     from core import matcher
     cfg = json.loads(json.dumps(matcher.load_config("matcher")))
     cfg["near_home_slot"]["enabled"] = False
-    monkeypatch.setattr(matcher, "load_config", lambda name: cfg if name == "matcher" else matcher.load_config(name))
+    real = matcher.load_config
+    monkeypatch.setattr(matcher, "load_config", lambda name: cfg if name == "matcher" else real(name))
     assert codes(maria()) == ["1804703", "1804702", "1816801"]
 
 

@@ -19,7 +19,6 @@
   },
   "near_home_km": 2.0,
   "near_work_km": 4.0,
-  "bus_min_km": 3.22,
   "vapa_nearby_km": 10,
   "vapa_note": "Brochure: no VAPA middle-school magnet in the East region. Markham VAPA is 11.8 km from Boyle Heights, so 10 km keeps no_vapa_nearby honest.",
   "theme_map": {

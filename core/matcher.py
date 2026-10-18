@@ -35,6 +35,25 @@ def place_coords(name: str | None) -> tuple[float, float] | None:
     return None
 
 
+def home_coords(profile: FamilyProfile) -> tuple[float, float] | None:
+    """Exact home point from a geocoded address (B11) when present, else the neighborhood centroid."""
+    if profile.home_lat is not None and profile.home_lng is not None:
+        return profile.home_lat, profile.home_lng
+    return place_coords(profile.home_neighborhood)
+
+
+MILE_KM = 1.609344
+
+
+def bus_may_apply(profile: FamilyProfile, km: float | None, school: School) -> bool:
+    """Official rule (config/limits.json): a magnet bus MAY be provided for secondary grades when home is more
+    than 2 miles away (max ride 90 minutes, existing stops only), so this only ever says "may"."""
+    grade = applying_grade(profile)
+    secondary = grade is None or grade >= 6
+    return (km is not None and secondary and school.program_type == "magnet"
+            and km > load_config("limits")["bus_radius_miles_secondary"] * MILE_KM)
+
+
 def outside_lausd(name: str | None) -> str | None:
     """The other school district's name when the neighborhood is a city outside LAUSD, else None."""
     if not name:
@@ -64,7 +83,7 @@ def eligible(profile: FamilyProfile, school: School) -> bool:
     grade = applying_grade(profile)
     if grade is not None and grade not in school.grades:
         return False
-    km = distance_km(place_coords(profile.home_neighborhood), school)
+    km = distance_km(home_coords(profile), school)
     if km is not None and km > load_config("matcher")["max_km"]:
         return False
     return not school.gifted_verification or profile.gifted is True
@@ -91,7 +110,7 @@ def language_fit(profile: FamilyProfile, school: School) -> float:
 
 def score(profile: FamilyProfile, school: School) -> float:
     w = load_config("matcher")["weights"]
-    home_km = distance_km(place_coords(profile.home_neighborhood), school)
+    home_km = distance_km(home_coords(profile), school)
     work_km = distance_km(place_coords(profile.parent_work_area), school)
     return round(w["theme"] * theme_fit(profile, school) + w["distance"] * _closeness(home_km)
                  + w["language"] * language_fit(profile, school) + w["commute"] * _closeness(work_km), 4)
@@ -99,7 +118,7 @@ def score(profile: FamilyProfile, school: School) -> float:
 
 def reason_codes(profile: FamilyProfile, school: School) -> list[ReasonCode]:
     cfg = load_config("matcher")
-    home_km = distance_km(place_coords(profile.home_neighborhood), school)
+    home_km = distance_km(home_coords(profile), school)
     work_km = distance_km(place_coords(profile.parent_work_area), school)
     reasons: list[ReasonCode] = []
     fit = {i: cfg["theme_map"].get(i, {}).get(school.theme, 0.0) for i in profile.interests}
@@ -117,7 +136,7 @@ def reason_codes(profile: FamilyProfile, school: School) -> list[ReasonCode]:
         reasons.append("near_work")
     if language_fit(profile, school) and school.program_type == "dle":
         reasons.append("spanish_dle")
-    if home_km is not None and home_km > cfg["bus_min_km"] and school.program_type == "magnet":
+    if bus_may_apply(profile, home_km, school):
         reasons.append("bus_possible")
     if profile.iep and school.program_type == "magnet":
         reasons.append("iep_eligible")
@@ -125,14 +144,14 @@ def reason_codes(profile: FamilyProfile, school: School) -> list[ReasonCode]:
 
 
 def _vapa_nearby(profile: FamilyProfile) -> bool:
-    home = place_coords(profile.home_neighborhood)
+    home = home_coords(profile)
     limit = load_config("matcher")["vapa_nearby_km"]
     return any(s.theme == "VAPA" and eligible(profile, s) and (d := distance_km(home, s)) is not None and d <= limit
                for s in schools())
 
 
 def _to_match(profile: FamilyProfile, school: School) -> SchoolMatch:
-    km = distance_km(place_coords(profile.home_neighborhood), school)
+    km = distance_km(home_coords(profile), school)
     return SchoolMatch(code=school.code, name=school.name, program_type=school.program_type, theme=school.theme,
                        score=score(profile, school), reason_codes=reason_codes(profile, school),
                        distance_km=round(km, 1) if km is not None else None,
