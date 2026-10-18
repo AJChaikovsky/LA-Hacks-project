@@ -21,6 +21,7 @@ from pathlib import Path
 from urllib.parse import quote, urlencode
 
 from core.config import load_config
+from core.school_facts import facts as school_facts
 from core.types import (
     ActionPlan,
     FamilyProfile,
@@ -160,6 +161,8 @@ def render_matches(matches: list[SchoolMatch], profile: FamilyProfile) -> str:
         own = [r for r in m.reason_codes if r not in _GENERAL_REASONS]
         general += [r for r in m.reason_codes if r in _GENERAL_REASONS and r not in general]
         lines += [f"- {_fmt(s['reasons'][r], **ctx)}" for r in own[:3]]
+        if profile.iep and (iep := school_facts(m.code).get("iep")):  # B14: context for IEP families
+            lines.append(f"- {_fmt(s['matches']['facts_iep'], n=iep[0], d=iep[1], year=school_facts(m.code)['year'])}")
         contact = " · ".join(x for x in (m.address, m.phone) if x)
         if contact:
             lines.append(f"- {contact}")

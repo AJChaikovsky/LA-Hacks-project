@@ -1,0 +1,17 @@
+{
+  "enrollment": {
+    "url": "https://www3.cde.ca.gov/demo-downloads/census/cdenroll2526.txt",
+    "page": "https://www.cde.ca.gov/ds/ad/filesenrcensus.asp",
+    "year": "2025-26",
+    "what": "Census Day (first Wednesday in October) enrollment: TA = total, SG_EL = English learners, SG_DS = students with disabilities"
+  },
+  "absenteeism": {
+    "url": "https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism25.txt",
+    "page": "https://www.cde.ca.gov/ds/ad/filesabd.asp",
+    "year": "2024-25",
+    "what": "Chronic absenteeism rate (share of students absent 10% or more of the days they were enrolled), all students"
+  },
+  "dataquest": "https://dq.cde.ca.gov/dataquest/",
+  "fraction_tenths_at": 0.3,
+  "note": "Whole host school, not only the magnet program. Context, never a ranking or a quality judgment. Shown as plain fractions ('about 1 in 6'), never percentages. Suppressed or missing cells stay null with a reason."
+}

@@ -40,3 +40,13 @@ class TransitRequest(Model):          # B13: choices-transit
 class TransitResponse(Model):
     session_id: str
     options_json: str        # {code: list[TransitOption]}, quickest first; a code with no direct line -> []
+
+
+class FactsRequest(Model):            # B14: choices-facts
+    session_id: str
+    codes: list[str]         # Choices program codes
+
+
+class FactsResponse(Model):
+    session_id: str
+    facts_json: str          # {code: core.school_facts.facts(code)}; {} when unknown

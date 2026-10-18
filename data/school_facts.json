@@ -1,0 +1,308 @@
+{
+ "sources": {
+  "enrollment": {
+   "url": "https://www3.cde.ca.gov/demo-downloads/census/cdenroll2526.txt",
+   "page": "https://www.cde.ca.gov/ds/ad/filesenrcensus.asp",
+   "year": "2025-26",
+   "what": "Census Day (first Wednesday in October) enrollment: TA = total, SG_EL = English learners, SG_DS = students with disabilities"
+  },
+  "absenteeism": {
+   "url": "https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism25.txt",
+   "page": "https://www.cde.ca.gov/ds/ad/filesabd.asp",
+   "year": "2024-25",
+   "what": "Chronic absenteeism rate (share of students absent 10% or more of the days they were enrolled), all students"
+  }
+ },
+ "note": "Whole host school, not only the magnet program. Context, never a ranking or a quality judgment. Shown as plain fractions ('about 1 in 6'), never percentages. Suppressed or missing cells stay null with a reason.",
+ "built_at": "2026-10-18T03:45:47+00:00",
+ "schools": {
+  "19647330112011": {
+   "cde_name": "William Jefferson Clinton Middle",
+   "year": "2025-26",
+   "enrollment": 572,
+   "english_learners": 116,
+   "students_with_disabilities": 100,
+   "chronic_absenteeism_pct": 32.6,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336057855": {
+   "cde_name": "John Adams Middle",
+   "year": "2025-26",
+   "enrollment": 724,
+   "english_learners": 110,
+   "students_with_disabilities": 119,
+   "chronic_absenteeism_pct": 21.0,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336057871": {
+   "cde_name": "Hubert Howe Bancroft Middle",
+   "year": "2025-26",
+   "enrollment": 440,
+   "english_learners": 66,
+   "students_with_disabilities": 79,
+   "chronic_absenteeism_pct": 24.6,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336057889": {
+   "cde_name": "Belvedere Middle",
+   "year": "2025-26",
+   "enrollment": 718,
+   "english_learners": 85,
+   "students_with_disabilities": 178,
+   "chronic_absenteeism_pct": 22.7,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336057905": {
+   "cde_name": "Richard E. Byrd Middle",
+   "year": "2025-26",
+   "enrollment": 844,
+   "english_learners": 93,
+   "students_with_disabilities": 143,
+   "chronic_absenteeism_pct": 23.6,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058028": {
+   "cde_name": "Samuel Gompers Middle",
+   "year": "2025-26",
+   "enrollment": 343,
+   "english_learners": 94,
+   "students_with_disabilities": 75,
+   "chronic_absenteeism_pct": 36.7,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058036": {
+   "cde_name": "Griffith Middle",
+   "year": "2025-26",
+   "enrollment": 1036,
+   "english_learners": 102,
+   "students_with_disabilities": 175,
+   "chronic_absenteeism_pct": 20.8,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058051": {
+   "cde_name": "Hollenbeck Middle",
+   "year": "2025-26",
+   "enrollment": 839,
+   "english_learners": 91,
+   "students_with_disabilities": 145,
+   "chronic_absenteeism_pct": 20.7,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058085": {
+   "cde_name": "Thomas Starr King Middle School Film and Media Magnet",
+   "year": "2025-26",
+   "enrollment": 1464,
+   "english_learners": 116,
+   "students_with_disabilities": 209,
+   "chronic_absenteeism_pct": 19.6,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058127": {
+   "cde_name": "Marina del Rey Middle",
+   "year": "2025-26",
+   "enrollment": 271,
+   "english_learners": 25,
+   "students_with_disabilities": 77,
+   "chronic_absenteeism_pct": 40.9,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058135": {
+   "cde_name": "Mark Twain Middle",
+   "year": "2025-26",
+   "enrollment": 1011,
+   "english_learners": 29,
+   "students_with_disabilities": 133,
+   "chronic_absenteeism_pct": 16.5,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058143": {
+   "cde_name": "Mary McLeod Bethune Middle",
+   "year": "2025-26",
+   "enrollment": 766,
+   "english_learners": 167,
+   "students_with_disabilities": 116,
+   "chronic_absenteeism_pct": 34.4,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058150": {
+   "cde_name": "Louis Armstrong Middle",
+   "year": "2025-26",
+   "enrollment": 1132,
+   "english_learners": 83,
+   "students_with_disabilities": 164,
+   "chronic_absenteeism_pct": 21.0,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058168": {
+   "cde_name": "Mt. Gleason Middle",
+   "year": "2025-26",
+   "enrollment": 737,
+   "english_learners": 67,
+   "students_with_disabilities": 119,
+   "chronic_absenteeism_pct": 22.2,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058176": {
+   "cde_name": "John Muir Middle",
+   "year": "2025-26",
+   "enrollment": 588,
+   "english_learners": 154,
+   "students_with_disabilities": 83,
+   "chronic_absenteeism_pct": 39.9,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058192": {
+   "cde_name": "Florence Nightingale Middle",
+   "year": "2025-26",
+   "enrollment": 818,
+   "english_learners": 93,
+   "students_with_disabilities": 157,
+   "chronic_absenteeism_pct": 20.5,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058218": {
+   "cde_name": "Pacoima Middle",
+   "year": "2025-26",
+   "enrollment": 757,
+   "english_learners": 103,
+   "students_with_disabilities": 121,
+   "chronic_absenteeism_pct": 26.5,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058226": {
+   "cde_name": "Palms Middle",
+   "year": "2025-26",
+   "enrollment": 1023,
+   "english_learners": 44,
+   "students_with_disabilities": 122,
+   "chronic_absenteeism_pct": 16.6,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058283": {
+   "cde_name": "San Fernando Middle",
+   "year": "2025-26",
+   "enrollment": 379,
+   "english_learners": 72,
+   "students_with_disabilities": 113,
+   "chronic_absenteeism_pct": 22.3,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058291": {
+   "cde_name": "Francisco Sepulveda Middle",
+   "year": "2025-26",
+   "enrollment": 993,
+   "english_learners": 173,
+   "students_with_disabilities": 189,
+   "chronic_absenteeism_pct": 29.2,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058317": {
+   "cde_name": "Robert Louis Stevenson College and Career Preparatory",
+   "year": "2025-26",
+   "enrollment": 707,
+   "english_learners": 109,
+   "students_with_disabilities": 140,
+   "chronic_absenteeism_pct": 21.3,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058333": {
+   "cde_name": "Van Nuys Middle",
+   "year": "2025-26",
+   "enrollment": 699,
+   "english_learners": 101,
+   "students_with_disabilities": 136,
+   "chronic_absenteeism_pct": 29.4,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058358": {
+   "cde_name": "Daniel Webster Middle",
+   "year": "2025-26",
+   "enrollment": 411,
+   "english_learners": 51,
+   "students_with_disabilities": 85,
+   "chronic_absenteeism_pct": 20.8,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336058382": {
+   "cde_name": "Orville Wright Engineering and Design Magnet",
+   "year": "2025-26",
+   "enrollment": 435,
+   "english_learners": 10,
+   "students_with_disabilities": 48,
+   "chronic_absenteeism_pct": 30.8,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336061394": {
+   "cde_name": "Audubon Middle",
+   "year": "2025-26",
+   "enrollment": 403,
+   "english_learners": 36,
+   "students_with_disabilities": 95,
+   "chronic_absenteeism_pct": 42.3,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336061444": {
+   "cde_name": "Thomas A. Edison Middle",
+   "year": "2025-26",
+   "enrollment": 777,
+   "english_learners": 113,
+   "students_with_disabilities": 158,
+   "chronic_absenteeism_pct": 31.0,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336061469": {
+   "cde_name": "Henry T. Gage Middle",
+   "year": "2025-26",
+   "enrollment": 1034,
+   "english_learners": 187,
+   "students_with_disabilities": 188,
+   "chronic_absenteeism_pct": 24.2,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336061519": {
+   "cde_name": "James Madison Middle",
+   "year": "2025-26",
+   "enrollment": 1108,
+   "english_learners": 270,
+   "students_with_disabilities": 166,
+   "chronic_absenteeism_pct": 30.3,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336061527": {
+   "cde_name": "Edwin Markham Middle",
+   "year": "2025-26",
+   "enrollment": 588,
+   "english_learners": 118,
+   "students_with_disabilities": 136,
+   "chronic_absenteeism_pct": 35.9,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336061550": {
+   "cde_name": "Olive Vista Middle",
+   "year": "2025-26",
+   "enrollment": 864,
+   "english_learners": 110,
+   "students_with_disabilities": 148,
+   "chronic_absenteeism_pct": 24.3,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336068431": {
+   "cde_name": "El Sereno Middle",
+   "year": "2025-26",
+   "enrollment": 853,
+   "english_learners": 50,
+   "students_with_disabilities": 191,
+   "chronic_absenteeism_pct": 32.3,
+   "chronic_absenteeism_year": "2024-25"
+  },
+  "19647336115794": {
+   "cde_name": "Los Angeles Academy Middle",
+   "year": "2025-26",
+   "enrollment": 753,
+   "english_learners": 182,
+   "students_with_disabilities": 107,
+   "chronic_absenteeism_pct": 24.5,
+   "chronic_absenteeism_year": "2024-25"
+  }
+ }
+}

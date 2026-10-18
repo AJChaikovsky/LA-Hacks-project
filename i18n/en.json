@@ -41,7 +41,8 @@
       "10": "10th",
       "11": "11th",
       "12": "12th"
-    }
+    },
+    "facts_iep": "About {n} in {d} students at this school have an IEP (whole school, {year})."
   },
   "reasons": {
     "theme_match": "Its theme is {interest}, which {child} loves.",
@@ -178,6 +179,9 @@
     "row_phone": "Phone",
     "row_bus": "Bus",
     "row_metro": "Metro",
+    "row_students": "Students",
+    "row_el": "English learners",
+    "row_iep": "With an IEP",
     "row_points": "Estimated points",
     "points_value": "{total} of 23",
     "points_maybe": "probably {total} of 23",
@@ -223,7 +227,9 @@
     "rank_second": "2nd choice",
     "rank_third": "3rd choice",
     "rank_none": "(none)",
-    "rank_submit": "Check my list"
+    "rank_submit": "Check my list",
+    "facts_students": "about {n} in the whole school ({year})",
+    "facts_share": "about {n} in {d}"
   },
   "program_labels": {
     "1832103": "Computer Science & Math",

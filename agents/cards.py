@@ -24,6 +24,7 @@ from uuid import uuid4
 from uagents_core.contrib.protocols.chat import ChatMessage, MetadataContent, TextContent
 
 from core.render import format_date, place, program_name, schools, strings
+from core.school_facts import facts as school_facts
 from core.types import ActionPlan, FamilyProfile, GuardrailWarning, PointsEstimate, SchoolMatch, SessionState
 
 MAX_PAYLOAD_BYTES = 64 * 1024
@@ -96,6 +97,12 @@ def school_detail(match: SchoolMatch, profile: FamilyProfile, estimate: PointsEs
     if match.phone or school.get("phone"):
         rows.append({"label": c["row_phone"], "value": match.phone or school["phone"]})
     rows.append({"label": c["row_bus"], "value": school.get("transport_note") or c["bus_unknown"]})
+    f = school_facts(match.code)  # B14: whole-school context from CDE, plain fractions only
+    if f.get("enrollment"):
+        rows.append({"label": c["row_students"], "value": c["facts_students"].format(n=f["enrollment"], year=f["year"])})
+    for key, label in (("english_learners", "row_el"), ("iep", "row_iep")):
+        if f.get(key):
+            rows.append({"label": c[label], "value": c["facts_share"].format(n=f[key][0], d=f[key][1])})
     for t in match.transit[:2]:  # B13: direct Metro lines, scheduled and approximate
         rows.append({"label": c["row_metro"], "value": c["metro_value"].format(
             route=t.route, minutes=t.minutes, home=place(profile.home_neighborhood, lang), stop=t.alight_stop or "—")})
