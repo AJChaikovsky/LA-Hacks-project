@@ -25,6 +25,8 @@ _SEVERITY = {
     "first_choice_waitlist": "info",
     "not_points_program": "info",
     "outside_district": "warn",
+    "favorite_first": "info",
+    "safety_option": "info",
 }
 assert set(_SEVERITY) == set(WARNING_CODES)
 
@@ -32,7 +34,7 @@ FAR_KM = 15.0
 MILE_KM = 1.609344
 
 
-def _warn(code: WarningCode, **params) -> GuardrailWarning:
+def _warn(code: WarningCode, /, **params) -> GuardrailWarning:
     return GuardrailWarning(code=code, severity=_SEVERITY[code], params=params)
 
 
@@ -112,4 +114,39 @@ def check_list(profile: FamilyProfile, codes: list[str], today: date | None = No
         alternatives = suggest_alternatives(profile, codes)
         if alternatives:
             out.append(_warn("not_points_program", suggest=alternatives[0]))
+
+    out += ranking_advice(profile, magnets[:limit], by_code)
     return out
+
+
+def _apps_per_opening(school: School) -> float | None:
+    a, o = school.applications_2025_26, school.openings_2026_27
+    return round(a / o, 2) if a is not None and o else None
+
+
+def ranking_advice(profile: FamilyProfile, magnets: list[str], by_code: dict[str, School]) -> list[GuardrailWarning]:
+    """B10: honest ranking strategy for the magnets that count (rank order, at most the limit).
+
+    The 1st choice is always the family's favorite (only it keeps a waitlist spot), so advice never moves
+    anything into or out of 1st place. safety_option points at the least-applied-to program as a later choice.
+    """
+    if not magnets:
+        return []
+    advice: list[GuardrailWarning] = []
+    if len(magnets) >= 2:
+        advice.append(_warn("favorite_first", first_choice=magnets[0]))
+
+    threshold = load_config("competitiveness")["safety_max_apps_per_opening"]
+    later = [by_code[c] for c in magnets[1:] if c not in profile.would_not_accept]
+    candidates = [(r, s.code, True) for s in later if (r := _apps_per_opening(s)) is not None and r < threshold]
+    if not candidates and len(magnets) < load_config("limits")["magnet_max_choices"]:
+        from core.matcher import match  # a matched magnet with room left on the list
+        for m in match(profile):
+            s = by_code.get(m.code) or next((x for x in schools() if x.code == m.code), None)
+            if (s and s.program_type == "magnet" and s.code not in magnets and s.code not in profile.would_not_accept
+                    and (r := _apps_per_opening(s)) is not None and r < threshold):
+                candidates.append((r, s.code, False))
+    if candidates:
+        ratio, code, listed = min(candidates)
+        advice.append(_warn("safety_option", code=code, apps_per_opening=ratio, listed=listed))
+    return advice

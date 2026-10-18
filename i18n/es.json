@@ -97,6 +97,8 @@
     "past_deadline": "La fecha a tiempo (6 de noviembre) ya pasó. Las solicitudes tardías no reciben puntos.",
     "not_points_program": "Idea: {name} no es magnet, así que puede pedirlo además de sus 3 magnet. Si {child} está aprendiendo inglés y en casa hablan español, no necesita examen de idioma.",
     "outside_district": "Usted vive fuera de LAUSD ({district}). Puede aplicar a un magnet, pero las solicitudes de fuera del distrito no reciben puntos.",
+    "favorite_first": "Ponga primero la escuela que más quiere ({name}). No cambie el orden para ganar puntos: la lista de espera solo cuenta para su primera opción.",
+    "safety_option": "{name} es una opción más segura después de su favorita: el año pasado hubo unas {ratio} solicitudes por cada lugar. Es buena señal, aunque no es seguro.",
     "ok": "Su lista se ve bien.",
     "next": "**¿Preparo su lista de documentos, fechas y pasos?**"
   },

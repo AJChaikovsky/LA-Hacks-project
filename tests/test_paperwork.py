@@ -38,7 +38,8 @@ def test_maria_plan_matches_fixture():
     assert plan.deadlines == fixture.deadlines
     assert plan.steps == fixture.steps
     assert plan.email_subject and "IEP" in plan.email_body
-    assert {w.code for w in plan.warnings} == {"decline_wipes_points", "first_choice_waitlist"}
+    assert {w.code for w in plan.warnings} == {"decline_wipes_points", "first_choice_waitlist", "favorite_first",
+                                            "safety_option"}
 
 
 def test_checklist_conditional_items():

@@ -19,5 +19,7 @@
       "band": "low",
       "min_apps_per_opening": 0
     }
-  ]
+  ],
+  "safety_max_apps_per_opening": 1.5,
+  "safety_note": "B10: a magnet is offered as a safer later choice only below this many applications per opening."
 }

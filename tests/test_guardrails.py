@@ -39,7 +39,8 @@ def test_golden_turn3_matches_fixture_codes():
 
 def test_golden_turn4_list_has_no_block():
     w = by_code(maria(), GOLDEN)
-    assert set(w) == {"decline_wipes_points", "first_choice_waitlist"}
+    assert set(w) == {"decline_wipes_points", "first_choice_waitlist", "favorite_first", "safety_option"}
+    assert all(x.severity != "block" for x in w.values())
 
 
 def test_severities_match_contract():
@@ -103,3 +104,55 @@ def test_render_turn3_in_spanish():
     for phrase in ("Solo puede poner 3 escuelas magnet", "Markham", "Ponga solo escuelas que sí aceptaría",
                    "Stevenson", "primera opción"):
         assert phrase in text
+
+
+# --- B10: ranking strategy advice ------------------------------------------------------
+
+def advice(profile: FamilyProfile, codes: list[str]) -> dict:
+    return {w.code: w.params for w in check_list(profile, codes, today=TODAY)
+            if w.code in ("favorite_first", "safety_option")}
+
+
+def test_maria_keep_favorite_and_media_is_safer():
+    a = advice(maria(), GOLDEN)
+    assert a["favorite_first"] == {"first_choice": "1804703"}
+    assert a["safety_option"] == {"code": "1804702", "apps_per_opening": 0.67, "listed": True}
+
+
+def test_safety_never_points_at_the_first_choice():
+    a = advice(maria(), ["1804702", "1804703", "1817902"])  # safest program is already 1st
+    assert a["favorite_first"]["first_choice"] == "1804702"
+    assert a["safety_option"]["code"] == "1817902"           # lowest ratio among the later choices (1.1)
+
+
+def test_single_magnet_suggests_a_matched_one_with_room_left():
+    a = advice(maria(), ["1804703"])
+    assert "favorite_first" not in a
+    assert a["safety_option"] == {"code": "1804702", "apps_per_opening": 0.67, "listed": False}
+
+
+def test_doubted_and_over_limit_programs_are_never_the_safety():
+    assert advice(maria(would_not_accept=["1804702"]), GOLDEN)["safety_option"]["code"] == "1817902"
+    assert advice(maria(), TURN3)["safety_option"]["code"] == "1804702"  # Markham (0.24) is past the limit
+
+
+def test_no_seat_data_means_no_safety_claim():
+    a = advice(FamilyProfile(current_grade=5, interests=["stem"], home_neighborhood="El Sereno"),
+               ["1811802", "1811804", "1826402"])  # B9 programs without official seat numbers yet
+    assert a == {"favorite_first": {"first_choice": "1811802"}}
+
+
+def test_threshold_comes_from_config(monkeypatch):
+    from core import guardrails
+    real = guardrails.load_config
+    monkeypatch.setattr(guardrails, "load_config", lambda n: {**real(n), "safety_max_apps_per_opening": 0.5}
+                        if n == "competitiveness" else real(n))
+    assert "safety_option" not in advice(maria(), GOLDEN)
+
+
+def test_advice_renders_honestly_in_both_languages():
+    from core.render import render_warnings
+    for lang, phrase in (("es", "Ponga primero la escuela que más quiere"), ("en", "Keep your favorite first")):
+        p = maria(language=lang)
+        text = render_warnings(check_list(p, GOLDEN, today=TODAY), p)
+        assert phrase in text and "0.67" in text and "%" not in text and "garantizado" not in text
