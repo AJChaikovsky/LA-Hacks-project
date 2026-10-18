@@ -3,3 +3,5 @@ import os
 
 os.environ.setdefault("EMAIL_LLM", "off")
 os.environ.setdefault("DEMO_MODE", "false")
+# agents/orchestrator.py exits at import without a seed; tests import it but never run or register the agent.
+os.environ.setdefault("COUNSELOR_SEED", "pytest-only-seed-never-registered")
