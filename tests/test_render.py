@@ -85,7 +85,7 @@ def test_points_per_school_ratio_and_not_applicable():
     out = render.render_points(ests, MARIA)
     assert "Belvedere MS · STEAM: 4 de 23 puntos." in out
     assert "Hollenbeck MS · STEM y Medicina: 8 de 23 puntos." in out
-    assert "unas 3.2 solicitudes por cada lugar (competencia alta)" in out
+    assert "unas 3,2 solicitudes por cada lugar (competencia alta)" in out
     assert "Stevenson MS · Programa bilingüe en español: no usa puntos" in out
     assert "probablemente" not in out.split("Qué tan")[0]
 
@@ -231,3 +231,34 @@ def test_reminders_in_plan_skip_past_dates_and_flag(monkeypatch):
     assert render.reminder_links(past, "es") == []
     monkeypatch.setenv("REMINDER_LINKS", "off")
     assert "Agregar recordatorio" not in render.render_plan(PLAN, MARIA)
+
+
+# --- C10 ranking advice text ---
+
+def _advice(warning_code, **params):
+    from core.types import GuardrailWarning
+    return GuardrailWarning(code=warning_code, severity="info", params=params)
+
+
+def test_advice_is_grouped_after_the_warnings():
+    ws = [_advice("safety_option", code="1804702", apps_per_opening=0.67, listed=True),
+          GuardrailWarning(code="decline_wipes_points", severity="info"),
+          _advice("favorite_first", first_choice="1804703")]
+    out = render.render_warnings(ws, MARIA)
+    head, advice = out.split("**Sugerencia de orden:**")
+    assert "Los rechazos son finales" in head and "Ponga primero" not in head
+    bullets = [l for l in advice.splitlines() if l.startswith("- ")]
+    assert bullets == [
+        "- Ponga primero la escuela que más quiere (Belvedere MS · STEAM). Cambiar el orden no le da más puntos.",
+        "- Belvedere MS · Medios digitales puede ser su opción más segura: el año pasado hubo menos solicitudes que "
+        "lugares. Es buena señal, aunque no es seguro.",
+    ]
+
+
+def test_safety_option_not_on_the_list_is_a_suggestion_with_decimal_comma():
+    out = render.render_warnings([_advice("safety_option", code="1817902", apps_per_opening=1.14, listed=False)], MARIA)
+    assert out.startswith("Su lista se ve bien.")
+    assert "Si quiere una opción más segura, considere Hollenbeck MS · STEM y Medicina: el año pasado hubo unas 1,1 " \
+           "solicitudes por cada lugar." in out
+    en = render.render_warnings([_advice("safety_option", code="1817902", apps_per_opening=1.14, listed=False)], EN)
+    assert "**Suggested order:**" in en and "about 1.1 applications per seat" in en

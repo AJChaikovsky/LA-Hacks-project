@@ -97,10 +97,14 @@
     "past_deadline": "The on-time deadline (November 6) has passed. Late applications get no points.",
     "not_points_program": "Idea: {name} is not a magnet, so you can apply to it in addition to your 3 magnets. If {child} is learning English and Spanish is spoken at home, no language test is needed.",
     "outside_district": "You live outside LAUSD ({district}). You can still apply to a magnet, but out-of-district applications earn no points.",
-    "favorite_first": "Keep your favorite first ({name}). Don't reorder to chase points: the waiting list only counts for your 1st choice.",
-    "safety_option": "{name} is a safer choice after your favorite: last year there were about {ratio} applications per seat. That is a good sign, but not a sure thing.",
+    "favorite_first": "Keep the school you want most first ({name}). Changing the order doesn't earn more points.",
+    "safety_option": "{name} may be your safer choice: {ratio_text}. That's a good sign, but not a sure thing.",
     "ok": "Your list looks good.",
-    "next": "**Shall I prepare your checklist, deadlines, and steps?**"
+    "next": "**Shall I prepare your checklist, deadlines, and steps?**",
+    "safety_option_suggest": "If you want a safer choice, consider {name}: {ratio_text}. That's a good sign, but not a sure thing.",
+    "ratio_low": "last year there were fewer applications than seats",
+    "ratio_value": "last year there were about {ratio} applications per seat",
+    "advice_header": "**Suggested order:**"
   },
   "checklist": {
     "parent_portal_account": "Parent Portal account (email and password)",

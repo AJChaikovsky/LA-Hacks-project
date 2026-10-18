@@ -210,9 +210,9 @@ def render_points(estimates: list[PointsEstimate], profile: FamilyProfile) -> st
         level = s["competitiveness"][e.competitiveness]
         school = program_name(e.code, lang)
         if e.apps_per_opening and e.competitiveness == "low":
-            lines.append(_fmt(p["ratio_low"], school=school, ratio=round(e.apps_per_opening, 1)))
+            lines.append(_fmt(p["ratio_low"], school=school, ratio=format_number(e.apps_per_opening, lang)))
         elif e.apps_per_opening:
-            lines.append(_fmt(p["ratio"], school=school, ratio=round(e.apps_per_opening, 1), level=level))
+            lines.append(_fmt(p["ratio"], school=school, ratio=format_number(e.apps_per_opening, lang), level=level))
         else:
             lines.append(_fmt(p["competition"], school=school, level=level))
     lines += [_fmt(p["not_applicable"], school=program_name(e.code, lang)) for e in others]
@@ -221,24 +221,49 @@ def render_points(estimates: list[PointsEstimate], profile: FamilyProfile) -> st
     return "\n".join(lines)
 
 
+# Ranking advice (B10) is shown as suggestions after the warnings, not mixed into them.
+ADVICE_CODES = ("favorite_first", "safety_option")
+
+
+def format_number(x: float, lang: str) -> str:
+    """One decimal, with a decimal comma in Spanish ('1,1')."""
+    text = f"{x:.1f}"
+    return text.replace(".", ",") if lang == "es" else text
+
+
+def _ratio_text(ratio, lang: str) -> str:
+    w = strings(lang)["warnings"]
+    if ratio is None or ratio == "":
+        return ""
+    return w["ratio_low"] if float(ratio) < 1 else w["ratio_value"].format(ratio=format_number(float(ratio), lang))
+
+
+def _warning_text(warning: GuardrailWarning, profile: FamilyProfile) -> str:
+    w, lang, params = _s(profile)["warnings"], profile.language, warning.params
+    key = warning.code
+    if key == "safety_option" and params.get("listed") is False:
+        key = "safety_option_suggest"
+    return _fmt(
+        w[key],
+        child=_child(profile),
+        limit=params.get("limit", 3),
+        names=_names(params.get("codes", []), lang),
+        name=program_name(params.get("first_choice") or params.get("suggest") or params.get("code") or "", lang),
+        district=params.get("district", ""),
+        ratio=params.get("apps_per_opening", ""),
+        ratio_text=_ratio_text(params.get("apps_per_opening"), lang),
+    )
+
+
 def render_warnings(warnings: list[GuardrailWarning], profile: FamilyProfile) -> str:
-    s, child, lang = _s(profile), _child(profile), profile.language
-    w = s["warnings"]
-    if not warnings:
-        return "\n".join([w["ok"], "", w["next"]])
-    lines = [w["header"], ""]
-    for warning in sorted(warnings, key=lambda x: _SEVERITY_ORDER[x.severity]):
-        params = warning.params
-        text = _fmt(
-            w[warning.code],
-            child=child,
-            limit=params.get("limit", 3),
-            names=_names(params.get("codes", []), lang),
-            name=program_name(params.get("first_choice") or params.get("suggest") or params.get("code") or "", lang),
-            district=params.get("district", ""),
-            ratio=params.get("apps_per_opening", ""),
-        )
-        lines.append(f"- {text}")
+    w = _s(profile)["warnings"]
+    issues = [x for x in warnings if x.code not in ADVICE_CODES]
+    advice = [x for x in warnings if x.code in ADVICE_CODES]
+    lines = [w["header"], ""] if issues else [w["ok"]]
+    lines += [f"- {_warning_text(x, profile)}" for x in sorted(issues, key=lambda x: _SEVERITY_ORDER[x.severity])]
+    if advice:
+        lines += ["", w["advice_header"]]
+        lines += [f"- {_warning_text(x, profile)}" for x in sorted(advice, key=lambda x: ADVICE_CODES.index(x.code))]
     lines += ["", w["next"]]
     return "\n".join(lines)
 

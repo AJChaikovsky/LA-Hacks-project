@@ -152,7 +152,8 @@ def test_threshold_comes_from_config(monkeypatch):
 
 def test_advice_renders_honestly_in_both_languages():
     from core.render import render_warnings
-    for lang, phrase in (("es", "Ponga primero la escuela que más quiere"), ("en", "Keep your favorite first")):
+    for lang, phrase, low in (("es", "Ponga primero la escuela que más quiere", "menos solicitudes que lugares"),
+                              ("en", "Keep the school you want most first", "fewer applications than seats")):
         p = maria(language=lang)
         text = render_warnings(check_list(p, GOLDEN, today=TODAY), p)
-        assert phrase in text and "0.67" in text and "%" not in text and "garantizado" not in text
+        assert phrase in text and low in text and "%" not in text and "garantizado" not in text

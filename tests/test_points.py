@@ -145,7 +145,7 @@ def test_render_says_probably_4_of_23():
 def test_render_says_more_seats_than_applications():
     from core.render import render_points
     es = render_points(estimate(maria(), GOLDEN), maria())
-    assert "Belvedere MS · STEAM: unas 1.3 solicitudes por cada lugar (competencia moderada)." in es
-    assert "el año pasado hubo menos solicitudes que lugares (unas 0.7 por lugar)" in es
+    assert "Belvedere MS · STEAM: unas 1,3 solicitudes por cada lugar (competencia moderada)." in es
+    assert "el año pasado hubo menos solicitudes que lugares (unas 0,7 por lugar)" in es
     en_profile = maria().model_copy(update={"language": "en"})
     assert "fewer applications than seats" in render_points(estimate(en_profile, GOLDEN), en_profile)

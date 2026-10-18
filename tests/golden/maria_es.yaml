@@ -32,6 +32,7 @@ turns:
       - "Markham"
       - "Ponga solo escuelas que sí aceptaría"
       - "Stevenson"
+      - "**Sugerencia de orden:**"
       - "primera opción"
   - say: "Está bien, solo las tres. ¿Qué necesito para terminar?"
     intent: ask_plan
