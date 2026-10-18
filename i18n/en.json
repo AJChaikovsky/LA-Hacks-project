@@ -52,7 +52,8 @@
     "near_work": "It's close to your work in {work}.",
     "spanish_dle": "Spanish dual-language program: {child} learns in both languages.",
     "iep_eligible": "Students with an IEP can apply to any magnet.",
-    "bus_possible": "May qualify for the school bus if you live more than 2 miles away."
+    "bus_possible": "May qualify for the school bus if you live more than 2 miles away.",
+    "metro_direct": "Direct Metro bus from {home}: Line {route}, about {minutes} minutes by the schedule."
   },
   "points": {
     "header": "**{child}'s magnet points** (maximum 23):",
@@ -176,6 +177,7 @@
     "row_address": "Address",
     "row_phone": "Phone",
     "row_bus": "Bus",
+    "row_metro": "Metro",
     "row_points": "Estimated points",
     "points_value": "{total} of 23",
     "points_maybe": "probably {total} of 23",
@@ -201,7 +203,8 @@
     "form_address": "Address (optional: only to measure distance; we don't keep it)",
     "form_submit": "Find schools",
     "kinder": "Kindergarten",
-    "grade_option": "Grade {n}"
+    "grade_option": "Grade {n}",
+    "metro_value": "Line {route} · about {minutes} min from {home} · get off at {stop}"
   },
   "program_labels": {
     "1832103": "Computer Science & Math",

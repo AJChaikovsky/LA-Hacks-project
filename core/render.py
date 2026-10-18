@@ -154,6 +154,8 @@ def render_matches(matches: list[SchoolMatch], profile: FamilyProfile) -> str:
         ctx = dict(child=child, home=place(profile.home_neighborhood, profile.language),
                    work=place(profile.parent_work_area, profile.language),
                    interest=s["interests"].get(interest, "") if interest else "")
+        if m.transit:  # B13: the quickest direct Metro line
+            ctx.update(route=m.transit[0].route, minutes=m.transit[0].minutes)
         lines.append(f"**{i}. {program_name(m.code, profile.language, matches)}**")
         own = [r for r in m.reason_codes if r not in _GENERAL_REASONS]
         general += [r for r in m.reason_codes if r in _GENERAL_REASONS and r not in general]

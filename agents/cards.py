@@ -23,7 +23,7 @@ from uuid import uuid4
 
 from uagents_core.contrib.protocols.chat import ChatMessage, MetadataContent, TextContent
 
-from core.render import format_date, program_name, schools, strings
+from core.render import format_date, place, program_name, schools, strings
 from core.types import ActionPlan, FamilyProfile, PointsEstimate, SchoolMatch, SessionState
 
 MAX_PAYLOAD_BYTES = 64 * 1024
@@ -92,6 +92,9 @@ def school_detail(match: SchoolMatch, profile: FamilyProfile, estimate: PointsEs
     if match.phone or school.get("phone"):
         rows.append({"label": c["row_phone"], "value": match.phone or school["phone"]})
     rows.append({"label": c["row_bus"], "value": school.get("transport_note") or c["bus_unknown"]})
+    for t in match.transit[:2]:  # B13: direct Metro lines, scheduled and approximate
+        rows.append({"label": c["row_metro"], "value": c["metro_value"].format(
+            route=t.route, minutes=t.minutes, home=place(profile.home_neighborhood, lang), stop=t.alight_stop or "—")})
     pts = _points_text(estimate, profile)
     if pts:
         rows.append({"label": c["row_points"], "value": pts})

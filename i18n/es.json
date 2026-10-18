@@ -52,7 +52,8 @@
     "near_work": "Queda cerca de su trabajo en {work}.",
     "spanish_dle": "Programa bilingüe en español: {child} aprende en los dos idiomas.",
     "iep_eligible": "Los estudiantes con IEP pueden aplicar a cualquier magnet.",
-    "bus_possible": "Puede calificar para el autobús escolar si vive a más de 2 millas."
+    "bus_possible": "Puede calificar para el autobús escolar si vive a más de 2 millas.",
+    "metro_direct": "Autobús directo de Metro desde {home}: Línea {route}, unos {minutes} minutos según el horario."
   },
   "points": {
     "header": "**Puntos magnet de {child}** (máximo 23):",
@@ -176,6 +177,7 @@
     "row_address": "Dirección",
     "row_phone": "Teléfono",
     "row_bus": "Autobús",
+    "row_metro": "Metro",
     "row_points": "Puntos estimados",
     "points_value": "{total} de 23",
     "points_maybe": "probablemente {total} de 23",
@@ -201,7 +203,8 @@
     "form_address": "Dirección (opcional: solo para calcular la distancia; no la guardamos)",
     "form_submit": "Buscar escuelas",
     "kinder": "Kínder",
-    "grade_option": "{n}.º grado"
+    "grade_option": "{n}.º grado",
+    "metro_value": "Línea {route} · unos {minutes} min desde {home} · bájese en {stop}"
   },
   "program_labels": {
     "1832103": "Computación y Matemáticas",

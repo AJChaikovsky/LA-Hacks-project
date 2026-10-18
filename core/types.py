@@ -46,6 +46,7 @@ ReasonCode = Literal[
     "spanish_dle",      # Spanish dual-language program fits the home language
     "iep_eligible",     # students with IEPs can apply to any magnet
     "bus_possible",     # may qualify for district transportation
+    "metro_direct",     # B13: a direct LA Metro bus line from home (details in SchoolMatch.transit)
 ]
 WarningCode = Literal[
     "over_limit_magnet",     # block: more than 3 magnet choices
@@ -169,6 +170,14 @@ class FamilyProfile(BaseModel):
     would_not_accept: list[str] = Field(default_factory=list)  # program codes
 
 
+class TransitOption(BaseModel):
+    """B13: one direct Metro bus line from the home neighborhood to a school (scheduled, approximate)."""
+    route: str                      # Metro line, e.g. "70"
+    minutes: int                    # median scheduled weekday-morning ride, rounded to 5; say "about"
+    walk_m: int                     # straight-line meters from the stop to the school
+    alight_stop: str | None = None  # e.g. "Cesar E Chavez / Record"
+
+
 class SchoolMatch(BaseModel):
     code: str
     name: str
@@ -179,6 +188,7 @@ class SchoolMatch(BaseModel):
     distance_km: float | None = None
     address: str | None = None
     phone: str | None = None
+    transit: list[TransitOption] = Field(default_factory=list)  # B13: direct Metro lines, quickest first
 
 
 class PointsLine(BaseModel):

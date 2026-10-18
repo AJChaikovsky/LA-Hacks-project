@@ -1,0 +1,2138 @@
+{
+ "source_url": "https://gitlab.com/LACMTA/gtfs_bus/raw/master/gtfs_bus.zip",
+ "terms_url": "https://developer.metro.net/",
+ "feed_publisher": "Los Angeles County Metropolitan Transportation Authority",
+ "feed_start_date": "20260607",
+ "feed_end_date": "20261212",
+ "built_at": "2026-10-18T03:36:17+00:00",
+ "method": "Direct Metro bus lines (no transfers) on 2026-10-27 (Tuesday), boarding 06:30:00-08:15:00 within 800 m of the neighborhood centroid, getting off within 500 m of the school. minutes = median scheduled ride on the most common stop pair; walk_m = stop to school, walk_home_m = centroid to stop (straight line).",
+ "places": {
+  "Beverly Hills": {
+   "1803802": [
+    {
+     "route": "4",
+     "minutes": 21,
+     "board_stop": "Santa Monica / Crescent",
+     "alight_stop": "Santa Monica / Las Palmas",
+     "walk_home_m": 601,
+     "walk_m": 277,
+     "trips": 15
+    }
+   ]
+  },
+  "Boyle Heights": {
+   "1804702": [
+    {
+     "route": "70",
+     "minutes": 9,
+     "board_stop": "Cesar E Chavez / Soto",
+     "alight_stop": "Cesar E Chavez / Record",
+     "walk_home_m": 379,
+     "walk_m": 106,
+     "trips": 15
+    },
+    {
+     "route": "74",
+     "minutes": 9,
+     "board_stop": "1st / Soto",
+     "alight_stop": "1st / Herbert",
+     "walk_home_m": 25,
+     "walk_m": 400,
+     "trips": 5
+    }
+   ],
+   "1804703": [
+    {
+     "route": "70",
+     "minutes": 9,
+     "board_stop": "Cesar E Chavez / Soto",
+     "alight_stop": "Cesar E Chavez / Record",
+     "walk_home_m": 379,
+     "walk_m": 106,
+     "trips": 15
+    },
+    {
+     "route": "74",
+     "minutes": 9,
+     "board_stop": "1st / Soto",
+     "alight_stop": "1st / Herbert",
+     "walk_home_m": 25,
+     "walk_m": 400,
+     "trips": 5
+    }
+   ],
+   "1816801": [
+    {
+     "route": "74",
+     "minutes": 16,
+     "board_stop": "1st / Soto",
+     "alight_stop": "3rd / Mednik",
+     "walk_home_m": 25,
+     "walk_m": 161,
+     "trips": 5
+    }
+   ],
+   "1816801TWS": [
+    {
+     "route": "74",
+     "minutes": 16,
+     "board_stop": "1st / Soto",
+     "alight_stop": "3rd / Mednik",
+     "walk_home_m": 25,
+     "walk_m": 161,
+     "trips": 5
+    }
+   ],
+   "1826401TWS": [
+    {
+     "route": "251",
+     "minutes": 23,
+     "board_stop": "Soto / 1st",
+     "alight_stop": "Cypress / Figueroa",
+     "walk_home_m": 31,
+     "walk_m": 31,
+     "trips": 11
+    }
+   ],
+   "1826402": [
+    {
+     "route": "251",
+     "minutes": 23,
+     "board_stop": "Soto / 1st",
+     "alight_stop": "Cypress / Figueroa",
+     "walk_home_m": 31,
+     "walk_m": 31,
+     "trips": 11
+    }
+   ],
+   "1826403": [
+    {
+     "route": "251",
+     "minutes": 23,
+     "board_stop": "Soto / 1st",
+     "alight_stop": "Cypress / Figueroa",
+     "walk_home_m": 31,
+     "walk_m": 31,
+     "trips": 11
+    }
+   ],
+   "1826404": [
+    {
+     "route": "251",
+     "minutes": 23,
+     "board_stop": "Soto / 1st",
+     "alight_stop": "Cypress / Figueroa",
+     "walk_home_m": 31,
+     "walk_m": 31,
+     "trips": 11
+    }
+   ]
+  },
+  "Burbank": {
+   "1823002": [
+    {
+     "route": "165",
+     "minutes": 28,
+     "board_stop": "1st / Olive",
+     "alight_stop": "Vanowen / Coldwater Canyon",
+     "walk_home_m": 295,
+     "walk_m": 416,
+     "trips": 8
+    }
+   ],
+   "1823003": [
+    {
+     "route": "165",
+     "minutes": 28,
+     "board_stop": "1st / Olive",
+     "alight_stop": "Vanowen / Coldwater Canyon",
+     "walk_home_m": 295,
+     "walk_m": 416,
+     "trips": 8
+    }
+   ],
+   "1826401TWS": [
+    {
+     "route": "94",
+     "minutes": 48,
+     "board_stop": "Olive / San Fernando",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 110,
+     "walk_m": 461,
+     "trips": 8
+    }
+   ],
+   "1826402": [
+    {
+     "route": "94",
+     "minutes": 48,
+     "board_stop": "Olive / San Fernando",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 110,
+     "walk_m": 461,
+     "trips": 8
+    }
+   ],
+   "1826403": [
+    {
+     "route": "94",
+     "minutes": 48,
+     "board_stop": "Olive / San Fernando",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 110,
+     "walk_m": 461,
+     "trips": 8
+    }
+   ],
+   "1826404": [
+    {
+     "route": "94",
+     "minutes": 48,
+     "board_stop": "Olive / San Fernando",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 110,
+     "walk_m": 461,
+     "trips": 8
+    }
+   ],
+   "1835801TWS": [
+    {
+     "route": "294",
+     "minutes": 42,
+     "board_stop": "Ikea / Angeleno",
+     "alight_stop": "Truman / Wolfskill",
+     "walk_home_m": 299,
+     "walk_m": 246,
+     "trips": 3
+    }
+   ]
+  },
+  "City Terrace": {
+   "1804702": [
+    {
+     "route": "665",
+     "minutes": 3,
+     "board_stop": "Gage / Harris",
+     "alight_stop": "Gage / Cesar E Chavez",
+     "walk_home_m": 206,
+     "walk_m": 254,
+     "trips": 3
+    },
+    {
+     "route": "74",
+     "minutes": 40,
+     "board_stop": "City Terrace / Pomeroy",
+     "alight_stop": "1st / Herbert",
+     "walk_home_m": 573,
+     "walk_m": 400,
+     "trips": 6
+    }
+   ],
+   "1804703": [
+    {
+     "route": "665",
+     "minutes": 3,
+     "board_stop": "Gage / Harris",
+     "alight_stop": "Gage / Cesar E Chavez",
+     "walk_home_m": 206,
+     "walk_m": 254,
+     "trips": 3
+    },
+    {
+     "route": "74",
+     "minutes": 40,
+     "board_stop": "City Terrace / Pomeroy",
+     "alight_stop": "1st / Herbert",
+     "walk_home_m": 573,
+     "walk_m": 400,
+     "trips": 6
+    }
+   ],
+   "1811801TWS": [
+    {
+     "route": "665",
+     "minutes": 20,
+     "board_stop": "Gage / Harris",
+     "alight_stop": "Eastern / Lombardy",
+     "walk_home_m": 185,
+     "walk_m": 194,
+     "trips": 3
+    }
+   ],
+   "1811802": [
+    {
+     "route": "665",
+     "minutes": 20,
+     "board_stop": "Gage / Harris",
+     "alight_stop": "Eastern / Lombardy",
+     "walk_home_m": 185,
+     "walk_m": 194,
+     "trips": 3
+    }
+   ],
+   "1811804": [
+    {
+     "route": "665",
+     "minutes": 20,
+     "board_stop": "Gage / Harris",
+     "alight_stop": "Eastern / Lombardy",
+     "walk_home_m": 185,
+     "walk_m": 194,
+     "trips": 3
+    }
+   ],
+   "1816801": [
+    {
+     "route": "258",
+     "minutes": 9,
+     "board_stop": "Eastern / Marianna",
+     "alight_stop": "Mednik / 3rd",
+     "walk_home_m": 755,
+     "walk_m": 154,
+     "trips": 3
+    },
+    {
+     "route": "74",
+     "minutes": 48,
+     "board_stop": "City Terrace / Pomeroy",
+     "alight_stop": "3rd / Mednik",
+     "walk_home_m": 573,
+     "walk_m": 161,
+     "trips": 6
+    }
+   ],
+   "1816801TWS": [
+    {
+     "route": "258",
+     "minutes": 9,
+     "board_stop": "Eastern / Marianna",
+     "alight_stop": "Mednik / 3rd",
+     "walk_home_m": 755,
+     "walk_m": 154,
+     "trips": 3
+    },
+    {
+     "route": "74",
+     "minutes": 48,
+     "board_stop": "City Terrace / Pomeroy",
+     "alight_stop": "3rd / Mednik",
+     "walk_home_m": 573,
+     "walk_m": 161,
+     "trips": 6
+    }
+   ],
+   "1838701TWS": [
+    {
+     "route": "665",
+     "minutes": 11,
+     "board_stop": "Gage / Harris",
+     "alight_stop": "Indiana / Hubbard",
+     "walk_home_m": 206,
+     "walk_m": 51,
+     "trips": 3
+    }
+   ],
+   "1838702": [
+    {
+     "route": "665",
+     "minutes": 11,
+     "board_stop": "Gage / Harris",
+     "alight_stop": "Indiana / Hubbard",
+     "walk_home_m": 206,
+     "walk_m": 51,
+     "trips": 3
+    }
+   ]
+  },
+  "Culver City": {
+   "1842501TWS": [
+    {
+     "route": "33",
+     "minutes": 17,
+     "board_stop": "Venice / Hughes",
+     "alight_stop": "Venice / Walgrove",
+     "walk_home_m": 348,
+     "walk_m": 392,
+     "trips": 15
+    }
+   ]
+  },
+  "Cypress Park": {
+   "1817902": [
+    {
+     "route": "251",
+     "minutes": 24,
+     "board_stop": "Avenue 28 / Idell",
+     "alight_stop": "Soto / 6th",
+     "walk_home_m": 584,
+     "walk_m": 224,
+     "trips": 12
+    }
+   ],
+   "1817903": [
+    {
+     "route": "251",
+     "minutes": 24,
+     "board_stop": "Avenue 28 / Idell",
+     "alight_stop": "Soto / 6th",
+     "walk_home_m": 584,
+     "walk_m": 224,
+     "trips": 12
+    }
+   ]
+  },
+  "Downtown": {
+   "1800901TWS": [
+    {
+     "route": "14/37",
+     "minutes": 13,
+     "board_stop": "Grand / 5th",
+     "alight_stop": "Grand / Adams",
+     "walk_home_m": 305,
+     "walk_m": 422,
+     "trips": 11
+    },
+    {
+     "route": "40",
+     "minutes": 14,
+     "board_stop": "Spring / 4th",
+     "alight_stop": "Broadway / 30th",
+     "walk_home_m": 316,
+     "walk_m": 62,
+     "trips": 11
+    },
+    {
+     "route": "55",
+     "minutes": 15,
+     "board_stop": "6th / Hill",
+     "alight_stop": "Adams / Hill",
+     "walk_home_m": 131,
+     "walk_m": 324,
+     "trips": 8
+    }
+   ],
+   "1800902": [
+    {
+     "route": "14/37",
+     "minutes": 13,
+     "board_stop": "Grand / 5th",
+     "alight_stop": "Grand / Adams",
+     "walk_home_m": 305,
+     "walk_m": 422,
+     "trips": 11
+    },
+    {
+     "route": "40",
+     "minutes": 14,
+     "board_stop": "Spring / 4th",
+     "alight_stop": "Broadway / 30th",
+     "walk_home_m": 316,
+     "walk_m": 62,
+     "trips": 11
+    },
+    {
+     "route": "55",
+     "minutes": 15,
+     "board_stop": "6th / Hill",
+     "alight_stop": "Adams / Hill",
+     "walk_home_m": 131,
+     "walk_m": 324,
+     "trips": 8
+    }
+   ],
+   "1800903": [
+    {
+     "route": "14/37",
+     "minutes": 13,
+     "board_stop": "Grand / 5th",
+     "alight_stop": "Grand / Adams",
+     "walk_home_m": 305,
+     "walk_m": 422,
+     "trips": 11
+    },
+    {
+     "route": "40",
+     "minutes": 14,
+     "board_stop": "Spring / 4th",
+     "alight_stop": "Broadway / 30th",
+     "walk_home_m": 316,
+     "walk_m": 62,
+     "trips": 11
+    },
+    {
+     "route": "55",
+     "minutes": 15,
+     "board_stop": "6th / Hill",
+     "alight_stop": "Adams / Hill",
+     "walk_home_m": 131,
+     "walk_m": 324,
+     "trips": 8
+    }
+   ],
+   "1802802": [
+    {
+     "route": "40",
+     "minutes": 37,
+     "board_stop": "Spring / 4th",
+     "alight_stop": "Martin Luther King Jr / Degnan",
+     "walk_home_m": 316,
+     "walk_m": 219,
+     "trips": 11
+    }
+   ],
+   "1803802": [
+    {
+     "route": "4",
+     "minutes": 47,
+     "board_stop": "Broadway / 5th",
+     "alight_stop": "Santa Monica / Las Palmas",
+     "walk_home_m": 152,
+     "walk_m": 306,
+     "trips": 15
+    }
+   ],
+   "1804702": [
+    {
+     "route": "70",
+     "minutes": 26,
+     "board_stop": "Olive / 5th",
+     "alight_stop": "Cesar E Chavez / Record",
+     "walk_home_m": 160,
+     "walk_m": 106,
+     "trips": 15
+    }
+   ],
+   "1804703": [
+    {
+     "route": "70",
+     "minutes": 26,
+     "board_stop": "Olive / 5th",
+     "alight_stop": "Cesar E Chavez / Record",
+     "walk_home_m": 160,
+     "walk_m": 106,
+     "trips": 15
+    }
+   ],
+   "1806002": [
+    {
+     "route": "45",
+     "minutes": 32,
+     "board_stop": "Spring / 4th",
+     "alight_stop": "Broadway / 69th",
+     "walk_home_m": 316,
+     "walk_m": 301,
+     "trips": 9
+    }
+   ],
+   "1806202": [
+    {
+     "route": "910-13201",
+     "minutes": 9,
+     "board_stop": "Grand / 5th",
+     "alight_stop": "Harbor Transitway / 37th St / USC",
+     "walk_home_m": 305,
+     "walk_m": 423,
+     "trips": 22
+    },
+    {
+     "route": "460",
+     "minutes": 14,
+     "board_stop": "5th / Hill",
+     "alight_stop": "Harbor Transitway / 37th St / USC",
+     "walk_home_m": 123,
+     "walk_m": 423,
+     "trips": 5
+    },
+    {
+     "route": "40",
+     "minutes": 16,
+     "board_stop": "Spring / 4th",
+     "alight_stop": "Broadway / 36th",
+     "walk_home_m": 316,
+     "walk_m": 193,
+     "trips": 11
+    }
+   ],
+   "1811301TWS": [
+    {
+     "route": "53",
+     "minutes": 32,
+     "board_stop": "6th / Hill",
+     "alight_stop": "Central / Gage",
+     "walk_home_m": 131,
+     "walk_m": 444,
+     "trips": 12
+    },
+    {
+     "route": "55",
+     "minutes": 39,
+     "board_stop": "6th / Hill",
+     "alight_stop": "Compton / Gage",
+     "walk_home_m": 131,
+     "walk_m": 421,
+     "trips": 8
+    }
+   ],
+   "1816002": [
+    {
+     "route": "10/48",
+     "minutes": 50,
+     "board_stop": "Hill / 5th",
+     "alight_stop": "San Pedro / 111th",
+     "walk_home_m": 68,
+     "walk_m": 179,
+     "trips": 4
+    }
+   ],
+   "1817902": [
+    {
+     "route": "18",
+     "minutes": 14,
+     "board_stop": "6th / Hill",
+     "alight_stop": "Whittier / Soto",
+     "walk_home_m": 131,
+     "walk_m": 369,
+     "trips": 16
+    }
+   ],
+   "1817903": [
+    {
+     "route": "18",
+     "minutes": 14,
+     "board_stop": "6th / Hill",
+     "alight_stop": "Whittier / Soto",
+     "walk_home_m": 131,
+     "walk_m": 369,
+     "trips": 16
+    }
+   ],
+   "1820001TWS": [
+    {
+     "route": "51",
+     "minutes": 26,
+     "board_stop": "7th / Broadway",
+     "alight_stop": "Avalon / 56th",
+     "walk_home_m": 339,
+     "walk_m": 214,
+     "trips": 16
+    }
+   ],
+   "1820002": [
+    {
+     "route": "51",
+     "minutes": 26,
+     "board_stop": "7th / Broadway",
+     "alight_stop": "Avalon / 56th",
+     "walk_home_m": 339,
+     "walk_m": 214,
+     "trips": 16
+    }
+   ],
+   "1823702": [
+    {
+     "route": "55",
+     "minutes": 54,
+     "board_stop": "6th / Hill",
+     "alight_stop": "Compton / 105th",
+     "walk_home_m": 131,
+     "walk_m": 172,
+     "trips": 8
+    }
+   ],
+   "1823703": [
+    {
+     "route": "55",
+     "minutes": 54,
+     "board_stop": "6th / Hill",
+     "alight_stop": "Compton / 105th",
+     "walk_home_m": 131,
+     "walk_m": 172,
+     "trips": 8
+    }
+   ],
+   "1826401TWS": [
+    {
+     "route": "90",
+     "minutes": 12,
+     "board_stop": "Historic Broadway Layover",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 641,
+     "walk_m": 435,
+     "trips": 6
+    },
+    {
+     "route": "94",
+     "minutes": 14,
+     "board_stop": "Hill / 5th",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 73,
+     "walk_m": 435,
+     "trips": 8
+    },
+    {
+     "route": "81",
+     "minutes": 15,
+     "board_stop": "Hill / 5th",
+     "alight_stop": "Figueroa / Cypress",
+     "walk_home_m": 73,
+     "walk_m": 49,
+     "trips": 8
+    }
+   ],
+   "1826402": [
+    {
+     "route": "90",
+     "minutes": 12,
+     "board_stop": "Historic Broadway Layover",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 641,
+     "walk_m": 435,
+     "trips": 6
+    },
+    {
+     "route": "94",
+     "minutes": 14,
+     "board_stop": "Hill / 5th",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 73,
+     "walk_m": 435,
+     "trips": 8
+    },
+    {
+     "route": "81",
+     "minutes": 15,
+     "board_stop": "Hill / 5th",
+     "alight_stop": "Figueroa / Cypress",
+     "walk_home_m": 73,
+     "walk_m": 49,
+     "trips": 8
+    }
+   ],
+   "1826403": [
+    {
+     "route": "90",
+     "minutes": 12,
+     "board_stop": "Historic Broadway Layover",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 641,
+     "walk_m": 435,
+     "trips": 6
+    },
+    {
+     "route": "94",
+     "minutes": 14,
+     "board_stop": "Hill / 5th",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 73,
+     "walk_m": 435,
+     "trips": 8
+    },
+    {
+     "route": "81",
+     "minutes": 15,
+     "board_stop": "Hill / 5th",
+     "alight_stop": "Figueroa / Cypress",
+     "walk_home_m": 73,
+     "walk_m": 49,
+     "trips": 8
+    }
+   ],
+   "1826404": [
+    {
+     "route": "90",
+     "minutes": 12,
+     "board_stop": "Historic Broadway Layover",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 641,
+     "walk_m": 435,
+     "trips": 6
+    },
+    {
+     "route": "94",
+     "minutes": 14,
+     "board_stop": "Hill / 5th",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 73,
+     "walk_m": 435,
+     "trips": 8
+    },
+    {
+     "route": "81",
+     "minutes": 15,
+     "board_stop": "Hill / 5th",
+     "alight_stop": "Figueroa / Cypress",
+     "walk_home_m": 73,
+     "walk_m": 49,
+     "trips": 8
+    }
+   ],
+   "1838701TWS": [
+    {
+     "route": "18",
+     "minutes": 21,
+     "board_stop": "6th / Hill",
+     "alight_stop": "Whittier / Indiana",
+     "walk_home_m": 131,
+     "walk_m": 231,
+     "trips": 16
+    }
+   ],
+   "1838702": [
+    {
+     "route": "18",
+     "minutes": 21,
+     "board_stop": "6th / Hill",
+     "alight_stop": "Whittier / Indiana",
+     "walk_home_m": 131,
+     "walk_m": 231,
+     "trips": 16
+    }
+   ],
+   "1842501TWS": [
+    {
+     "route": "33",
+     "minutes": 78,
+     "board_stop": "Spring / 6th",
+     "alight_stop": "Venice / Walgrove",
+     "walk_home_m": 237,
+     "walk_m": 392,
+     "trips": 16
+    }
+   ]
+  },
+  "East Los Angeles": {
+   "1816801": [
+    {
+     "route": "258",
+     "minutes": 3,
+     "board_stop": "Arizona / Whittier",
+     "alight_stop": "Mednik / 4th",
+     "walk_home_m": 496,
+     "walk_m": 159,
+     "trips": 3
+    }
+   ],
+   "1816801TWS": [
+    {
+     "route": "258",
+     "minutes": 3,
+     "board_stop": "Arizona / Whittier",
+     "alight_stop": "Mednik / 4th",
+     "walk_home_m": 496,
+     "walk_m": 159,
+     "trips": 3
+    }
+   ],
+   "1817902": [
+    {
+     "route": "18",
+     "minutes": 15,
+     "board_stop": "Whittier / Ford",
+     "alight_stop": "Whittier / Mott",
+     "walk_home_m": 84,
+     "walk_m": 350,
+     "trips": 17
+    }
+   ],
+   "1817903": [
+    {
+     "route": "18",
+     "minutes": 15,
+     "board_stop": "Whittier / Ford",
+     "alight_stop": "Whittier / Mott",
+     "walk_home_m": 84,
+     "walk_m": 350,
+     "trips": 17
+    }
+   ],
+   "1838701TWS": [
+    {
+     "route": "18",
+     "minutes": 7,
+     "board_stop": "Whittier / Ford",
+     "alight_stop": "Whittier / Indiana",
+     "walk_home_m": 84,
+     "walk_m": 197,
+     "trips": 17
+    }
+   ],
+   "1838702": [
+    {
+     "route": "18",
+     "minutes": 7,
+     "board_stop": "Whittier / Ford",
+     "alight_stop": "Whittier / Indiana",
+     "walk_home_m": 84,
+     "walk_m": 197,
+     "trips": 17
+    }
+   ]
+  },
+  "Echo Park": {
+   "1803802": [
+    {
+     "route": "4",
+     "minutes": 32,
+     "board_stop": "Sunset / Echo Park",
+     "alight_stop": "Santa Monica / Las Palmas",
+     "walk_home_m": 133,
+     "walk_m": 306,
+     "trips": 15
+    }
+   ],
+   "1820803": [
+    {
+     "route": "2",
+     "minutes": 10,
+     "board_stop": "Sunset / Alvarado",
+     "alight_stop": "Sunset / Bates",
+     "walk_home_m": 665,
+     "walk_m": 310,
+     "trips": 12
+    }
+   ]
+  },
+  "El Sereno": {
+   "1804702": [
+    {
+     "route": "665",
+     "minutes": 27,
+     "board_stop": "Eastern / Gambier",
+     "alight_stop": "Gage / Cesar E Chavez",
+     "walk_home_m": 49,
+     "walk_m": 254,
+     "trips": 3
+    }
+   ],
+   "1804703": [
+    {
+     "route": "665",
+     "minutes": 27,
+     "board_stop": "Eastern / Gambier",
+     "alight_stop": "Gage / Cesar E Chavez",
+     "walk_home_m": 49,
+     "walk_m": 254,
+     "trips": 3
+    }
+   ],
+   "1838701TWS": [
+    {
+     "route": "665",
+     "minutes": 35,
+     "board_stop": "Eastern / Gambier",
+     "alight_stop": "Indiana / Hubbard",
+     "walk_home_m": 49,
+     "walk_m": 51,
+     "trips": 3
+    }
+   ],
+   "1838702": [
+    {
+     "route": "665",
+     "minutes": 35,
+     "board_stop": "Eastern / Gambier",
+     "alight_stop": "Indiana / Hubbard",
+     "walk_home_m": 49,
+     "walk_m": 51,
+     "trips": 3
+    }
+   ]
+  },
+  "Glendale": {
+   "1826401TWS": [
+    {
+     "route": "90",
+     "minutes": 21,
+     "board_stop": "Glendale / Broadway",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 72,
+     "walk_m": 461,
+     "trips": 5
+    },
+    {
+     "route": "94",
+     "minutes": 24,
+     "board_stop": "Brand / Broadway",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 679,
+     "walk_m": 461,
+     "trips": 8
+    }
+   ],
+   "1826402": [
+    {
+     "route": "90",
+     "minutes": 21,
+     "board_stop": "Glendale / Broadway",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 72,
+     "walk_m": 461,
+     "trips": 5
+    },
+    {
+     "route": "94",
+     "minutes": 24,
+     "board_stop": "Brand / Broadway",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 679,
+     "walk_m": 461,
+     "trips": 8
+    }
+   ],
+   "1826403": [
+    {
+     "route": "90",
+     "minutes": 21,
+     "board_stop": "Glendale / Broadway",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 72,
+     "walk_m": 461,
+     "trips": 5
+    },
+    {
+     "route": "94",
+     "minutes": 24,
+     "board_stop": "Brand / Broadway",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 679,
+     "walk_m": 461,
+     "trips": 8
+    }
+   ],
+   "1826404": [
+    {
+     "route": "90",
+     "minutes": 21,
+     "board_stop": "Glendale / Broadway",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 72,
+     "walk_m": 461,
+     "trips": 5
+    },
+    {
+     "route": "94",
+     "minutes": 24,
+     "board_stop": "Brand / Broadway",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 679,
+     "walk_m": 461,
+     "trips": 8
+    }
+   ]
+  },
+  "Highland Park": {
+   "1820803": [
+    {
+     "route": "182",
+     "minutes": 45,
+     "board_stop": "Figueroa / Avenue 54",
+     "alight_stop": "Talmadge / Sunset",
+     "walk_home_m": 302,
+     "walk_m": 253,
+     "trips": 3
+    }
+   ],
+   "1826401TWS": [
+    {
+     "route": "81",
+     "minutes": 12,
+     "board_stop": "Figueroa / Avenue 54",
+     "alight_stop": "Figueroa / Cypress",
+     "walk_home_m": 242,
+     "walk_m": 7,
+     "trips": 8
+    }
+   ],
+   "1826402": [
+    {
+     "route": "81",
+     "minutes": 12,
+     "board_stop": "Figueroa / Avenue 54",
+     "alight_stop": "Figueroa / Cypress",
+     "walk_home_m": 242,
+     "walk_m": 7,
+     "trips": 8
+    }
+   ],
+   "1826403": [
+    {
+     "route": "81",
+     "minutes": 12,
+     "board_stop": "Figueroa / Avenue 54",
+     "alight_stop": "Figueroa / Cypress",
+     "walk_home_m": 242,
+     "walk_m": 7,
+     "trips": 8
+    }
+   ],
+   "1826404": [
+    {
+     "route": "81",
+     "minutes": 12,
+     "board_stop": "Figueroa / Avenue 54",
+     "alight_stop": "Figueroa / Cypress",
+     "walk_home_m": 242,
+     "walk_m": 7,
+     "trips": 8
+    }
+   ]
+  },
+  "Hollywood": {
+   "1820803": [
+    {
+     "route": "2",
+     "minutes": 15,
+     "board_stop": "Sunset / Ivar",
+     "alight_stop": "Sunset / Bates",
+     "walk_home_m": 58,
+     "walk_m": 343,
+     "trips": 14
+    }
+   ]
+  },
+  "Huntington Park": {
+   "1806002": [
+    {
+     "route": "111",
+     "minutes": 19,
+     "board_stop": "Florence / Pacific",
+     "alight_stop": "Florence / Main",
+     "walk_home_m": 688,
+     "walk_m": 327,
+     "trips": 10
+    }
+   ],
+   "1811301TWS": [
+    {
+     "route": "110",
+     "minutes": 16,
+     "board_stop": "Gage / Pacific",
+     "alight_stop": "Gage / Hooper",
+     "walk_home_m": 135,
+     "walk_m": 168,
+     "trips": 7
+    }
+   ],
+   "1817902": [
+    {
+     "route": "251",
+     "minutes": 26,
+     "board_stop": "Pacific / Zoe",
+     "alight_stop": "Soto / 6th",
+     "walk_home_m": 22,
+     "walk_m": 188,
+     "trips": 11
+    }
+   ],
+   "1817903": [
+    {
+     "route": "251",
+     "minutes": 26,
+     "board_stop": "Pacific / Zoe",
+     "alight_stop": "Soto / 6th",
+     "walk_home_m": 22,
+     "walk_m": 188,
+     "trips": 11
+    }
+   ],
+   "1826401TWS": [
+    {
+     "route": "251",
+     "minutes": 51,
+     "board_stop": "Pacific / Zoe",
+     "alight_stop": "Cypress / Figueroa",
+     "walk_home_m": 22,
+     "walk_m": 31,
+     "trips": 11
+    }
+   ],
+   "1826402": [
+    {
+     "route": "251",
+     "minutes": 51,
+     "board_stop": "Pacific / Zoe",
+     "alight_stop": "Cypress / Figueroa",
+     "walk_home_m": 22,
+     "walk_m": 31,
+     "trips": 11
+    }
+   ],
+   "1826403": [
+    {
+     "route": "251",
+     "minutes": 51,
+     "board_stop": "Pacific / Zoe",
+     "alight_stop": "Cypress / Figueroa",
+     "walk_home_m": 22,
+     "walk_m": 31,
+     "trips": 11
+    }
+   ],
+   "1826404": [
+    {
+     "route": "251",
+     "minutes": 51,
+     "board_stop": "Pacific / Zoe",
+     "alight_stop": "Cypress / Figueroa",
+     "walk_home_m": 22,
+     "walk_m": 31,
+     "trips": 11
+    }
+   ]
+  },
+  "Leimert Park": {
+   "1800901TWS": [
+    {
+     "route": "40",
+     "minutes": 24,
+     "board_stop": "Martin Luther King Jr / Degnan",
+     "alight_stop": "Broadway / 30th",
+     "walk_home_m": 263,
+     "walk_m": 62,
+     "trips": 12
+    }
+   ],
+   "1800902": [
+    {
+     "route": "40",
+     "minutes": 24,
+     "board_stop": "Martin Luther King Jr / Degnan",
+     "alight_stop": "Broadway / 30th",
+     "walk_home_m": 263,
+     "walk_m": 62,
+     "trips": 12
+    }
+   ],
+   "1800903": [
+    {
+     "route": "40",
+     "minutes": 24,
+     "board_stop": "Martin Luther King Jr / Degnan",
+     "alight_stop": "Broadway / 30th",
+     "walk_home_m": 263,
+     "walk_m": 62,
+     "trips": 12
+    }
+   ],
+   "1806202": [
+    {
+     "route": "40",
+     "minutes": 22,
+     "board_stop": "Martin Luther King Jr / Degnan",
+     "alight_stop": "Broadway / Jefferson",
+     "walk_home_m": 263,
+     "walk_m": 202,
+     "trips": 12
+    }
+   ]
+  },
+  "Lincoln Heights": {
+   "1800901TWS": [
+    {
+     "route": "45",
+     "minutes": 33,
+     "board_stop": "Broadway / Griffin",
+     "alight_stop": "Broadway / 30th",
+     "walk_home_m": 158,
+     "walk_m": 62,
+     "trips": 11
+    }
+   ],
+   "1800902": [
+    {
+     "route": "45",
+     "minutes": 33,
+     "board_stop": "Broadway / Griffin",
+     "alight_stop": "Broadway / 30th",
+     "walk_home_m": 158,
+     "walk_m": 62,
+     "trips": 11
+    }
+   ],
+   "1800903": [
+    {
+     "route": "45",
+     "minutes": 33,
+     "board_stop": "Broadway / Griffin",
+     "alight_stop": "Broadway / 30th",
+     "walk_home_m": 158,
+     "walk_m": 62,
+     "trips": 11
+    }
+   ],
+   "1806002": [
+    {
+     "route": "45",
+     "minutes": 49,
+     "board_stop": "Broadway / Griffin",
+     "alight_stop": "Broadway / 69th",
+     "walk_home_m": 158,
+     "walk_m": 301,
+     "trips": 11
+    }
+   ],
+   "1806202": [
+    {
+     "route": "45",
+     "minutes": 34,
+     "board_stop": "Broadway / Griffin",
+     "alight_stop": "Broadway / Jefferson",
+     "walk_home_m": 158,
+     "walk_m": 180,
+     "trips": 11
+    }
+   ],
+   "1817902": [
+    {
+     "route": "251",
+     "minutes": 17,
+     "board_stop": "Daly / Broadway",
+     "alight_stop": "Soto / 6th",
+     "walk_home_m": 444,
+     "walk_m": 224,
+     "trips": 12
+    }
+   ],
+   "1817903": [
+    {
+     "route": "251",
+     "minutes": 17,
+     "board_stop": "Daly / Broadway",
+     "alight_stop": "Soto / 6th",
+     "walk_home_m": 444,
+     "walk_m": 224,
+     "trips": 12
+    }
+   ],
+   "1820803": [
+    {
+     "route": "182",
+     "minutes": 60,
+     "board_stop": "Griffin / Broadway",
+     "alight_stop": "Talmadge / Sunset",
+     "walk_home_m": 173,
+     "walk_m": 253,
+     "trips": 4
+    }
+   ],
+   "1826401TWS": [
+    {
+     "route": "251",
+     "minutes": 6,
+     "board_stop": "Daly / Broadway",
+     "alight_stop": "Cypress / Figueroa",
+     "walk_home_m": 416,
+     "walk_m": 31,
+     "trips": 10
+    }
+   ],
+   "1826402": [
+    {
+     "route": "251",
+     "minutes": 6,
+     "board_stop": "Daly / Broadway",
+     "alight_stop": "Cypress / Figueroa",
+     "walk_home_m": 416,
+     "walk_m": 31,
+     "trips": 10
+    }
+   ],
+   "1826403": [
+    {
+     "route": "251",
+     "minutes": 6,
+     "board_stop": "Daly / Broadway",
+     "alight_stop": "Cypress / Figueroa",
+     "walk_home_m": 416,
+     "walk_m": 31,
+     "trips": 10
+    }
+   ],
+   "1826404": [
+    {
+     "route": "251",
+     "minutes": 6,
+     "board_stop": "Daly / Broadway",
+     "alight_stop": "Cypress / Figueroa",
+     "walk_home_m": 416,
+     "walk_m": 31,
+     "trips": 10
+    }
+   ]
+  },
+  "Mount Washington": {
+   "1817902": [
+    {
+     "route": "251",
+     "minutes": 26,
+     "board_stop": "Cypress / Maceo",
+     "alight_stop": "Soto / 6th",
+     "walk_home_m": 743,
+     "walk_m": 224,
+     "trips": 6
+    }
+   ],
+   "1817903": [
+    {
+     "route": "251",
+     "minutes": 26,
+     "board_stop": "Cypress / Maceo",
+     "alight_stop": "Soto / 6th",
+     "walk_home_m": 743,
+     "walk_m": 224,
+     "trips": 6
+    }
+   ],
+   "1826401TWS": [
+    {
+     "route": "251",
+     "minutes": 2,
+     "board_stop": "Cypress / Maceo",
+     "alight_stop": "Avenue 28 / Idell",
+     "walk_home_m": 743,
+     "walk_m": 450,
+     "trips": 6
+    }
+   ],
+   "1826402": [
+    {
+     "route": "251",
+     "minutes": 2,
+     "board_stop": "Cypress / Maceo",
+     "alight_stop": "Avenue 28 / Idell",
+     "walk_home_m": 743,
+     "walk_m": 450,
+     "trips": 6
+    }
+   ],
+   "1826403": [
+    {
+     "route": "251",
+     "minutes": 2,
+     "board_stop": "Cypress / Maceo",
+     "alight_stop": "Avenue 28 / Idell",
+     "walk_home_m": 743,
+     "walk_m": 450,
+     "trips": 6
+    }
+   ],
+   "1826404": [
+    {
+     "route": "251",
+     "minutes": 2,
+     "board_stop": "Cypress / Maceo",
+     "alight_stop": "Avenue 28 / Idell",
+     "walk_home_m": 743,
+     "walk_m": 450,
+     "trips": 6
+    }
+   ]
+  },
+  "North Hollywood": {
+   "1808002": [
+    {
+     "route": "152",
+     "minutes": 24,
+     "board_stop": "North Hollywood Station",
+     "alight_stop": "Roscoe / Arleta",
+     "walk_home_m": 434,
+     "walk_m": 347,
+     "trips": 10
+    }
+   ],
+   "1823002": [
+    {
+     "route": "162",
+     "minutes": 27,
+     "board_stop": "North Hollywood Station",
+     "alight_stop": "Sherman Way / Coldwater Canyon",
+     "walk_home_m": 434,
+     "walk_m": 462,
+     "trips": 8
+    }
+   ],
+   "1823003": [
+    {
+     "route": "162",
+     "minutes": 27,
+     "board_stop": "North Hollywood Station",
+     "alight_stop": "Sherman Way / Coldwater Canyon",
+     "walk_home_m": 434,
+     "walk_m": 462,
+     "trips": 8
+    }
+   ],
+   "1826401TWS": [
+    {
+     "route": "94",
+     "minutes": 70,
+     "board_stop": "North Hollywood Station",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 434,
+     "walk_m": 461,
+     "trips": 8
+    },
+    {
+     "route": "90",
+     "minutes": 107,
+     "board_stop": "North Hollywood Station",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 434,
+     "walk_m": 461,
+     "trips": 6
+    }
+   ],
+   "1826402": [
+    {
+     "route": "94",
+     "minutes": 70,
+     "board_stop": "North Hollywood Station",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 434,
+     "walk_m": 461,
+     "trips": 8
+    },
+    {
+     "route": "90",
+     "minutes": 107,
+     "board_stop": "North Hollywood Station",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 434,
+     "walk_m": 461,
+     "trips": 6
+    }
+   ],
+   "1826403": [
+    {
+     "route": "94",
+     "minutes": 70,
+     "board_stop": "North Hollywood Station",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 434,
+     "walk_m": 461,
+     "trips": 8
+    },
+    {
+     "route": "90",
+     "minutes": 107,
+     "board_stop": "North Hollywood Station",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 434,
+     "walk_m": 461,
+     "trips": 6
+    }
+   ],
+   "1826404": [
+    {
+     "route": "94",
+     "minutes": 70,
+     "board_stop": "North Hollywood Station",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 434,
+     "walk_m": 461,
+     "trips": 8
+    },
+    {
+     "route": "90",
+     "minutes": 107,
+     "board_stop": "North Hollywood Station",
+     "alight_stop": "Avenue 26 / Figueroa",
+     "walk_home_m": 434,
+     "walk_m": 461,
+     "trips": 6
+    }
+   ],
+   "1835801TWS": [
+    {
+     "route": "224",
+     "minutes": 40,
+     "board_stop": "Lankershim / Magnolia",
+     "alight_stop": "Truman / Wolfskill",
+     "walk_home_m": 29,
+     "walk_m": 246,
+     "trips": 7
+    }
+   ]
+  },
+  "Pacoima": {
+   "1832102": [
+    {
+     "route": "230",
+     "minutes": 3,
+     "board_stop": "Laurel Canyon / Van Nuys",
+     "alight_stop": "Laurel Canyon / Kagel Canyon",
+     "walk_home_m": 640,
+     "walk_m": 81,
+     "trips": 5
+    }
+   ],
+   "1832103": [
+    {
+     "route": "230",
+     "minutes": 3,
+     "board_stop": "Laurel Canyon / Van Nuys",
+     "alight_stop": "Laurel Canyon / Kagel Canyon",
+     "walk_home_m": 640,
+     "walk_m": 81,
+     "trips": 5
+    }
+   ],
+   "1835801TWS": [
+    {
+     "route": "294",
+     "minutes": 5,
+     "board_stop": "San Fernando / Van Nuys",
+     "alight_stop": "Truman / Wolfskill",
+     "walk_home_m": 619,
+     "walk_m": 246,
+     "trips": 3
+    },
+    {
+     "route": "224",
+     "minutes": 6,
+     "board_stop": "San Fernando / Van Nuys",
+     "alight_stop": "Truman / Wolfskill",
+     "walk_home_m": 619,
+     "walk_m": 246,
+     "trips": 7
+    },
+    {
+     "route": "761",
+     "minutes": 10,
+     "board_stop": "Van Nuys / Laurel Canyon",
+     "alight_stop": "Truman / Maclay",
+     "walk_home_m": 548,
+     "walk_m": 404,
+     "trips": 4
+    }
+   ],
+   "1843402": [
+    {
+     "route": "761",
+     "minutes": 40,
+     "board_stop": "Van Nuys / San Fernando",
+     "alight_stop": "Van Nuys / Burbank",
+     "walk_home_m": 552,
+     "walk_m": 356,
+     "trips": 8
+    },
+    {
+     "route": "233",
+     "minutes": 41,
+     "board_stop": "Van Nuys / Kewen",
+     "alight_stop": "Van Nuys / Clark",
+     "walk_home_m": 39,
+     "walk_m": 228,
+     "trips": 12
+    }
+   ]
+  },
+  "Palms": {
+   "1842501TWS": [
+    {
+     "route": "33",
+     "minutes": 14,
+     "board_stop": "Venice / Overland",
+     "alight_stop": "Venice / Walgrove",
+     "walk_home_m": 773,
+     "walk_m": 392,
+     "trips": 14
+    }
+   ]
+  },
+  "Pico-Union": {
+   "1800901TWS": [
+    {
+     "route": "35/38",
+     "minutes": 20,
+     "board_stop": "Washington / New England",
+     "alight_stop": "Grand / 30th",
+     "walk_home_m": 741,
+     "walk_m": 269,
+     "trips": 3
+    }
+   ],
+   "1800902": [
+    {
+     "route": "35/38",
+     "minutes": 20,
+     "board_stop": "Washington / New England",
+     "alight_stop": "Grand / 30th",
+     "walk_home_m": 741,
+     "walk_m": 269,
+     "trips": 3
+    }
+   ],
+   "1800903": [
+    {
+     "route": "35/38",
+     "minutes": 20,
+     "board_stop": "Washington / New England",
+     "alight_stop": "Grand / 30th",
+     "walk_home_m": 741,
+     "walk_m": 269,
+     "trips": 3
+    }
+   ],
+   "1806202": [
+    {
+     "route": "35/38",
+     "minutes": 22,
+     "board_stop": "Washington / New England",
+     "alight_stop": "Jefferson / Grand",
+     "walk_home_m": 741,
+     "walk_m": 270,
+     "trips": 3
+    }
+   ],
+   "1820803": [
+    {
+     "route": "2",
+     "minutes": 34,
+     "board_stop": "Alvarado / Alvarado Terrace",
+     "alight_stop": "Sunset / Bates",
+     "walk_home_m": 408,
+     "walk_m": 310,
+     "trips": 13
+    }
+   ],
+   "1825502": [
+    {
+     "route": "754",
+     "minutes": 20,
+     "board_stop": "Vermont / Pico",
+     "alight_stop": "Vermont / Slauson",
+     "walk_home_m": 359,
+     "walk_m": 238,
+     "trips": 11
+    },
+    {
+     "route": "204",
+     "minutes": 26,
+     "board_stop": "Vermont / Pico",
+     "alight_stop": "Vermont / 60th",
+     "walk_home_m": 359,
+     "walk_m": 121,
+     "trips": 11
+    }
+   ],
+   "1842501TWS": [
+    {
+     "route": "33",
+     "minutes": 60,
+     "board_stop": "Venice / Westmoreland",
+     "alight_stop": "Venice / Walgrove",
+     "walk_home_m": 266,
+     "walk_m": 392,
+     "trips": 16
+    }
+   ]
+  },
+  "San Fernando": {
+   "1830602": [
+    {
+     "route": "234",
+     "minutes": 10,
+     "board_stop": "Maclay / 4th",
+     "alight_stop": "Borden / Polk",
+     "walk_home_m": 207,
+     "walk_m": 489,
+     "trips": 5
+    }
+   ],
+   "1832102": [
+    {
+     "route": "230",
+     "minutes": 16,
+     "board_stop": "Truman / San Fernando Mission",
+     "alight_stop": "Laurel Canyon / Kagel Canyon",
+     "walk_home_m": 459,
+     "walk_m": 81,
+     "trips": 6
+    }
+   ],
+   "1832103": [
+    {
+     "route": "230",
+     "minutes": 16,
+     "board_stop": "Truman / San Fernando Mission",
+     "alight_stop": "Laurel Canyon / Kagel Canyon",
+     "walk_home_m": 459,
+     "walk_m": 81,
+     "trips": 6
+    }
+   ],
+   "1836301TWS": [
+    {
+     "route": "234",
+     "minutes": 15,
+     "board_stop": "Truman / Maclay",
+     "alight_stop": "Sepulveda / Plummer",
+     "walk_home_m": 358,
+     "walk_m": 250,
+     "trips": 11
+    }
+   ],
+   "1843402": [
+    {
+     "route": "761",
+     "minutes": 47,
+     "board_stop": "Truman / Maclay",
+     "alight_stop": "Van Nuys / Burbank",
+     "walk_home_m": 358,
+     "walk_m": 356,
+     "trips": 7
+    }
+   ]
+  },
+  "Santa Monica": {
+   "1803802": [
+    {
+     "route": "4",
+     "minutes": 55,
+     "board_stop": "Santa Monica / Lincoln",
+     "alight_stop": "Santa Monica / Las Palmas",
+     "walk_home_m": 28,
+     "walk_m": 277,
+     "trips": 8
+    }
+   ],
+   "1842501TWS": [
+    {
+     "route": "33",
+     "minutes": 21,
+     "board_stop": "5th / Santa Monica",
+     "alight_stop": "Venice / Walgrove",
+     "walk_home_m": 369,
+     "walk_m": 438,
+     "trips": 7
+    }
+   ]
+  },
+  "Sherman Oaks": {
+   "1823802": [
+    {
+     "route": "158",
+     "minutes": 9,
+     "board_stop": "Moorpark / Van Nuys",
+     "alight_stop": "Woodman / Addison",
+     "walk_home_m": 126,
+     "walk_m": 280,
+     "trips": 3
+    }
+   ],
+   "1835801TWS": [
+    {
+     "route": "761",
+     "minutes": 48,
+     "board_stop": "Van Nuys / Ventura",
+     "alight_stop": "Truman / Maclay",
+     "walk_home_m": 63,
+     "walk_m": 404,
+     "trips": 5
+    }
+   ],
+   "1843402": [
+    {
+     "route": "233",
+     "minutes": 4,
+     "board_stop": "Van Nuys / Moorpark",
+     "alight_stop": "Van Nuys / Clark",
+     "walk_home_m": 152,
+     "walk_m": 241,
+     "trips": 11
+    },
+    {
+     "route": "761",
+     "minutes": 7,
+     "board_stop": "Van Nuys / Ventura",
+     "alight_stop": "Van Nuys / Burbank",
+     "walk_home_m": 63,
+     "walk_m": 435,
+     "trips": 5
+    }
+   ]
+  },
+  "South LA": {
+   "1800901TWS": [
+    {
+     "route": "45",
+     "minutes": 42,
+     "board_stop": "Figueroa / 117th Layover",
+     "alight_stop": "Broadway / 30th",
+     "walk_home_m": 285,
+     "walk_m": 62,
+     "trips": 17
+    }
+   ],
+   "1800902": [
+    {
+     "route": "45",
+     "minutes": 42,
+     "board_stop": "Figueroa / 117th Layover",
+     "alight_stop": "Broadway / 30th",
+     "walk_home_m": 285,
+     "walk_m": 62,
+     "trips": 17
+    }
+   ],
+   "1800903": [
+    {
+     "route": "45",
+     "minutes": 42,
+     "board_stop": "Figueroa / 117th Layover",
+     "alight_stop": "Broadway / 30th",
+     "walk_home_m": 285,
+     "walk_m": 62,
+     "trips": 17
+    }
+   ],
+   "1806002": [
+    {
+     "route": "45",
+     "minutes": 20,
+     "board_stop": "Figueroa / 117th Layover",
+     "alight_stop": "Broadway / 69th",
+     "walk_home_m": 285,
+     "walk_m": 273,
+     "trips": 17
+    }
+   ],
+   "1806202": [
+    {
+     "route": "910-13201",
+     "minutes": 20,
+     "board_stop": "Harbor Transitway / Harbor Fwy Station",
+     "alight_stop": "Harbor Transitway / 37th St / USC",
+     "walk_home_m": 192,
+     "walk_m": 390,
+     "trips": 20
+    },
+    {
+     "route": "45",
+     "minutes": 39,
+     "board_stop": "Figueroa / 117th Layover",
+     "alight_stop": "Broadway / 36th",
+     "walk_home_m": 285,
+     "walk_m": 206,
+     "trips": 17
+    }
+   ],
+   "1826401TWS": [
+    {
+     "route": "81",
+     "minutes": 71,
+     "board_stop": "Figueroa / 117th Layover",
+     "alight_stop": "Figueroa / Cypress",
+     "walk_home_m": 285,
+     "walk_m": 49,
+     "trips": 9
+    }
+   ],
+   "1826402": [
+    {
+     "route": "81",
+     "minutes": 71,
+     "board_stop": "Figueroa / 117th Layover",
+     "alight_stop": "Figueroa / Cypress",
+     "walk_home_m": 285,
+     "walk_m": 49,
+     "trips": 9
+    }
+   ],
+   "1826403": [
+    {
+     "route": "81",
+     "minutes": 71,
+     "board_stop": "Figueroa / 117th Layover",
+     "alight_stop": "Figueroa / Cypress",
+     "walk_home_m": 285,
+     "walk_m": 49,
+     "trips": 9
+    }
+   ],
+   "1826404": [
+    {
+     "route": "81",
+     "minutes": 71,
+     "board_stop": "Figueroa / 117th Layover",
+     "alight_stop": "Figueroa / Cypress",
+     "walk_home_m": 285,
+     "walk_m": 49,
+     "trips": 9
+    }
+   ]
+  },
+  "Sun Valley": {
+   "1808002": [
+    {
+     "route": "152",
+     "minutes": 5,
+     "board_stop": "Lankershim / Cantara",
+     "alight_stop": "Roscoe / Arleta",
+     "walk_home_m": 134,
+     "walk_m": 347,
+     "trips": 10
+    }
+   ],
+   "1832102": [
+    {
+     "route": "230",
+     "minutes": 12,
+     "board_stop": "Laurel Canyon / Cantara",
+     "alight_stop": "Laurel Canyon / Kagel Canyon",
+     "walk_home_m": 789,
+     "walk_m": 114,
+     "trips": 6
+    }
+   ],
+   "1832103": [
+    {
+     "route": "230",
+     "minutes": 12,
+     "board_stop": "Laurel Canyon / Cantara",
+     "alight_stop": "Laurel Canyon / Kagel Canyon",
+     "walk_home_m": 789,
+     "walk_m": 114,
+     "trips": 6
+    }
+   ],
+   "1835801TWS": [
+    {
+     "route": "224",
+     "minutes": 22,
+     "board_stop": "Lankershim / Cantara",
+     "alight_stop": "Truman / Wolfskill",
+     "walk_home_m": 134,
+     "walk_m": 246,
+     "trips": 7
+    }
+   ]
+  },
+  "Sylmar": {
+   "1835801TWS": [
+    {
+     "route": "234",
+     "minutes": 12,
+     "board_stop": "Borden / Polk",
+     "alight_stop": "Truman / Maclay",
+     "walk_home_m": 357,
+     "walk_m": 407,
+     "trips": 6
+    }
+   ],
+   "1836301TWS": [
+    {
+     "route": "234",
+     "minutes": 27,
+     "board_stop": "Borden / Polk",
+     "alight_stop": "Sepulveda / Plummer",
+     "walk_home_m": 357,
+     "walk_m": 250,
+     "trips": 6
+    }
+   ]
+  },
+  "Van Nuys": {
+   "1823002": [
+    {
+     "route": "165",
+     "minutes": 9,
+     "board_stop": "Vanowen / Van Nuys",
+     "alight_stop": "Vanowen / Coldwater Canyon",
+     "walk_home_m": 799,
+     "walk_m": 447,
+     "trips": 7
+    }
+   ],
+   "1823003": [
+    {
+     "route": "165",
+     "minutes": 9,
+     "board_stop": "Vanowen / Van Nuys",
+     "alight_stop": "Vanowen / Coldwater Canyon",
+     "walk_home_m": 799,
+     "walk_m": 447,
+     "trips": 7
+    }
+   ],
+   "1835801TWS": [
+    {
+     "route": "761",
+     "minutes": 37,
+     "board_stop": "Van Nuys / Victory",
+     "alight_stop": "Truman / Maclay",
+     "walk_home_m": 40,
+     "walk_m": 404,
+     "trips": 6
+    }
+   ],
+   "1843402": [
+    {
+     "route": "761",
+     "minutes": 5,
+     "board_stop": "Van Nuys / Victory",
+     "alight_stop": "Van Nuys / Burbank",
+     "walk_home_m": 28,
+     "walk_m": 356,
+     "trips": 8
+    },
+    {
+     "route": "233",
+     "minutes": 7,
+     "board_stop": "Van Nuys / Victory",
+     "alight_stop": "Van Nuys / Clark",
+     "walk_home_m": 28,
+     "walk_m": 228,
+     "trips": 11
+    }
+   ]
+  },
+  "Watts": {
+   "1800901TWS": [
+    {
+     "route": "55",
+     "minutes": 47,
+     "board_stop": "Compton / 105th",
+     "alight_stop": "Adams / Hill",
+     "walk_home_m": 296,
+     "walk_m": 332,
+     "trips": 13
+    }
+   ],
+   "1800902": [
+    {
+     "route": "55",
+     "minutes": 47,
+     "board_stop": "Compton / 105th",
+     "alight_stop": "Adams / Hill",
+     "walk_home_m": 296,
+     "walk_m": 332,
+     "trips": 13
+    }
+   ],
+   "1800903": [
+    {
+     "route": "55",
+     "minutes": 47,
+     "board_stop": "Compton / 105th",
+     "alight_stop": "Adams / Hill",
+     "walk_home_m": 296,
+     "walk_m": 332,
+     "trips": 13
+    }
+   ],
+   "1811301TWS": [
+    {
+     "route": "55",
+     "minutes": 18,
+     "board_stop": "Compton / 105th",
+     "alight_stop": "Compton / Gage",
+     "walk_home_m": 296,
+     "walk_m": 426,
+     "trips": 13
+    }
+   ]
+  }
+ }
+}
