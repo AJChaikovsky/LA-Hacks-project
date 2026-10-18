@@ -13,9 +13,12 @@ No percentages, ever. Points replies always end with the official disclaimer.
 from __future__ import annotations
 
 import json
-from datetime import date
+import os
+import re
+from datetime import date, timedelta
 from functools import cache
 from pathlib import Path
+from urllib.parse import quote, urlencode
 
 from core.config import load_config
 from core.types import (
@@ -85,6 +88,14 @@ def _names(codes: list[str], lang: str) -> str:
 def format_date(d: date, lang: str) -> str:
     s = strings(lang)
     return s["date_format"].format(d=d.day, month=s["months"][d.month - 1], y=d.year)
+
+
+_LINK_TARGET = re.compile(r"\]\([^)\s]*\)")
+
+
+def visible_text(markdown: str) -> str:
+    """What the parent reads: markdown link targets (URLs with %20 etc.) removed, link text kept."""
+    return _LINK_TARGET.sub("]", markdown)
 
 
 def _fmt(template: str, **params) -> str:
@@ -231,6 +242,29 @@ def render_warnings(warnings: list[GuardrailWarning], profile: FamilyProfile) ->
     return "\n".join(lines)
 
 
+# Dates a parent must act on; each gets an "add to calendar" link.
+REMINDER_KEYS = ("on_time_deadline", "correction_deadline", "accept_decline")
+
+
+def reminder_links(plan: ActionPlan, lang: str) -> list[tuple[str, str]]:
+    """[(date words, Google Calendar link)] for upcoming action dates. No names or address in the URL."""
+    if os.getenv("REMINDER_LINKS", "on").lower() == "off":
+        return []
+    s = strings(lang)
+    links = []
+    for d in plan.deadlines:
+        if d.key not in REMINDER_KEYS or d.date is None or (d.days_left is not None and d.days_left < 0):
+            continue
+        query = urlencode({
+            "action": "TEMPLATE",
+            "text": s["plan"]["reminder_title"].format(label=s["deadlines"][d.key]),
+            "dates": f"{d.date:%Y%m%d}/{d.date + timedelta(days=1):%Y%m%d}",  # all-day event
+            "details": s["plan"]["reminder_details"],
+        }, quote_via=lambda v, *_: quote(v, safe="/"))
+        links.append((format_date(d.date, lang), f"https://calendar.google.com/calendar/render?{query}"))
+    return links
+
+
 def render_plan(plan: ActionPlan, profile: FamilyProfile) -> str:
     s, child, lang = _s(profile), _child(profile), profile.language
     pl = s["plan"]
@@ -253,6 +287,9 @@ def render_plan(plan: ActionPlan, profile: FamilyProfile) -> str:
             main_deadline = when
             item = f"**{item}**"
         lines.append(f"- {item}")
+    reminders = reminder_links(plan, lang)
+    if reminders:
+        lines += ["", pl["reminders"] + " " + " · ".join(f"[{when}]({url})" for when, url in reminders)]
 
     lines += ["", pl["steps_header"]]
     lines += [f"{i}. {_fmt(s['steps'][c], child=child)}" for i, c in enumerate(plan.steps, 1)]

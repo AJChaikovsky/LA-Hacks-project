@@ -60,8 +60,11 @@ def check_turn(spec: dict, golden: dict, reply: str, intent: str | None, seconds
     for s in spec.get("must_contain", []):
         if s not in reply:
             failures.append(f"missing {s!r}")
+    from core.render import visible_text
+
+    shown = visible_text(reply)  # forbidden strings are judged on what the parent reads, not on URLs
     for s in spec.get("must_not_contain", []) + golden.get("must_not_contain_any_turn", []):
-        if s in reply:
+        if s in shown:
             failures.append(f"forbidden {s!r}")
     if intent is not None and spec.get("intent") and intent != spec["intent"]:
         failures.append(f"intent {intent!r} != {spec['intent']!r}")

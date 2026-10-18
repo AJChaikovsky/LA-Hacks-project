@@ -7,7 +7,7 @@ from core.guardrails import check_list
 from core.matcher import match, schools
 from core.paperwork import build_plan
 from core.points import estimate
-from core.render import render_matches, render_plan, render_points, render_warnings
+from core.render import render_matches, render_plan, render_points, render_warnings, visible_text
 from core.types import FamilyProfile
 
 TODAY = date(2026, 10, 17)
@@ -43,7 +43,8 @@ def test_full_pipeline_never_breaks(name):
     plan = build_plan(p, codes, p.language, TODAY)
     for text in (render_matches(matches, p), render_points(estimates, p), render_warnings(warnings, p),
                  render_plan(plan, p)):
-        assert text and "{" not in text and "%" not in text and "garantizado" not in text
+        shown = visible_text(text)  # link targets (calendar URLs) are not visible text
+        assert text and "{" not in shown and "%" not in shown and "garantizado" not in shown
 
 
 def test_english_only_gets_no_spanish_dle_push():
