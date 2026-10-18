@@ -43,6 +43,7 @@ from agents.cards import (
 )
 from core import guardrails, matcher, paperwork, points, render, stubs
 from core.brochure_qa import answer as brochure_answer, render_answer as render_brochure_answer
+from core.geo import apply_address
 from core.extract import detect_language, extract as extract_profile, merge, parse_school_list
 from core.intent import classify as classify_intent, parse_card_selection, scope_reply
 from core.types import FamilyProfile, SessionState
@@ -275,7 +276,8 @@ def handle_turn(state: SessionState, text: str, today: date | None = None) -> tu
         if reply is None:
             return state, [ReplyPart(scope_reply(state.stage, lang))], intent
         if reply.profile_updates is not None:  # intake form submitted: merge answers, then match
-            return _match_step(state, merge(p, reply.profile_updates), intent)
+            # B11: an optional street address becomes home_lat/home_lng (the address itself is dropped)
+            return _match_step(state, apply_address(merge(p, reply.profile_updates), reply.address), intent)
         if reply.add_code:
             p = p.model_copy(update={
                 "intended_choices": list(dict.fromkeys(p.intended_choices + [reply.add_code])),
