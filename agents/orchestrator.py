@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import asyncio
 import os
+import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -39,19 +40,15 @@ from core.types import FamilyProfile, SessionState
 
 load_dotenv()
 
-SEED = os.getenv("COUNSELOR_SEED", "")
-if not SEED:
-    raise SystemExit("COUNSELOR_SEED is empty: set it in .env before running the counselor agent.")
-
 # Outer bound on a whole turn; each LLM call inside is already bounded by core/llm.py.
 TURN_TIMEOUT_S = float(os.getenv("LLM_TIMEOUT_S", "12")) + 3
 
-agent = Agent(
-    name="choices-counselor",
-    seed=SEED,
-    mailbox=True,
-    publish_agent_details=True,
-)
+# Loop guard: after this many consecutive no-progress greeting/off-topic turns in one session,
+# stop replying (we still ack). The ASI:One personal-AI ping-pong is the thing this kills.
+GREETING_INTENTS = frozenset({"help", "off_topic"})
+SUPPRESS_AFTER_IDLE = int(os.getenv("LOOP_SUPPRESS_IDLE", "3"))
+
+_MENTION = re.compile(r"@agent1[0-9a-z]+")
 
 chat_proto = Protocol(spec=chat_protocol_spec)
 
@@ -99,6 +96,29 @@ def _pick(table: dict[str, str], lang: str | None) -> str:
 
 def _lang(profile: FamilyProfile) -> str:
     return profile.language if profile.language in ("es", "en") else "en"
+
+
+def strip_mention(text: str) -> str:
+    """Drop @agent1… mentions so the logged text shows the real message, not the address."""
+    return _MENTION.sub("", text or "").strip()
+
+
+def guard_decision(
+    prev_stage: str, new_stage: str, intent: str, prev_idle: int, threshold: int | None = None
+) -> tuple[bool, int]:
+    """Count-based loop guard: (send_reply, new_idle_count).
+
+    No timing data was recoverable from the log (uAgents logs carry no per-turn timestamp),
+    so we can't tell a fast bot loop from a slow human by gap; we cap consecutive no-progress
+    greeting/off-topic turns instead. Any stage change (real progress) resets the counter.
+    """
+    threshold = SUPPRESS_AFTER_IDLE if threshold is None else threshold
+    if new_stage != prev_stage:
+        return True, 0
+    if intent in GREETING_INTENTS:
+        new_idle = prev_idle + 1
+        return new_idle < threshold, new_idle
+    return True, 0
 
 
 def session_key(sender: str, ctx_session) -> str:
@@ -207,34 +227,45 @@ async def _apologize(ctx: Context, sender: str, lang: str | None) -> None:
 
 @chat_proto.on_message(ChatMessage)
 async def on_chat_message(ctx: Context, sender: str, msg: ChatMessage):
-    await ctx.send(sender, ChatAcknowledgement(acknowledged_msg_id=msg.msg_id))
+    await ctx.send(sender, ChatAcknowledgement(acknowledged_msg_id=msg.msg_id))  # ALWAYS first
     key = session_key(sender, ctx.session)
+    idle_key = f"{key}:idle"
     lang: str | None = None
     try:
         text = msg.text().strip()
+        clean = strip_mention(text)
         parts: list[str] = []
         for item in msg.content:
             if isinstance(item, StartSessionContent):
                 if ctx.storage.has(key):
                     ctx.storage.remove(key)  # fresh chat: reset without writing state
+                if ctx.storage.has(idle_key):
+                    ctx.storage.remove(idle_key)
                 parts.append(_pick(_WELCOME, detect_language(text) if text else None))
             elif isinstance(item, EndSessionContent):
                 ctx.logger.info("session ended by %s", sender)
         state = _load_state(ctx, key)
         lang = _lang(state.profile)
         intent = "none"
+        send_reply = True
+        idle = int(ctx.storage.get(idle_key) or 0)
         if text:
+            prev_stage = state.stage
             state, reply_parts, intent = await bounded_turn(state, text)
             lang = _lang(state.profile)
+            send_reply, idle = guard_decision(prev_stage, state.stage, intent, idle)
             parts.extend(reply_parts)
             ctx.storage.set(key, state.model_dump_json())  # written ONLY after an in-time success
+            ctx.storage.set(idle_key, idle)
         ctx.logger.info(
-            "turn sender=%s session=%s key=%s intent=%s stage=%s",
-            sender, ctx.session, key, intent, state.stage,
+            "turn sender=%s session=%s key=%s intent=%s stage=%s idle=%s send=%s text=%r",
+            sender, ctx.session, key, intent, state.stage, idle, send_reply, clean[:80],
         )
-        if parts:
+        if parts and (send_reply or not text):
             for chunk in split_reply("\n\n".join(parts)):
                 await ctx.send(sender, ChatMessage(content=[TextContent(text=chunk)]))
+        elif not send_reply:
+            ctx.logger.info("suppressed reply to %s (idle=%s intent=%s); loop guard", sender, idle, intent)
     except TimeoutError:
         ctx.logger.warning("turn timed out (>%.0fs) for %s; state untouched", TURN_TIMEOUT_S, sender)
         await _apologize(ctx, sender, lang)
@@ -248,7 +279,20 @@ async def on_chat_ack(ctx: Context, sender: str, msg: ChatAcknowledgement):
     ctx.logger.debug("ack from %s for %s", sender, msg.acknowledged_msg_id)
 
 
-agent.include(chat_proto, publish_manifest=True)
+def build_agent() -> Agent:
+    """Construct the agent at run time. Importing this module must never exit (issue #3):
+    the seed is only required to run, not to import handlers for tests."""
+    seed = os.getenv("COUNSELOR_SEED", "")
+    if not seed:
+        raise SystemExit("COUNSELOR_SEED is empty: set it in .env before running the counselor agent.")
+    agent = Agent(name="choices-counselor", seed=seed, mailbox=True, publish_agent_details=True)
+    agent.include(chat_proto, publish_manifest=True)
+    return agent
+
+
+def main() -> None:
+    build_agent().run()
+
 
 if __name__ == "__main__":
-    agent.run()
+    main()
