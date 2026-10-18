@@ -27,6 +27,7 @@ turns:
       - "You can only list 3 magnet schools"
       - "Only list schools you would accept"
       - "Stevenson"
+      - "**Suggested order:**"
   - say: "Ok, only the three. What do I need to finish?"
     intent: ask_plan
     must_contain:
