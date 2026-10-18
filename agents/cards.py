@@ -24,7 +24,7 @@ from uuid import uuid4
 from uagents_core.contrib.protocols.chat import ChatMessage, MetadataContent, TextContent
 
 from core.render import format_date, place, program_name, schools, strings
-from core.types import ActionPlan, FamilyProfile, PointsEstimate, SchoolMatch, SessionState
+from core.types import ActionPlan, FamilyProfile, GuardrailWarning, PointsEstimate, SchoolMatch, SessionState
 
 MAX_PAYLOAD_BYTES = 64 * 1024
 KINDS = ("carousel", "detail", "form", "review", "custom")
@@ -70,12 +70,16 @@ def matches_carousel(matches: list[SchoolMatch], profile: FamilyProfile,
         pts = _points_text(by_code.get(m.code), profile)
         if pts:
             bits.append(pts)
-        items.append({
+        item = {
             "id": m.code,
             "title": program_name(m.code, lang, matches),
             "secondary_text": " · ".join(bits),
             "primary_cta": {"label": c["details"], "selection": {"action": "details", "code": m.code}},
-        })
+        }
+        badges = school_badges(m, profile)
+        if badges:
+            item["badges"] = badges
+        items.append(item)
     return {
         "title": c["carousel_title"].format(child=_child(profile)),
         "subtitle": c["carousel_subtitle"],
@@ -125,6 +129,90 @@ def packet_review(plan: ActionPlan, profile: FamilyProfile, codes: list[str]) ->
         "approve_cta": {"label": c["approve"], "selection": {"action": "approve_packet"}, "primary": True},
         "reject_cta": {"label": c["reject"], "selection": {"action": "reject_packet"}},
     }
+
+
+BADGE_VARIANTS = ("info", "success", "warning")
+MAX_BADGES = 3
+MAX_MAGNETS = 3
+
+
+def school_badges(match: SchoolMatch, profile: FamilyProfile) -> list[dict]:
+    """Short tags for a carousel item, from the match's reasons and the official seat data."""
+    c, s = _c(profile), strings(profile.language)
+    badges = []
+    reasons = set(match.reason_codes)
+    if reasons & {"theme_match", "arts_in_steam", "arts_in_media"} and profile.interests:
+        badges.append({"label": s["interests"].get(profile.interests[0], "").capitalize(), "variant": "info"})
+    if "spanish_dle" in reasons:
+        badges.append({"label": c["badge_bilingual"], "variant": "info"})
+    if "near_home" in reasons:
+        badges.append({"label": c["badge_near_home"], "variant": "success"})
+    elif "near_work" in reasons:
+        badges.append({"label": c["badge_near_work"], "variant": "success"})
+    record = schools().get(match.code, {})
+    apps, seats = record.get("applications_2025_26"), record.get("openings_2026_27")
+    if apps is not None and seats:
+        if apps < seats:
+            badges.append({"label": c["badge_low"], "variant": "success"})
+        elif apps / seats >= 5:
+            badges.append({"label": c["badge_very_high"], "variant": "warning"})
+    return [b for b in badges if b["label"]][:MAX_BADGES]
+
+
+def _is_magnet(code: str) -> bool:
+    return schools().get(code, {}).get("program_type", "magnet") == "magnet"
+
+
+def list_review(profile: FamilyProfile, codes: list[str], warnings: list[GuardrailWarning],
+                matches: list[SchoolMatch] | None = None) -> dict:
+    """The parent's list with one-tap fixes for what the guardrails found (detail card)."""
+    c, lang = _c(profile), profile.language
+    rows, magnets_seen = [], 0
+    for n, code in enumerate(codes, 1):
+        name = program_name(code, lang, matches)
+        if _is_magnet(code):
+            magnets_seen += 1
+            label = c["list_choice"].format(n=magnets_seen) if magnets_seen <= MAX_MAGNETS else c["list_extra"]
+        else:
+            label = c["list_other"]
+        rows.append({"label": label, "value": name})
+    fix_codes: list[str] = []
+    for w in warnings:
+        if w.code in ("over_limit_magnet", "would_not_accept"):
+            fix_codes += [x for x in w.params.get("codes", []) if x in codes and x not in fix_codes]
+    ctas = [{"label": c["remove"].format(name=program_name(x, lang, matches)),
+             "selection": {"action": "remove", "code": x}} for x in fix_codes]
+    safety = next((w for w in warnings if w.code == "safety_option" and w.params.get("listed") is False), None)
+    if safety and safety.params.get("code") and sum(_is_magnet(x) for x in codes if x not in fix_codes) < MAX_MAGNETS:
+        ctas.append({"label": c["add_choice"].format(name=program_name(safety.params["code"], lang, matches)),
+                     "selection": {"action": "add_choice", "code": safety.params["code"]}})
+    ctas.append({"label": c["list_ok"], "selection": {"action": "list_ok"}, "primary": not fix_codes})
+    if fix_codes:
+        ctas[0]["primary"] = True
+    return {"title": c["list_title"], "summary_rows": rows or [{"label": c["list_title"], "value": "-"}],
+            "ctas": ctas[:4]}
+
+
+def rank_form(profile: FamilyProfile, matches: list[SchoolMatch]) -> dict:
+    """Pick 1st/2nd/3rd choice from the matches (form card); 2nd and 3rd are optional, as in Choices."""
+    c, lang = _c(profile), profile.language
+    options = [{"value": m.code, "label": program_name(m.code, lang, matches)} for m in matches]
+    optional = [{"value": "none", "label": c["rank_none"]}] + options
+    return {
+        "title": c["rank_title"],
+        "fields": [
+            {"name": "first", "kind": "select", "label": c["rank_first"], "required": True, "options": options},
+            {"name": "second", "kind": "select", "label": c["rank_second"], "required": False, "options": optional},
+            {"name": "third", "kind": "select", "label": c["rank_third"], "required": False, "options": optional},
+        ],
+        "submit_cta": {"label": c["rank_submit"], "selection": {"action": "rank_list"}},
+    }
+
+
+def parse_rank_submission(selection: dict) -> list[str]:
+    values = selection.get("values") if isinstance(selection.get("values"), dict) else selection
+    picked = [str(values.get(k) or "").strip() for k in ("first", "second", "third")]
+    return list(dict.fromkeys(x for x in picked if x and x != "none"))
 
 
 FORM_FIELD_KINDS = ("text", "number", "email", "select", "checkbox")
@@ -215,6 +303,10 @@ def validate(kind: str, payload: dict) -> list[str]:
             if not isinstance(item.get("id"), str) or not isinstance(item.get("title"), str):
                 errors.append(f"items[{i}] needs string id and title")
             errors += _cta_errors(item.get("primary_cta"), f"items[{i}].primary_cta")
+            for b in item.get("badges", []):
+                if not (isinstance(b, dict) and isinstance(b.get("label"), str) and b["label"]
+                        and b.get("variant", "info") in BADGE_VARIANTS):
+                    errors.append(f"items[{i}].badges needs a label and variant in {BADGE_VARIANTS}")
     elif kind == "detail":
         errors += _rows_errors(payload.get("summary_rows"))
         for i, cta in enumerate(payload.get("ctas") or []):
@@ -275,6 +367,8 @@ class CardReply:
     show_email: bool = False         # orchestrator sends the full email text
     profile_updates: dict | None = None  # intake form answers -> merge into the profile, then match
     address: str | None = None       # for B11 geocoding only; never log or store it
+    new_list: list[str] | None = None  # list fix / ranking form -> re-run the list checks on this list
+    go_plan: bool = False            # "Mi lista está bien" -> build the plan
 
 
 def respond_to_selection(selection: dict, state: SessionState) -> CardReply | None:
@@ -299,6 +393,17 @@ def respond_to_selection(selection: dict, state: SessionState) -> CardReply | No
         return CardReply(narration=state.plan.email_body, show_email=True)
     if action == "reject_packet":
         return CardReply(narration=c["change_q"])
+    current = list(p.intended_choices) or [m.code for m in state.matches]
+    if action == "remove" and code:
+        return CardReply(narration=c["removed"].format(name=program_name(code, p.language, state.matches)),
+                         new_list=[x for x in current if x != code])
+    if action == "add_choice" and code:
+        return CardReply(narration="", new_list=list(dict.fromkeys(current + [code])))
+    if action == "rank_list":
+        ranked = parse_rank_submission(selection)
+        return CardReply(narration="", new_list=ranked) if ranked else None
+    if action == "list_ok":
+        return CardReply(narration="", go_plan=True)
     if action == "intake_form":
         updates, address = parse_form_submission(selection)
         return CardReply(narration="", profile_updates=updates, address=address)

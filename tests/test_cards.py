@@ -178,3 +178,75 @@ def test_form_submit_reply_and_intake_message(monkeypatch):
     assert msg.content[1].metadata["card_kind"] == "form"
     monkeypatch.setenv("CARDS", "off")
     assert len(cards.intake_message(FamilyProfile(language="es")).content) == 1
+
+
+# --- UI enrichment: badges, ranking form, one-tap list fixes (through the real agent turn) ---
+
+def _flow(*texts):
+    from datetime import date as _d
+
+    from agents.orchestrator import handle_turn
+    state, out = SessionState(), []
+    for t in texts:
+        state, parts, intent = handle_turn(state, t, _d(2026, 10, 17))
+        out.append((intent, parts))
+    return state, out
+
+
+GOLDEN_1 = ("Hola, soy Maria. Vivo en Boyle Heights. Mi hijo Diego está en quinto grado y el próximo año entra a sexto. "
+            "Tiene un IEP y le encanta el arte, dibuja todo el día. Yo trabajo en el centro y solo tengo mi celular. "
+            "¿Qué escuelas me recomienda?")
+GOLDEN_3 = "Voy a poner las tres, y una más por si acaso: Markham, aunque queda lejísimos y no sé si lo aceptaría."
+
+
+def test_carousel_badges():
+    payload = cards.matches_carousel(MATCHES, MARIA)
+    badges = {i["id"]: [b["label"] for b in i.get("badges", [])] for i in payload["items"]}
+    assert badges["1804703"] == ["Arte"]
+    assert badges["1817902"] == ["Cerca de casa"]
+    assert badges["1804702"] == ["Arte", "Menos solicitudes que lugares"]  # official seat data: 32 apps, 48 seats
+    assert cards.validate("carousel", payload) == []
+    bad = {"title": "x", "items": [{"id": "1", "title": "t", "badges": [{"label": "x", "variant": "neon"}],
+                                    "primary_cta": {"label": "a", "selection": {}}}]}
+    assert any("badges" in e for e in cards.validate("carousel", bad))
+
+
+def test_odds_turn_offers_the_ranking_form():
+    state, out = _flow(GOLDEN_1, "¿Qué posibilidades tiene de entrar?")
+    part = out[-1][1][0]
+    assert part.kind == "form" and part.payload["title"] == "Ordene sus escuelas"
+    assert [f["name"] for f in part.payload["fields"]] == ["first", "second", "third"]
+    assert cards.validate("form", part.payload) == []
+
+
+def test_list_card_removes_markham_and_rechecks():
+    state, out = _flow(GOLDEN_1, "¿Qué posibilidades tiene de entrar?", GOLDEN_3)
+    intent, parts = out[-1]
+    card = parts[0].payload
+    assert parts[0].kind == "detail" and cards.validate("detail", card) == []
+    assert {"label": "No cuenta (máximo 3 magnet)", "value": "Markham MS · Artes"} in card["summary_rows"]
+    remove = next(c for c in card["ctas"] if c["selection"].get("action") == "remove")
+    assert remove["label"] == "Quitar Markham MS · Artes" and remove.get("primary")
+
+    from datetime import date as _d
+
+    from agents.orchestrator import handle_turn
+    state, parts, intent = handle_turn(state, json.dumps(remove["selection"]), _d(2026, 10, 17))
+    assert intent == "card_selection" and state.profile.intended_choices == ["1804703", "1817902", "1804702"]
+    assert parts[0].narration.startswith("Quité Markham MS · Artes de su lista.")
+    assert "Solo puede poner 3" not in parts[0].narration          # the limit warning is gone
+    ok = next(c for c in parts[0].payload["ctas"] if c["selection"] == {"action": "list_ok"})
+    state, parts, _ = handle_turn(state, json.dumps(ok["selection"]), _d(2026, 10, 17))
+    assert state.stage == "plan" and parts[0].kind == "review"
+
+
+def test_rank_form_submission_sets_the_order():
+    from datetime import date as _d
+
+    from agents.orchestrator import handle_turn
+    state, _ = _flow(GOLDEN_1, "¿Qué posibilidades tiene de entrar?")
+    submit = {"action": "rank_list", "first": "1817902", "second": "1804703", "third": "none"}
+    state, parts, intent = handle_turn(state, json.dumps(submit), _d(2026, 10, 17))
+    assert state.stage == "listing" and state.profile.intended_choices == ["1817902", "1804703"]
+    assert state.profile.language == "es" and parts[0].kind == "detail"
+    assert cards.parse_rank_submission({"values": {"first": "", "second": "none"}}) == []
