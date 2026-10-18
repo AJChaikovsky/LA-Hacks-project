@@ -186,7 +186,16 @@
     "change_q": "What would you like to change?",
     "added": "I added {name} to your list.",
     "already": "{name} is already on your list.",
-    "row_school_phone": "School phone (ask for the coordinator)"
+    "row_school_phone": "School phone (ask for the coordinator)",
+    "form_title": "Tell me about {child}",
+    "form_grade": "What grade are they in now?",
+    "form_neighborhood": "Neighborhood where you live",
+    "form_interest": "What they enjoy most",
+    "form_iep": "Has an IEP (special education)",
+    "form_address": "Address (optional: only to measure distance; we don't keep it)",
+    "form_submit": "Find schools",
+    "kinder": "Kindergarten",
+    "grade_option": "Grade {n}"
   },
   "program_labels": {
     "1804703": "STEAM",

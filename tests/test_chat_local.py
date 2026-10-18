@@ -61,3 +61,14 @@ def test_no_programs_for_grade_stays_at_intake_then_recovers():
     assert "No hay programas para cuarto grado" in reply and "posibilidades" not in reply
     state, reply, intent = chat.handle(state, "Perdón, está en quinto grado.")
     assert intent == "profile_info" and state.stage == "matched" and len(state.matches) == 3
+
+
+def test_intake_form_flow_keeps_spanish_and_matches():
+    import json
+
+    state, reply, _ = chat.handle(SessionState(), "Hola, necesito ayuda para elegir escuela para mi hijo con IEP.")
+    assert "[card: form]" in reply and state.stage == "intake"
+    submit = json.dumps({"action": "intake_form", "grade": "5", "neighborhood": "Boyle Heights", "interest": "arts"})
+    state, reply, intent = chat.handle(state, submit)
+    assert intent == "card_selection" and state.stage == "matched" and len(state.matches) == 3
+    assert state.profile.language == "es" and reply.startswith("Encontré 3 escuelas")

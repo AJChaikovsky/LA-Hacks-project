@@ -78,16 +78,46 @@ _HELP = {
 }
 
 
+def _with_card_preview(text: str, kind: str | None, payload: dict | None) -> str:
+    """The terminal can't draw cards, so show a one-line preview of what ASI:One would render."""
+    if not kind or not payload:
+        return text
+    items = [i.get("title") for i in payload.get("items", [])] or [r.get("label") for r in payload.get("summary_rows", [])] \
+        or [f.get("name") for f in payload.get("fields", [])]
+    return f"{text}\n\n[card: {kind}] {payload.get('title', '')} · {', '.join(map(str, items))}"
+
+
+def _match_step(state: SessionState, p, intent: str) -> tuple[SessionState, str, str]:
+    """After profile facts arrive (text or intake form): ask what's missing, else match."""
+    from agents.cards import intake_form
+    from core.render import render_ask_grade
+
+    lang = p.language
+    state = state.model_copy(update={"profile": p})
+    if not p.applying_grade:  # never assume middle school: ask (the agent also sends the intake form card)
+        return state, _with_card_preview(render_ask_grade(p), "form", intake_form(p)), intent
+    if not (p.interests or p.home_neighborhood):
+        return state, _with_card_preview(_MISSING[lang].format(fields=_FIELD_NAMES[lang]["where"]), "form",
+                                         intake_form(p)), intent
+    matches = FN["match"](p)
+    # Zero matches: stay at intake so the parent can correct the grade; no odds offer.
+    state = state.model_copy(update={"matches": matches, "stage": "matched" if matches else "intake"})
+    return state, FN["render_matches"](matches, p), intent
+
+
 def handle(state: SessionState, text: str, today: date | None = None) -> tuple[SessionState, str, str]:
     """One turn: returns (new state, reply markdown, intent)."""
     from core.extract import detect_language, parse_school_list
+    from agents.cards import respond_to_selection
+    from core.extract import merge
     from core.intent import parse_card_selection, scope_reply
-    from core.render import render_ask_grade
 
     today = today or date.today()
     intent = FN["classify"](text, state.stage)
-    # Reply in the language of the latest message, on every turn.
-    p = state.profile.model_copy(update={"language": detect_language(text) or state.profile.language})
+    # Reply in the language of the latest message, on every turn; card clicks (JSON keys, button
+    # labels) say nothing about the parent's language, so they keep the current one.
+    spoken = None if parse_card_selection(text) is not None else detect_language(text)
+    p = state.profile.model_copy(update={"language": spoken or state.profile.language})
     state = state.model_copy(update={"profile": p})
     lang = p.language
 
@@ -95,17 +125,7 @@ def handle(state: SessionState, text: str, today: date | None = None) -> tuple[S
         return SessionState(), _HELP[lang], intent
 
     if intent == "profile_info":
-        p = FN["extract"](text, p)
-        state = state.model_copy(update={"profile": p})
-        lang = p.language
-        if not p.applying_grade:  # never assume middle school: ask
-            return state, render_ask_grade(p), intent
-        if not (p.interests or p.home_neighborhood):
-            return state, _MISSING[lang].format(fields=_FIELD_NAMES[lang]["where"]), intent
-        matches = FN["match"](p)
-        # Zero matches: stay at intake so the parent can correct the grade; no odds offer.
-        state = state.model_copy(update={"matches": matches, "stage": "matched" if matches else "intake"})
-        return state, FN["render_matches"](matches, p), intent
+        return _match_step(state, FN["extract"](text, p), intent)
 
     if intent in ("ask_odds", "set_list", "ask_plan") and not state.matches:
         return state, scope_reply("intake", lang), intent
@@ -138,12 +158,15 @@ def handle(state: SessionState, text: str, today: date | None = None) -> tuple[S
         return state, FN["render_plan"](plan, p), intent
 
     if intent == "card_selection":
-        sel = parse_card_selection(text) or {}
-        m = next((m for m in state.matches if m.code == sel.get("code")), None)
-        if m:
-            detail = f"**{m.name} · {m.theme}**\n- {m.address or ''}\n- {m.phone or ''}"
-            return state, detail, intent
-        return state, scope_reply(state.stage, lang), intent
+        reply = respond_to_selection(parse_card_selection(text) or {}, state)
+        if reply is None:
+            return state, scope_reply(state.stage, lang), intent
+        if reply.profile_updates is not None:  # intake form submitted: merge answers, then match
+            return _match_step(state, merge(p, reply.profile_updates), intent)
+        if reply.add_code:
+            p = p.model_copy(update={"intended_choices": list(dict.fromkeys(p.intended_choices + [reply.add_code]))})
+            state = state.model_copy(update={"profile": p})
+        return state, _with_card_preview(reply.narration, reply.kind, reply.payload), intent
 
     if intent == "help":
         return state, _HELP[lang], intent
