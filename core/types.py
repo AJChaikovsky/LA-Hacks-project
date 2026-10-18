@@ -125,6 +125,7 @@ class School(BaseModel):
     grades: list[int]
     address: str
     zip: str
+    cds_code: str | None = None      # B14: 14-digit California CDS code of the host school (CDE)
     lat: float | None = None
     lng: float | None = None
     region: str | None = None        # brochure region letter, e.g. "E"

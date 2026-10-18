@@ -41,7 +41,8 @@
       "10": "décimo",
       "11": "undécimo",
       "12": "duodécimo"
-    }
+    },
+    "facts_iep": "Aproximadamente {n} de cada {d} estudiantes de esta escuela tiene un IEP (toda la escuela, {year})."
   },
   "reasons": {
     "theme_match": "Su tema es {interest}, lo que más le gusta a {child}.",
@@ -178,6 +179,9 @@
     "row_phone": "Teléfono",
     "row_bus": "Autobús",
     "row_metro": "Metro",
+    "row_students": "Estudiantes",
+    "row_el": "Aprenden inglés",
+    "row_iep": "Con IEP",
     "row_points": "Puntos estimados",
     "points_value": "{total} de 23",
     "points_maybe": "probablemente {total} de 23",
@@ -204,7 +208,9 @@
     "form_submit": "Buscar escuelas",
     "kinder": "Kínder",
     "grade_option": "{n}.º grado",
-    "metro_value": "Línea {route} · unos {minutes} min desde {home} · bájese en {stop}"
+    "metro_value": "Línea {route} · unos {minutes} min desde {home} · bájese en {stop}",
+    "facts_students": "unos {n} en toda la escuela ({year})",
+    "facts_share": "unos {n} de cada {d}"
   },
   "program_labels": {
     "1832103": "Computación y Matemáticas",
