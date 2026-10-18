@@ -43,6 +43,7 @@ from agents.cards import (
     packet_review,
     respond_to_selection,
 )
+from agents.local_resolver import LocalFirst, local_url, register_health, register_self_check
 from agents.messages import PaperworkRequest, PaperworkResponse, PointsRequest, PointsResponse
 from core import guardrails, matcher, paperwork, points, render, stubs
 from core.brochure_qa import answer as brochure_answer, render_answer as render_brochure_answer
@@ -522,9 +523,17 @@ def build_agent() -> Agent:
     seed = os.getenv("COUNSELOR_SEED", "")
     if not seed:
         raise SystemExit("COUNSELOR_SEED is empty: set it in .env before running the counselor agent.")
+    # A4b: resolve the two specialists to their local endpoints; everything else via the default resolver.
+    rules = {}
+    for addr, role in ((os.getenv("POINTS_AGENT_ADDRESS", "").strip(), "points"),
+                       (os.getenv("PAPERWORK_AGENT_ADDRESS", "").strip(), "paperwork")):
+        if addr:
+            rules[addr] = local_url(role)
     agent = Agent(name="choices-counselor", seed=seed, mailbox=True, publish_agent_details=True,
-                  port=int(os.getenv("COUNSELOR_PORT", "8000")))
+                  port=int(os.getenv("COUNSELOR_PORT", "8000")), resolve=LocalFirst(rules))
     agent.include(chat_proto, publish_manifest=True)
+    register_health(agent)  # A4b: our own /health keeps the local server up (don't rely on web_api)
+    register_self_check(agent, "counselor")
     from agents.web_api import register_web  # website: POST /chat on this same agent (web/index.html)
     register_web(agent)
     agent.on_event("startup")(_log_startup)

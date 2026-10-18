@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from dotenv import load_dotenv
 from uagents import Agent, Context, Protocol
 
+from agents.local_resolver import LocalFirst, local_url, register_health, register_self_check
 from agents.messages import PaperworkRequest, PaperworkResponse
 from core import paperwork
 from core.types import FamilyProfile
@@ -51,8 +52,13 @@ def build_agent() -> Agent:
     if not seed:
         raise SystemExit("PAPERWORK_SEED is empty: set it in .env before running the paperwork agent.")
     port = int(os.getenv("PAPERWORK_PORT", "8002"))  # orchestrator 8000, points 8001
-    agent = Agent(name="choices-paperwork", seed=seed, port=port, mailbox=True, publish_agent_details=True)
+    counselor = os.getenv("COUNSELOR_AGENT_ADDRESS", "").strip()
+    rules = {counselor: local_url("counselor")} if counselor else {}
+    agent = Agent(name="choices-paperwork", seed=seed, port=port, mailbox=True,
+                  publish_agent_details=True, resolve=LocalFirst(rules))
     agent.include(paperwork_proto, publish_manifest=True)
+    register_health(agent)  # A4b: keeps the local server up for the counselor's local reply leg
+    register_self_check(agent, "paperwork")
     agent.on_event("startup")(_log_startup)
     return agent
 
