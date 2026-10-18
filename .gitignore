@@ -6,3 +6,6 @@ __pycache__/
 .DS_Store
 .claude/settings.local.json
 .cache/
+
+# uAgents local storage (session state, may hold family profiles)
+agent*_data.json

@@ -1,0 +1,9 @@
+{
+  "price_per_family_fet": "0.1",
+  "denom": "atestfet",
+  "atto_per_fet": 1000000000000000000,
+  "network": "testnet",
+  "deadline_seconds": 300,
+  "max_families": 50,
+  "note": "Families always use choices-counselor for free. Partner agents (nonprofits, parent centers, counselors) pay per family for a batch caseload report. Testnet FET only."
+}
