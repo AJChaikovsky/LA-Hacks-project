@@ -26,7 +26,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from dotenv import load_dotenv
-from uagents import Agent, Context, Protocol
+from uagents import Agent, Context, Model, Protocol
 from uagents_core.contrib.protocols.chat import (
     ChatAcknowledgement,
     ChatMessage,
@@ -517,6 +517,36 @@ async def _log_startup(ctx: Context):
         )
 
 
+class DeepHealth(Model):
+    ok: bool       # True only when the real round-trip reached the points agent
+    ms: float
+    path: str      # "remote" (specialist answered) | "fallback" (it didn't)
+
+
+async def _health_deep(ctx: Context) -> DeepHealth:
+    """One real counselor→points round-trip over the local hop — proves the specialist path end to
+    end (A5 ping.py checks path=='remote'). Awaits send_and_receive directly; this runs on the agent
+    loop, not a worker thread, so no run_coroutine_threadsafe bridge is needed here."""
+    profile = FamilyProfile(language="es", current_grade=5, applying_grade=6,
+                            interests=["arts"], home_neighborhood="Boyle Heights")
+    codes = [m.code for m in matcher.match(profile)]
+    addr = os.getenv("POINTS_AGENT_ADDRESS", "").strip()
+    start = time.monotonic()
+    path = "fallback"
+    if addr:
+        try:
+            resp, _status = await ctx.send_and_receive(
+                addr,
+                PointsRequest(session_id="health", profile_json=profile.model_dump_json(), codes=codes),
+                response_type=PointsResponse, timeout=int(REMOTE_TIMEOUT_S),
+            )
+            if resp is not None:
+                path = "remote"
+        except Exception:
+            ctx.logger.exception("health/deep round-trip failed")
+    return DeepHealth(ok=(path == "remote"), ms=round((time.monotonic() - start) * 1000, 1), path=path)
+
+
 def build_agent() -> Agent:
     """Construct the agent at run time. Importing this module must never exit (issue #3):
     the seed is only required to run, not to import handlers for tests."""
@@ -533,6 +563,7 @@ def build_agent() -> Agent:
                   port=int(os.getenv("COUNSELOR_PORT", "8000")), resolve=LocalFirst(rules))
     agent.include(chat_proto, publish_manifest=True)
     register_health(agent)  # A4b: our own /health keeps the local server up (don't rely on web_api)
+    agent.on_rest_get("/health/deep", DeepHealth)(_health_deep)  # A5: real points round-trip for ping.py
     register_self_check(agent, "counselor")
     from agents.web_api import register_web  # website: POST /chat on this same agent (web/index.html)
     register_web(agent)

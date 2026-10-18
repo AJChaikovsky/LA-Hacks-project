@@ -52,6 +52,19 @@ pytest
 
 Requires Python 3.10 or newer (tested on 3.13).
 
+## Always-on host (A5)
+
+All three agents run co-located on one Mac (the counselor↔specialist hop is localhost `127.0.0.1`). To (re)start them — the three commands to run at 3 AM:
+
+```bash
+cd ~/LA-Hacks-project
+./scripts/run_all.sh        # starts all 3 in tmux session "choices" (under caffeinate), then runs ping.py
+python scripts/ping.py      # exit 0 = healthy · watch logs with: tmux attach -t choices
+```
+
+Keep the Mac on **AC power**. To keep it answering with the **lid closed**: `sudo pmset -a disablesleep 1`
+(caffeinate alone does not survive a lid close). **After the event, re-enable sleep:** `sudo pmset -a disablesleep 0`.
+
 ## Data sources
 
 LAUSD 2027-28 Choices brochure, choices.lausd.net guidelines and FAQ. `data/schools.json` covers **49 grade 6-8 Choices programs** (magnets and Spanish dual-language) across all four regions, each cited to its brochure page; seat numbers come from the official Choices program pages where we saved them (`docs/evidence/`). Points and odds are **estimates**; the official source is [choices.lausd.net](https://choices.lausd.net) or the Choices Support Line (213) 241-4177.
