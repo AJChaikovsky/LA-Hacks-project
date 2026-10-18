@@ -42,6 +42,7 @@ from agents.cards import (
     respond_to_selection,
 )
 from core import guardrails, matcher, paperwork, points, render, stubs
+from core.brochure_qa import answer as brochure_answer, render_answer as render_brochure_answer
 from core.extract import detect_language, extract as extract_profile, merge, parse_school_list
 from core.intent import classify as classify_intent, parse_card_selection, scope_reply
 from core.types import FamilyProfile, SessionState
@@ -281,6 +282,9 @@ def handle_turn(state: SessionState, text: str, today: date | None = None) -> tu
             })
             state = state.model_copy(update={"profile": p})
         return state, [ReplyPart(reply.narration, reply.kind, reply.payload)], intent
+
+    if intent == "ask_rules":  # C12: rule questions answered from the official brochure, with a page citation
+        return state, [ReplyPart(render_brochure_answer(brochure_answer(text, lang), lang))], intent
 
     if intent == "help":
         return state, [ReplyPart(_HELP[lang])], intent

@@ -103,3 +103,18 @@ def test_unknown_passage_id_falls_back(monkeypatch):
 def test_live_answers_state_the_fact(question, lang, fact):
     result = qa.answer(question, lang)
     assert result.used_llm and fact.lower() in result.text.lower(), result.text
+
+
+def test_orchestrator_answers_rule_questions_with_a_citation(llm_down):
+    """A3 + C12: a rule question mid-conversation gets a cited brochure answer, not the scope reply."""
+    from datetime import date
+
+    from agents.orchestrator import handle_turn
+    from core.types import SessionState
+
+    state, _, _ = handle_turn(SessionState(), "Vivo en Boyle Heights, mi hijo está en quinto grado y le gusta el arte.",
+                              date(2026, 10, 17))
+    before = state.stage
+    state, parts, intent = handle_turn(state, "¿Qué pasa si no contesto la oferta?", date(2026, 10, 17))
+    assert intent == "ask_rules" and state.stage == before
+    assert "Fuente:" in parts[0].narration and "Solo puedo ayudarle" not in parts[0].narration
