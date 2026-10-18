@@ -38,11 +38,13 @@ def test_every_program_has_a_cds_code_and_facts_or_a_null_reason():
 
 
 def test_spot_check_against_dataquest():
-    # DataQuest 2025-26 Census Day enrollment, Hollenbeck Middle (CDS 19647336058051): 839 total.
+    # DataQuest 2025-26 Census Day enrollment, checked by hand: Hollenbeck Middle (CDS 19647336058051)
+    # 839 total; Belvedere Middle (CDS 19647336057889) 718 total.
     row = load_data("school_facts")["schools"]["19647336058051"]
     assert (row["enrollment"], row["english_learners"], row["students_with_disabilities"]) == (839, 91, 145)
     f = facts(HOLLENBECK)
     assert f["enrollment"] == 840 and f["iep"] == (1, 6) and f["year"] == "2025-26"
+    assert load_data("school_facts")["schools"]["19647336057889"]["enrollment"] == 718
     assert facts(BELVEDERE_STEAM)["iep"] == (1, 4)  # 178 of 718
 
 
