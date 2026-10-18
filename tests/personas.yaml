@@ -1,0 +1,121 @@
+# C11 (#42): 30 parent messages a judge might type. Each lists the outcomes that count as
+# "handled sensibly" (an honest no-programs reply is sensible outside our coverage).
+# Outcomes: matches | ask_grade | no_programs | scope | help
+# lang: expected reply language (omit for mixed messages). Run: python scripts/eval_personas.py
+- id: maria_es
+  say: "Hola, soy Maria. Vivo en Boyle Heights. Mi hijo Diego está en quinto grado y el próximo año entra a sexto. Tiene un IEP y le encanta el arte."
+  lang: es
+  expect: [matches]
+- id: maria_en
+  say: "Hi, I'm Maria from Boyle Heights. My son Diego is in 5th grade, has an IEP and loves art."
+  lang: en
+  expect: [matches]
+- id: typos_es
+  say: "ola mi ijo esta en kinto grado vivimos en boyle heigths le gusta el arte"
+  lang: es
+  expect: [matches, ask_grade]
+- id: no_grade_es
+  say: "Vivimos en Boyle Heights y a mi hija le gusta la ciencia."
+  lang: es
+  expect: [ask_grade]
+- id: no_grade_en
+  say: "We're in East LA and my son loves robots."
+  lang: en
+  expect: [ask_grade]
+- id: third_grade_es
+  say: "Mi hijo está en tercer grado, vivimos en Boyle Heights y le gusta el arte."
+  lang: es
+  expect: [no_programs]
+- id: eighth_grade_en
+  say: "My son is in 8th grade in Boyle Heights and loves science."
+  lang: en
+  expect: [no_programs]
+- id: fourth_grade_es
+  say: "Mi hija está en cuarto grado en East LA, le gustan las matemáticas."
+  lang: es
+  expect: [no_programs]
+- id: seventh_grade_en
+  say: "My daughter is in 7th grade in Boyle Heights and wants to switch to a STEM magnet."
+  lang: en
+  expect: [matches]
+- id: sixth_grade_es
+  say: "Mi hijo está en sexto grado, vivimos en Lincoln Heights y le encanta la tecnología."
+  lang: es
+  expect: [matches]
+- id: kinder_es
+  say: "Mi niña está en kínder y vivimos en Boyle Heights."
+  lang: es
+  expect: [ask_grade, no_programs]
+- id: sylmar_es
+  say: "Vivimos en Sylmar, mi hijo está en quinto grado y le gusta el fútbol."
+  lang: es
+  expect: [matches, no_programs]
+- id: westside_en
+  say: "We live in Mar Vista. My daughter is in 5th grade and loves theater."
+  lang: en
+  expect: [matches, no_programs]
+- id: south_la_en
+  say: "We're in Watts. My son is in fifth grade and likes medicine."
+  lang: en
+  expect: [matches, no_programs]
+- id: dle_only_es
+  say: "Quiero un programa bilingüe en español para mi hijo de quinto grado. Vivimos en Boyle Heights."
+  lang: es
+  expect: [matches]
+- id: no_iep_es
+  say: "Mi hija no tiene IEP, está en quinto grado, vivimos en East LA y le gustan las matemáticas."
+  lang: es
+  expect: [matches]
+- id: gifted_es
+  say: "Mi hijo es GATE, está en quinto grado y vivimos en Boyle Heights."
+  lang: es
+  expect: [matches]
+- id: english_learner_es
+  say: "Mi hijo está aprendiendo inglés, está en 5to grado en Lincoln Heights y le gusta la música."
+  lang: es
+  expect: [matches]
+- id: mixed_spanglish
+  say: "Hola, my daughter está en fifth grade, vivimos en El Sereno, she loves art."
+  expect: [matches]
+- id: off_topic_es
+  say: "¿Va a llover mañana en Los Ángeles?"
+  lang: es
+  expect: [scope, ask_grade, help]
+- id: off_topic_en
+  say: "Tell me a joke about pizza."
+  lang: en
+  expect: [scope, ask_grade, help]
+- id: help_es
+  say: "¿Qué puedes hacer?"
+  lang: es
+  expect: [help]
+- id: greeting_es
+  say: "Hola"
+  expect: [help, ask_grade, scope]
+- id: gibberish
+  say: "???"
+  expect: [help, ask_grade, scope]
+- id: doctor_en
+  say: "My son is in 5th grade, wants to be a doctor, and we live in Boyle Heights."
+  lang: en
+  expect: [matches]
+- id: lawyer_en
+  say: "She's in 5th grade, we live in Boyle Heights, and she wants to be a lawyer."
+  lang: en
+  expect: [matches]
+- id: long_es
+  say: "Buenas tardes, le escribo porque estoy muy confundida con la solicitud de Choices. Mi hijo se llama Mateo, está en quinto grado en una escuela de Boyle Heights, tiene un IEP por dificultades de lectura y recibe terapia del habla. Le encanta dibujar, pintar y hacer videos con su tablet. Yo trabajo en el centro y no tengo carro, así que la distancia es importante. ¿Qué escuelas me recomienda?"
+  lang: es
+  expect: [matches]
+- id: age_not_grade_es
+  say: "Mi hijo tiene 10 años, vivimos en Boyle Heights y le gusta el arte."
+  lang: es
+  expect: [ask_grade]
+- id: high_school_en
+  say: "My son is in 8th grade and needs a high school. We live in El Sereno."
+  lang: en
+  expect: [no_programs]
+- id: sibling_es
+  say: "Mi hija está en quinto grado, su hermano ya va a Hollenbeck y vivimos en Boyle Heights."
+  lang: es
+  expect: [matches]
