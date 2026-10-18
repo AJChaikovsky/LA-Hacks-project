@@ -11,6 +11,7 @@ must_not_contain_any_turn:
 turns:
   - say: "Hi, I'm Maria. We live in Boyle Heights. My son Diego is in 5th grade and has an IEP. He loves art and drawing. I work downtown and only have my phone. Which schools do you recommend?"
     intent: profile_info
+    card: carousel
     must_contain:
       - "I found 3 schools for Diego"
       - "Belvedere"
@@ -30,6 +31,7 @@ turns:
       - "**Suggested order:**"
   - say: "Ok, only the three. What do I need to finish?"
     intent: ask_plan
+    card: review
     must_contain:
       - "November 6, 2026"
       - "apply.lausd.net"

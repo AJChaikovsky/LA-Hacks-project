@@ -12,6 +12,7 @@ must_not_contain_any_turn:
 turns:
   - say: "Hola, soy Maria. Vivo en Boyle Heights. Mi hijo Diego está en quinto grado y el próximo año entra a sexto. Tiene un IEP y le encanta el arte, dibuja todo el día. Yo trabajo en el centro y solo tengo mi celular. ¿Qué escuelas me recomienda?"
     intent: profile_info
+    card: carousel
     must_contain:
       - "Diego"
       - "Belvedere"
@@ -36,6 +37,7 @@ turns:
       - "primera opción"
   - say: "Está bien, solo las tres. ¿Qué necesito para terminar?"
     intent: ask_plan
+    card: review
     must_contain:
       - "6 de noviembre de 2026"
       - "apply.lausd.net"

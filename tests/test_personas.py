@@ -13,6 +13,7 @@ spec = importlib.util.spec_from_file_location("eval_personas", ROOT / "scripts" 
 ev = importlib.util.module_from_spec(spec)
 sys.modules["eval_personas"] = ev
 spec.loader.exec_module(ev)
+TURN = ev.turn_function("orchestrator")
 PERSONAS = yaml.safe_load((ROOT / "tests" / "personas.yaml").read_text(encoding="utf-8"))
 
 
@@ -27,5 +28,5 @@ def test_persona_count():
 
 @pytest.mark.parametrize("persona", PERSONAS, ids=[p["id"] for p in PERSONAS])
 def test_persona_handled_sensibly(persona):
-    result = ev.evaluate(persona, ev._chat())
+    result = ev.evaluate(persona, TURN)  # the agent's own handle_turn, cards validated
     assert result.passed, result.problems
