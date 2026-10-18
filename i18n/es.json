@@ -186,7 +186,16 @@
     "change_q": "¿Qué quiere cambiar?",
     "added": "Agregué {name} a su lista.",
     "already": "{name} ya está en su lista.",
-    "row_school_phone": "Teléfono de la escuela (pida al coordinador)"
+    "row_school_phone": "Teléfono de la escuela (pida al coordinador)",
+    "form_title": "Cuénteme de {child}",
+    "form_grade": "¿En qué grado está ahora?",
+    "form_neighborhood": "Barrio donde viven",
+    "form_interest": "Lo que más le gusta",
+    "form_iep": "Tiene un IEP (educación especial)",
+    "form_address": "Dirección (opcional: solo para calcular la distancia; no la guardamos)",
+    "form_submit": "Buscar escuelas",
+    "kinder": "Kínder",
+    "grade_option": "{n}.º grado"
   },
   "program_labels": {
     "1804703": "STEAM",

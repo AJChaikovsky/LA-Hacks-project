@@ -129,3 +129,52 @@ def test_review_card_school_phone_row():
     rows = {r["label"]: r["value"] for r in payload["summary_rows"]}
     assert rows["Teléfono de la escuela (pida al coordinador)"] == "(323) 266-5400"
     assert cards.validate("review", payload) == []
+
+
+# --- C9 intake form ---
+
+from core.types import FamilyProfile  # noqa: E402
+
+
+def test_intake_form_asks_only_for_missing_fields():
+    empty = cards.intake_form(FamilyProfile(language="es"))
+    assert [f["name"] for f in empty["fields"]] == ["grade", "neighborhood", "interest", "iep", "address"]
+    assert cards.validate("form", empty) == []
+    grade = next(f for f in empty["fields"] if f["name"] == "grade")
+    assert grade["options"][0] == {"value": "0", "label": "Kínder"} and grade["options"][5]["label"] == "5.º grado"
+    assert "no la guardamos" in empty["fields"][-1]["label"]
+    partial = cards.intake_form(MARIA.model_copy(update={"applying_grade": None, "current_grade": None}))
+    assert [f["name"] for f in partial["fields"]] == ["grade", "address"]
+    assert cards.intake_form(EN)["submit_cta"] == {"label": "Find schools", "selection": {"action": "intake_form"}}
+
+
+@pytest.mark.parametrize("payload,error", [
+    ({"title": "x", "fields": [], "submit_cta": {"label": "a", "selection": {}}}, "fields must be a non-empty list"),
+    ({"title": "x", "fields": [{"name": "g", "label": "G", "kind": "select", "options": []}],
+      "submit_cta": {"label": "a", "selection": {}}}, "select needs non-empty options"),
+    ({"title": "x", "fields": [{"name": "g", "label": "G", "kind": "slider"}],
+      "submit_cta": {"label": "a", "selection": {}}}, "kind must be one of"),
+    ({"title": "x", "fields": [{"name": "g", "label": "G", "kind": "text"}]}, "submit_cta"),
+])
+def test_validate_form(payload, error):
+    assert any(error in e for e in cards.validate("form", payload))
+
+
+def test_parse_form_submission_flat_and_nested():
+    updates, address = cards.parse_form_submission(
+        {"action": "intake_form", "grade": "5", "neighborhood": "boyle hts", "interest": "arte", "iep": "true",
+         "address": "312 N Record Ave"})
+    assert updates == {"current_grade": 5, "applying_grade": 6, "home_neighborhood": "Boyle Heights",
+                       "interests": ["arts"], "iep": True}
+    assert address == "312 N Record Ave"
+    updates, address = cards.parse_form_submission({"values": {"grade": "kinder?", "neighborhood": "", "iep": False}})
+    assert updates == {"iep": False} and address is None
+
+
+def test_form_submit_reply_and_intake_message(monkeypatch):
+    r = cards.respond_to_selection({"action": "intake_form", "grade": "5"}, SessionState())
+    assert r.profile_updates == {"current_grade": 5, "applying_grade": 6} and r.address is None
+    msg = cards.intake_message(FamilyProfile(language="es"))
+    assert msg.content[1].metadata["card_kind"] == "form"
+    monkeypatch.setenv("CARDS", "off")
+    assert len(cards.intake_message(FamilyProfile(language="es")).content) == 1
