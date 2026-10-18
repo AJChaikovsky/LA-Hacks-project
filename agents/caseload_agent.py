@@ -168,5 +168,7 @@ if __name__ == "__main__":
     if not seed:
         raise SystemExit("CASELOAD_SEED is empty: set it in .env before running the caseload agent.")
     mailbox = os.getenv("CASELOAD_MAILBOX", "false").lower() == "true"
-    kwargs = {"mailbox": True, "publish_agent_details": True} if mailbox else {"port": int(os.getenv("CASELOAD_PORT", "8010"))}
+    kwargs = {"port": int(os.getenv("CASELOAD_PORT", "8010"))}  # never 8000: that's the counselor's web port
+    if mailbox:
+        kwargs |= {"mailbox": True, "publish_agent_details": True}
     create_agent(seed, **kwargs).run()

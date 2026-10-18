@@ -46,6 +46,7 @@ from agents.cards import (
 from agents.messages import PaperworkRequest, PaperworkResponse, PointsRequest, PointsResponse
 from core import guardrails, matcher, paperwork, points, render, stubs
 from core.brochure_qa import answer as brochure_answer, render_answer as render_brochure_answer
+from core.geo import apply_address
 from core.extract import detect_language, extract as extract_profile, merge, parse_school_list
 from core.intent import classify as classify_intent, parse_card_selection, scope_reply
 from core.types import ActionPlan, FamilyProfile, GuardrailWarning, PointsEstimate, SessionState
@@ -382,7 +383,8 @@ def handle_turn(
         if reply is None:
             return state, [ReplyPart(scope_reply(state.stage, lang))], intent
         if reply.profile_updates is not None:  # intake form submitted: merge answers, then match
-            return _match_step(state, merge(p, reply.profile_updates), intent)
+            # B11: an optional street address becomes home_lat/home_lng (the address itself is dropped)
+            return _match_step(state, apply_address(merge(p, reply.profile_updates), reply.address), intent)
         if reply.add_code:
             p = p.model_copy(update={
                 "intended_choices": list(dict.fromkeys(p.intended_choices + [reply.add_code])),
@@ -484,7 +486,8 @@ async def on_chat_message(ctx: Context, sender: str, msg: ChatMessage):
         card = any(p.kind and p.payload is not None for p in parts)
         ctx.logger.info(
             "turn sender=%s session=%s key=%s intent=%s stage=%s idle=%s send=%s card=%s text=%r",
-            sender, ctx.session, key, intent, state.stage, idle, send_reply, card, clean[:80],
+            sender, ctx.session, key, intent, state.stage, idle, send_reply, card,
+            "<form>" if '"address"' in clean else clean[:80],  # B11: never log a street address
         )
         if parts and (send_reply or not text):
             for part in parts:
@@ -519,8 +522,11 @@ def build_agent() -> Agent:
     seed = os.getenv("COUNSELOR_SEED", "")
     if not seed:
         raise SystemExit("COUNSELOR_SEED is empty: set it in .env before running the counselor agent.")
-    agent = Agent(name="choices-counselor", seed=seed, mailbox=True, publish_agent_details=True)
+    agent = Agent(name="choices-counselor", seed=seed, mailbox=True, publish_agent_details=True,
+                  port=int(os.getenv("COUNSELOR_PORT", "8000")))
     agent.include(chat_proto, publish_manifest=True)
+    from agents.web_api import register_web  # website: POST /chat on this same agent (web/index.html)
+    register_web(agent)
     agent.on_event("startup")(_log_startup)
     return agent
 

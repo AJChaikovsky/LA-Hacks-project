@@ -89,3 +89,19 @@ def test_blank_or_unknown_address_changes_nothing(monkeypatch):
     base = FamilyProfile(home_neighborhood="Sylmar")
     assert geo.apply_address(base, "") == base and geo.apply_address(base, None) == base
     assert geo.apply_address(base, "123 Nowhere Rd, Atlantis") == base
+
+
+def test_intake_form_address_reaches_the_profile_but_is_not_kept(monkeypatch):
+    import os
+    os.environ.setdefault("COUNSELOR_SEED", "b11-test-seed-not-production")
+    from datetime import date
+    from agents.orchestrator import handle_turn
+    from core.types import SessionState
+
+    lat, lng = point_miles_west_of(STEAM, 1.0)
+    fake_nominatim(monkeypatch, lat, lng)
+    form = json.dumps({"action": "intake_form", "values": {
+        "grade": "5", "neighborhood": "Boyle Heights", "interest": "stem", "address": ADDRESS}})
+    state, _, _ = handle_turn(SessionState(), form, date(2026, 10, 17))
+    assert (state.profile.home_lat, state.profile.home_lng) == (lat, lng)
+    assert "1831" not in state.model_dump_json() and "1st St" not in state.model_dump_json()
