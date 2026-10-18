@@ -12,8 +12,8 @@ schools before the Nov 6 deadline, and stops the mistakes that cost them their s
 
 ## Inspiration
 
-LAUSD's Choices application for 2027-28 is open now, and the on-time deadline is **November 6, 2026**. Paper
-applications were eliminated this year. The process has hundreds of programs, a magnet "points" system, and rules
+LAUSD's Choices application for 2027-28 is open now, and the on-time deadline is **November 6, 2026**. During the on-time
+window, only online applications are accepted. The process has hundreds of programs, a magnet "points" system, and rules
 that quietly backfire: if you're not selected, your child is waitlisted **only at your first choice**; declining an
 offer, or not answering it, **erases every waiting-list point** you've earned; and you can list **only three**
 magnets. Families who are English learners, low-income or have a child with an IEP are the least likely to know

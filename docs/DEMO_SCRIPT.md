@@ -19,7 +19,7 @@
 
 | Time | Who | Screen | Say |
 | --- | --- | --- | --- |
-| 0:00-0:25 | C | Slide 1 | "LAUSD's school-choice deadline is November 6 — 20 days after this hackathon. No more paper applications. Hundreds of programs, a points system, and rules that quietly cost families their spot. Meet Maria: Boyle Heights, works downtown, only a phone, prefers Spanish. Her son Diego is in 5th grade, has an IEP, and loves art." |
+| 0:00-0:25 | C | Slide 1 | "LAUSD's school-choice deadline is November 6 — less than three weeks from today. Applications are online only. Hundreds of programs, a points system, and rules that quietly cost families their spot. Meet Maria: Boyle Heights, works downtown, only a phone, prefers Spanish. Her son Diego is in 5th grade, has an IEP, and loves art." |
 | 0:25-0:55 | C | Turn 1 → carousel | "She writes the way she talks." *(send turn 1)* "Three real programs, each with a reason — and it's honest: there's no arts-only magnet on the Eastside, so it explains why STEAM fits. Tap a school…" *(tap Belvedere STEAM → detail card)* |
 | 0:55-1:20 | C | Turn 2 → points | *(send turn 2)* "Points from LAUSD's official rules and the official PHBAO list — 'probablemente 4 de 23'. And real competition from the official pages: about 1.3 applications per seat. Never a percentage. Notice the line 'Consulté: Agente de Puntos' — a separate agent did that math." |
 | 1:20-1:55 | C | Turn 3 → warnings | "This is the moment that matters." *(send turn 3)* "She adds a fourth school 'just in case'. The counselor stops her: only 3 magnets count; only list schools you'd accept, because declining erases your points; order matters. Then strategy: keep your favorite first, and here's a safer choice with fewer applications than seats." |
@@ -50,8 +50,8 @@ Same as above, plus, after 2:35:
 
 ## Slides
 
-**Slide 1 — The problem** (title: "20 days. Hundreds of programs. One wrong click.")
-- Nov 6, 2026 on-time deadline · online only this year
+**Slide 1 — The problem** (title: "Under 3 weeks. Hundreds of programs. One wrong click.")
+- Nov 6, 2026 on-time deadline · online only during the on-time window
 - 3 rules that cost families: only 3 magnets · waitlisted at 1st choice only · declining (or not answering) erases points
 - Maria: Boyle Heights · phone only · Spanish · son with an IEP who loves art
 
@@ -64,4 +64,4 @@ Same as above, plus, after 2:35:
 
 - Agent silent > 10 s: "Let me show you the run from this morning" → play the backup video.
 - Wrong or odd reply: don't debug live — move to the next turn; the script still lands.
-- Judge asks a rules question: B answers, citing the brochure page (points are on p. 18).
+- Judge asks a rules question: B answers, citing the English brochure: points and "declining removes ALL waiting list points" p. 18; "no response is considered a decline, all declines are final" p. 2-3; 3 magnets max and 2nd/3rd choice only if not selected to the 1st p. 17; online-only on-time window: Choices FAQ.
