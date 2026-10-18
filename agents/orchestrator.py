@@ -43,10 +43,11 @@ load_dotenv()
 # Outer bound on a whole turn; each LLM call inside is already bounded by core/llm.py.
 TURN_TIMEOUT_S = float(os.getenv("LLM_TIMEOUT_S", "12")) + 3
 
-# Loop guard: after this many consecutive no-progress greeting/off-topic turns in one session,
-# stop replying (we still ack). The ASI:One personal-AI ping-pong is the thing this kills.
+# Loop guard: stop replying once a session hits this many consecutive no-progress
+# greeting/off-topic turns (we still ack). Default 4 leaves a real person room to ask 3
+# "what can you do?" questions and still get 3 answers; the bot ping-pong dies on the 4th.
 GREETING_INTENTS = frozenset({"help", "off_topic"})
-SUPPRESS_AFTER_IDLE = int(os.getenv("LOOP_SUPPRESS_IDLE", "3"))
+SUPPRESS_AFTER_IDLE = int(os.getenv("LOOP_SUPPRESS_IDLE", "4"))
 
 _MENTION = re.compile(r"@agent1[0-9a-z]+")
 

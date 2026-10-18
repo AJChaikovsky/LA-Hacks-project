@@ -128,23 +128,23 @@ def test_sessions_are_independent_per_ctx_session():
 
 
 def test_loop_guard_caps_fast_pingpong():
-    """(a) A 6-turn help/off_topic ping-pong with no stage change yields at most 2 replies."""
+    """(a) A 6-turn help/off_topic ping-pong is capped (default threshold 4 -> 3 replies, then silence)."""
     intents = ["help", "off_topic", "help", "off_topic", "help", "off_topic"]
     idle, sends = 0, 0
     for intent in intents:
         send, idle = guard_decision("intake", "intake", intent, idle)
         sends += int(send)
-    assert sends <= 2
+    assert sends == 3        # bot loop dies: 3 of 6 answered
 
 
-def test_three_help_turns_hit_count_threshold():
-    """(b) Count-based has no slow/fast distinction: 3 consecutive help turns -> 2 replies, 3rd
-    suppressed (the count-threshold equivalent of the time-based '3 slow humans -> 3 replies')."""
+def test_three_help_turns_all_answered_fourth_suppressed():
+    """(b) A real person asking 3 help questions at intake gets 3 answers; the 4th no-progress
+    turn is where the guard kicks in. Default threshold is 4."""
     idle, results = 0, []
-    for _ in range(3):
+    for _ in range(4):
         send, idle = guard_decision("intake", "intake", "help", idle)
         results.append(send)
-    assert results == [True, True, False]
+    assert results == [True, True, True, False]
 
 
 def test_intake_after_suppression_resets_counter():
@@ -225,14 +225,14 @@ def _counts(ctx: _FakeContext) -> tuple[int, int]:
 
 
 def test_handler_loop_guard_end_to_end():
-    """6 greeting turns in one session -> 6 acks, <=2 replies; a real intake after -> replied."""
+    """6 greeting turns in one session -> 6 acks, 3 replies (default threshold 4); intake after -> replied."""
     sender = "agent1qfakesender"
     ctx = _FakeContext()
     for _ in range(6):
         asyncio.run(orchestrator.on_chat_message(ctx, sender, _msg("¿Qué puedes hacer?")))
     acks, replies = _counts(ctx)
     assert acks == 6          # ack ALWAYS sent, even when the reply is suppressed
-    assert replies <= 2       # loop guard caps the greeting storm
+    assert replies == 3       # loop guard caps the greeting storm at 3
 
     before = len(ctx.sent)
     asyncio.run(orchestrator.on_chat_message(ctx, sender, _msg(GOLDEN[0])))  # real intake
