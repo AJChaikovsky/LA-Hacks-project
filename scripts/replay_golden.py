@@ -6,12 +6,15 @@ Owner: Dev C, ticket C6 (#24).
     python scripts/replay_golden.py --runs 10            # the G4 check (must be 10/10)
     python scripts/replay_golden.py --no-llm             # same, with ASI:One "down"
     python scripts/replay_golden.py --file tests/golden/maria_es.yaml -v
-    python scripts/replay_golden.py --live --runs 10     # against the running agent via scripts/ping.py
+    python scripts/replay_golden.py --live --runs 10     # the hosted counselor, via its POST /chat
 
 Local mode runs agents.orchestrator.handle_turn in-process: the same code ASI:One executes,
-plus a format check of every Interactive Card it would send (--engine harness = chat_local). Live mode needs scripts/ping.py (Dev A, A5) to expose:
+plus a format check of every Interactive Card it would send (--engine harness = chat_local).
 
-    send(text: str, session: str) -> str     # one ChatMessage to the counselor, returns the reply text
+Live mode talks to the running counselor over its REST endpoint (agents/web_api.py: POST /chat),
+which runs the same bounded_turn as ASI:One on the hosted process (storage, timeouts, specialist
+handoffs). Run it ON THE HOST, or set COUNSELOR_URL (default http://127.0.0.1:8000).
+ASI:One rendering itself is checked by hand (docs/evidence screenshots).
 
 Exit code 0 only when every run of every golden passes.
 """
@@ -19,11 +22,14 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
+import json
 import logging
 import os
+import re
 import statistics
 import sys
 import time
+import urllib.request
 import uuid
 from dataclasses import dataclass, field
 from datetime import date
@@ -118,20 +124,42 @@ def run_local(golden: dict, engine: str = "orchestrator") -> list[TurnResult]:
     return results
 
 
+SESSION_RE = re.compile(r"^[A-Za-z0-9-]{8,64}$")  # what agents/web_api.py accepts
+
+
+def counselor_url() -> str:
+    return os.getenv("COUNSELOR_URL", "http://127.0.0.1:8000").rstrip("/")
+
+
+def post_chat(session_id: str, text: str, timeout: float = 30.0) -> dict:
+    """POST /chat on the hosted counselor -> {"replies": [{"text", "kind", "payload"}], "stage", ...}."""
+    body = json.dumps({"session_id": session_id, "text": text}).encode()
+    request = urllib.request.Request(f"{counselor_url()}/chat", data=body, method="POST",
+                                     headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(request, timeout=timeout) as resp:  # noqa: S310 - our own agent
+        return json.loads(resp.read().decode())
+
+
 def run_live(golden: dict) -> list[TurnResult]:
-    ping = _load_script("ping")
-    if ping is None or not hasattr(ping, "send"):
-        raise SystemExit("Live mode needs scripts/ping.py with send(text, session) -> str (ticket A5, #6).")
-    session, results = f"golden-{uuid.uuid4().hex[:8]}", []
+    """One fresh web session per run; a turn fails on an error reply, a missing card or content checks."""
+    session, results = f"golden-{uuid.uuid4().hex[:12]}", []
     for spec in golden["turns"]:
         start = time.monotonic()
+        kinds, failures = [], []
         try:
-            reply = ping.send(spec["say"], session=session)
+            data = post_chat(session, spec["say"])
+            replies = data.get("replies") or []
+            reply = "\n\n".join(r.get("text") or "" for r in replies)
+            kinds = [r["kind"] for r in replies if r.get("kind")]  # web_api only returns valid cards
+            if data.get("error"):
+                failures.append(f"agent error: {data['error']}")
         except Exception as exc:  # noqa: BLE001
             reply = f"[ERROR] {type(exc).__name__}: {exc}"
         seconds = time.monotonic() - start
-        # The live agent doesn't report intents; content checks cover them.
-        results.append(TurnResult(spec["say"], reply, seconds, check_turn(spec, golden, reply, None, seconds)))
+        failures += check_turn(spec, golden, reply, None, seconds)  # the endpoint doesn't report intents
+        if spec.get("card") and spec["card"] not in kinds:
+            failures.append(f"expected a {spec['card']} card, got {kinds or 'none'}")
+        results.append(TurnResult(spec["say"], reply, seconds, failures))
     return results
 
 
@@ -167,7 +195,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--file", action="append", type=Path, help="golden YAML (default: all in tests/golden/)")
     ap.add_argument("--runs", type=int, default=1)
-    ap.add_argument("--live", action="store_true", help="send to the running agent via scripts/ping.py")
+    ap.add_argument("--live", action="store_true", help="the hosted counselor's POST /chat (COUNSELOR_URL)")
     ap.add_argument("--no-llm", action="store_true", help="local only: disable the LLM")
     ap.add_argument("-v", "--verbose", action="store_true", help="print every reply")
     ap.add_argument("--engine", choices=("orchestrator", "harness"), default="orchestrator",
