@@ -11,7 +11,7 @@ from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
 from core.config import load_config
-from core.matcher import distance_km, eligible, language_fit, outside_lausd, place_coords, schools
+from core.matcher import distance_km, eligible, home_coords, language_fit, outside_lausd, schools
 from core.types import WARNING_CODES, FamilyProfile, GuardrailWarning, School, WarningCode
 
 _SEVERITY = {
@@ -52,7 +52,7 @@ def suggest_alternatives(profile: FamilyProfile, codes: list[str]) -> list[str]:
 
     Best first: home-language fit, then closest to home, then code.
     """
-    home = place_coords(profile.home_neighborhood)
+    home = home_coords(profile)
     options = [s for s in schools() if s.program_type != "magnet" and s.code not in codes and eligible(profile, s)]
 
     def key(s: School):
@@ -71,7 +71,7 @@ def check_list(profile: FamilyProfile, codes: list[str], today: date | None = No
     magnets = [s.code for s in listed if s.program_type == "magnet"]
     limit = load_config("limits")["magnet_max_choices"]
     bus_km = load_config("limits")["bus_radius_miles_secondary"] * MILE_KM
-    home = place_coords(profile.home_neighborhood)
+    home = home_coords(profile)
     today = today or today_la()
     out: list[GuardrailWarning] = []
 

@@ -33,4 +33,6 @@ LAUSD 2027-28 Choices brochure, choices.lausd.net guidelines and FAQ. `data/scho
 
 PHBAO and overcrowded status come from LAUSD's 2026-27 Norm Category/Overcrowded School List (for 2027-28), kept in `docs/evidence/`.
 
+**Privacy:** if a parent shares a street address (optional, in the intake form), it is used once to look up coordinates through OpenStreetMap for distance and bus eligibility, then dropped. The address is never logged or stored; only coordinates rounded to about 100 m stay in the session. Bus eligibility is shown as "may qualify" (official rule: grades 6-12, more than 2 miles, max 90-minute ride).
+
 The competitiveness bands (5+ applications per opening = very high, 2+ = high, 1+ = moderate, under 1 = low, i.e. more seats than applications; in `config/competitiveness.json`) are **our heuristic, not LAUSD's**. The agent never states a probability.
