@@ -85,7 +85,7 @@ def test_core_error_propagates_and_apology_has_hotline(monkeypatch):
 
 
 def test_slow_turn_times_out(monkeypatch):
-    def slow(state, text, today=None):
+    def slow(state, text, today=None, remote=None):
         time.sleep(0.5)
         return state, ["late"], "help"
 
