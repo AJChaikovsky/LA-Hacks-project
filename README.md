@@ -14,6 +14,16 @@ A pocket school-choice counselor for LAUSD families, built on Fetch.ai uAgents a
 | `choices-counselor` | Orchestrator; ASI:One Chat Protocol | _TBD (A1)_ |
 | `choices-points` | Magnet points, guardrails | _TBD (A4)_ |
 | `choices-paperwork` | Checklist, deadlines, steps, email | _TBD (A4)_ |
+| `choices-caseload` | Paid batch reports for partner agents; Payment Protocol (seller), testnet | `agent1qfn674sglphgr6ml02jdkag3ps4dvqrstxm2leqyxza8d56lz7e7qyzj9fx` (Agentverse registration pending) |
+
+## Business model
+
+**Families always use the counselor for free.** Organizations that help many families at once (nonprofits, school
+parent centers, college-access counselors) can have their own agent send `choices-caseload` a batch of family
+profiles and pay **0.1 FET per family** over the Fetch.ai Payment Protocol (`RequestPayment` -> `CommitPayment` ->
+`CompletePayment`). The seller verifies the transfer on-chain before it sends the report: 3 matching programs,
+estimated magnet points and the most important warning for each family, built from the same deterministic `core/`
+code, with no percentages. Today this runs on the Fetch **testnet** only: `python scripts/caseload_demo.py`.
 
 ## Setup
 

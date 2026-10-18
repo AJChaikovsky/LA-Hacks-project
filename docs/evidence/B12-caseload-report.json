@@ -1,0 +1,116 @@
+{
+  "families": [
+    {
+      "child": "Diego",
+      "language": "es",
+      "matches": [
+        {
+          "code": "1804703",
+          "name": "Belvedere MS",
+          "theme": "STEAM",
+          "distance_km": 2.6
+        },
+        {
+          "code": "1817902",
+          "name": "Hollenbeck MS",
+          "theme": "STEM/Medicine",
+          "distance_km": 0.9
+        },
+        {
+          "code": "1804702",
+          "name": "Belvedere MS",
+          "theme": "New Media",
+          "distance_km": 2.6
+        }
+      ],
+      "points": {
+        "total": 4,
+        "max": 23,
+        "probably": true,
+        "unknown_factors": []
+      },
+      "top_warning": {
+        "code": "decline_wipes_points",
+        "severity": "info"
+      }
+    },
+    {
+      "child": "Ana",
+      "language": "en",
+      "matches": [
+        {
+          "code": "1830602",
+          "name": "Olive Vista MS",
+          "theme": "STEAM",
+          "distance_km": 0.5
+        },
+        {
+          "code": "1832103",
+          "name": "Pacoima MS",
+          "theme": "STEM",
+          "distance_km": 6.8
+        },
+        {
+          "code": "1808002",
+          "name": "Byrd MS",
+          "theme": "STEM",
+          "distance_km": 10.0
+        }
+      ],
+      "points": {
+        "total": 0,
+        "max": 23,
+        "probably": false,
+        "unknown_factors": [
+          "phbao",
+          "overcrowded"
+        ]
+      },
+      "top_warning": {
+        "code": "far_commute",
+        "severity": "warn"
+      }
+    },
+    {
+      "child": "Leo",
+      "language": "en",
+      "matches": [
+        {
+          "code": "1803802",
+          "name": "Bancroft MS",
+          "theme": "VAPA",
+          "distance_km": 18.9
+        },
+        {
+          "code": "1823703",
+          "name": "Markham MS",
+          "theme": "VAPA",
+          "distance_km": 24.7
+        },
+        {
+          "code": "1804703",
+          "name": "Belvedere MS",
+          "theme": "STEAM",
+          "distance_km": 12.5
+        }
+      ],
+      "points": {
+        "total": 0,
+        "max": 23,
+        "probably": false,
+        "unknown_factors": []
+      },
+      "top_warning": {
+        "code": "outside_district",
+        "severity": "warn"
+      }
+    }
+  ],
+  "disclaimer": "Estimates only. Confirm at choices.lausd.net or (213) 241-4177.",
+  "paid": {
+    "fet": "0.3",
+    "network": "testnet",
+    "tx": "47896CDFE0C15C72E071E3172124117772F74824830D0EB93B855011D94BED93",
+    "at": "2026-10-18T00:34:30+00:00"
+  }
+}
