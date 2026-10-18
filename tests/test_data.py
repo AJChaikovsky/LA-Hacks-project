@@ -16,8 +16,8 @@ def _raw_schools() -> list[dict]:
 
 def test_every_record_loads_as_school():
     schools = [School.model_validate(r) for r in _raw_schools()]
-    assert {s.code for s in schools} == SEED_CODES
-    assert len(schools) == len(SEED_CODES)
+    assert SEED_CODES <= {s.code for s in schools} and len(schools) >= 45
+    assert len({s.code for s in schools}) == len(schools)  # codes are unique
 
 
 def test_every_non_null_number_has_a_source():
@@ -34,11 +34,12 @@ def test_every_non_null_number_has_a_source():
 def test_seed_facts():
     by_code = {r["code"]: School.model_validate(r) for r in _raw_schools()}
     assert by_code["1838701TWS"].program_type == "dle"
-    assert [c for c, s in by_code.items() if s.gifted_verification] == ["1838702"]
+    assert all(s.theme == "Gifted" for s in by_code.values() if s.gifted_verification)
+    assert by_code["1838702"].gifted_verification
     assert by_code["1823703"].theme == "VAPA"
     assert all(6 in s.grades for s in by_code.values())
     # every school sits inside the LA basin
-    assert all(33.8 < s.lat < 34.2 and -118.4 < s.lng < -118.0 for s in by_code.values())
+    assert all(33.7 < s.lat < 34.4 and -118.7 < s.lng < -117.9 for s in by_code.values())  # LA County
 
 
 def test_places_centroids():

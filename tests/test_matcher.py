@@ -49,7 +49,7 @@ def test_spanish_dle_family():
     p = FamilyProfile(language="es", current_grade=5, interests=["languages"], home_language="Spanish",
                       home_neighborhood="East Los Angeles")
     top = match(p)[0]
-    assert top.code == "1838701TWS" and top.program_type == "dle"
+    assert top.program_type == "dle" and "Spanish" in next(s for s in schools() if s.code == top.code).languages
     assert {"theme_match", "spanish_dle"} <= set(top.reason_codes)
     assert "iep_eligible" not in top.reason_codes
 
@@ -101,4 +101,33 @@ def test_stem_interest_gets_theme_match_on_strong_fit():
     ana = FamilyProfile(language="en", child_name="Ana", current_grade=5, interests=["stem"],
                         home_neighborhood="El Sereno", iep=False)
     result = match(ana)
-    assert result and all("theme_match" in m.reason_codes for m in result)
+    assert result and "theme_match" in result[0].reason_codes
+    assert all(m.reason_codes for m in result)  # partial fits (e.g. Environmental for STEM) carry other reasons
+
+
+# --- B9: citywide coverage -------------------------------------------------------------
+
+@pytest.mark.parametrize("text", [
+    "Hi, we live in Sylmar. My daughter is in 5th grade and loves science and robots.",
+    "Hola, vivimos en Mar Vista. Mi hijo está en quinto grado y le encanta el teatro y la música.",
+    "We live in Watts, South LA. My son is in fifth grade and wants to be a doctor.",
+])
+def test_citywide_fifth_graders_get_three_nearby_matches(text):
+    from datetime import date
+    from core.types import SessionState
+    from scripts.chat_local import handle
+    state, _, _ = handle(SessionState(), text, today=date(2026, 10, 17))
+    assert len(state.matches) == 3
+    assert all(m.distance_km is not None and m.distance_km <= 25 for m in state.matches)
+
+
+def test_no_program_beyond_max_km_from_a_known_home():
+    p = FamilyProfile(current_grade=5, interests=["stem"], home_neighborhood="Sylmar")
+    assert all(m.distance_km <= 25 for m in match(p))
+    assert "1806002" not in [m.code for m in match(p)]  # Bethune MS, South LA, ~40 km
+
+
+def test_theme_map_covers_every_theme():
+    from core.config import load_config
+    mapped = {t for fits in load_config("matcher")["theme_map"].values() for t in fits}
+    assert {s.theme for s in schools()} - {"Gifted"} <= mapped

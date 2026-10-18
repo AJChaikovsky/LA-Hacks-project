@@ -185,6 +185,123 @@
       "outside_lausd": true,
       "district": "Alhambra Unified",
       "district_source": "https://www.cde.ca.gov/SchoolDirectory/"
+    },
+    "Sylmar": {
+      "lat": 34.30763,
+      "lng": -118.44921,
+      "aliases": [
+        "sylmar"
+      ]
+    },
+    "Pacoima": {
+      "lat": 34.2625,
+      "lng": -118.42703,
+      "aliases": [
+        "pacoima"
+      ]
+    },
+    "San Fernando": {
+      "lat": 34.28497,
+      "lng": -118.43765,
+      "aliases": [
+        "san fernando",
+        "ciudad de san fernando"
+      ]
+    },
+    "North Hills": {
+      "lat": 34.24296,
+      "lng": -118.48541,
+      "aliases": [
+        "north hills"
+      ]
+    },
+    "Van Nuys": {
+      "lat": 34.18662,
+      "lng": -118.44867,
+      "aliases": [
+        "van nuys"
+      ]
+    },
+    "North Hollywood": {
+      "lat": 34.16495,
+      "lng": -118.37475,
+      "aliases": [
+        "north hollywood",
+        "noho"
+      ]
+    },
+    "Sherman Oaks": {
+      "lat": 34.15087,
+      "lng": -118.44899,
+      "aliases": [
+        "sherman oaks"
+      ]
+    },
+    "Hollywood": {
+      "lat": 34.098,
+      "lng": -118.32952,
+      "aliases": [
+        "hollywood"
+      ]
+    },
+    "Mar Vista": {
+      "lat": 34.00376,
+      "lng": -118.43916,
+      "aliases": [
+        "mar vista"
+      ]
+    },
+    "Palms": {
+      "lat": 34.02473,
+      "lng": -118.41162,
+      "aliases": [
+        "palms"
+      ]
+    },
+    "Westchester": {
+      "lat": 33.95973,
+      "lng": -118.40063,
+      "aliases": [
+        "westchester"
+      ]
+    },
+    "Watts": {
+      "lat": 33.94059,
+      "lng": -118.2429,
+      "aliases": [
+        "watts"
+      ]
+    },
+    "Leimert Park": {
+      "lat": 34.00844,
+      "lng": -118.33145,
+      "aliases": [
+        "leimert park"
+      ]
+    },
+    "Mount Washington": {
+      "lat": 34.09884,
+      "lng": -118.22111,
+      "aliases": [
+        "mount washington",
+        "mt washington"
+      ]
+    },
+    "Sun Valley": {
+      "lat": 34.22042,
+      "lng": -118.38789,
+      "aliases": [
+        "sun valley"
+      ]
+    },
+    "Sunland": {
+      "lat": 34.26695,
+      "lng": -118.3023,
+      "aliases": [
+        "sunland",
+        "tujunga",
+        "sunland-tujunga"
+      ]
     }
   },
   "landmarks": {

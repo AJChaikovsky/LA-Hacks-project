@@ -91,8 +91,8 @@ def test_past_deadline():
 
 
 def test_suggest_alternatives_prefers_home_language_dle():
-    assert suggest_alternatives(maria(), TURN3) == ["1838701TWS"]
-    assert suggest_alternatives(maria(), TURN3 + ["1838701TWS"]) == []
+    assert suggest_alternatives(maria(), TURN3)[0] == "1838701TWS"   # closest Spanish DLE to Boyle Heights
+    assert "1838701TWS" not in suggest_alternatives(maria(), TURN3 + ["1838701TWS"])
     assert suggest_alternatives(maria(current_grade=8, applying_grade=9), TURN3) == []
 
 
