@@ -15,6 +15,7 @@ import logging
 import os
 import re
 import unicodedata
+from functools import cache
 from pathlib import Path
 
 from pydantic import BaseModel
@@ -118,7 +119,7 @@ _INTEREST_KEYWORDS = [  # (regex on normalized text, tag); order matters (medio 
     (r"medio ambiente|environment|naturaleza|nature|ecolog", "environment"),
     (r"\barte|\bartes\b|dibuj|pint[ao]|\bart\b|\barts\b|draw|paint|music|musica|danza|\bdance|teatro|theat", "arts"),
     (r"cienci|science|matematic|\bmath|tecnolog|technolog|robot|ingenier|engineer|computa|coding|programar", "stem"),
-    (r"medicina|medic[oa]|doctor|enfermer|nurse|salud|health", "medicine"),
+    (r"medicina|medic[oa]|medicine|medical|doctor|enfermer|nurse|salud|health", "medicine"),
     (r"abogad|lawyer|\blaw\b|\bley\b|policia|police", "law"),
     (r"\bvideo|\bcine\b|\bfilm|fotograf|photograph|\bmedios\b|\bmedia\b|youtube", "media"),
     (r"idioma|bilingu|languages", "languages"),
@@ -233,6 +234,18 @@ _WORK_CUE = re.compile(r"trabaj\w*|work\w*|\bjob\b|empleo|oficina|office")
 _HOME_CUE = re.compile(r"\bviv\w*|\blive\w*|living|somos de|we'?re from|we are from|\bfrom\b|\bcasa\b|\bhome\b")
 
 
+_STATED_HOME = re.compile(
+    r"\b(?i:vivimos en|vivo en|somos de|we live in|i live in|we'?re in|we are in|we'?re from|we are from|live in)\s+"
+    r"((?:[A-ZÁÉÍÓÚÑ][\wáéíóúñ'-]*)(?:\s+[A-ZÁÉÍÓÚÑ][\wáéíóúñ'-]*){0,2})"
+)
+
+
+def find_stated_home(text: str) -> str | None:
+    """A capitalized place the parent says they live in, even if it isn't in our place list."""
+    m = _STATED_HOME.search(text or "")
+    return m.group(1).strip() if m else None
+
+
 def find_places(t: str) -> tuple[str | None, str | None]:
     """(home_neighborhood, parent_work_area) from normalized text."""
     home = work = None
@@ -269,11 +282,46 @@ _SCHOOLS = [  # (aliases, default code, {theme keyword: code})
 ]
 
 
+_NAME_SUFFIXES = re.compile(r"\s+(ms|middle school|middle|college & career prep|charter|charter ms)$")
+_THEME_STOP = {"program", "programa", "programs", "studies", "arts", "artes", "public", "publico", "service",
+               "servicio", "digital", "digitales", "careers", "carreras", "language", "dual"}
+
+
+@cache
+def school_aliases() -> tuple[tuple[list[str], str, dict[str, str]], ...]:
+    """The manual table above plus every school in data/schools.json (B1/B9), so new programs are
+    recognized in free text without code changes. Theme keywords come from each program's theme."""
+    from core.config import load_data
+
+    table = [(list(a), d, dict(t)) for a, d, t in _SCHOOLS]
+    known = {alias for aliases, _, _ in table for alias in aliases}
+    places = {a for aliases in load_places().values() for a in aliases}
+    by_base: dict[str, list[dict]] = {}
+    try:
+        records = load_data("schools")
+    except (OSError, ValueError):
+        records = []
+    for r in records:
+        base = _NAME_SUFFIXES.sub("", norm(r.get("name", "")).strip())
+        if base and base not in known:
+            by_base.setdefault(base, []).append(r)
+    for base, programs in by_base.items():
+        # A school named after a neighborhood ("El Sereno MS") needs a school word next to it.
+        aliases = [f"{base} ms", f"{base} middle", f"escuela {base}", f"secundaria {base}"] if base in places else [base]
+        keywords: dict[str, str | None] = {}
+        for r in programs:
+            for word in re.findall(r"[a-z]{4,}", norm(f"{r.get('theme', '')} {r.get('sub_theme') or ''}")):
+                if word not in _THEME_STOP:
+                    keywords[word] = r["code"] if keywords.get(word, r["code"]) == r["code"] else None
+        table.append((aliases, programs[0]["code"], {k: v for k, v in keywords.items() if v}))
+    return tuple(table)
+
+
 def find_school_mentions(t: str, match_codes: list[str] | None = None) -> list[tuple[int, str]]:
     """[(position, program code)] in text order."""
     match_codes = match_codes or []
     found = []
-    for aliases, default, themes in _SCHOOLS:
+    for aliases, default, themes in school_aliases():
         for alias in aliases:
             for m in re.finditer(r"\b" + re.escape(alias) + r"\b", t):
                 window = t[max(0, m.start() - 20):m.end() + 25]
@@ -356,6 +404,7 @@ def prepass(text: str) -> dict:
     if iep is not None:
         out["iep"] = iep
     home, work = find_places(t)
+    home = home or find_stated_home(text)
     if home:
         out["home_neighborhood"] = home
     if work:
@@ -373,6 +422,10 @@ def prepass(text: str) -> dict:
     if doubtful:
         out["would_not_accept"] = doubtful
     return out
+
+
+_GRADE_TALK = re.compile(r"grad|grade|kinder|kinter|primaria|secundaria|middle school|elementary|high school|"
+                         r"\b(" + "|".join(_ORDINALS) + r")\b")
 
 
 class LLMProfile(BaseModel):
@@ -422,6 +475,10 @@ def llm_extract(text: str) -> dict:
     for key in ("current_grade", "applying_grade"):
         if not (isinstance(data.get(key), int) and 0 <= data[key] <= 12):
             data.pop(key, None)
+    # The model guesses a grade from an age ("tiene 10 años" -> 5th); only accept a grade the parent stated.
+    if not _GRADE_TALK.search(norm(text)):
+        data.pop("current_grade", None)
+        data.pop("applying_grade", None)
     return {k: v for k, v in data.items() if v not in ([], "")}
 
 

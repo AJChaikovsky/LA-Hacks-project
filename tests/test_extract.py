@@ -175,3 +175,42 @@ def test_live_turn1_matches_fixture():
 def test_only_the_three_must_be_attached(text, keeps_markham):
     choices, _ = ex.parse_school_list(text + (" Markham" if not keeps_markham else ""), MATCHES)
     assert ("1823703" in choices) is keeps_markham
+
+
+# --- C11 fixes found by the persona set ---
+
+@pytest.mark.parametrize("text,home", [
+    ("We're in Watts. My son is in 5th grade.", "Watts"),
+    ("Vivimos en Highland Park y mi hija está en quinto.", "Highland Park"),
+    ("I live in Van Nuys, my son is in 5th grade.", "Van Nuys"),
+    ("We're in a hurry, my son is in 5th grade.", None),   # lowercase: not a place
+])
+def test_stated_unknown_home_is_kept(text, home):
+    assert ex.extract(text).home_neighborhood == home
+
+
+def test_english_medicine_interest():
+    assert ex.find_interests(ex.norm("he likes medicine and wants a medical career")) == ["medicine"]
+
+
+def test_llm_grade_from_age_is_ignored(monkeypatch):
+    monkeypatch.setattr(llm, "complete_json", lambda p, schema, f, **kw: schema(current_grade=5, applying_grade=6))
+    assert ex.extract("Mi hijo tiene 10 años y vivimos en Boyle Heights.").applying_grade is None
+    assert ex.extract("Mi hijo va en la primaria, tiene 10 años.").applying_grade == 6  # grade talk -> accepted
+
+
+def test_school_names_from_data(monkeypatch):
+    from core import config
+
+    extra = [{"code": "1811802", "name": "El Sereno MS", "theme": "STEM", "sub_theme": None},
+             {"code": "1811801TWS", "name": "El Sereno MS", "theme": "Dual Language", "sub_theme": "Spanish Two-Way"},
+             {"code": "1826402", "name": "Nightingale MS", "theme": "Business/Entrepreneurship", "sub_theme": None}]
+    real = config.load_data("schools")
+    monkeypatch.setattr(config, "load_data", lambda name: real + extra if name == "schools" else real)
+    ex.school_aliases.cache_clear()
+    try:
+        t = ex.norm("Voy a poner Nightingale y El Sereno MS spanish. Vivimos en El Sereno.")
+        assert [code for _, code in ex.find_school_mentions(t)] == ["1826402", "1811801TWS"]
+        assert ex.find_school_mentions(ex.norm("Vivimos en El Sereno.")) == []  # neighborhood, not the school
+    finally:
+        ex.school_aliases.cache_clear()
