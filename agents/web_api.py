@@ -1,11 +1,13 @@
-"""POST /chat on choices-counselor: run one conversation turn over HTTP. Owner: Dev B.
+"""Website front end for choices-counselor: a REST endpoint on the same agent ASI:One talks to.
 
-Used by scripts/replay_golden.py --live (the G4 live check) to drive the hosted counselor. The turn runs
-through the same bounded_turn/handle_turn as ASI:One; card clicks are sent as the card's selection JSON.
+Owner: Dev B (website option 1). The page in web/index.html POSTs each message to /chat; the turn runs
+through the same bounded_turn/handle_turn as ASI:One, so there is one agent and one code path. Card
+clicks come back as the card's selection JSON, exactly like an ASI:One click.
 
-    POST /chat  {"session_id": "<id>", "text": "..."}  ->  {"session_id", "replies": [...], "stage", "language"}
+    POST /chat  {"session_id": "<uuid>", "text": "..."}  ->  {"session_id", "replies": [...], "stage", "language"}
+    GET  /info  ->  agent address and the welcome text
 
-Sessions are stored under "web:<session_id>" so they never collide with ASI:One senders.
+Web sessions are stored under "web:<session_id>" so they never collide with ASI:One senders.
 Never logs the message text (a form submission can carry a street address).
 """
 from __future__ import annotations
@@ -15,7 +17,7 @@ import re
 from uagents import Agent, Context, Model
 
 from agents.cards import validate
-from agents.orchestrator import _SORRY, _lang, _load_state, _pick, bounded_turn
+from agents.orchestrator import _SORRY, _WELCOME, _lang, _load_state, _pick, bounded_turn
 
 MAX_TEXT = 4000
 _SESSION_ID = re.compile(r"^[A-Za-z0-9-]{8,64}$")
@@ -32,6 +34,11 @@ class WebChatResponse(Model):
     stage: str
     language: str | None = None
     error: str | None = None
+
+
+class WebInfo(Model):
+    agent: str
+    welcome: dict
 
 
 async def web_turn(ctx: Context, req: WebChatRequest) -> WebChatResponse:
@@ -59,8 +66,12 @@ async def web_turn(ctx: Context, req: WebChatRequest) -> WebChatResponse:
 
 
 def register_web(agent: Agent) -> None:
-    """Add POST /chat to the counselor, served on the agent's own local HTTP port."""
+    """Add POST /chat and GET /info to the counselor; served on the agent's own HTTP port (CORS open)."""
 
     @agent.on_rest_post("/chat", WebChatRequest, WebChatResponse)
     async def chat(ctx: Context, req: WebChatRequest) -> WebChatResponse:
         return await web_turn(ctx, req)
+
+    @agent.on_rest_get("/info", WebInfo)
+    async def info(ctx: Context) -> WebInfo:
+        return WebInfo(agent=agent.address, welcome=_WELCOME)

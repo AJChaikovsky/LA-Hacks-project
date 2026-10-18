@@ -25,6 +25,21 @@ profiles and pay **0.1 FET per family** over the Fetch.ai Payment Protocol (`Req
 estimated magnet points and the most important warning for each family, built from the same deterministic `core/`
 code, with no percentages. Today this runs on the Fetch **testnet** only: `python scripts/caseload_demo.py`.
 
+## Website
+
+The same `choices-counselor` agent also answers on the web. Besides the ASI:One Chat Protocol, it serves
+`POST /chat` and `GET /info` on its own HTTP port (`COUNSELOR_PORT`, default 8000; CORS open), so
+[web/index.html](web/index.html) is a plain page with no build step. Every message runs through the same turn handler
+as ASI:One, and the cards (school carousel, details, intake form, packet review) render as buttons and forms.
+
+```bash
+python agents/orchestrator.py                      # the counselor: ASI:One mailbox + the web endpoint
+open web/index.html                                # or web/index.html?agent=https://your-host:8000
+```
+
+To share it, put the agent's port behind HTTPS (for example a tunnel or the always-on host) and serve `web/`
+statically (GitHub Pages works). The page remembers the `?agent=` URL. ASI:One never depends on the website.
+
 ## Setup
 
 ```bash

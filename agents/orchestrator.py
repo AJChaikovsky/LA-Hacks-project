@@ -565,7 +565,7 @@ def build_agent() -> Agent:
     register_health(agent)  # A4b: our own /health keeps the local server up (don't rely on web_api)
     agent.on_rest_get("/health/deep", DeepHealth)(_health_deep)  # A5: real points round-trip for ping.py
     register_self_check(agent, "counselor")
-    from agents.web_api import register_web  # POST /chat: replay_golden.py --live talks to this agent
+    from agents.web_api import register_web  # website: POST /chat on this same agent (web/index.html)
     register_web(agent)
     agent.on_event("startup")(_log_startup)
     return agent
