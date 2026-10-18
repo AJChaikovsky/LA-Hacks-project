@@ -370,7 +370,8 @@ async def on_chat_message(ctx: Context, sender: str, msg: ChatMessage):
         card = any(p.kind and p.payload is not None for p in parts)
         ctx.logger.info(
             "turn sender=%s session=%s key=%s intent=%s stage=%s idle=%s send=%s card=%s text=%r",
-            sender, ctx.session, key, intent, state.stage, idle, send_reply, card, clean[:80],
+            sender, ctx.session, key, intent, state.stage, idle, send_reply, card,
+            "<form>" if '"address"' in clean else clean[:80],  # B11: never log a street address
         )
         if parts and (send_reply or not text):
             for part in parts:
@@ -405,8 +406,11 @@ def build_agent() -> Agent:
     seed = os.getenv("COUNSELOR_SEED", "")
     if not seed:
         raise SystemExit("COUNSELOR_SEED is empty: set it in .env before running the counselor agent.")
-    agent = Agent(name="choices-counselor", seed=seed, mailbox=True, publish_agent_details=True)
+    agent = Agent(name="choices-counselor", seed=seed, mailbox=True, publish_agent_details=True,
+                  port=int(os.getenv("COUNSELOR_PORT", "8000")))
     agent.include(chat_proto, publish_manifest=True)
+    from agents.web_api import register_web  # website: POST /chat on this same agent (web/index.html)
+    register_web(agent)
     agent.on_event("startup")(_log_startup)
     return agent
 
