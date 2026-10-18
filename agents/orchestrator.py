@@ -2,10 +2,10 @@
 
 Owner: Dev A, tickets A1-A3 (#2, #3, #4). Must match the signature in core/stubs.py where one is listed.
 
-A2: per-conversation sessions in ctx.storage, intent routing through pure handlers
-(mirrors Dev C's reference scripts/chat_local.py handle()), bounded turn execution,
-hotline apology on any failure. Core calls stay on core/stubs.py until A3 wires the
-real modules.
+A3: the golden path wired in-process. handle_turn mirrors the reference scripts/chat_local.handle()
+but calls the real core/ modules and emits real Interactive Cards (agents/cards.py) instead of text
+previews. A2's machinery (ack-first, per-conversation sessions, bounded turns, loop guard, hotline
+apology) is unchanged. Core logic is real unless USE_STUBS=true (a dev-only escape hatch).
 
 Pre-demo reset: stop the agent, delete agent1q*_data.json, restart.
 
@@ -17,6 +17,7 @@ import asyncio
 import os
 import re
 import sys
+from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
@@ -33,9 +34,16 @@ from uagents_core.contrib.protocols.chat import (
     chat_protocol_spec,
 )
 
-from core import stubs
-from core.extract import detect_language, parse_school_list
-from core.intent import classify, parse_card_selection, scope_reply
+from agents.cards import (
+    card_message,
+    intake_form,
+    matches_carousel,
+    packet_review,
+    respond_to_selection,
+)
+from core import guardrails, matcher, paperwork, points, render, stubs
+from core.extract import detect_language, extract as extract_profile, merge, parse_school_list
+from core.intent import classify as classify_intent, parse_card_selection, scope_reply
 from core.types import FamilyProfile, SessionState
 
 load_dotenv()
@@ -86,6 +94,48 @@ _HELP = {
         "Cuénteme de su hijo o hija para empezar."
     ),
 }
+_ASK_MORE = {
+    "en": "To find schools I need your neighborhood or what your child enjoys. Can you tell me?",
+    "es": "Para buscar escuelas necesito su barrio o qué le gusta a su hijo o hija. ¿Me cuenta?",
+}
+
+
+# ---------------------------------------------------------------------------
+# Real vs stub dispatch. Demo path is real; USE_STUBS=true is a dev escape hatch.
+# ---------------------------------------------------------------------------
+
+
+def use_stubs() -> bool:
+    return os.getenv("USE_STUBS", "false").strip().lower() in ("1", "true", "yes", "on")
+
+
+def _classify(text: str, stage: str) -> str:
+    return stubs.classify(text, stage) if use_stubs() else classify_intent(text, stage)
+
+
+def _extract(text: str, prior: FamilyProfile) -> FamilyProfile:
+    return stubs.extract(text, prior) if use_stubs() else extract_profile(text, prior)
+
+
+def _match(p: FamilyProfile):
+    return stubs.match(p) if use_stubs() else matcher.match(p)
+
+
+def _estimate(p: FamilyProfile, codes: list[str]):
+    return stubs.estimate(p, codes) if use_stubs() else points.estimate(p, codes)
+
+
+def _check_list(p: FamilyProfile, codes: list[str], today: date):
+    return stubs.check_list(p, codes) if use_stubs() else guardrails.check_list(p, codes, today)
+
+
+def _build_plan(p: FamilyProfile, codes: list[str], lang: str, today: date):
+    return stubs.build_plan(p, codes, lang, today) if use_stubs() else paperwork.build_plan(p, codes, lang, today)
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
 
 
 def _pick(table: dict[str, str], lang: str | None) -> str:
@@ -141,72 +191,114 @@ def split_reply(text: str, limit: int = 3500) -> list[str]:
     return [text[:cut].rstrip(), text[cut:].lstrip()]
 
 
-def handle_turn(state: SessionState, text: str, today: date | None = None) -> tuple[SessionState, list[str], str]:
-    """One conversation turn: (new state, reply parts, intent). Pure, no uAgents, no storage."""
+# ---------------------------------------------------------------------------
+# Turn routing (mirrors scripts/chat_local.handle; real modules + real cards)
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class ReplyPart:
+    """One reply unit: narration text plus an optional Interactive Card (kind + payload)."""
+
+    narration: str
+    kind: str | None = None
+    payload: dict | None = None
+
+
+def _match_step(state: SessionState, p: FamilyProfile, intent: str) -> tuple[SessionState, list[ReplyPart], str]:
+    """After profile facts arrive (text or intake form): ask for what's missing, else match."""
+    lang = _lang(p)
+    state = state.model_copy(update={"profile": p})
+    if not p.applying_grade:  # never assume middle school: ask, and send the intake form card
+        return state, [ReplyPart(render.render_ask_grade(p), "form", intake_form(p))], intent
+    if not (p.interests or p.home_neighborhood):
+        return state, [ReplyPart(_ASK_MORE[lang], "form", intake_form(p))], intent
+    matches = _match(p)
+    # Zero matches: stay at intake so the parent can fix the grade; no odds offer.
+    state = state.model_copy(update={"matches": matches, "stage": "matched" if matches else "intake"})
+    if not matches:
+        return state, [ReplyPart(render.render_no_matches(p))], intent
+    return state, [ReplyPart(render.render_matches(matches, p), "carousel", matches_carousel(matches, p))], intent
+
+
+def handle_turn(state: SessionState, text: str, today: date | None = None) -> tuple[SessionState, list[ReplyPart], str]:
+    """One conversation turn: (new state, reply parts, intent). Pure: no uAgents, no storage, no I/O."""
     today = today or date.today()
-    intent = classify(text, state.stage)
-    p = state.profile.model_copy(update={"language": detect_language(text) or state.profile.language})
+    intent = _classify(text, state.stage)
+    # Reply in the language of the latest message; a card click (JSON / button label) carries no
+    # language signal, so it keeps the current one.
+    spoken = None if parse_card_selection(text) is not None else detect_language(text)
+    p = state.profile.model_copy(update={"language": spoken or state.profile.language})
     state = state.model_copy(update={"profile": p})
     lang = _lang(p)
 
     if intent == "reset":
-        return SessionState(), [_HELP[lang]], intent
+        return SessionState(), [ReplyPart(_HELP[lang])], intent
 
     if intent == "profile_info":
-        p = stubs.extract(text, p)  # A3 swaps in the real modules when USE_STUBS=false
-        matches = stubs.match(p)
-        state = state.model_copy(update={"profile": p, "matches": matches, "stage": "matched"})
-        return state, [stubs.render_matches(matches, p)], intent
+        return _match_step(state, _extract(text, p), intent)
 
     if intent in ("ask_odds", "set_list", "ask_plan") and not state.matches:
-        return state, [scope_reply("intake", lang)], intent
+        return state, [ReplyPart(scope_reply("intake", lang))], intent
 
     codes = p.intended_choices or [m.code for m in state.matches]
 
     if intent == "ask_odds":
-        estimates = stubs.estimate(p, codes)
+        estimates = _estimate(p, codes)
         state = state.model_copy(update={"estimates": estimates, "stage": "odds"})
-        return state, [stubs.render_points(estimates, p)], intent
+        return state, [ReplyPart(render.render_points(estimates, p))], intent
 
     if intent == "set_list":
+        p = _extract(text, p)  # picks up doubts like "no sé si lo aceptaría"
         choices, doubtful = parse_school_list(text, [m.code for m in state.matches])
-        choices = choices or codes
+        choices = choices or [m.code for m in state.matches]
         p = p.model_copy(update={
             "intended_choices": choices,
             "would_not_accept": list(dict.fromkeys(p.would_not_accept + doubtful)),
         })
-        warnings = stubs.check_list(p, choices)
+        warnings = _check_list(p, choices, today)
         state = state.model_copy(update={"profile": p, "warnings": warnings, "stage": "listing"})
-        return state, [stubs.render_warnings(warnings, p)], intent
+        return state, [ReplyPart(render.render_warnings(warnings, p))], intent
 
     if intent == "ask_plan":
         choices, _ = parse_school_list(text, [m.code for m in state.matches])
-        if choices:
+        if choices:  # "solo las tres" trims the list before planning
             p = p.model_copy(update={"intended_choices": choices})
-        plan = stubs.build_plan(p, p.intended_choices or codes, lang, today)
+        plan_codes = p.intended_choices or codes
+        plan = _build_plan(p, plan_codes, lang, today)
         state = state.model_copy(update={"profile": p, "plan": plan, "stage": "plan"})
-        return state, [stubs.render_plan(plan, p)], intent
+        return state, [ReplyPart(render.render_plan(plan, p), "review", packet_review(plan, p, plan_codes))], intent
 
     if intent == "card_selection":
-        sel = parse_card_selection(text) or {}
-        m = next((m for m in state.matches if m.code == sel.get("code")), None)
-        if m:
-            contact = " · ".join(s for s in (m.address, m.phone) if s)
-            return state, [f"**{m.name} · {m.theme}**" + (f"\n{contact}" if contact else "")], intent
-        return state, [scope_reply(state.stage, lang)], intent
+        reply = respond_to_selection(parse_card_selection(text) or {}, state)
+        if reply is None:
+            return state, [ReplyPart(scope_reply(state.stage, lang))], intent
+        if reply.profile_updates is not None:  # intake form submitted: merge answers, then match
+            return _match_step(state, merge(p, reply.profile_updates), intent)
+        if reply.add_code:
+            p = p.model_copy(update={
+                "intended_choices": list(dict.fromkeys(p.intended_choices + [reply.add_code])),
+            })
+            state = state.model_copy(update={"profile": p})
+        return state, [ReplyPart(reply.narration, reply.kind, reply.payload)], intent
 
     if intent == "help":
-        return state, [_HELP[lang]], intent
+        return state, [ReplyPart(_HELP[lang])], intent
 
-    return state, [scope_reply(state.stage, lang)], intent
+    return state, [ReplyPart(scope_reply(state.stage, lang))], intent
 
 
 async def bounded_turn(
     state: SessionState, text: str, today: date | None = None, timeout: float | None = None
-) -> tuple[SessionState, list[str], str]:
+) -> tuple[SessionState, list[ReplyPart], str]:
     """handle_turn in a worker thread with a deadline. Raises TimeoutError or the handler's error;
     on either, the caller must not write state (a late thread result is discarded by wait_for)."""
     return await asyncio.wait_for(asyncio.to_thread(handle_turn, state, text, today), timeout or TURN_TIMEOUT_S)
+
+
+# ---------------------------------------------------------------------------
+# Agent handlers
+# ---------------------------------------------------------------------------
 
 
 def _load_state(ctx: Context, key: str) -> SessionState:
@@ -217,6 +309,17 @@ def _load_state(ctx: Context, key: str) -> SessionState:
         except Exception:
             ctx.logger.warning("corrupt session state at %s; starting fresh", key)
     return SessionState()
+
+
+async def _send_part(ctx: Context, sender: str, part: ReplyPart) -> None:
+    """Send one reply unit: split long narration into text ChatMessages, attach any card to the last."""
+    chunks = split_reply(part.narration) if part.narration else [part.narration]
+    for i, chunk in enumerate(chunks):
+        last = i == len(chunks) - 1
+        if last and part.kind and part.payload is not None:
+            await ctx.send(sender, card_message(chunk, part.kind, part.payload))  # text + card, or text if invalid
+        else:
+            await ctx.send(sender, ChatMessage(content=[TextContent(text=chunk)]))
 
 
 async def _apologize(ctx: Context, sender: str, lang: str | None) -> None:
@@ -235,14 +338,14 @@ async def on_chat_message(ctx: Context, sender: str, msg: ChatMessage):
     try:
         text = msg.text().strip()
         clean = strip_mention(text)
-        parts: list[str] = []
+        parts: list[ReplyPart] = []
         for item in msg.content:
             if isinstance(item, StartSessionContent):
                 if ctx.storage.has(key):
                     ctx.storage.remove(key)  # fresh chat: reset without writing state
                 if ctx.storage.has(idle_key):
                     ctx.storage.remove(idle_key)
-                parts.append(_pick(_WELCOME, detect_language(text) if text else None))
+                parts.append(ReplyPart(_pick(_WELCOME, detect_language(text) if text else None)))
             elif isinstance(item, EndSessionContent):
                 ctx.logger.info("session ended by %s", sender)
         state = _load_state(ctx, key)
@@ -258,13 +361,14 @@ async def on_chat_message(ctx: Context, sender: str, msg: ChatMessage):
             parts.extend(reply_parts)
             ctx.storage.set(key, state.model_dump_json())  # written ONLY after an in-time success
             ctx.storage.set(idle_key, idle)
+        card = any(p.kind and p.payload is not None for p in parts)
         ctx.logger.info(
-            "turn sender=%s session=%s key=%s intent=%s stage=%s idle=%s send=%s text=%r",
-            sender, ctx.session, key, intent, state.stage, idle, send_reply, clean[:80],
+            "turn sender=%s session=%s key=%s intent=%s stage=%s idle=%s send=%s card=%s text=%r",
+            sender, ctx.session, key, intent, state.stage, idle, send_reply, card, clean[:80],
         )
         if parts and (send_reply or not text):
-            for chunk in split_reply("\n\n".join(parts)):
-                await ctx.send(sender, ChatMessage(content=[TextContent(text=chunk)]))
+            for part in parts:
+                await _send_part(ctx, sender, part)
         elif not send_reply:
             ctx.logger.info("suppressed reply to %s (idle=%s intent=%s); loop guard", sender, idle, intent)
     except TimeoutError:
@@ -280,6 +384,15 @@ async def on_chat_ack(ctx: Context, sender: str, msg: ChatAcknowledgement):
     ctx.logger.debug("ack from %s for %s", sender, msg.acknowledged_msg_id)
 
 
+async def _log_startup(ctx: Context):
+    llm = "on" if os.getenv("ASI1_API_KEY") else "off"
+    ctx.logger.info("USE_STUBS=%s LLM=%s", os.getenv("USE_STUBS", "false"), llm)
+    if use_stubs():
+        ctx.logger.warning(
+            "USE_STUBS is TRUE — serving FIXTURE data, not the real modules. Do NOT run the demo like this."
+        )
+
+
 def build_agent() -> Agent:
     """Construct the agent at run time. Importing this module must never exit (issue #3):
     the seed is only required to run, not to import handlers for tests."""
@@ -288,6 +401,7 @@ def build_agent() -> Agent:
         raise SystemExit("COUNSELOR_SEED is empty: set it in .env before running the counselor agent.")
     agent = Agent(name="choices-counselor", seed=seed, mailbox=True, publish_agent_details=True)
     agent.include(chat_proto, publish_manifest=True)
+    agent.on_event("startup")(_log_startup)
     return agent
 
 

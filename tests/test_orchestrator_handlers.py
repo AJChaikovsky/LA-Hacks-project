@@ -51,7 +51,7 @@ def test_golden_four_turns_walk_stages():
         state, parts, intent = handle_turn(state, text, TODAY)
         assert intent == want_intent
         assert state.stage == want_stage
-        assert parts and all(p.strip() for p in parts)
+        assert parts and all(p.narration.strip() for p in parts)
 
 
 def test_reset_phrase_clears_state():
@@ -60,7 +60,7 @@ def test_reset_phrase_clears_state():
     state, parts, intent = handle_turn(state, "start over", TODAY)
     assert intent == "reset"
     assert state == SessionState()
-    assert parts[0].strip()
+    assert parts[0].narration.strip()
 
 
 def test_odds_before_matches_gets_scope_reply():
@@ -68,14 +68,15 @@ def test_odds_before_matches_gets_scope_reply():
     assert intent == "ask_odds"
     assert new_state.stage == "intake"
     assert new_state.matches == []
-    assert parts[0].strip()
+    assert parts[0].narration.strip()
 
 
 def test_core_error_propagates_and_apology_has_hotline(monkeypatch):
     def boom(profile, codes):
         raise RuntimeError("points module fell over")
 
-    monkeypatch.setattr(orchestrator.stubs, "estimate", boom)
+    # Demo path is real modules (USE_STUBS=false), so patch the real points.estimate.
+    monkeypatch.setattr(orchestrator.points, "estimate", boom)
     state, _, _ = handle_turn(SessionState(), GOLDEN[0], TODAY)
     with pytest.raises(RuntimeError):
         asyncio.run(bounded_turn(state, GOLDEN[1], TODAY))
