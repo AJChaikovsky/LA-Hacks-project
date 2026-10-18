@@ -1,27 +1,71 @@
 {
-  "weights": {"theme": 0.45, "distance": 0.30, "language": 0.15, "commute": 0.10},
+  "weights": {
+    "theme": 0.45,
+    "distance": 0.3,
+    "language": 0.15,
+    "commute": 0.1
+  },
   "distance_scale_km": 15,
   "unknown_place_score": 0.5,
   "no_interest_theme_score": 0.5,
   "top_n": 3,
   "theme_match_min": 0.8,
   "theme_match_note": "A non-arts interest at or above this theme fit earns the theme_match reason (no seed program scores exactly 1.0 for stem). Arts keeps arts_in_steam / arts_in_media.",
-  "near_home_slot": {"enabled": true, "position": 2, "max_km": 3.0,
-                     "note": "Reserve one slot for the closest program when the formula leaves it out: a short commute matters for kids with IEPs and families without a car."},
+  "near_home_slot": {
+    "enabled": true,
+    "position": 2,
+    "max_km": 3.0,
+    "note": "Reserve one slot for the closest program when the formula leaves it out: a short commute matters for kids with IEPs and families without a car."
+  },
   "near_home_km": 2.0,
   "near_work_km": 4.0,
   "bus_min_km": 3.22,
   "vapa_nearby_km": 10,
   "vapa_note": "Brochure: no VAPA middle-school magnet in the East region. Markham VAPA is 11.8 km from Boyle Heights, so 10 km keeps no_vapa_nearby honest.",
   "theme_map": {
-    "arts": {"VAPA": 1.0, "STEAM": 0.8, "New Media": 0.7},
-    "stem": {"STEM": 1.0, "STEAM": 0.9, "Robotics/Engineering": 0.9, "STEM/Medicine": 0.8},
-    "medicine": {"STEM/Medicine": 1.0, "STEM": 0.5, "STEAM": 0.4},
-    "law": {"Law/Public Service": 1.0},
-    "media": {"New Media": 1.0, "VAPA": 0.5, "STEAM": 0.4},
-    "languages": {"Dual Language": 1.0},
-    "sports": {},
-    "business": {"Law/Public Service": 0.3},
-    "environment": {"STEM": 0.5, "STEAM": 0.4}
-  }
+    "arts": {
+      "VAPA": 1.0,
+      "STEAM": 0.8,
+      "New Media": 0.7
+    },
+    "stem": {
+      "STEM": 1.0,
+      "STEAM": 0.9,
+      "Robotics/Engineering": 0.9,
+      "STEM/Medicine": 0.8,
+      "Environmental": 0.7,
+      "Medicine": 0.5
+    },
+    "medicine": {
+      "STEM/Medicine": 1.0,
+      "STEM": 0.5,
+      "STEAM": 0.4,
+      "Medicine": 1.0
+    },
+    "law": {
+      "Law/Public Service": 1.0
+    },
+    "media": {
+      "New Media": 1.0,
+      "VAPA": 0.5,
+      "STEAM": 0.4
+    },
+    "languages": {
+      "Dual Language": 1.0
+    },
+    "sports": {
+      "Medicine": 0.3
+    },
+    "business": {
+      "Business": 1.0,
+      "Law/Public Service": 0.3
+    },
+    "environment": {
+      "Environmental": 1.0,
+      "STEM": 0.5,
+      "STEAM": 0.4
+    }
+  },
+  "max_km": 25,
+  "max_km_note": "Programs farther than this from a known home are not suggested (far_commute still warns on listed ones)."
 }

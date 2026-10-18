@@ -59,9 +59,13 @@ def applying_grade(profile: FamilyProfile) -> int | None:
 
 
 def eligible(profile: FamilyProfile, school: School) -> bool:
-    """Hard filters: the applying grade is served, and Gifted programs only for identified gifted kids."""
+    """Hard filters: the applying grade is served, Gifted programs only for identified gifted kids, and
+    nothing farther than config max_km from a known home."""
     grade = applying_grade(profile)
     if grade is not None and grade not in school.grades:
+        return False
+    km = distance_km(place_coords(profile.home_neighborhood), school)
+    if km is not None and km > load_config("matcher")["max_km"]:
         return False
     return not school.gifted_verification or profile.gifted is True
 

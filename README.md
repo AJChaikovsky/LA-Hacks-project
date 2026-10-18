@@ -29,7 +29,7 @@ Requires Python 3.10 or newer (tested on 3.13).
 
 ## Data sources
 
-LAUSD 2027-28 Choices brochure, choices.lausd.net guidelines and FAQ. Points and odds are **estimates**; the official source is [choices.lausd.net](https://choices.lausd.net) or the Choices Support Line (213) 241-4177.
+LAUSD 2027-28 Choices brochure, choices.lausd.net guidelines and FAQ. `data/schools.json` covers **49 grade 6-8 Choices programs** (magnets and Spanish dual-language) across all four regions, each cited to its brochure page; seat numbers come from the official Choices program pages where we saved them (`docs/evidence/`). Points and odds are **estimates**; the official source is [choices.lausd.net](https://choices.lausd.net) or the Choices Support Line (213) 241-4177.
 
 PHBAO and overcrowded status come from LAUSD's 2026-27 Norm Category/Overcrowded School List (for 2027-28), kept in `docs/evidence/`.
 
