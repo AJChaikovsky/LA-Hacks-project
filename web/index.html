@@ -69,8 +69,9 @@
   form.card .check { display: flex; align-items: center; gap: 8px; }
   form.card .check label { margin: 0; }
   .typing { color: var(--muted); font-style: italic; }
-  .starters { display: flex; flex-wrap: wrap; gap: 8px; }
-  .starters button { border-radius: 10px; text-align: left; font-size: 14px; }
+  .starters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .starters .label { color: var(--muted); font-size: 13px; width: 100%; }
+  .starters button { border-style: dashed; color: var(--accent); font-size: 14px; background: transparent; }
   .error { align-self: center; background: var(--warn); border: 1px solid var(--line); font-size: 14px; }
   footer { border-top: 1px solid var(--line); background: var(--panel); padding: 10px 16px; }
   footer form { max-width: 760px; margin: 0 auto; display: flex; gap: 8px; }
@@ -105,8 +106,8 @@
   if (params.get("agent")) store.set("agent", params.get("agent"));
   const AGENT = (store.get("agent") || "http://localhost:8000").replace(/\/+$/, "");
   const STARTERS = [
-    "Hi, I'm Maria. We live in Boyle Heights. My son Diego is in 5th grade and has an IEP. He loves art and drawing. Which schools do you recommend?",
-    "Hola, soy Maria. Vivo en Boyle Heights. Mi hijo Diego está en quinto grado y tiene un IEP. Le encanta el arte. ¿Qué escuelas me recomienda?",
+    { label: "English: Maria in Boyle Heights", text: "Hi, I'm Maria. We live in Boyle Heights. My son Diego is in 5th grade and has an IEP. He loves art and drawing. Which schools do you recommend?" },
+    { label: "Español: María en Boyle Heights", text: "Hola, soy Maria. Vivo en Boyle Heights. Mi hijo Diego está en quinto grado y tiene un IEP. Le encanta el arte. ¿Qué escuelas me recomienda?" },
   ];
   const WELCOME = {
     en: "Hello! I'm the LAUSD Choices counselor. Tell me about your child — grade, interests, neighborhood — and I'll suggest Choices programs.",
@@ -272,7 +273,8 @@
     log.replaceChildren();
     addBot({ text: WELCOME.en + "\n\n" + WELCOME.es });
     const chips = el("div", { class: "starters" });
-    for (const s of STARTERS) chips.append(el("button", { type: "button", onclick: () => send(s) }, s));
+    chips.append(el("div", { class: "label" }, "Try an example · Pruebe un ejemplo"));
+    for (const s of STARTERS) chips.append(el("button", { type: "button", title: s.text, onclick: () => send(s.text) }, "▶ " + s.label));
     log.append(chips);
     input.focus();
   }
