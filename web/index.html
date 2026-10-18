@@ -85,6 +85,7 @@
   }
   header h1 { font-size: 17px; margin: 0; flex: 1; min-width: 0; }
   header small { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
+  header .lang { border: 1px solid var(--line); border-radius: 999px; font-size: 14px; }
   main { flex: 1; overflow-y: auto; padding: 16px; background: var(--bg); }
   .log { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
   .msg { max-width: 88%; padding: 10px 14px; border-radius: var(--radius); overflow-wrap: anywhere; }
@@ -138,27 +139,28 @@
 <body>
 <aside id="sidebar" aria-label="Chats">
   <div class="side-top">
-    <button class="primary" id="new" type="button">+ New chat · Nuevo</button>
+    <button class="primary" id="new" type="button">+ New chat</button>
     <button class="ghost" id="close-side" type="button" aria-label="Hide chats">⟨</button>
   </div>
-  <div class="side-label">Chats</div>
+  <div class="side-label" id="chats-label">Chats</div>
   <ul id="chats"></ul>
-  <div class="side-note">Saved only in this browser. Addresses are never saved.</div>
+  <div class="side-note" id="side-note">Saved only in this browser. Addresses are never saved.</div>
 </aside>
 <div id="backdrop"></div>
 <div class="app">
   <header>
     <button class="ghost" id="toggle-side" type="button" aria-label="Show or hide chats">☰</button>
-    <h1>Choices Counselor<small>LAUSD Choices help · English / Español</small></h1>
+    <h1>Choices Counselor<small id="subtitle">LAUSD Choices help</small></h1>
+    <button class="ghost lang" id="lang" type="button" lang="es">Español</button>
     <button class="ghost" id="theme" type="button" aria-label="Switch light or dark mode">☾</button>
   </header>
   <main id="scroll"><div class="log" id="log"></div></main>
   <footer>
     <form id="composer">
-      <textarea id="input" rows="1" placeholder="Message · Mensaje" aria-label="Message / Mensaje" autocomplete="off"></textarea>
+      <textarea id="input" rows="1" placeholder="Message" aria-label="Message" autocomplete="off"></textarea>
       <button class="primary" id="send" type="submit">Send</button>
     </form>
-    <div class="note">Estimates only. Confirm at choices.lausd.net or (213) 241-4177. Don't share private details you don't need to.</div>
+    <div class="note" id="note">Estimates only. Confirm at choices.lausd.net or (213) 241-4177. Don't share private details you don't need to.</div>
   </footer>
 </div>
 <script>
@@ -172,14 +174,43 @@
   if (params.get("agent")) store.set("agent", params.get("agent"));
   const AGENT = (store.get("agent") || "http://localhost:8000").replace(/\/+$/, "");
   const MAX_CHATS = 30;
-  const STARTERS = [
-    { label: "English: a 5th grader who loves art", text: "My child is in 5th grade and loves art. Which middle schools should we look at?" },
-    { label: "Español: alumno de 5.º grado al que le encanta el arte", text: "Mi hijo está en quinto grado y le encanta el arte. ¿Qué escuelas me recomienda?" },
-  ];
-  const WELCOME = {
-    en: "Hello! I'm the LAUSD Choices counselor. Tell me about your child — grade, interests, neighborhood — and I'll suggest Choices programs.",
-    es: "¡Hola! Soy el consejero de Choices de LAUSD. Cuénteme de su hijo o hija — grado, intereses, vecindario — y le sugiero programas de Choices.",
+  // Interface text per language. The agent answers in the language the parent writes in.
+  const T = {
+    en: {
+      subtitle: "LAUSD Choices help", other: "Español", newChat: "+ New chat", chats: "Chats", noChats: "No chats yet",
+      sideNote: "Saved only in this browser. Addresses are never saved.", message: "Message", send: "Send",
+      note: "Estimates only. Confirm at choices.lausd.net or (213) 241-4177. Don't share private details you don't need to.",
+      welcome: "Hello! I'm the LAUSD Choices counselor. Tell me about your child — grade, interests, neighborhood — and I'll suggest Choices programs.",
+      examples: "Try an example",
+      starters: [
+        { label: "A 5th grader who loves art", text: "My child is in 5th grade and loves art. Which middle schools should we look at?" },
+        { label: "A 5th grader who likes science", text: "My daughter is in 5th grade and likes science. What are our options?" },
+      ],
+      untitled: "New chat", justNow: "just now", minAgo: n => n + " min ago", hAgo: n => n + " h ago",
+      hide: "Hide chats", toggle: "Show or hide chats", theme: "Switch light or dark mode", del: "Delete chat",
+      error: "Something went wrong. Please try again, or call (213) 241-4177.",
+      offline: url => "Can't reach the counselor at " + url + ". Is the agent running?",
+    },
+    es: {
+      subtitle: "Ayuda con Choices de LAUSD", other: "English", newChat: "+ Nueva conversación", chats: "Conversaciones",
+      noChats: "Todavía no hay conversaciones", sideNote: "Se guardan solo en este navegador. Las direcciones nunca se guardan.",
+      message: "Mensaje", send: "Enviar",
+      note: "Solo son estimaciones. Confirme en choices.lausd.net o al (213) 241-4177. No comparta datos privados que no necesite.",
+      welcome: "¡Hola! Soy el consejero de Choices de LAUSD. Cuénteme de su hijo o hija — grado, intereses, vecindario — y le sugiero programas de Choices.",
+      examples: "Pruebe un ejemplo",
+      starters: [
+        { label: "Alumno de 5.º grado al que le encanta el arte", text: "Mi hijo está en quinto grado y le encanta el arte. ¿Qué escuelas me recomienda?" },
+        { label: "Alumna de 5.º grado a la que le gustan las ciencias", text: "Mi hija está en quinto grado y le gustan las ciencias. ¿Qué opciones tenemos?" },
+      ],
+      untitled: "Nueva conversación", justNow: "ahora", minAgo: n => "hace " + n + " min", hAgo: n => "hace " + n + " h",
+      hide: "Ocultar conversaciones", toggle: "Mostrar u ocultar conversaciones", theme: "Cambiar a modo claro u oscuro",
+      del: "Borrar conversación",
+      error: "Algo salió mal. Inténtelo otra vez o llame al (213) 241-4177.",
+      offline: url => "No se pudo conectar con el consejero en " + url + ". ¿Está funcionando el agente?",
+    },
   };
+  let lang = store.get("lang") || ((navigator.language || "en").toLowerCase().startsWith("es") ? "es" : "en");
+  const t = () => T[lang];
 
   const $ = id => document.getElementById(id);
   const log = $("log"), scroller = $("scroll"), input = $("input"), sendBtn = $("send");
@@ -206,20 +237,20 @@
   }
   function ago(ts) {
     const m = Math.round((Date.now() - ts) / 60000);
-    if (m < 1) return "just now";
-    if (m < 60) return m + " min ago";
-    if (m < 1440) return Math.round(m / 60) + " h ago";
-    return new Date(ts).toLocaleDateString();
+    if (m < 1) return t().justNow;
+    if (m < 60) return t().minAgo(m);
+    if (m < 1440) return t().hAgo(Math.round(m / 60));
+    return new Date(ts).toLocaleDateString(lang === "es" ? "es-US" : "en-US");
   }
   function renderList() {
     const ul = $("chats");
     ul.replaceChildren();
-    if (!chats.length) { ul.append(el("li", { class: "empty" }, "No chats yet")); return; }
+    if (!chats.length) { ul.append(el("li", { class: "empty" }, t().noChats)); return; }
     for (const c of chats) {
       const li = el("li", { class: current && c.id === current.id ? "active" : "" },
         el("button", { class: "open", type: "button", onclick: () => { openChat(c.id); if (narrow.matches) setSide(false); } },
-          el("span", {}, c.title || "New chat"), el("small", {}, ago(c.updated))),
-        el("button", { class: "del", type: "button", "aria-label": "Delete chat", title: "Delete", onclick: () => deleteChat(c.id) }, "×"));
+          el("span", {}, c.title || t().untitled), el("small", {}, ago(c.updated))),
+        el("button", { class: "del", type: "button", "aria-label": t().del, title: t().del, onclick: () => deleteChat(c.id) }, "×"));
       ul.append(li);
     }
   }
@@ -398,32 +429,31 @@
       if (chat !== current) return;  // the parent switched chats while waiting
       setBusy(false);
       if (!res.ok || data.error) {
-        const err = { role: "error", text: "Something went wrong. Please try again, or call (213) 241-4177." };
+        const err = { role: "error", text: t().error };
         showItem(err); record(err); return;
       }
       for (const r of data.replies) {
         const item = { role: "bot", text: r.text, kind: r.kind, payload: r.payload };
         showItem(item); record(item);
       }
-      if (data.language) document.documentElement.lang = data.language;
     } catch {
       if (chat !== current) return;
       setBusy(false);
-      showItem({ role: "error", text: "Can't reach the counselor at " + AGENT + ". Is the agent running? / No se pudo conectar." });
+      showItem({ role: "error", text: t().offline(AGENT) });
     }
   }
 
   function paintChat() {
     log.replaceChildren();
     setBusy(false);
-    showItem({ role: "bot", text: WELCOME.en + "\n\n" + WELCOME.es });
+    showItem({ role: "bot", text: t().welcome });
     current.items.forEach(showItem);
     // Only the newest card stays clickable in a reopened chat; older ones are history.
     const cards = [...log.querySelectorAll(".card")];
     cards.slice(0, -1).forEach(c => c.querySelectorAll("button, input, select").forEach(b => b.disabled = true));
     if (!current.items.some(i => i.role === "user")) {
-      const chips = el("div", { class: "starters" }, el("div", { class: "label" }, "Try an example · Pruebe un ejemplo"));
-      for (const s of STARTERS) chips.append(el("button", { type: "button", title: s.text, onclick: () => send(s.text) }, s.label));
+      const chips = el("div", { class: "starters" }, el("div", { class: "label" }, t().examples));
+      for (const s of t().starters) chips.append(el("button", { type: "button", title: s.text, onclick: () => send(s.text) }, s.label));
       log.append(chips);
     }
     renderList();
@@ -450,8 +480,33 @@
     if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("composer").requestSubmit(); }
   });
   input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = input.scrollHeight + "px"; });
+  function applyLang() {
+    const x = t();
+    document.documentElement.lang = lang;
+    $("subtitle").textContent = x.subtitle;
+    $("lang").textContent = x.other;
+    $("lang").lang = lang === "en" ? "es" : "en";
+    $("new").textContent = x.newChat;
+    $("chats-label").textContent = x.chats;
+    $("side-note").textContent = x.sideNote;
+    $("note").textContent = x.note;
+    $("send").textContent = x.send;
+    input.placeholder = x.message; input.setAttribute("aria-label", x.message);
+    $("close-side").setAttribute("aria-label", x.hide);
+    $("toggle-side").setAttribute("aria-label", x.toggle);
+    $("theme").setAttribute("aria-label", x.theme);
+  }
+  $("lang").addEventListener("click", () => {
+    if (busy) return;  // wait for the reply before repainting
+    lang = lang === "en" ? "es" : "en";
+    store.set("lang", lang);
+    applyLang();
+    paintChat();  // welcome, examples and list labels in the new language; the conversation itself stays
+  });
+
   $("new").addEventListener("click", () => { startChat(); if (narrow.matches) setSide(false); });
 
+  applyLang();
   startChat();
 })();
 </script>
