@@ -1,4 +1,4 @@
-"""Website option 1: POST /chat runs the same handle_turn as ASI:One. Offline, no network."""
+"""POST /chat (replay_golden.py --live) runs the same handle_turn as ASI:One. Offline, no network."""
 from __future__ import annotations
 
 import asyncio
@@ -98,11 +98,11 @@ def test_form_address_is_used_but_never_logged_or_stored(monkeypatch, caplog):
     geo._cache.clear()
 
 
-def test_endpoints_register_on_the_counselor():
+def test_chat_endpoint_registers_on_the_counselor():
     from uagents import Agent
     loop = asyncio.new_event_loop()
     agent = Agent(name="web-test", seed="web-test-seed-not-production-2", loop=loop)
     web_api.register_web(agent)
     assert agent._server.has_rest_endpoint("POST", "/chat")
-    assert agent._server.has_rest_endpoint("GET", "/info")
+    assert not agent._server.has_rest_endpoint("GET", "/info")
     loop.close()
