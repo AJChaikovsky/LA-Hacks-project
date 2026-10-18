@@ -168,6 +168,11 @@ def handle(state: SessionState, text: str, today: date | None = None) -> tuple[S
             state = state.model_copy(update={"profile": p})
         return state, _with_card_preview(reply.narration, reply.kind, reply.payload), intent
 
+    if intent == "ask_rules":  # the brochure agent (C12): answer with a page citation, stage unchanged
+        from core.brochure_qa import answer, render_answer
+
+        return state, render_answer(answer(text, lang), lang), intent
+
     if intent == "help":
         return state, _HELP[lang], intent
 

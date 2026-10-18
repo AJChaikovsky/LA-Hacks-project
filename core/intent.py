@@ -51,6 +51,17 @@ _LIST = re.compile(
     r"primera opcion|first choice|segunda opcion|second choice|\brank\b|ordenar|en ese orden|in that order|"
     r"\b(las|los|all|the) (tres|3|three)\b"
 )
+_RULES = re.compile(
+    r"que pasa si|que sucede si|what happens if|what if i|puedo (aplicar|solicitar|cambiar|corregir|retirar|poner)|"
+    r"can i (apply|change|correct|withdraw|list|submit)|tarde\b|late (application|applying)|apply late|"
+    r"rechaz|declin|no contesto|no respondo|don'?t (respond|answer)|gemel|twins?\b|triplet|trilliz|"
+    r"\bhermanos?\b.*(punto|prioridad|mismo)|sibling|transporte|autobus|\bbus\b|camion escolar|"
+    r"lista de espera|waiting list|waitlist|retirar|withdraw|corregir|correct my|cambiar (mi|la) solicitud|"
+    r"change my application|verificacion|verification|cuantas (escuelas|programas|opciones)|"
+    r"how many (schools|programs|magnets|choices)|phbao|sobrepoblad|overcrowd|matricula|matriculation"
+)
+_STRONG_PROFILE = {"current_grade", "applying_grade", "home_neighborhood"}
+
 _HELP = re.compile(
     r"\bayuda\b|\bhelp\b|que puedes hacer|que haces|what can you do|como funciona|how does (this|it) work|"
     r"quien eres|who are you"
@@ -120,7 +131,8 @@ _SYSTEM = (
     "Classify a parent's latest message in a conversation with an LAUSD school-choice counselor. "
     "Reply with one intent: profile_info (describes the child or family), ask_odds (chances of getting in, "
     "points), set_list (which schools they will put on the application), ask_plan (documents, steps, "
-    "deadlines, finishing the application, email to the school), card_selection, reset (start over), "
+    "deadlines, finishing the application, email to the school), ask_rules (how the Choices rules work: "
+    "declines, late applications, waiting lists, siblings, transportation, limits), card_selection, reset (start over), "
     "help (what the counselor can do), off_topic (anything unrelated to school choice). "
     "The conversation stage is given for context."
 )
@@ -143,13 +155,18 @@ def classify(text: str, stage: Stage) -> Intent:
         return _log("card_selection", "card", text)
     if _RESET.search(t):
         return _log("reset", "keyword", text)
+    facts = prepass(text).keys()
+    # A rules question ("¿pierdo mis puntos si rechazo?", "tengo gemelos, ¿cómo aplico?") goes to the
+    # brochure agent before odds/plan/list, unless it also describes the child (turn-1 style).
+    if _RULES.search(t) and not (_STRONG_PROFILE & facts):
+        return _log("ask_rules", "keyword", text)
     if _ODDS.search(t):
         return _log("ask_odds", "keyword", text)
     if _PLAN.search(t):
         return _log("ask_plan", "keyword", text)
     if _LIST.search(t):
         return _log("set_list", "keyword", text)
-    if _PROFILE_KEYS & prepass(text).keys():
+    if _PROFILE_KEYS & facts:
         return _log("profile_info", "facts", text)
     if _HELP.search(t):
         return _log("help", "keyword", text)
