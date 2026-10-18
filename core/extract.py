@@ -320,16 +320,24 @@ def school_aliases() -> tuple[tuple[list[str], str, dict[str, str]], ...]:
 def find_school_mentions(t: str, match_codes: list[str] | None = None) -> list[tuple[int, str]]:
     """[(position, program code)] in text order."""
     match_codes = match_codes or []
-    found = []
+    hits = []  # (start, end, default, themes) for every school name in the text
     for aliases, default, themes in school_aliases():
         for alias in aliases:
-            for m in re.finditer(r"\b" + re.escape(alias) + r"\b", t):
-                window = t[max(0, m.start() - 20):m.end() + 25]
-                code = next((c for kw, c in themes.items() if kw in window), None)
-                if code is None:
-                    school_codes = {default, *themes.values()}
-                    code = next((c for c in match_codes if c in school_codes), default)
-                found.append((m.start(), code))
+            hits += [(m.start(), m.end(), default, themes) for m in re.finditer(r"\b" + re.escape(alias) + r"\b", t)]
+    starts = sorted({h[0] for h in hits})
+    found = []
+    for start, end, default, themes in hits:
+        # A theme word belongs to this school only up to the neighboring school names, and the closest one wins.
+        lo = max([s for s in starts if s < start], default=-1)
+        hi = min([s for s in starts if s > start], default=len(t))
+        lo, hi = max(lo + 1, start - 20), min(hi, end + 25)
+        near = [(min(abs(i - start), abs(i - end)), c) for kw, c in themes.items()
+                for i in [t.find(kw, lo, hi)] if i != -1 and i + len(kw) <= hi]
+        code = min(near)[1] if near else None
+        if code is None:
+            school_codes = {default, *themes.values()}
+            code = next((c for c in match_codes if c in school_codes), default)
+        found.append((start, code))
     seen, ordered = set(), []
     for pos, code in sorted(found):
         if code not in seen:
