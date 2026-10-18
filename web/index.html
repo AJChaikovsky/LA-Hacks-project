@@ -106,8 +106,8 @@
   if (params.get("agent")) store.set("agent", params.get("agent"));
   const AGENT = (store.get("agent") || "http://localhost:8000").replace(/\/+$/, "");
   const STARTERS = [
-    { label: "English: Maria in Boyle Heights", text: "Hi, I'm Maria. We live in Boyle Heights. My son Diego is in 5th grade and has an IEP. He loves art and drawing. Which schools do you recommend?" },
-    { label: "Español: María en Boyle Heights", text: "Hola, soy Maria. Vivo en Boyle Heights. Mi hijo Diego está en quinto grado y tiene un IEP. Le encanta el arte. ¿Qué escuelas me recomienda?" },
+    { label: "English: a 5th grader who loves art", text: "My child is in 5th grade and loves art. Which middle schools should we look at?" },
+    { label: "Español: alumno de 5.º grado al que le encanta el arte", text: "Mi hijo está en quinto grado y le encanta el arte. ¿Qué escuelas me recomienda?" },
   ];
   const WELCOME = {
     en: "Hello! I'm the LAUSD Choices counselor. Tell me about your child — grade, interests, neighborhood — and I'll suggest Choices programs.",
