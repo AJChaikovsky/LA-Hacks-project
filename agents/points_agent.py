@@ -22,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from dotenv import load_dotenv
 from uagents import Agent, Context, Protocol
 
+from agents.local_resolver import LocalFirst, local_url, register_health, register_self_check
 from agents.messages import PointsRequest, PointsResponse
 from core import guardrails, points
 from core.types import FamilyProfile
@@ -57,8 +58,13 @@ def build_agent() -> Agent:
     if not seed:
         raise SystemExit("POINTS_SEED is empty: set it in .env before running the points agent.")
     port = int(os.getenv("POINTS_PORT", "8001"))  # orchestrator holds 8000
-    agent = Agent(name="choices-points", seed=seed, port=port, mailbox=True, publish_agent_details=True)
+    counselor = os.getenv("COUNSELOR_AGENT_ADDRESS", "").strip()
+    rules = {counselor: local_url("counselor")} if counselor else {}
+    agent = Agent(name="choices-points", seed=seed, port=port, mailbox=True,
+                  publish_agent_details=True, resolve=LocalFirst(rules))
     agent.include(points_proto, publish_manifest=True)
+    register_health(agent)  # A4b: keeps the local server up for the counselor's local reply leg
+    register_self_check(agent, "points")
     agent.on_event("startup")(_log_startup)
     return agent
 
