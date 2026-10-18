@@ -57,6 +57,8 @@ WarningCode = Literal[
     "past_deadline",         # warn: after Nov 6, late application, no points
     "not_points_program",    # info: DLE / charter use lotteries, not points
     "outside_district",      # warn: home is outside LAUSD, so no priority points
+    "favorite_first",        # info: keep the favorite 1st; only the 1st choice keeps a waitlist spot
+    "safety_option",         # info: lowest applications-per-opening magnet as a safer later choice
 ]
 Severity = Literal["block", "warn", "info"]
 PointsFactor = Literal["matriculation", "waitlist", "phbao", "overcrowded", "sibling"]
