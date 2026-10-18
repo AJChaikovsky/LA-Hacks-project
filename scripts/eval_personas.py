@@ -33,6 +33,7 @@ _MARKERS = {  # substrings that identify each outcome, es and en
     "no_programs": ("choices.lausd.net o llamar", "choices.lausd.net or call"),
     "scope": ("Solo puedo ayudarle", "I can only help"),
     "help": ("Le ayudo con la solicitud", "I help with the LAUSD Choices"),
+    "rules": ("Fuente: folleto oficial", "Source: official", "Fuente: [preguntas frecuentes", "Source: [Choices FAQ"),
 }
 
 

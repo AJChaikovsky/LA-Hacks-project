@@ -21,8 +21,8 @@ def llm_down(monkeypatch):
     monkeypatch.setattr(llm, "complete_json", lambda prompt, schema, fallback, **kw: fallback)
 
 
-def test_thirty_personas():
-    assert len(PERSONAS) == 30 and len({p["id"] for p in PERSONAS}) == 30
+def test_persona_count():
+    assert len(PERSONAS) == 32 and len({p["id"] for p in PERSONAS}) == 32
 
 
 @pytest.mark.parametrize("persona", PERSONAS, ids=[p["id"] for p in PERSONAS])

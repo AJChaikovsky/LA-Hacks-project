@@ -1,6 +1,6 @@
 # C11 (#42): 30 parent messages a judge might type. Each lists the outcomes that count as
 # "handled sensibly" (an honest no-programs reply is sensible outside our coverage).
-# Outcomes: matches | ask_grade | no_programs | scope | help
+# Outcomes: matches | ask_grade | no_programs | scope | help | rules
 # lang: expected reply language (omit for mixed messages). Run: python scripts/eval_personas.py
 - id: maria_es
   say: "Hola, soy Maria. Vivo en Boyle Heights. Mi hijo Diego está en quinto grado y el próximo año entra a sexto. Tiene un IEP y le encanta el arte."
@@ -119,3 +119,11 @@
   say: "Mi hija está en quinto grado, su hermano ya va a Hollenbeck y vivimos en Boyle Heights."
   lang: es
   expect: [matches]
+- id: rules_decline_es
+  say: "¿Qué pasa si no contesto la oferta a tiempo?"
+  lang: es
+  expect: [rules]
+- id: rules_late_en
+  say: "Can I apply late if I miss the November deadline?"
+  lang: en
+  expect: [rules]

@@ -28,6 +28,7 @@ Intent = Literal[
     "set_list",        # "voy a poner las tres..."
     "ask_plan",        # "¿qué necesito para terminar?"
     "card_selection",  # a click on an Interactive Card
+    "ask_rules",       # a question about the Choices rules -> core/brochure_qa (C12)
     "reset",
     "help",
     "off_topic",
