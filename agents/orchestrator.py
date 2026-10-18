@@ -39,6 +39,8 @@ from uagents_core.contrib.protocols.chat import (
 from agents.cards import (
     card_message,
     intake_form,
+    list_review,
+    rank_form,
     matches_carousel,
     packet_review,
     respond_to_selection,
@@ -326,6 +328,25 @@ def _match_step(state: SessionState, p: FamilyProfile, intent: str) -> tuple[Ses
     return state, [ReplyPart(render.render_matches(matches, p), "carousel", matches_carousel(matches, p))], intent
 
 
+def _list_step(state: SessionState, p: FamilyProfile, choices: list[str], today: date,
+               remote: "RemoteTools | None", intent: str, prefix: str = "") -> tuple[SessionState, list[ReplyPart], str]:
+    """Check a list (typed, ranked in the form, or fixed with a button) and offer one-tap fixes."""
+    p = p.model_copy(update={"intended_choices": choices})
+    warnings = remote.check_list(p, choices, today) if remote else _check_list(p, choices, today)
+    state = state.model_copy(update={"profile": p, "warnings": warnings, "stage": "listing"})
+    text = render.render_warnings(warnings, p)
+    text = f"{prefix}\n\n{text}" if prefix else text
+    return state, [ReplyPart(text, "detail", list_review(p, choices, warnings, state.matches))], intent
+
+
+def _plan_step(state: SessionState, p: FamilyProfile, plan_codes: list[str], today: date,
+               remote: "RemoteTools | None", intent: str) -> tuple[SessionState, list[ReplyPart], str]:
+    lang = _lang(p)
+    plan = remote.build_plan(p, plan_codes, lang, today) if remote else _build_plan(p, plan_codes, lang, today)
+    state = state.model_copy(update={"profile": p, "plan": plan, "stage": "plan"})
+    return state, [ReplyPart(render.render_plan(plan, p), "review", packet_review(plan, p, plan_codes))], intent
+
+
 def handle_turn(
     state: SessionState, text: str, today: date | None = None, remote: "RemoteTools | None" = None
 ) -> tuple[SessionState, list[ReplyPart], str]:
@@ -356,28 +377,20 @@ def handle_turn(
     if intent == "ask_odds":
         estimates = remote.estimate(p, codes) if remote else _estimate(p, codes)
         state = state.model_copy(update={"estimates": estimates, "stage": "odds"})
-        return state, [ReplyPart(render.render_points(estimates, p))], intent
+        return state, [ReplyPart(render.render_points(estimates, p), "form", rank_form(p, state.matches))], intent
 
     if intent == "set_list":
         p = _extract(text, p)  # picks up doubts like "no sé si lo aceptaría"
         choices, doubtful = parse_school_list(text, [m.code for m in state.matches])
         choices = choices or [m.code for m in state.matches]
-        p = p.model_copy(update={
-            "intended_choices": choices,
-            "would_not_accept": list(dict.fromkeys(p.would_not_accept + doubtful)),
-        })
-        warnings = remote.check_list(p, choices, today) if remote else _check_list(p, choices, today)
-        state = state.model_copy(update={"profile": p, "warnings": warnings, "stage": "listing"})
-        return state, [ReplyPart(render.render_warnings(warnings, p))], intent
+        p = p.model_copy(update={"would_not_accept": list(dict.fromkeys(p.would_not_accept + doubtful))})
+        return _list_step(state, p, choices, today, remote, intent)
 
     if intent == "ask_plan":
         choices, _ = parse_school_list(text, [m.code for m in state.matches])
         if choices:  # "solo las tres" trims the list before planning
             p = p.model_copy(update={"intended_choices": choices})
-        plan_codes = p.intended_choices or codes
-        plan = remote.build_plan(p, plan_codes, lang, today) if remote else _build_plan(p, plan_codes, lang, today)
-        state = state.model_copy(update={"profile": p, "plan": plan, "stage": "plan"})
-        return state, [ReplyPart(render.render_plan(plan, p), "review", packet_review(plan, p, plan_codes))], intent
+        return _plan_step(state, p, p.intended_choices or codes, today, remote, intent)
 
     if intent == "card_selection":
         reply = respond_to_selection(parse_card_selection(text) or {}, state)
@@ -386,6 +399,10 @@ def handle_turn(
         if reply.profile_updates is not None:  # intake form submitted: merge answers, then match
             # B11: an optional street address becomes home_lat/home_lng (the address itself is dropped)
             return _match_step(state, apply_address(merge(p, reply.profile_updates), reply.address), intent)
+        if reply.new_list is not None:  # list fix button or ranking form -> re-check the list
+            return _list_step(state, p, reply.new_list, today, remote, intent, prefix=reply.narration)
+        if reply.go_plan:  # "Mi lista está bien" -> the plan
+            return _plan_step(state, p, p.intended_choices or codes, today, remote, intent)
         if reply.add_code:
             p = p.model_copy(update={
                 "intended_choices": list(dict.fromkeys(p.intended_choices + [reply.add_code])),
