@@ -9,40 +9,83 @@
   POST <agent>/chat on the same Fetch.ai agent ASI:One talks to; card clicks send the card's
   selection JSON, like an ASI:One click. No build step: open this file, or serve web/ statically.
   Agent URL: ?agent=https://host:port (remembered), default http://localhost:8000.
+  Past chats live only in this browser (localStorage); form answers such as an address are never saved.
 -->
+<script>
+  // Apply the saved theme before first paint (no flash). "light" | "dark" | absent = follow the system.
+  try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch {}
+</script>
 <style>
   :root {
-    --bg: #f6f4ef; --panel: #ffffff; --ink: #1d2433; --muted: #5f6b7d; --line: #e3e0d8;
-    --accent: #1f5fbf; --accent-ink: #ffffff; --user: #1f5fbf; --user-ink: #ffffff;
-    --bot: #ffffff; --warn: #fff6e0; --radius: 14px;
+    --bg: #ffffff; --panel: #ffffff; --soft: #f4f6f9; --ink: #1b2230; --muted: #5d6879; --line: #e2e6ed;
+    --accent: #1f5fbf; --accent-ink: #ffffff; --user: #1f5fbf; --user-ink: #ffffff; --bot: #f4f6f9;
+    --btn: #e7effc; --btn-ink: #174a99; --btn-line: #c9daf5; --side: #f7f8fa; --hover: #eceff4;
+    --warn: #fff6e0; --radius: 14px; color-scheme: light;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #11151c; --panel: #1a202a; --ink: #e8ecf2; --muted: #9aa5b5; --line: #2a3240;
-      --accent: #6aa3ff; --accent-ink: #0b1220; --user: #2d5fa8; --user-ink: #ffffff;
-      --bot: #1a202a; --warn: #2b2614;
+      --bg: #0f141b; --panel: #161c25; --soft: #1c2330; --ink: #e8ecf2; --muted: #9aa5b5; --line: #2a3342;
+      --accent: #3b7ddd; --accent-ink: #ffffff; --user: #2f6fd6; --user-ink: #ffffff; --bot: #1c2330;
+      --btn: #2f6fd6; --btn-ink: #ffffff; --btn-line: #2f6fd6; --side: #131922; --hover: #212938;
+      --warn: #2b2614; color-scheme: dark;
     }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f141b; --panel: #161c25; --soft: #1c2330; --ink: #e8ecf2; --muted: #9aa5b5; --line: #2a3342;
+    --accent: #3b7ddd; --accent-ink: #ffffff; --user: #2f6fd6; --user-ink: #ffffff; --bot: #1c2330;
+    --btn: #2f6fd6; --btn-ink: #ffffff; --btn-line: #2f6fd6; --side: #131922; --hover: #212938;
+    --warn: #2b2614; color-scheme: dark;
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; margin: 0; }
   body {
     background: var(--bg); color: var(--ink);
     font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    display: flex; flex-direction: column;
+    display: flex; overflow: hidden;
   }
+  button {
+    font: inherit; border-radius: 999px; border: 1px solid var(--btn-line); background: var(--btn);
+    color: var(--btn-ink); padding: 7px 14px; cursor: pointer;
+  }
+  button:hover:not(:disabled) { filter: brightness(0.96); }
+  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  button.ghost { background: transparent; border-color: transparent; color: var(--ink); padding: 6px 10px; }
+  button.ghost:hover { background: var(--hover); filter: none; }
+  button:disabled { opacity: .5; cursor: default; }
+
+  /* Sidebar: past chats */
+  aside {
+    width: 272px; flex: none; background: var(--side); border-right: 1px solid var(--line);
+    display: flex; flex-direction: column; transition: margin-left .2s ease;
+  }
+  body.side-closed aside { margin-left: -272px; }
+  .side-top { display: flex; align-items: center; gap: 8px; padding: 12px; }
+  .side-top button.primary { flex: 1; border-radius: 10px; }
+  .side-label { padding: 4px 16px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  #chats { list-style: none; margin: 0; padding: 4px 8px; overflow-y: auto; flex: 1; }
+  #chats li { display: flex; align-items: center; border-radius: 8px; }
+  #chats li:hover, #chats li.active { background: var(--hover); }
+  #chats .open {
+    flex: 1; min-width: 0; text-align: left; background: none; border: none; color: var(--ink);
+    border-radius: 8px; padding: 8px 10px; font-size: 14px;
+  }
+  #chats .open span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #chats .open small { color: var(--muted); font-size: 12px; }
+  #chats .del { background: none; border: none; color: var(--muted); padding: 4px 10px; visibility: hidden; }
+  #chats li:hover .del, #chats li.active .del { visibility: visible; }
+  #chats .empty { color: var(--muted); font-size: 14px; padding: 8px 10px; }
+  .side-note { padding: 12px 16px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); }
+  #backdrop { display: none; }
+
+  /* Main column */
+  .app { flex: 1; min-width: 0; display: flex; flex-direction: column; height: 100%; }
   header {
-    display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+    display: flex; align-items: center; gap: 8px; padding: 10px 16px;
     border-bottom: 1px solid var(--line); background: var(--panel);
   }
-  header h1 { font-size: 17px; margin: 0; flex: 1; }
+  header h1 { font-size: 17px; margin: 0; flex: 1; min-width: 0; }
   header small { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
-  button {
-    font: inherit; border-radius: 999px; border: 1px solid var(--line); background: var(--panel);
-    color: var(--ink); padding: 7px 14px; cursor: pointer;
-  }
-  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-  button:disabled { opacity: .5; cursor: default; }
-  main { flex: 1; overflow-y: auto; padding: 16px; }
+  main { flex: 1; overflow-y: auto; padding: 16px; background: var(--bg); }
   .log { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
   .msg { max-width: 88%; padding: 10px 14px; border-radius: var(--radius); overflow-wrap: anywhere; }
   .msg.user { align-self: flex-end; background: var(--user); color: var(--user-ink); border-bottom-right-radius: 4px; }
@@ -51,11 +94,11 @@
   .msg ul { margin: 4px 0 8px; padding-left: 20px; }
   .msg a { color: var(--accent); }
   .msg.user a { color: inherit; }
-  .card { margin-top: 10px; border: 1px solid var(--line); border-radius: 12px; padding: 12px; background: var(--bg); }
+  .card { margin-top: 10px; border: 1px solid var(--line); border-radius: 12px; padding: 12px; background: var(--panel); }
   .card h3 { margin: 0 0 4px; font-size: 15px; }
   .card .sub { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
   .items { display: grid; gap: 8px; }
-  .item { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+  .item { background: var(--soft); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
   .item b { display: block; }
   .item .sub { margin: 2px 0 8px; }
   .rows { display: grid; grid-template-columns: minmax(90px, auto) 1fr; gap: 4px 12px; font-size: 14px; margin: 6px 0 10px; }
@@ -64,14 +107,14 @@
   form.card label { display: block; font-size: 14px; margin: 8px 0 4px; }
   form.card input[type=text], form.card input[type=number], form.card select {
     width: 100%; font: inherit; padding: 8px; border-radius: 8px; border: 1px solid var(--line);
-    background: var(--panel); color: var(--ink);
+    background: var(--bg); color: var(--ink);
   }
   form.card .check { display: flex; align-items: center; gap: 8px; }
   form.card .check label { margin: 0; }
   .typing { color: var(--muted); font-style: italic; }
   .starters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
   .starters .label { color: var(--muted); font-size: 13px; width: 100%; }
-  .starters button { border-style: dashed; color: var(--accent); font-size: 14px; background: transparent; }
+  .starters button { font-size: 14px; font-weight: 500; }
   .error { align-self: center; background: var(--warn); border: 1px solid var(--line); font-size: 14px; }
   footer { border-top: 1px solid var(--line); background: var(--panel); padding: 10px 16px; }
   footer form { max-width: 760px; margin: 0 auto; display: flex; gap: 8px; }
@@ -80,31 +123,55 @@
     border: 1px solid var(--line); background: var(--bg); color: var(--ink); max-height: 140px;
   }
   .note { max-width: 760px; margin: 6px auto 0; color: var(--muted); font-size: 12px; }
+
+  /* Phones and narrow windows: the sidebar slides over the chat */
+  @media (max-width: 860px) {
+    aside { position: fixed; inset: 0 auto 0 0; z-index: 20; margin-left: 0; transform: translateX(-100%);
+            transition: transform .2s ease; box-shadow: 0 0 24px rgba(0,0,0,.25); }
+    body.side-open aside { transform: none; }
+    body.side-closed aside { margin-left: 0; }
+    body.side-open #backdrop { display: block; position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 10; }
+  }
   @media (max-width: 520px) { .msg { max-width: 96%; } .rows { grid-template-columns: 1fr; } .rows dd { margin-bottom: 6px; } }
 </style>
 </head>
 <body>
-<header>
-  <h1>Choices Counselor<small>LAUSD Choices help · English / Español</small></h1>
-  <button id="reset" type="button">New chat</button>
-</header>
-<main id="scroll"><div class="log" id="log"></div></main>
-<footer>
-  <form id="composer">
-    <textarea id="input" rows="1" placeholder="Message · Mensaje" aria-label="Message / Mensaje" autocomplete="off"></textarea>
-    <button class="primary" id="send" type="submit">Send</button>
-  </form>
-  <div class="note">Estimates only. Confirm at choices.lausd.net or (213) 241-4177. Don't share private details you don't need to.</div>
-</footer>
+<aside id="sidebar" aria-label="Chats">
+  <div class="side-top">
+    <button class="primary" id="new" type="button">+ New chat · Nuevo</button>
+    <button class="ghost" id="close-side" type="button" aria-label="Hide chats">⟨</button>
+  </div>
+  <div class="side-label">Chats</div>
+  <ul id="chats"></ul>
+  <div class="side-note">Saved only in this browser. Addresses are never saved.</div>
+</aside>
+<div id="backdrop"></div>
+<div class="app">
+  <header>
+    <button class="ghost" id="toggle-side" type="button" aria-label="Show or hide chats">☰</button>
+    <h1>Choices Counselor<small>LAUSD Choices help · English / Español</small></h1>
+    <button class="ghost" id="theme" type="button" aria-label="Switch light or dark mode">☾</button>
+  </header>
+  <main id="scroll"><div class="log" id="log"></div></main>
+  <footer>
+    <form id="composer">
+      <textarea id="input" rows="1" placeholder="Message · Mensaje" aria-label="Message / Mensaje" autocomplete="off"></textarea>
+      <button class="primary" id="send" type="submit">Send</button>
+    </form>
+    <div class="note">Estimates only. Confirm at choices.lausd.net or (213) 241-4177. Don't share private details you don't need to.</div>
+  </footer>
+</div>
 <script>
 (() => {
   const params = new URLSearchParams(location.search);
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch { return null; } },
     set(k, v) { try { localStorage.setItem(k, v); } catch {} },
+    remove(k) { try { localStorage.removeItem(k); } catch {} },
   };
   if (params.get("agent")) store.set("agent", params.get("agent"));
   const AGENT = (store.get("agent") || "http://localhost:8000").replace(/\/+$/, "");
+  const MAX_CHATS = 30;
   const STARTERS = [
     { label: "English: a 5th grader who loves art", text: "My child is in 5th grade and loves art. Which middle schools should we look at?" },
     { label: "Español: alumno de 5.º grado al que le encanta el arte", text: "Mi hijo está en quinto grado y le encanta el arte. ¿Qué escuelas me recomienda?" },
@@ -114,17 +181,83 @@
     es: "¡Hola! Soy el consejero de Choices de LAUSD. Cuénteme de su hijo o hija — grado, intereses, vecindario — y le sugiero programas de Choices.",
   };
 
-  const log = document.getElementById("log");
-  const scroller = document.getElementById("scroll");
-  const input = document.getElementById("input");
-  const sendBtn = document.getElementById("send");
-  let session = newSession();
+  const $ = id => document.getElementById(id);
+  const log = $("log"), scroller = $("scroll"), input = $("input"), sendBtn = $("send");
+  const narrow = matchMedia("(max-width: 860px)");
   let busy = false;
 
-  function newSession() {
-    return (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + "-" + Math.random().toString(16).slice(2));
+  // ---- saved chats (this browser only) -------------------------------------------------------
+  // [{id, title, updated, items: [{role: "user"|"bot"|"error", text, kind?, payload?}]}], newest first
+  function loadChats() { try { return JSON.parse(store.get("chats") || "[]"); } catch { return []; } }
+  function saveChats() { store.set("chats", JSON.stringify(chats.slice(0, MAX_CHATS))); }
+  let chats = loadChats();
+  let current = null;  // the open chat; it is saved once the parent sends something
+
+  function newId() {
+    return crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + "-" + Math.random().toString(16).slice(2);
+  }
+  function record(item) {
+    current.items.push(item);
+    current.updated = Date.now();
+    if (!current.title && item.role === "user") current.title = item.text.slice(0, 60);
+    chats = [current, ...chats.filter(c => c.id !== current.id)];
+    saveChats();
+    renderList();
+  }
+  function ago(ts) {
+    const m = Math.round((Date.now() - ts) / 60000);
+    if (m < 1) return "just now";
+    if (m < 60) return m + " min ago";
+    if (m < 1440) return Math.round(m / 60) + " h ago";
+    return new Date(ts).toLocaleDateString();
+  }
+  function renderList() {
+    const ul = $("chats");
+    ul.replaceChildren();
+    if (!chats.length) { ul.append(el("li", { class: "empty" }, "No chats yet")); return; }
+    for (const c of chats) {
+      const li = el("li", { class: current && c.id === current.id ? "active" : "" },
+        el("button", { class: "open", type: "button", onclick: () => { openChat(c.id); if (narrow.matches) setSide(false); } },
+          el("span", {}, c.title || "New chat"), el("small", {}, ago(c.updated))),
+        el("button", { class: "del", type: "button", "aria-label": "Delete chat", title: "Delete", onclick: () => deleteChat(c.id) }, "×"));
+      ul.append(li);
+    }
+  }
+  function deleteChat(id) {
+    chats = chats.filter(c => c.id !== id);
+    saveChats();
+    if (current && current.id === id) startChat(); else renderList();
   }
 
+  // ---- sidebar and theme ---------------------------------------------------------------------
+  function setSide(open) {
+    document.body.classList.toggle("side-open", open && narrow.matches);
+    document.body.classList.toggle("side-closed", !open && !narrow.matches);
+    if (!narrow.matches) store.set("side", open ? "open" : "closed");
+  }
+  function sideIsOpen() {
+    return narrow.matches ? document.body.classList.contains("side-open") : !document.body.classList.contains("side-closed");
+  }
+  $("toggle-side").addEventListener("click", () => setSide(!sideIsOpen()));
+  $("close-side").addEventListener("click", () => setSide(false));
+  $("backdrop").addEventListener("click", () => setSide(false));
+  narrow.addEventListener("change", () => setSide(!narrow.matches && store.get("side") !== "closed"));
+  setSide(!narrow.matches && store.get("side") !== "closed");
+
+  function isDark() {
+    const t = document.documentElement.dataset.theme;
+    return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  function paintThemeButton() { $("theme").textContent = isDark() ? "☀" : "☾"; }
+  $("theme").addEventListener("click", () => {
+    const next = isDark() ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    store.set("theme", next);
+    paintThemeButton();
+  });
+  paintThemeButton();
+
+  // ---- rendering -----------------------------------------------------------------------------
   function el(tag, attrs = {}, ...kids) {
     const n = document.createElement(tag);
     for (const [k, v] of Object.entries(attrs)) {
@@ -155,9 +288,6 @@
   }
 
   function scrollDown() { scroller.scrollTop = scroller.scrollHeight; }
-
-  function addUser(text) { log.append(el("div", { class: "msg user" }, text)); scrollDown(); }
-  function addError(text) { log.append(el("div", { class: "msg error" }, text)); scrollDown(); }
 
   function ctaButton(cta, primary) {
     return el("button", { type: "button", class: (primary || cta.primary) ? "primary" : "", onclick: e => {
@@ -222,7 +352,7 @@
           values[f.name] = f.kind === "checkbox" ? n.checked : n.value;
         }
         lockCard(form.querySelector("button"));
-        // The address goes to the agent once for distance and is dropped there; don't echo it in the chat.
+        // The answers (maybe an address) go to the agent only; the chat and saved history show just the button label.
         send(JSON.stringify({ ...p.submit_cta.selection, values }), p.submit_cta.label);
       });
       return form;
@@ -230,67 +360,99 @@
     return null;
   }
 
-  function addBot(reply) {
-    const box = el("div", { class: "msg bot" });
-    if (reply.text) box.insertAdjacentHTML("beforeend", markdown(reply.text));
-    if (reply.kind && reply.payload) {
-      const card = renderCard(reply.kind, reply.payload);
-      if (card) box.append(card);
+  function showItem(item) {
+    if (item.role === "user") log.append(el("div", { class: "msg user" }, item.text));
+    else if (item.role === "error") log.append(el("div", { class: "msg error" }, item.text));
+    else {
+      const box = el("div", { class: "msg bot" });
+      if (item.text) box.insertAdjacentHTML("beforeend", markdown(item.text));
+      if (item.kind && item.payload) {
+        const card = renderCard(item.kind, item.payload);
+        if (card) box.append(card);
+      }
+      log.append(box);
     }
-    log.append(box);
     scrollDown();
   }
 
   function setBusy(on) {
     busy = on; sendBtn.disabled = on;
-    const t = document.getElementById("typing");
+    const t = $("typing");
     if (on && !t) { log.append(el("div", { class: "msg bot typing", id: "typing" }, "…")); scrollDown(); }
     if (!on && t) t.remove();
   }
 
   async function send(text, shown) {
     if (busy || !text.trim()) return;
-    addUser(shown || text);
+    const chat = current;
+    const userItem = { role: "user", text: shown || text };
+    showItem(userItem); record(userItem);
     document.querySelector(".starters")?.remove();
     setBusy(true);
     try {
       const res = await fetch(AGENT + "/chat", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ session_id: session, text }),
+        body: JSON.stringify({ session_id: chat.id, text }),
       });
       const data = await res.json();
+      if (chat !== current) return;  // the parent switched chats while waiting
       setBusy(false);
-      if (!res.ok || data.error) { addError("Something went wrong. Please try again, or call (213) 241-4177."); return; }
-      data.replies.forEach(addBot);
+      if (!res.ok || data.error) {
+        const err = { role: "error", text: "Something went wrong. Please try again, or call (213) 241-4177." };
+        showItem(err); record(err); return;
+      }
+      for (const r of data.replies) {
+        const item = { role: "bot", text: r.text, kind: r.kind, payload: r.payload };
+        showItem(item); record(item);
+      }
       if (data.language) document.documentElement.lang = data.language;
     } catch {
+      if (chat !== current) return;
       setBusy(false);
-      addError("Can't reach the counselor at " + AGENT + ". Is the agent running? / No se pudo conectar.");
+      showItem({ role: "error", text: "Can't reach the counselor at " + AGENT + ". Is the agent running? / No se pudo conectar." });
     }
   }
 
-  function start() {
+  function paintChat() {
     log.replaceChildren();
-    addBot({ text: WELCOME.en + "\n\n" + WELCOME.es });
-    const chips = el("div", { class: "starters" });
-    chips.append(el("div", { class: "label" }, "Try an example · Pruebe un ejemplo"));
-    for (const s of STARTERS) chips.append(el("button", { type: "button", title: s.text, onclick: () => send(s.text) }, "▶ " + s.label));
-    log.append(chips);
+    setBusy(false);
+    showItem({ role: "bot", text: WELCOME.en + "\n\n" + WELCOME.es });
+    current.items.forEach(showItem);
+    // Only the newest card stays clickable in a reopened chat; older ones are history.
+    const cards = [...log.querySelectorAll(".card")];
+    cards.slice(0, -1).forEach(c => c.querySelectorAll("button, input, select").forEach(b => b.disabled = true));
+    if (!current.items.some(i => i.role === "user")) {
+      const chips = el("div", { class: "starters" }, el("div", { class: "label" }, "Try an example · Pruebe un ejemplo"));
+      for (const s of STARTERS) chips.append(el("button", { type: "button", title: s.text, onclick: () => send(s.text) }, s.label));
+      log.append(chips);
+    }
+    renderList();
+    scrollDown();
     input.focus();
   }
+  function startChat() {
+    current = { id: newId(), title: "", updated: Date.now(), items: [] };
+    paintChat();
+  }
+  function openChat(id) {
+    const c = chats.find(x => x.id === id);
+    if (!c) return startChat();
+    current = c;
+    paintChat();
+  }
 
-  document.getElementById("composer").addEventListener("submit", e => {
+  $("composer").addEventListener("submit", e => {
     e.preventDefault();
     const text = input.value; input.value = ""; input.style.height = "";
     send(text);
   });
   input.addEventListener("keydown", e => {
-    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); document.getElementById("composer").requestSubmit(); }
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("composer").requestSubmit(); }
   });
   input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = input.scrollHeight + "px"; });
-  document.getElementById("reset").addEventListener("click", () => { session = newSession(); setBusy(false); start(); });
+  $("new").addEventListener("click", () => { startChat(); if (narrow.matches) setSide(false); });
 
-  start();
+  startChat();
 })();
 </script>
 </body>
