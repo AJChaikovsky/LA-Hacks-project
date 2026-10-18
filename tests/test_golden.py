@@ -22,10 +22,12 @@ def llm_down(monkeypatch):
     monkeypatch.setattr(llm, "complete_json", lambda prompt, schema, fallback, **kw: fallback)
 
 
+@pytest.mark.parametrize("engine", ["orchestrator", "harness"])
 @pytest.mark.parametrize("path", GOLDENS, ids=lambda p: p.stem)
-def test_golden_passes_locally(path):
+def test_golden_passes_locally(path, engine):
+    """'orchestrator' is the code ASI:One runs (cards included); 'harness' is the chat_local reference."""
     golden = yaml.safe_load(path.read_text(encoding="utf-8"))
-    results = replay.run_local(golden)
+    results = replay.run_local(golden, engine)
     assert len(results) == 4
     assert [r.failures for r in results] == [[], [], [], []]
 

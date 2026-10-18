@@ -62,16 +62,32 @@ def outcome_of(state, reply: str) -> str:
     return "other"
 
 
-def evaluate(persona: dict, chat) -> Result:
+def turn_function(engine: str = "orchestrator"):
+    """(state, text, today) -> (state, reply, card problems) for the agent's handle_turn or the harness."""
+    if engine == "harness":
+        chat = _chat()
+        return lambda state, text, today: (*chat.handle(state, text, today=today)[:2], [])
+
+    from agents.cards import validate
+    from agents.orchestrator import handle_turn
+
+    def turn(state, text, today):
+        state, parts, _ = handle_turn(state, text, today)
+        problems = [f"invalid {p.kind} card" for p in parts if p.kind and validate(p.kind, p.payload or {})]
+        return state, "\n\n".join(p.narration for p in parts), problems
+    return turn
+
+
+def evaluate(persona: dict, turn) -> Result:
     from core.render import schools, visible_text
     from core.types import SessionState
 
     try:
-        state, reply, _ = chat.handle(SessionState(), persona["say"], today=TODAY)
+        state, reply, card_problems = turn(SessionState(), persona["say"], TODAY)
     except Exception as exc:  # noqa: BLE001
         return Result(persona["id"], "crash", False, [f"{type(exc).__name__}: {exc}"])
     outcome = outcome_of(state, reply)
-    problems = []
+    problems = list(card_problems)
     if outcome not in persona["expect"]:
         problems.append(f"outcome {outcome!r} not in {persona['expect']}")
     if persona.get("lang") and state.profile.language != persona["lang"]:
@@ -88,27 +104,29 @@ def evaluate(persona: dict, chat) -> Result:
     return Result(persona["id"], outcome, not problems, problems)
 
 
-def run(no_llm: bool) -> list[Result]:
+def run(no_llm: bool, engine: str = "orchestrator") -> list[Result]:
     if no_llm:
-        os.environ["EXTRACT_LLM"] = os.environ["INTENT_LLM"] = os.environ["EMAIL_LLM"] = "off"
-    chat = _chat()
+        for key in ("EXTRACT_LLM", "INTENT_LLM", "EMAIL_LLM", "BROCHURE_LLM"):
+            os.environ[key] = "off"
+    turn = turn_function(engine)
     personas = yaml.safe_load(PERSONAS.read_text(encoding="utf-8"))
-    return [evaluate(p, chat) for p in personas]
+    return [evaluate(p, turn) for p in personas]
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--no-llm", action="store_true")
     ap.add_argument("--min", type=float, default=0.0, help="exit 1 when the pass rate is below this")
+    ap.add_argument("--engine", choices=("orchestrator", "harness"), default="orchestrator")
     args = ap.parse_args()
     logging.basicConfig(level=logging.ERROR)
-    results = run(args.no_llm)
+    results = run(args.no_llm, args.engine)
     for r in results:
         if not r.passed:
             print(f"FAIL {r.id:20s} {r.outcome:12s} {'; '.join(r.problems)}")
     rate = sum(r.passed for r in results) / len(results)
     print(f"{sum(r.passed for r in results)}/{len(results)} personas handled sensibly ({rate:.0%}) "
-          f"· LLM {'off' if args.no_llm else 'on'}")
+          f"· LLM {'off' if args.no_llm else 'on'} · {args.engine}")
     return 0 if rate >= args.min else 1
 
 
