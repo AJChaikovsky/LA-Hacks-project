@@ -51,7 +51,7 @@ def all_replies(profile):
 @pytest.mark.parametrize("profile", [MARIA, EN])
 def test_no_percentages_no_submit_claims_no_leftover_placeholders(profile):
     for reply in all_replies(profile):
-        assert "%" not in reply
+        assert "%" not in render.visible_text(reply)
         assert "garantizado" not in reply.lower() and "guaranteed" not in reply.lower()
         assert "enviamos su solicitud" not in reply and "we submitted" not in reply.lower()
         assert not re.search(r"\{[a-z_]+\}", reply), reply
@@ -204,3 +204,30 @@ def test_theme_match_names_the_interest_that_fits():
     ana = EN.model_copy(update={"child_name": "Ana", "interests": ["sports", "stem"]})
     stem = MATCHES[1].model_copy(update={"theme": "STEM/Medicine", "reason_codes": ["theme_match"]})
     assert "Its theme is science and technology, which Ana loves." in render.render_matches([stem], ana)
+
+
+# --- C8 calendar reminders ---
+
+def test_reminder_links():
+    from urllib.parse import parse_qs, urlparse
+
+    links = render.reminder_links(PLAN, "es")
+    assert [when for when, _ in links] == ["6 de noviembre de 2026", "18 de diciembre de 2026", "5 de marzo de 2027"]
+    url = links[0][1]
+    q = parse_qs(urlparse(url).query)
+    assert url.startswith("https://calendar.google.com/calendar/render?")
+    assert q["action"] == ["TEMPLATE"] and q["dates"] == ["20261106/20261107"]
+    assert q["text"] == ["LAUSD Choices: fecha límite a tiempo"]
+    assert "choices.lausd.net" in q["details"][0]
+    for _, u in links:  # no personal data in the URL
+        assert not any(x in u for x in ("Diego", "Maria", "Boyle"))
+    assert parse_qs(urlparse(render.reminder_links(PLAN, "en")[0][1]).query)["text"] == ["LAUSD Choices: on-time deadline"]
+
+
+def test_reminders_in_plan_skip_past_dates_and_flag(monkeypatch):
+    out = render.render_plan(PLAN, MARIA)
+    assert "Agregar recordatorio al calendario: [6 de noviembre de 2026](https://calendar.google.com/" in out
+    past = PLAN.model_copy(update={"deadlines": [d.model_copy(update={"days_left": -1}) for d in PLAN.deadlines]})
+    assert render.reminder_links(past, "es") == []
+    monkeypatch.setenv("REMINDER_LINKS", "off")
+    assert "Agregar recordatorio" not in render.render_plan(PLAN, MARIA)

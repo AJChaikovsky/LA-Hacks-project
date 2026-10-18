@@ -140,7 +140,10 @@
     "today": "today",
     "no_submit": "You submit the application; we never submit anything.",
     "action": "**Finish your application before {date}.**",
-    "coordinator_phone_no_name": "Prefer to call? {phone} (ask for the magnet coordinator)."
+    "coordinator_phone_no_name": "Prefer to call? {phone} (ask for the magnet coordinator).",
+    "reminders": "Add a calendar reminder:",
+    "reminder_title": "LAUSD Choices: {label}",
+    "reminder_details": "LAUSD Choices application. More info: choices.lausd.net or (213) 241-4177."
   },
   "months": [
     "January",

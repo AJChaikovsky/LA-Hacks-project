@@ -140,7 +140,10 @@
     "today": "es hoy",
     "no_submit": "Usted envía la solicitud; nosotros no enviamos nada.",
     "action": "**Termine su solicitud antes del {date}.**",
-    "coordinator_phone_no_name": "¿Prefiere llamar? {phone} (pida hablar con el coordinador del programa magnet)."
+    "coordinator_phone_no_name": "¿Prefiere llamar? {phone} (pida hablar con el coordinador del programa magnet).",
+    "reminders": "Agregar recordatorio al calendario:",
+    "reminder_title": "LAUSD Choices: {label}",
+    "reminder_details": "Solicitud Choices de LAUSD. Más información: choices.lausd.net o (213) 241-4177."
   },
   "months": [
     "enero",
